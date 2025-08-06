@@ -3,7 +3,8 @@
 # For more examples on how to use CMake, see https://github.com/android/ndk-samples.
 
 # Sets the minimum CMake version required for this project.
-cmake_minimum_required(VERSION 3.22.1)
+# 1. 设置 cmake 最低版本
+cmake_minimum_required(VERSION 3.10.2)
 
 # Declares the project name. The project name can be accessed via ${ PROJECT_NAME},
 # Since this is the top level CMakeLists.txt, the project name is also accessible
@@ -11,15 +12,24 @@ cmake_minimum_required(VERSION 3.22.1)
 # build script scope).
 project("imlibv2")
 
-# 1. 指定头文件
+# 2. 设置 C++ 版本
+set(CMAKE_CXX_STANDARD 17)
+
+# 指定头文件
 include_directories(
+        ${CMAKE_SOURCE_DIR}
+        ${CMAKE_CURRENT_SOURCE_DIR}/../
         ${CMAKE_CURRENT_SOURCE_DIR}/libs/includes
 )
 
-# 2. 指定 .a 库路径
+# 指定 .a 库路径
 link_directories(
         ${CMAKE_CURRENT_SOURCE_DIR}/libs/${ANDROID_ABI}
 )
+
+#if(DEFINED PACKAGE_FIND_FILE)
+#    include(${PACKAGE_FIND_FILE})
+#endif()
 
 # Creates and names a library, sets it as either STATIC
 # or SHARED, and provides the relative paths to its source code.
@@ -34,13 +44,12 @@ link_directories(
 # System.loadLibrary() and pass the name of the library defined here;
 # for GameActivity/NativeActivity derived applications, the same library name must be
 # used in the AndroidManifest.xml file.
+file(GLOB SOURCES "*.cpp" "*/*.cpp" "*/*/*.cpp")
 add_library(${CMAKE_PROJECT_NAME} SHARED
         # List C/C++ source files with relative paths to this CMakeLists.txt.
-        imlibv2.cpp
-        example.c
-        example_wrap.c
-        swig2/rcim_client_wrap.cxx
-        rc_adapter.cpp
+        jni_helper/jni_onload.cc
+        jni_helper/jvm.cc
+        ${SOURCES}
 )
 
 # Specifies libraries CMake should link to your target library. You
