@@ -11,7 +11,11 @@
 #include <functional>
 #include "libs/includes/rcim_client.h"
 
-int create_engine_builder(void *javaParam, std::vector<long long> &outBuilderPtrArray);
+int create_engine_builder(RcimEngineBuilderParam *param, std::vector<long long> &outBuilderPtrArray);
+
+long long rcim_sdk_version_array_new(int size);
+void rcim_sdk_version_array_insert(long long ptr, std::vector<long long> longVec);
+void rcim_sdk_version_array_free(long long ptr);
 
 int engine_builder_set_store_path(long long builderPtr, std::string storePath);
 
@@ -22,5 +26,6 @@ void engine_connect(long long enginePtr, std::string token, int timeout, void *c
 void engine_set_connection_status_listener(long long enginePtr, void *listener);
 
 void engine_send_message(long long enginePtr, RcimMessageBox *msgBox, void *sendMsgCallback);
+
 
 #endif //MYSWIGDEMO_RC_ADAPTER_H

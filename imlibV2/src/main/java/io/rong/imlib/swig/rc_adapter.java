@@ -9,8 +9,20 @@
 package io.rong.imlib.swig;
 
 public class rc_adapter {
-  public static int create_engine_builder(java.lang.Object javaParam, VectorLong outBuilderPtrArray) {
-    return rc_adapterJNI.create_engine_builder(javaParam, VectorLong.getCPtr(outBuilderPtrArray), outBuilderPtrArray);
+  public static int create_engine_builder(RcimEngineBuilderParam param, VectorLong outBuilderPtrArray) {
+    return rc_adapterJNI.create_engine_builder(RcimEngineBuilderParam.getCPtr(param), param, VectorLong.getCPtr(outBuilderPtrArray), outBuilderPtrArray);
+  }
+
+  public static long rcim_sdk_version_array_new(int size) {
+    return rc_adapterJNI.rcim_sdk_version_array_new(size);
+  }
+
+  public static void rcim_sdk_version_array_insert(long ptr, VectorLong longVec) {
+    rc_adapterJNI.rcim_sdk_version_array_insert(ptr, VectorLong.getCPtr(longVec), longVec);
+  }
+
+  public static void rcim_sdk_version_array_free(long ptr) {
+    rc_adapterJNI.rcim_sdk_version_array_free(ptr);
   }
 
   public static int engine_builder_set_store_path(long builderPtr, String storePath) {

@@ -245,7 +245,10 @@ public class rc_adapterJNI {
   public final static native boolean RcimMessageBox_has_sent_receipt_get(long jarg1, RcimMessageBox jarg1_);
   public final static native long new_RcimMessageBox();
   public final static native void delete_RcimMessageBox(long jarg1);
-  public final static native int create_engine_builder(java.lang.Object jarg1, long jarg2, VectorLong jarg2_);
+  public final static native int create_engine_builder(long jarg1, RcimEngineBuilderParam jarg1_, long jarg2, VectorLong jarg2_);
+  public final static native long rcim_sdk_version_array_new(int jarg1);
+  public final static native void rcim_sdk_version_array_insert(long jarg1, long jarg2, VectorLong jarg2_);
+  public final static native void rcim_sdk_version_array_free(long jarg1);
   public final static native int engine_builder_set_store_path(long jarg1, String jarg2);
   public final static native int engine_builder_build(long jarg1, long jarg2, VectorLong jarg2_);
   public final static native void engine_connect(long jarg1, String jarg2, int jarg3, java.lang.Object jarg4);

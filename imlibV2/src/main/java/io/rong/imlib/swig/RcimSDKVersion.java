@@ -48,6 +48,16 @@ public class RcimSDKVersion {
     }
   }
 
+/** 静态工厂方法：从 C 指针构建 RcimMessageBox 对象 */
+public static RcimSDKVersion fromPointer(long cPtr) {
+    return new RcimSDKVersion(cPtr, false);
+}
+
+/** 获取原始指针 */
+public long getCPtr() {
+    return swigCPtr;
+}
+
   public void setName(String value) {
     rc_adapterJNI.RcimSDKVersion_name_set(swigCPtr, this, value);
   }

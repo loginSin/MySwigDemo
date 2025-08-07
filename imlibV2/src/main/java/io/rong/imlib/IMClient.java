@@ -13,7 +13,9 @@ import io.rong.imlib.connect.listener.ConnectionStatusListener;
 import io.rong.imlib.message.Message;
 import io.rong.imlib.message.callback.ISendMessageCallback;
 import io.rong.imlib.swig.MapString;
+import io.rong.imlib.swig.RcimEngineBuilderParam;
 import io.rong.imlib.swig.RcimMessageBox;
+import io.rong.imlib.swig.RcimSDKVersion;
 import io.rong.imlib.swig.VectorLong;
 import io.rong.imlib.swig.rc_adapter;
 import io.rong.imlib.swig_helper.callback.NativeSendMessageCallback;
@@ -51,25 +53,41 @@ public class IMClient {
 
     public void init(Context context, String appKey) {
 
-        // 测试传递 Java 对象到 C++
-        MapString sdkVersions = new MapString();
-        sdkVersions.put("imlib", "1.0.0");
+        RcimEngineBuilderParam param = new RcimEngineBuilderParam();
+        param.setApp_key(appKey);
+        param.setDevice_id("test_device_id");
+        param.setPackage_name(context.getPackageName());
+        param.setImlib_version("1.0.0");
+        param.setDevice_model("iPhone");
+        param.setDevice_manufacturer("Apple");
+        param.setOs_version("iOS 15.0");
+        param.setApp_version("1.2.3");
 
-        EngineBuilderParam param = new EngineBuilderParam();
-        param.appKey = appKey;
-        param.deviceId = "test_device_id";
-        param.packageName = context.getPackageName();
-        param.imlibVersion = "1.0.0";
-        param.deviceModel = "iPhone";
-        param.deviceManufacturer = "Apple";
-        param.osVersion = "iOS 15.0";
-        param.sdkVersions = sdkVersions;
-        param.appVersion = "1.2.3";
+        RcimSDKVersion sdkVer1 = new RcimSDKVersion();
+        sdkVer1.setName("imlib");
+        sdkVer1.setVersion("1.0.0");
+        RcimSDKVersion sdkVer2 = new RcimSDKVersion();
+        sdkVer2.setName("imkit");
+        sdkVer2.setVersion("1.1.1");
+
+        int sdkVersionSize = 2;
+        long longArr = rc_adapter.rcim_sdk_version_array_new(sdkVersionSize);
+        VectorLong longVec = new VectorLong();
+        longVec.add(sdkVer1.getCPtr());
+        longVec.add(sdkVer2.getCPtr());
+        rc_adapter.rcim_sdk_version_array_insert(longArr,longVec);
+
+        RcimSDKVersion totalVer = RcimSDKVersion.fromPointer(longArr);
+        param.setSdk_version_vec(totalVer);
+        param.setSdk_version_vec_len(sdkVersionSize);
+
 
         // 创建空的 VectorInt 作为输出参数
         VectorLong builderPtrArray = new VectorLong();
 
         int code = rc_adapter.create_engine_builder(param, builderPtrArray);
+
+        rc_adapter.rcim_sdk_version_array_free(longArr);
         long builderPtr = 0;
         if (builderPtrArray.size() > 0) {
             builderPtr = builderPtrArray.get(0);
@@ -85,10 +103,6 @@ public class IMClient {
         if (enginePtrArray.size() > 0) {
             this.enginePtr.set(enginePtrArray.get(0));
         }
-    }
-
-    private void init0(Context context, String appKey) {
-
     }
 
     public void connect(String token, int timeout, IData1Callback<String> callback) {

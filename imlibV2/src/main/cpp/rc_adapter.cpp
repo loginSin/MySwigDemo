@@ -11,67 +11,46 @@
 #include "jni_header/NativeStringCallback_jni.h"
 #include "jni_header/NativeIntListener_jni.h"
 
-int create_engine_builder(void *javaParam, std::vector<long long> &outBuilderPtrArray) {
-    if (!javaParam) {
+int create_engine_builder(RcimEngineBuilderParam *param,
+                          std::vector<long long> &outBuilderPtrArray) {
+    if (!param) {
         return 0;
     }
+    param->platform = RcimPlatform_Android;
 
-    // 注意：在实际应用中，应该通过正确的方式获取 JNIEnv
-    // 这里假设 g_jni_env 是可用的
-    JNIEnv *env = RongCloud::jni::GetEnv();
-    if (!env) {
-        return 0;
-    }
-
-    auto param = (jobject) javaParam;
-
-    std::string appKey = rcim::getStringFromJObject(env, param, "appKey");
-    std::string deviceId = rcim::getStringFromJObject(env, param, "deviceId");
-    std::string packageName = rcim::getStringFromJObject(env, param, "packageName");
-    std::string imlibVersion = rcim::getStringFromJObject(env, param, "imlibVersion");
-    std::string deviceModel = rcim::getStringFromJObject(env, param, "deviceModel");
-    std::string deviceManufacturer = rcim::getStringFromJObject(env, param, "deviceManufacturer");
-    std::string osVersion = rcim::getStringFromJObject(env, param, "osVersion");
-    std::string appVersion = rcim::getStringFromJObject(env, param, "appVersion");
-    std::map <std::string, std::string> sdkVersions = rcim::getMapStringFromJObject(env, param,
-                                                                                    "sdkVersions");
-
-
-    RcimEngineBuilderParam c_param;
-    c_param.app_key = appKey.c_str();
-    c_param.platform = RcimPlatform_Android;
-    c_param.device_id = deviceId.c_str();
-    c_param.package_name = packageName.c_str();
-    c_param.imlib_version = imlibVersion.c_str();
-    c_param.device_model = deviceModel.c_str();
-    c_param.device_manufacturer = deviceManufacturer.c_str();
-    c_param.os_version = osVersion.c_str();
-
-    const size_t size = sdkVersions.size();
-    RcimSDKVersion c_sdkVersions[size];
-    int index = 0;
-    for (const auto &[key, value]: sdkVersions) {
-        c_sdkVersions[index].name = key.c_str();
-        c_sdkVersions[index].version = value.c_str();
-    }
-
-    c_param.sdk_version_vec = c_sdkVersions;
-    c_param.sdk_version_vec_len = size;
-    c_param.app_version = appVersion.c_str();
     RcimEngineBuilder *builder;
-    RcimEngineError code = rcim_create_engine_builder(&c_param, &builder);
-
+    RcimEngineError code = rcim_create_engine_builder(param, &builder);
     // 向输出参数添加数据
     auto builderPtr = static_cast<long long>(reinterpret_cast<uintptr_t>(builder));
     outBuilderPtrArray.push_back(builderPtr);
-
     return code;
+}
+
+long long rcim_sdk_version_array_new(int size) {
+    RcimSDKVersion *array = (RcimSDKVersion *) malloc(sizeof(RcimSDKVersion) * size);
+    if (!array) return 0; // 内存分配失败
+    return (long long)(uintptr_t) array; // 转成 long long 类型安全返回
+}
+
+void rcim_sdk_version_array_insert(long long ptr, std::vector<long long> longVec) {
+    if (ptr == 0) return;
+    RcimSDKVersion *array = (RcimSDKVersion *) ptr;
+    for (size_t i = 0; i < longVec.size(); ++i) {
+        long ptr = longVec[i];
+        RcimSDKVersion *ver = (RcimSDKVersion *)ptr;
+        array[i].name = ver->name;
+        array[i].version = ver->version;
+    }
+}
+
+void rcim_sdk_version_array_free(long long ptr) {
+    if (ptr == 0) return;
+    RcimSDKVersion *array = (RcimSDKVersion *) (intptr_t) ptr;
+    free(array);
 }
 
 int engine_builder_set_store_path(long long builderPtr, std::string storePath) {
     auto *builder = reinterpret_cast<RcimEngineBuilder *>(static_cast<uintptr_t>(builderPtr));
-//    RcimEngineError code = rcim_engine_builder_set_store_path(builder,
-//                                              "/data/user/0/io.rong.rust.android_rust_imsdk/files");
 
     RcimEngineError code = rcim_engine_builder_set_store_path(builder, storePath.c_str());
     if (RcimEngineError_Success != code) {
@@ -128,7 +107,7 @@ int engine_builder_build(long long builderPtr, std::vector<long long> &outEngine
 void engine_connect_adapter(const void *context, enum RcimEngineError code, const char *user_id) {
     printf("qxb %s", user_id);
     rcim::callNativeStringCallback(context, code, user_id);
-    releaseContextByCallback(context);
+//    releaseContextByCallback(context);
 }
 
 void engine_connect(long long enginePtr, std::string token, int timeout, void *callback) {
@@ -150,13 +129,13 @@ void engine_set_connection_status_listener(long long enginePtr, void *listener) 
 }
 
 void engine_send_message_saved(const void *context, const struct RcimMessageBox *msg_box) {
-
+    int a = 2;
 }
 
 void engine_send_message_adapter(const void *context,
                                  enum RcimEngineError code,
                                  const struct RcimMessageBox *msg_box) {
-
+    int a = 2;
 }
 
 void engine_send_message(long long enginePtr, RcimMessageBox *msgBox, void *sendMsgCallback) {

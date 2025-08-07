@@ -4556,16 +4556,17 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_delete_1RcimMessa
 }
 
 
-SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_create_1engine_1builder(JNIEnv *jenv, jclass jcls, jobject jarg1, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_create_1engine_1builder(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   jint jresult = 0 ;
-  void *arg1 = (void *) 0 ;
+  RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
   std::vector< long long > *arg2 = 0 ;
   int result;
   
   (void)jenv;
   (void)jcls;
+  (void)jarg1_;
   (void)jarg2_;
-  arg1 = jarg1; 
+  arg1 = *(RcimEngineBuilderParam **)&jarg1; 
   arg2 = *(std::vector< long long > **)&jarg2;
   if (!arg2) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "std::vector< long long > & is null");
@@ -4574,6 +4575,49 @@ SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_create_1engine_1b
   result = (int)create_engine_builder(arg1,*arg2);
   jresult = (jint)result; 
   return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_rcim_1sdk_1version_1array_1new(JNIEnv *jenv, jclass jcls, jint jarg1) {
+  jlong jresult = 0 ;
+  int arg1 ;
+  long long result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = (int)jarg1; 
+  result = (long long)rcim_sdk_version_array_new(arg1);
+  jresult = (jlong)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_rcim_1sdk_1version_1array_1insert(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2, jobject jarg2_) {
+  long long arg1 ;
+  std::vector< long long > arg2 ;
+  std::vector< long long > *argp2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg2_;
+  arg1 = (long long)jarg1; 
+  argp2 = *(std::vector< long long > **)&jarg2; 
+  if (!argp2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null std::vector< long long >");
+    return ;
+  }
+  arg2 = *argp2; 
+  rcim_sdk_version_array_insert(arg1,SWIG_STD_MOVE(arg2));
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_rcim_1sdk_1version_1array_1free(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  long long arg1 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = (long long)jarg1; 
+  rcim_sdk_version_array_free(arg1);
 }
 
 
