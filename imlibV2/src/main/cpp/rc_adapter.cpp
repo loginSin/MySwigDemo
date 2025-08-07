@@ -98,15 +98,15 @@ int engine_builder_build(int64_t builderPtr, int64_t *outEnginePtr) {
 }
 
 void engine_connect_adapter(const void *context, enum RcimEngineError code, const char *user_id) {
-    ConnectCallback *callback = static_cast<ConnectCallback *>(const_cast<void *>(context));
+    NativeStringCallback *callback = static_cast<NativeStringCallback *>(const_cast<void *>(context));
     if (callback) {
-        callback->onConnect(code, user_id);
+        callback->onResult(code, user_id);
     } else {
 //        std::cerr << "Warning: Connect callback without valid context" << std::endl;
     }
 }
 
-void engine_connect(int64_t enginePtr, const char *token, int timeout, ConnectCallback *callback) {
+void engine_connect(int64_t enginePtr, const char *token, int timeout, NativeStringCallback *callback) {
     auto *engine = reinterpret_cast<RcimEngineSync *>(static_cast<uintptr_t>(enginePtr));
     rcim_engine_connect(engine, token, timeout, callback, engine_connect_adapter);
 }

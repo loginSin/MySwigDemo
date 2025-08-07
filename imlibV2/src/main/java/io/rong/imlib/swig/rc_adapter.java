@@ -33,8 +33,8 @@ public class rc_adapter {
     return rc_adapterJNI.engine_builder_set_store_path(builderPtr, storePath);
   }
 
-  public static void engine_connect(long enginePtr, String token, int timeout, ConnectCallback callback) {
-    rc_adapterJNI.engine_connect(enginePtr, token, timeout, ConnectCallback.getCPtr(callback), callback);
+  public static void engine_connect(long enginePtr, String token, int timeout, NativeStringCallback callback) {
+    rc_adapterJNI.engine_connect(enginePtr, token, timeout, NativeStringCallback.getCPtr(callback), callback);
   }
 
   public static void engine_set_connection_status_listener(long enginePtr, NativeIntListener listener) {

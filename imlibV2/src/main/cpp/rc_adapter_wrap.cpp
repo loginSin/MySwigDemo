@@ -843,9 +843,6 @@ template <typename T> T SwigValueInit() {
 #include <string.h>
 
 
-#include "ConnectCallback.h"
-#include "NativeSendMessageCallback.h"
-#include "NativeIntListener.h"
 #include "rc_adapter.h"
 
 
@@ -856,51 +853,51 @@ template <typename T> T SwigValueInit() {
 
 #include "rc_adapter_wrap.h"
 
-SwigDirector_ConnectCallback::SwigDirector_ConnectCallback(JNIEnv *jenv) : ConnectCallback(), Swig::Director(jenv) {
+SwigDirector_NativeStringCallback::SwigDirector_NativeStringCallback(JNIEnv *jenv) : NativeStringCallback(), Swig::Director(jenv) {
 }
 
-SwigDirector_ConnectCallback::~SwigDirector_ConnectCallback() {
+SwigDirector_NativeStringCallback::~SwigDirector_NativeStringCallback() {
   swig_disconnect_director_self("swigDirectorDisconnect");
 }
 
 
-void SwigDirector_ConnectCallback::onConnect(int code,char const *user_id) {
+void SwigDirector_NativeStringCallback::onResult(int code,char const *value) {
   JNIEnvWrapper swigjnienv(this) ;
   JNIEnv * jenv = swigjnienv.getJNIEnv() ;
   jobject swigjobj = (jobject) NULL ;
   jint jcode  ;
-  jstring juser_id = 0 ;
+  jstring jvalue = 0 ;
   
   if (!swig_override[0]) {
-    SWIG_JavaThrowException(JNIEnvWrapper(this).getJNIEnv(), SWIG_JavaDirectorPureVirtual, "Attempted to invoke pure virtual method ConnectCallback::onConnect.");
+    SWIG_JavaThrowException(JNIEnvWrapper(this).getJNIEnv(), SWIG_JavaDirectorPureVirtual, "Attempted to invoke pure virtual method NativeStringCallback::onResult.");
     return;
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
     jcode = (jint) code;
-    juser_id = 0;
-    if (user_id) {
-      juser_id = jenv->NewStringUTF((const char *)user_id);
-      if (!juser_id) return ;
+    jvalue = 0;
+    if (value) {
+      jvalue = jenv->NewStringUTF((const char *)value);
+      if (!jvalue) return ;
     }
-    Swig::LocalRefGuard user_id_refguard(jenv, juser_id);
-    jenv->CallStaticVoidMethod(Swig::jclass_rc_adapterJNI, Swig::director_method_ids[0], swigjobj, jcode, juser_id);
+    Swig::LocalRefGuard value_refguard(jenv, jvalue);
+    jenv->CallStaticVoidMethod(Swig::jclass_rc_adapterJNI, Swig::director_method_ids[0], swigjobj, jcode, jvalue);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       Swig::DirectorException::raise(jenv, swigerror);
     }
     
   } else {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in ConnectCallback::onConnect ");
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in NativeStringCallback::onResult ");
   }
   if (swigjobj) jenv->DeleteLocalRef(swigjobj);
 }
 
-void SwigDirector_ConnectCallback::swig_connect_director(JNIEnv *jenv, jobject jself, jclass jcls, bool swig_mem_own, bool weak_global) {
-  static jclass baseclass = swig_new_global_ref(jenv, "io/rong/imlib/swig/ConnectCallback");
+void SwigDirector_NativeStringCallback::swig_connect_director(JNIEnv *jenv, jobject jself, jclass jcls, bool swig_mem_own, bool weak_global) {
+  static jclass baseclass = swig_new_global_ref(jenv, "io/rong/imlib/swig/NativeStringCallback");
   if (!baseclass) return;
   static SwigDirectorMethod methods[] = {
-    SwigDirectorMethod(jenv, baseclass, "onConnect", "(ILjava/lang/String;)V")
+    SwigDirectorMethod(jenv, baseclass, "onResult", "(ILjava/lang/String;)V")
   };
   
   if (swig_set_self(jenv, jself, swig_mem_own, weak_global)) {
@@ -4271,59 +4268,59 @@ SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_engine_1builder_1
 }
 
 
-SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_new_1ConnectCallback(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_new_1NativeStringCallback(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
-  ConnectCallback *result = 0 ;
+  NativeStringCallback *result = 0 ;
   
   (void)jenv;
   (void)jcls;
-  result = (ConnectCallback *)new SwigDirector_ConnectCallback(jenv);
-  *(ConnectCallback **)&jresult = result; 
+  result = (NativeStringCallback *)new SwigDirector_NativeStringCallback(jenv);
+  *(NativeStringCallback **)&jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_delete_1ConnectCallback(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  ConnectCallback *arg1 = (ConnectCallback *) 0 ;
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_delete_1NativeStringCallback(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  NativeStringCallback *arg1 = (NativeStringCallback *) 0 ;
   
   (void)jenv;
   (void)jcls;
-  arg1 = *(ConnectCallback **)&jarg1; 
+  arg1 = *(NativeStringCallback **)&jarg1; 
   delete arg1;
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_ConnectCallback_1onConnect(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jstring jarg3) {
-  ConnectCallback *arg1 = (ConnectCallback *) 0 ;
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_NativeStringCallback_1onResult(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jstring jarg3) {
+  NativeStringCallback *arg1 = (NativeStringCallback *) 0 ;
   int arg2 ;
   char *arg3 = (char *) 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(ConnectCallback **)&jarg1; 
+  arg1 = *(NativeStringCallback **)&jarg1; 
   arg2 = (int)jarg2; 
   arg3 = 0;
   if (jarg3) {
     arg3 = (char *)jenv->GetStringUTFChars(jarg3, 0);
     if (!arg3) return ;
   }
-  (arg1)->onConnect(arg2,(char const *)arg3);
+  (arg1)->onResult(arg2,(char const *)arg3);
   if (arg3) jenv->ReleaseStringUTFChars(jarg3, (const char *)arg3);
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_ConnectCallback_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
-  ConnectCallback *obj = *((ConnectCallback **)&objarg);
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_NativeStringCallback_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
+  NativeStringCallback *obj = *((NativeStringCallback **)&objarg);
   (void)jcls;
-  SwigDirector_ConnectCallback *director = static_cast<SwigDirector_ConnectCallback *>(obj);
+  SwigDirector_NativeStringCallback *director = static_cast<SwigDirector_NativeStringCallback *>(obj);
   director->swig_connect_director(jenv, jself, jenv->GetObjectClass(jself), (jswig_mem_own == JNI_TRUE), (jweak_global == JNI_TRUE));
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_ConnectCallback_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
-  ConnectCallback *obj = *((ConnectCallback **)&objarg);
-  SwigDirector_ConnectCallback *director = dynamic_cast<SwigDirector_ConnectCallback *>(obj);
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_NativeStringCallback_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
+  NativeStringCallback *obj = *((NativeStringCallback **)&objarg);
+  SwigDirector_NativeStringCallback *director = dynamic_cast<SwigDirector_NativeStringCallback *>(obj);
   (void)jcls;
   if (director) {
     director->swig_java_change_ownership(jenv, jself, jtake_or_release ? true : false);
@@ -4522,7 +4519,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_engine_1connect(J
   int64_t arg1 ;
   char *arg2 = (char *) 0 ;
   int arg3 ;
-  ConnectCallback *arg4 = (ConnectCallback *) 0 ;
+  NativeStringCallback *arg4 = (NativeStringCallback *) 0 ;
   
   (void)jenv;
   (void)jcls;
@@ -4534,7 +4531,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_engine_1connect(J
     if (!arg2) return ;
   }
   arg3 = (int)jarg3; 
-  arg4 = *(ConnectCallback **)&jarg4; 
+  arg4 = *(NativeStringCallback **)&jarg4; 
   engine_connect(arg1,(char const *)arg2,arg3,arg4);
   if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
 }
@@ -4577,7 +4574,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_swig_1module_1ini
     const char *signature;
   } methods[4] = {
     {
-      "SwigDirector_ConnectCallback_onConnect", "(Lio/rong/imlib/swig/ConnectCallback;ILjava/lang/String;)V" 
+      "SwigDirector_NativeStringCallback_onResult", "(Lio/rong/imlib/swig/NativeStringCallback;ILjava/lang/String;)V" 
     },
     {
       "SwigDirector_NativeSendMessageCallback_onSave", "(Lio/rong/imlib/swig/NativeSendMessageCallback;J)V" 

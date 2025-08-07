@@ -9,13 +9,13 @@
 #ifndef SWIG_rc_adapter_WRAP_H_
 #define SWIG_rc_adapter_WRAP_H_
 
-class SwigDirector_ConnectCallback : public ConnectCallback, public Swig::Director {
+class SwigDirector_NativeStringCallback : public NativeStringCallback, public Swig::Director {
 
 public:
     void swig_connect_director(JNIEnv *jenv, jobject jself, jclass jcls, bool swig_mem_own, bool weak_global);
-    SwigDirector_ConnectCallback(JNIEnv *jenv);
-    virtual ~SwigDirector_ConnectCallback();
-    virtual void onConnect(int code,char const *user_id);
+    SwigDirector_NativeStringCallback(JNIEnv *jenv);
+    virtual ~SwigDirector_NativeStringCallback();
+    virtual void onResult(int code,char const *value);
 public:
     bool swig_overrides(int n) {
       return (n < 1 ? swig_override[n] : false);

@@ -12,7 +12,7 @@ import io.rong.imlib.connect.enums.ConnectionStatus;
 import io.rong.imlib.connect.listener.ConnectionStatusListener;
 import io.rong.imlib.message.Message;
 import io.rong.imlib.message.callback.ISendMessageCallback;
-import io.rong.imlib.swig.ConnectCallback;
+import io.rong.imlib.swig.NativeStringCallback;
 import io.rong.imlib.swig.NativeIntListener;
 import io.rong.imlib.swig.NativeSendMessageCallback;
 import io.rong.imlib.swig.RcimEngineBuilderParam;
@@ -98,8 +98,9 @@ public class IMClient {
     }
 
     public void connect(String token, int timeout, IData1Callback<String> callback) {
-        rc_adapter.engine_connect(this.enginePtr.get(), token, timeout,new ConnectCallback() {
-            public void onConnect(int code, String value) {
+        rc_adapter.engine_connect(this.enginePtr.get(), token, timeout,new NativeStringCallback() {
+            @Override
+            public void onResult(int code, String value) {
                 if (callback == null) {
                     return;
                 }
@@ -114,6 +115,7 @@ public class IMClient {
 
     public void setConnectionStatusListener(ConnectionStatusListener listener) {
         rc_adapter.engine_set_connection_status_listener(this.enginePtr.get(), new NativeIntListener() {
+            @Override
             public void onChanged(int value) {
                 if (listener != null) {
                     listener.onConnectionStatusChanged(ConnectionStatus.codeOf(value));

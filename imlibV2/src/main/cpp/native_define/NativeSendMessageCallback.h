@@ -5,7 +5,7 @@
 #ifndef MYSWIGDEMO_NATIVESENDMESSAGECALLBACK_H
 #define MYSWIGDEMO_NATIVESENDMESSAGECALLBACK_H
 
-#include "libs/includes/rcim_client.h"
+#include "../libs/includes/rcim_client.h"
 
 class NativeSendMessageCallback {
 public:

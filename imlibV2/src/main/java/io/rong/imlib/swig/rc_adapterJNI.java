@@ -199,11 +199,11 @@ public class rc_adapterJNI {
   public final static native void delete_RcimMessageBox(long jarg1);
   public final static native int create_engine_builder(long jarg1, RcimEngineBuilderParam jarg1_, long[] jarg2);
   public final static native int engine_builder_build(long jarg1, long[] jarg2);
-  public final static native long new_ConnectCallback();
-  public final static native void delete_ConnectCallback(long jarg1);
-  public final static native void ConnectCallback_onConnect(long jarg1, ConnectCallback jarg1_, int jarg2, String jarg3);
-  public final static native void ConnectCallback_director_connect(ConnectCallback obj, long cptr, boolean mem_own, boolean weak_global);
-  public final static native void ConnectCallback_change_ownership(ConnectCallback obj, long cptr, boolean take_or_release);
+  public final static native long new_NativeStringCallback();
+  public final static native void delete_NativeStringCallback(long jarg1);
+  public final static native void NativeStringCallback_onResult(long jarg1, NativeStringCallback jarg1_, int jarg2, String jarg3);
+  public final static native void NativeStringCallback_director_connect(NativeStringCallback obj, long cptr, boolean mem_own, boolean weak_global);
+  public final static native void NativeStringCallback_change_ownership(NativeStringCallback obj, long cptr, boolean take_or_release);
   public final static native long new_NativeSendMessageCallback();
   public final static native void delete_NativeSendMessageCallback(long jarg1);
   public final static native void NativeSendMessageCallback_onSave(long jarg1, NativeSendMessageCallback jarg1_, long jarg2, RcimMessageBox jarg2_);
@@ -219,12 +219,12 @@ public class rc_adapterJNI {
   public final static native void rcim_sdk_version_array_insert(long jarg1, long[] jarg2, int jarg3);
   public final static native void rcim_sdk_version_array_free(long jarg1);
   public final static native int engine_builder_set_store_path(long jarg1, String jarg2);
-  public final static native void engine_connect(long jarg1, String jarg2, int jarg3, long jarg4, ConnectCallback jarg4_);
+  public final static native void engine_connect(long jarg1, String jarg2, int jarg3, long jarg4, NativeStringCallback jarg4_);
   public final static native void engine_set_connection_status_listener(long jarg1, long jarg2, NativeIntListener jarg2_);
   public final static native void engine_send_message(long jarg1, long jarg2, RcimMessageBox jarg2_, long jarg3, NativeSendMessageCallback jarg3_);
 
-  public static void SwigDirector_ConnectCallback_onConnect(ConnectCallback jself, int code, String user_id) {
-    jself.onConnect(code, user_id);
+  public static void SwigDirector_NativeStringCallback_onResult(NativeStringCallback jself, int code, String value) {
+    jself.onResult(code, value);
   }
   public static void SwigDirector_NativeSendMessageCallback_onSave(NativeSendMessageCallback jself, long msg) {
     jself.onSave((msg == 0) ? null : new RcimMessageBox(msg, false));
