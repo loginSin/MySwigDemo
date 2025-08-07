@@ -3436,8 +3436,8 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_delete_1RcimMessa
 SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_create_1engine_1builder(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlongArray jarg2) {
   jint jresult = 0 ;
   RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
-  long long *arg2 = (long long *) 0 ;
-  long long temp2 ;
+  int64_t *arg2 = (int64_t *) 0 ;
+  int64_t temp2 ;
   int result;
   
   (void)jenv;
@@ -3453,7 +3453,7 @@ SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_create_1engine_1b
       SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, "Array must contain at least 1 element");
       return 0;
     }
-    temp2 = (long long)0;
+    temp2 = (int64_t)0;
     arg2 = &temp2; 
   }
   result = (int)create_engine_builder(arg1,arg2);
@@ -3469,14 +3469,14 @@ SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_create_1engine_1b
 
 SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_engine_1builder_1build(JNIEnv *jenv, jclass jcls, jlong jarg1, jlongArray jarg2) {
   jint jresult = 0 ;
-  long long arg1 ;
-  long long *arg2 = (long long *) 0 ;
-  long long temp2 ;
+  int64_t arg1 ;
+  int64_t *arg2 = (int64_t *) 0 ;
+  int64_t temp2 ;
   int result;
   
   (void)jenv;
   (void)jcls;
-  arg1 = (long long)jarg1; 
+  arg1 = (int64_t)jarg1; 
   {
     if (!jarg2) {
       SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "array null");
@@ -3486,7 +3486,7 @@ SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_engine_1builder_1
       SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, "Array must contain at least 1 element");
       return 0;
     }
-    temp2 = (long long)0;
+    temp2 = (int64_t)0;
     arg2 = &temp2; 
   }
   result = (int)engine_builder_build(arg1,arg2);
@@ -3503,25 +3503,25 @@ SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_engine_1builder_1
 SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_rcim_1sdk_1version_1array_1new(JNIEnv *jenv, jclass jcls, jint jarg1) {
   jlong jresult = 0 ;
   int arg1 ;
-  long long result;
+  int64_t result;
   
   (void)jenv;
   (void)jcls;
   arg1 = (int)jarg1; 
-  result = (long long)rcim_sdk_version_array_new(arg1);
+  result = (int64_t)rcim_sdk_version_array_new(arg1);
   jresult = (jlong)result; 
   return jresult;
 }
 
 
 SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_rcim_1sdk_1version_1array_1insert(JNIEnv *jenv, jclass jcls, jlong jarg1, jlongArray jarg2, jint jarg3) {
-  long long arg1 ;
-  long *arg2 = (long *) 0 ;
+  int64_t arg1 ;
+  int64_t *arg2 = (int64_t *) 0 ;
   int arg3 ;
   
   (void)jenv;
   (void)jcls;
-  arg1 = (long long)jarg1; 
+  arg1 = (int64_t)jarg1; 
   {
     arg2 = jenv->GetLongArrayElements(jarg2, 0);
   }
@@ -3534,24 +3534,24 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_rcim_1sdk_1versio
 
 
 SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_rcim_1sdk_1version_1array_1free(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  long long arg1 ;
+  int64_t arg1 ;
   
   (void)jenv;
   (void)jcls;
-  arg1 = (long long)jarg1; 
+  arg1 = (int64_t)jarg1; 
   rcim_sdk_version_array_free(arg1);
 }
 
 
 SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_engine_1builder_1set_1store_1path(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2) {
   jint jresult = 0 ;
-  long long arg1 ;
+  int64_t arg1 ;
   char *arg2 = (char *) 0 ;
   int result;
   
   (void)jenv;
   (void)jcls;
-  arg1 = (long long)jarg1; 
+  arg1 = (int64_t)jarg1; 
   arg2 = 0;
   if (jarg2) {
     arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
@@ -3565,14 +3565,14 @@ SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_engine_1builder_1
 
 
 SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_engine_1connect(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jint jarg3, jobject jarg4) {
-  long long arg1 ;
+  int64_t arg1 ;
   char *arg2 = (char *) 0 ;
   int arg3 ;
   void *arg4 = (void *) 0 ;
   
   (void)jenv;
   (void)jcls;
-  arg1 = (long long)jarg1; 
+  arg1 = (int64_t)jarg1; 
   arg2 = 0;
   if (jarg2) {
     arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
@@ -3586,26 +3586,26 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_engine_1connect(J
 
 
 SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_engine_1set_1connection_1status_1listener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg2) {
-  long long arg1 ;
+  int64_t arg1 ;
   void *arg2 = (void *) 0 ;
   
   (void)jenv;
   (void)jcls;
-  arg1 = (long long)jarg1; 
+  arg1 = (int64_t)jarg1; 
   arg2 = jarg2; 
   engine_set_connection_status_listener(arg1,arg2);
 }
 
 
 SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_engine_1send_1message(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2, jobject jarg2_, jobject jarg3) {
-  long long arg1 ;
+  int64_t arg1 ;
   RcimMessageBox *arg2 = (RcimMessageBox *) 0 ;
   void *arg3 = (void *) 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg2_;
-  arg1 = (long long)jarg1; 
+  arg1 = (int64_t)jarg1; 
   arg2 = *(RcimMessageBox **)&jarg2; 
   arg3 = jarg3; 
   engine_send_message(arg1,arg2,arg3);
