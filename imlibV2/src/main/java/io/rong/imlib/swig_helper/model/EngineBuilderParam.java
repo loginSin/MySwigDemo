@@ -1,4 +1,4 @@
-package io.rong.imlib.swig_helper;
+package io.rong.imlib.swig_helper.model;
 
 import io.rong.imlib.swig.MapString;
 

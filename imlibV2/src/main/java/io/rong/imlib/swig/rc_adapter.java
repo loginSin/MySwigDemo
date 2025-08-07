@@ -29,4 +29,8 @@ public class rc_adapter {
     rc_adapterJNI.engine_set_connection_status_listener(enginePtr, listener);
   }
 
+  public static void engine_send_message(long enginePtr, RcimMessageBox msgBox, java.lang.Object sendMsgCallback) {
+    rc_adapterJNI.engine_send_message(enginePtr, RcimMessageBox.getCPtr(msgBox), msgBox, sendMsgCallback);
+  }
+
 }

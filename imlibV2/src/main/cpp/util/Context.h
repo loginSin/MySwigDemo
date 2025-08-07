@@ -19,5 +19,11 @@ void *getFuncFromContextByListener(const void *context);
 const RcimEngineSync *getEngineFromContextByListener(const void *context);
 //void releaseContextByListener(const void *context); // listener 的上下文不能释放
 
+/// 发送消息 一系列 context 方法 ---------
+void *genContextBySendMessageCallback(const RcimEngineSync *engine, void *callback);
+void *getFuncFromContextBySendMessageCallback(const void *context);
+const RcimEngineSync *getEngineFromContextBySendMessageCallback(const void *context);
+void releaseContextBySendMessageCallback(const void *context);
+
 
 #endif //MYSWIGDEMO_CONTEXT_H

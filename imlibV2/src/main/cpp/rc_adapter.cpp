@@ -23,7 +23,7 @@ int create_engine_builder(void *javaParam, std::vector<long long> &outBuilderPtr
         return 0;
     }
 
-    jobject param = (jobject) javaParam;
+    auto param = (jobject) javaParam;
 
     std::string appKey = rcim::getStringFromJObject(env, param, "appKey");
     std::string deviceId = rcim::getStringFromJObject(env, param, "deviceId");
@@ -33,8 +33,8 @@ int create_engine_builder(void *javaParam, std::vector<long long> &outBuilderPtr
     std::string deviceManufacturer = rcim::getStringFromJObject(env, param, "deviceManufacturer");
     std::string osVersion = rcim::getStringFromJObject(env, param, "osVersion");
     std::string appVersion = rcim::getStringFromJObject(env, param, "appVersion");
-    std::map<std::string, std::string> sdkVersions = rcim::getMapStringFromJObject(env, param,
-                                                                                   "sdkVersions");
+    std::map <std::string, std::string> sdkVersions = rcim::getMapStringFromJObject(env, param,
+                                                                                    "sdkVersions");
 
 
     RcimEngineBuilderParam c_param;
@@ -62,14 +62,14 @@ int create_engine_builder(void *javaParam, std::vector<long long> &outBuilderPtr
     RcimEngineError code = rcim_create_engine_builder(&c_param, &builder);
 
     // 向输出参数添加数据
-    long long builderPtr = static_cast<long long>(reinterpret_cast<uintptr_t>(builder));
+    auto builderPtr = static_cast<long long>(reinterpret_cast<uintptr_t>(builder));
     outBuilderPtrArray.push_back(builderPtr);
 
     return code;
 }
 
 int engine_builder_set_store_path(long long builderPtr, std::string storePath) {
-    RcimEngineBuilder *builder = reinterpret_cast<RcimEngineBuilder *>(static_cast<uintptr_t>(builderPtr));
+    auto *builder = reinterpret_cast<RcimEngineBuilder *>(static_cast<uintptr_t>(builderPtr));
 //    RcimEngineError code = rcim_engine_builder_set_store_path(builder,
 //                                              "/data/user/0/io.rong.rust.android_rust_imsdk/files");
 
@@ -114,12 +114,12 @@ int engine_builder_set_store_path(long long builderPtr, std::string storePath) {
 }
 
 int engine_builder_build(long long builderPtr, std::vector<long long> &outEngineArray) {
-    RcimEngineBuilder *builder = reinterpret_cast<RcimEngineBuilder *>(static_cast<uintptr_t>(builderPtr));
+    auto *builder = reinterpret_cast<RcimEngineBuilder *>(static_cast<uintptr_t>(builderPtr));
     RcimEngineSync *engine_ = nullptr;
     RcimEngineError code = rcim_engine_builder_build(builder, &engine_);
 
     // 向输出参数添加数据
-    long long enginePtr = static_cast<long long>(reinterpret_cast<uintptr_t>(engine_));
+    auto enginePtr = static_cast<long long>(reinterpret_cast<uintptr_t>(engine_));
     outEngineArray.push_back(enginePtr);
 
     return code;
@@ -132,16 +132,36 @@ void engine_connect_adapter(const void *context, enum RcimEngineError code, cons
 }
 
 void engine_connect(long long enginePtr, std::string token, int timeout, void *callback) {
-    RcimEngineSync *engine = reinterpret_cast<RcimEngineSync *>(static_cast<uintptr_t>(enginePtr));
+    auto *engine = reinterpret_cast<RcimEngineSync *>(static_cast<uintptr_t>(enginePtr));
     void *context = genContextByCallback(engine, callback);
     rcim_engine_connect(engine, token.c_str(), timeout, context, engine_connect_adapter);
 }
 
-void engine_set_connection_status_listener_adapter(const void *context, enum RcimConnectionStatus status) {
+void engine_set_connection_status_listener_adapter(const void *context,
+                                                   enum RcimConnectionStatus status) {
     rcim::callNativeIntListener(context, status);
 }
+
 void engine_set_connection_status_listener(long long enginePtr, void *listener) {
-    RcimEngineSync *engine = reinterpret_cast<RcimEngineSync *>(static_cast<uintptr_t>(enginePtr));
+    auto *engine = reinterpret_cast<RcimEngineSync *>(static_cast<uintptr_t>(enginePtr));
     void *context = genContextByListener(engine, listener);
-    rcim_engine_set_connection_status_listener(engine, context, engine_set_connection_status_listener_adapter);
+    rcim_engine_set_connection_status_listener(engine, context,
+                                               engine_set_connection_status_listener_adapter);
+}
+
+void engine_send_message_saved(const void *context, const struct RcimMessageBox *msg_box) {
+
+}
+
+void engine_send_message_adapter(const void *context,
+                                 enum RcimEngineError code,
+                                 const struct RcimMessageBox *msg_box) {
+
+}
+
+void engine_send_message(long long enginePtr, RcimMessageBox *msgBox, void *sendMsgCallback) {
+    // todo qixinbing
+    auto *engine = reinterpret_cast<RcimEngineSync *>(static_cast<uintptr_t>(enginePtr));
+    rcim_engine_send_message(engine, msgBox, nullptr, nullptr, engine_send_message_adapter,
+                             engine_send_message_saved);
 }

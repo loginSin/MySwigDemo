@@ -10,12 +10,16 @@ import io.rong.imlib.base.callback.IData1Callback;
 import io.rong.imlib.base.enums.EngineError;
 import io.rong.imlib.connect.enums.ConnectionStatus;
 import io.rong.imlib.connect.listener.ConnectionStatusListener;
+import io.rong.imlib.message.Message;
+import io.rong.imlib.message.callback.ISendMessageCallback;
 import io.rong.imlib.swig.MapString;
+import io.rong.imlib.swig.RcimMessageBox;
 import io.rong.imlib.swig.VectorLong;
 import io.rong.imlib.swig.rc_adapter;
-import io.rong.imlib.swig_helper.EngineBuilderParam;
+import io.rong.imlib.swig_helper.callback.NativeSendMessageCallback;
 import io.rong.imlib.swig_helper.callback.NativeStringCallback;
 import io.rong.imlib.swig_helper.listener.NativeIntListener;
+import io.rong.imlib.swig_helper.model.EngineBuilderParam;
 
 /**
  * @author rongcloud
@@ -83,6 +87,10 @@ public class IMClient {
         }
     }
 
+    private void init0(Context context, String appKey) {
+
+    }
+
     public void connect(String token, int timeout, IData1Callback<String> callback) {
         rc_adapter.engine_connect(this.enginePtr.get(), token, timeout, new NativeStringCallback() {
             @Override
@@ -105,6 +113,38 @@ public class IMClient {
             public void onChanged(int status) {
                 if (listener != null) {
                     listener.onConnectionStatusChanged(ConnectionStatus.codeOf(status));
+                }
+            }
+        });
+    }
+
+    public void sendMessage(Message msg, ISendMessageCallback<Message> sendMessageCallback) {
+        RcimMessageBox msgBox = new RcimMessageBox();
+        msgBox.setConv_type(msg.getConversationType().getValue());
+        msgBox.setTarget_id(msg.getTargetId());
+        msgBox.setChannel_id(msg.getChannelId());
+        msgBox.setObject_name(msg.getObjectName());
+        msgBox.setContent(msg.getContentJson());
+        rc_adapter.engine_send_message(this.enginePtr.get(), msgBox, new NativeSendMessageCallback() {
+
+            @Override
+            public void onAttached(Message message) {
+                if (sendMessageCallback != null) {
+                    sendMessageCallback.onAttached(message);
+                }
+            }
+
+            @Override
+            public void onSuccess(Message message) {
+                if (sendMessageCallback != null) {
+                    sendMessageCallback.onSuccess(message);
+                }
+            }
+
+            @Override
+            public void onError(EngineError error, Message data) {
+                if (sendMessageCallback != null) {
+                    sendMessageCallback.onError(error, data);
                 }
             }
         });

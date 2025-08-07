@@ -9,6 +9,7 @@
 #include <map>
 #include <vector>
 #include <functional>
+#include "libs/includes/rcim_client.h"
 
 int create_engine_builder(void *javaParam, std::vector<long long> &outBuilderPtrArray);
 
@@ -20,5 +21,6 @@ void engine_connect(long long enginePtr, std::string token, int timeout, void *c
 
 void engine_set_connection_status_listener(long long enginePtr, void *listener);
 
+void engine_send_message(long long enginePtr, RcimMessageBox *msgBox, void *sendMsgCallback);
 
 #endif //MYSWIGDEMO_RC_ADAPTER_H

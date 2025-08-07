@@ -240,9 +240,6 @@ template <typename T> T SwigValueInit() {
 #endif
 
 
-#include "rc_adapter.h"
-
-
 #include <string>
 
 
@@ -418,6 +415,12 @@ SWIGINTERN void std_vector_Sl_long_SS_long_Sg__doRemoveRange(std::vector< long l
           throw std::out_of_range("vector index out of range");
         }
       }
+
+#include <string.h>
+
+
+#include "rc_adapter.h"
+
 
 #ifdef __cplusplus
 extern "C" {
@@ -1281,6 +1284,3278 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_delete_1VectorLon
 }
 
 
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimSDKVersion_1name_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimSDKVersion *arg1 = (RcimSDKVersion *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimSDKVersion **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->name = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->name, (const char *)arg2);
+    } else {
+      arg1->name = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimSDKVersion_1name_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimSDKVersion *arg1 = (RcimSDKVersion *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimSDKVersion **)&jarg1; 
+  result = (char *) ((arg1)->name);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimSDKVersion_1version_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimSDKVersion *arg1 = (RcimSDKVersion *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimSDKVersion **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->version = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->version, (const char *)arg2);
+    } else {
+      arg1->version = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimSDKVersion_1version_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimSDKVersion *arg1 = (RcimSDKVersion *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimSDKVersion **)&jarg1; 
+  result = (char *) ((arg1)->version);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_new_1RcimSDKVersion(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  RcimSDKVersion *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (RcimSDKVersion *)new RcimSDKVersion();
+  *(RcimSDKVersion **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_delete_1RcimSDKVersion(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  RcimSDKVersion *arg1 = (RcimSDKVersion *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(RcimSDKVersion **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimEngineBuilderParam_1app_1key_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimEngineBuilderParam **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->app_key = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->app_key, (const char *)arg2);
+    } else {
+      arg1->app_key = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimEngineBuilderParam_1app_1key_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimEngineBuilderParam **)&jarg1; 
+  result = (char *) ((arg1)->app_key);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimEngineBuilderParam_1platform_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
+  RcimPlatform arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimEngineBuilderParam **)&jarg1; 
+  arg2 = (RcimPlatform)jarg2; 
+  if (arg1) (arg1)->platform = arg2;
+}
+
+
+SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimEngineBuilderParam_1platform_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
+  RcimPlatform result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimEngineBuilderParam **)&jarg1; 
+  result =  ((arg1)->platform);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimEngineBuilderParam_1device_1id_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimEngineBuilderParam **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->device_id = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->device_id, (const char *)arg2);
+    } else {
+      arg1->device_id = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimEngineBuilderParam_1device_1id_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimEngineBuilderParam **)&jarg1; 
+  result = (char *) ((arg1)->device_id);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimEngineBuilderParam_1package_1name_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimEngineBuilderParam **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->package_name = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->package_name, (const char *)arg2);
+    } else {
+      arg1->package_name = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimEngineBuilderParam_1package_1name_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimEngineBuilderParam **)&jarg1; 
+  result = (char *) ((arg1)->package_name);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimEngineBuilderParam_1imlib_1version_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimEngineBuilderParam **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->imlib_version = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->imlib_version, (const char *)arg2);
+    } else {
+      arg1->imlib_version = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimEngineBuilderParam_1imlib_1version_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimEngineBuilderParam **)&jarg1; 
+  result = (char *) ((arg1)->imlib_version);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimEngineBuilderParam_1device_1model_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimEngineBuilderParam **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->device_model = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->device_model, (const char *)arg2);
+    } else {
+      arg1->device_model = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimEngineBuilderParam_1device_1model_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimEngineBuilderParam **)&jarg1; 
+  result = (char *) ((arg1)->device_model);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimEngineBuilderParam_1device_1manufacturer_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimEngineBuilderParam **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->device_manufacturer = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->device_manufacturer, (const char *)arg2);
+    } else {
+      arg1->device_manufacturer = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimEngineBuilderParam_1device_1manufacturer_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimEngineBuilderParam **)&jarg1; 
+  result = (char *) ((arg1)->device_manufacturer);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimEngineBuilderParam_1os_1version_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimEngineBuilderParam **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->os_version = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->os_version, (const char *)arg2);
+    } else {
+      arg1->os_version = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimEngineBuilderParam_1os_1version_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimEngineBuilderParam **)&jarg1; 
+  result = (char *) ((arg1)->os_version);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimEngineBuilderParam_1sdk_1version_1vec_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+  RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
+  RcimSDKVersion *arg2 = (RcimSDKVersion *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  arg1 = *(RcimEngineBuilderParam **)&jarg1; 
+  arg2 = *(RcimSDKVersion **)&jarg2; 
+  if (arg1) (arg1)->sdk_version_vec = (RcimSDKVersion const *)arg2;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimEngineBuilderParam_1sdk_1version_1vec_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
+  RcimSDKVersion *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimEngineBuilderParam **)&jarg1; 
+  result = (RcimSDKVersion *) ((arg1)->sdk_version_vec);
+  *(RcimSDKVersion **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimEngineBuilderParam_1sdk_1version_1vec_1len_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
+  int32_t arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimEngineBuilderParam **)&jarg1; 
+  arg2 = (int32_t)jarg2; 
+  if (arg1) (arg1)->sdk_version_vec_len = arg2;
+}
+
+
+SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimEngineBuilderParam_1sdk_1version_1vec_1len_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
+  int32_t result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimEngineBuilderParam **)&jarg1; 
+  result = (int32_t) ((arg1)->sdk_version_vec_len);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimEngineBuilderParam_1app_1version_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimEngineBuilderParam **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->app_version = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->app_version, (const char *)arg2);
+    } else {
+      arg1->app_version = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimEngineBuilderParam_1app_1version_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimEngineBuilderParam **)&jarg1; 
+  result = (char *) ((arg1)->app_version);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_new_1RcimEngineBuilderParam(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  RcimEngineBuilderParam *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (RcimEngineBuilderParam *)new RcimEngineBuilderParam();
+  *(RcimEngineBuilderParam **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_delete_1RcimEngineBuilderParam(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(RcimEngineBuilderParam **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimReceivedStatus_1is_1read_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+  RcimReceivedStatus *arg1 = (RcimReceivedStatus *) 0 ;
+  bool arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimReceivedStatus **)&jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->is_read = arg2;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimReceivedStatus_1is_1read_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  RcimReceivedStatus *arg1 = (RcimReceivedStatus *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimReceivedStatus **)&jarg1; 
+  result = (bool) ((arg1)->is_read);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimReceivedStatus_1is_1listened_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+  RcimReceivedStatus *arg1 = (RcimReceivedStatus *) 0 ;
+  bool arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimReceivedStatus **)&jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->is_listened = arg2;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimReceivedStatus_1is_1listened_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  RcimReceivedStatus *arg1 = (RcimReceivedStatus *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimReceivedStatus **)&jarg1; 
+  result = (bool) ((arg1)->is_listened);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimReceivedStatus_1is_1download_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+  RcimReceivedStatus *arg1 = (RcimReceivedStatus *) 0 ;
+  bool arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimReceivedStatus **)&jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->is_download = arg2;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimReceivedStatus_1is_1download_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  RcimReceivedStatus *arg1 = (RcimReceivedStatus *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimReceivedStatus **)&jarg1; 
+  result = (bool) ((arg1)->is_download);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimReceivedStatus_1is_1retrieved_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+  RcimReceivedStatus *arg1 = (RcimReceivedStatus *) 0 ;
+  bool arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimReceivedStatus **)&jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->is_retrieved = arg2;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimReceivedStatus_1is_1retrieved_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  RcimReceivedStatus *arg1 = (RcimReceivedStatus *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimReceivedStatus **)&jarg1; 
+  result = (bool) ((arg1)->is_retrieved);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimReceivedStatus_1is_1multiple_1received_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+  RcimReceivedStatus *arg1 = (RcimReceivedStatus *) 0 ;
+  bool arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimReceivedStatus **)&jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->is_multiple_received = arg2;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimReceivedStatus_1is_1multiple_1received_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  RcimReceivedStatus *arg1 = (RcimReceivedStatus *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimReceivedStatus **)&jarg1; 
+  result = (bool) ((arg1)->is_multiple_received);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_new_1RcimReceivedStatus(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  RcimReceivedStatus *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (RcimReceivedStatus *)new RcimReceivedStatus();
+  *(RcimReceivedStatus **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_delete_1RcimReceivedStatus(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  RcimReceivedStatus *arg1 = (RcimReceivedStatus *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(RcimReceivedStatus **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimReadReceiptUserInfo_1sender_1id_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimReadReceiptUserInfo *arg1 = (RcimReadReceiptUserInfo *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimReadReceiptUserInfo **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->sender_id = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->sender_id, (const char *)arg2);
+    } else {
+      arg1->sender_id = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimReadReceiptUserInfo_1sender_1id_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimReadReceiptUserInfo *arg1 = (RcimReadReceiptUserInfo *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimReadReceiptUserInfo **)&jarg1; 
+  result = (char *) ((arg1)->sender_id);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimReadReceiptUserInfo_1timestamp_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jobject jarg2) {
+  RcimReadReceiptUserInfo *arg1 = (RcimReadReceiptUserInfo *) 0 ;
+  uint64_t arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimReadReceiptUserInfo **)&jarg1; 
+  {
+    jclass clazz;
+    jmethodID mid;
+    jbyteArray ba;
+    jbyte* bae;
+    jsize sz;
+    int i;
+    
+    if (!jarg2) {
+      SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "BigInteger null");
+      return ;
+    }
+    clazz = jenv->GetObjectClass(jarg2);
+    mid = jenv->GetMethodID(clazz, "toByteArray", "()[B");
+    ba = (jbyteArray)jenv->CallObjectMethod(jarg2, mid);
+    bae = jenv->GetByteArrayElements(ba, 0);
+    sz = jenv->GetArrayLength(ba);
+    arg2 = 0;
+    if (sz > 0) {
+      arg2 = (uint64_t)(signed char)bae[0];
+      for(i=1; i<sz; i++) {
+        arg2 = (arg2 << 8) | (uint64_t)(unsigned char)bae[i];
+      }
+    }
+    jenv->ReleaseByteArrayElements(ba, bae, 0);
+  }
+  if (arg1) (arg1)->timestamp = arg2;
+}
+
+
+SWIGEXPORT jobject JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimReadReceiptUserInfo_1timestamp_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jobject jresult = 0 ;
+  RcimReadReceiptUserInfo *arg1 = (RcimReadReceiptUserInfo *) 0 ;
+  uint64_t result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimReadReceiptUserInfo **)&jarg1; 
+  result = (uint64_t) ((arg1)->timestamp);
+  {
+    jbyteArray ba = jenv->NewByteArray(9);
+    jbyte* bae = jenv->GetByteArrayElements(ba, 0);
+    jclass clazz = jenv->FindClass("java/math/BigInteger");
+    jmethodID mid = jenv->GetMethodID(clazz, "<init>", "([B)V");
+    jobject bigint;
+    int i;
+    
+    bae[0] = 0;
+    for(i=1; i<9; i++ ) {
+      bae[i] = (jbyte)(result>>8*(8-i));
+    }
+    
+    jenv->ReleaseByteArrayElements(ba, bae, 0);
+    bigint = jenv->NewObject(clazz, mid, ba);
+    jenv->DeleteLocalRef(ba);
+    jresult = bigint;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimReadReceiptUserInfo_1mentioned_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+  RcimReadReceiptUserInfo *arg1 = (RcimReadReceiptUserInfo *) 0 ;
+  bool arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimReadReceiptUserInfo **)&jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->mentioned = arg2;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimReadReceiptUserInfo_1mentioned_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  RcimReadReceiptUserInfo *arg1 = (RcimReadReceiptUserInfo *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimReadReceiptUserInfo **)&jarg1; 
+  result = (bool) ((arg1)->mentioned);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_new_1RcimReadReceiptUserInfo(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  RcimReadReceiptUserInfo *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (RcimReadReceiptUserInfo *)new RcimReadReceiptUserInfo();
+  *(RcimReadReceiptUserInfo **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_delete_1RcimReadReceiptUserInfo(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  RcimReadReceiptUserInfo *arg1 = (RcimReadReceiptUserInfo *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(RcimReadReceiptUserInfo **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimReadReceiptInfo_1is_1read_1receipt_1message_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+  RcimReadReceiptInfo *arg1 = (RcimReadReceiptInfo *) 0 ;
+  bool arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimReadReceiptInfo **)&jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->is_read_receipt_message = arg2;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimReadReceiptInfo_1is_1read_1receipt_1message_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  RcimReadReceiptInfo *arg1 = (RcimReadReceiptInfo *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimReadReceiptInfo **)&jarg1; 
+  result = (bool) ((arg1)->is_read_receipt_message);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimReadReceiptInfo_1has_1respond_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+  RcimReadReceiptInfo *arg1 = (RcimReadReceiptInfo *) 0 ;
+  bool arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimReadReceiptInfo **)&jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->has_respond = arg2;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimReadReceiptInfo_1has_1respond_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  RcimReadReceiptInfo *arg1 = (RcimReadReceiptInfo *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimReadReceiptInfo **)&jarg1; 
+  result = (bool) ((arg1)->has_respond);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimReadReceiptInfo_1respond_1user_1vec_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+  RcimReadReceiptInfo *arg1 = (RcimReadReceiptInfo *) 0 ;
+  RcimReadReceiptUserInfo *arg2 = (RcimReadReceiptUserInfo *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  arg1 = *(RcimReadReceiptInfo **)&jarg1; 
+  arg2 = *(RcimReadReceiptUserInfo **)&jarg2; 
+  if (arg1) (arg1)->respond_user_vec = (RcimReadReceiptUserInfo const *)arg2;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimReadReceiptInfo_1respond_1user_1vec_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  RcimReadReceiptInfo *arg1 = (RcimReadReceiptInfo *) 0 ;
+  RcimReadReceiptUserInfo *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimReadReceiptInfo **)&jarg1; 
+  result = (RcimReadReceiptUserInfo *) ((arg1)->respond_user_vec);
+  *(RcimReadReceiptUserInfo **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimReadReceiptInfo_1respond_1user_1vec_1len_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  RcimReadReceiptInfo *arg1 = (RcimReadReceiptInfo *) 0 ;
+  int32_t arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimReadReceiptInfo **)&jarg1; 
+  arg2 = (int32_t)jarg2; 
+  if (arg1) (arg1)->respond_user_vec_len = arg2;
+}
+
+
+SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimReadReceiptInfo_1respond_1user_1vec_1len_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  RcimReadReceiptInfo *arg1 = (RcimReadReceiptInfo *) 0 ;
+  int32_t result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimReadReceiptInfo **)&jarg1; 
+  result = (int32_t) ((arg1)->respond_user_vec_len);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_new_1RcimReadReceiptInfo(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  RcimReadReceiptInfo *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (RcimReadReceiptInfo *)new RcimReadReceiptInfo();
+  *(RcimReadReceiptInfo **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_delete_1RcimReadReceiptInfo(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  RcimReadReceiptInfo *arg1 = (RcimReadReceiptInfo *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(RcimReadReceiptInfo **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimReadReceiptInfoV2_1has_1respond_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+  RcimReadReceiptInfoV2 *arg1 = (RcimReadReceiptInfoV2 *) 0 ;
+  bool arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimReadReceiptInfoV2 **)&jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->has_respond = arg2;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimReadReceiptInfoV2_1has_1respond_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  RcimReadReceiptInfoV2 *arg1 = (RcimReadReceiptInfoV2 *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimReadReceiptInfoV2 **)&jarg1; 
+  result = (bool) ((arg1)->has_respond);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimReadReceiptInfoV2_1respond_1user_1vec_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+  RcimReadReceiptInfoV2 *arg1 = (RcimReadReceiptInfoV2 *) 0 ;
+  RcimReadReceiptUserInfo *arg2 = (RcimReadReceiptUserInfo *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  arg1 = *(RcimReadReceiptInfoV2 **)&jarg1; 
+  arg2 = *(RcimReadReceiptUserInfo **)&jarg2; 
+  if (arg1) (arg1)->respond_user_vec = (RcimReadReceiptUserInfo const *)arg2;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimReadReceiptInfoV2_1respond_1user_1vec_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  RcimReadReceiptInfoV2 *arg1 = (RcimReadReceiptInfoV2 *) 0 ;
+  RcimReadReceiptUserInfo *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimReadReceiptInfoV2 **)&jarg1; 
+  result = (RcimReadReceiptUserInfo *) ((arg1)->respond_user_vec);
+  *(RcimReadReceiptUserInfo **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimReadReceiptInfoV2_1respond_1user_1vec_1len_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  RcimReadReceiptInfoV2 *arg1 = (RcimReadReceiptInfoV2 *) 0 ;
+  int32_t arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimReadReceiptInfoV2 **)&jarg1; 
+  arg2 = (int32_t)jarg2; 
+  if (arg1) (arg1)->respond_user_vec_len = arg2;
+}
+
+
+SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimReadReceiptInfoV2_1respond_1user_1vec_1len_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  RcimReadReceiptInfoV2 *arg1 = (RcimReadReceiptInfoV2 *) 0 ;
+  int32_t result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimReadReceiptInfoV2 **)&jarg1; 
+  result = (int32_t) ((arg1)->respond_user_vec_len);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimReadReceiptInfoV2_1read_1count_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+  RcimReadReceiptInfoV2 *arg1 = (RcimReadReceiptInfoV2 *) 0 ;
+  uint32_t arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimReadReceiptInfoV2 **)&jarg1; 
+  arg2 = (uint32_t)jarg2; 
+  if (arg1) (arg1)->read_count = arg2;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimReadReceiptInfoV2_1read_1count_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  RcimReadReceiptInfoV2 *arg1 = (RcimReadReceiptInfoV2 *) 0 ;
+  uint32_t result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimReadReceiptInfoV2 **)&jarg1; 
+  result = (uint32_t) ((arg1)->read_count);
+  jresult = (jlong)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimReadReceiptInfoV2_1total_1count_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+  RcimReadReceiptInfoV2 *arg1 = (RcimReadReceiptInfoV2 *) 0 ;
+  uint32_t arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimReadReceiptInfoV2 **)&jarg1; 
+  arg2 = (uint32_t)jarg2; 
+  if (arg1) (arg1)->total_count = arg2;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimReadReceiptInfoV2_1total_1count_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  RcimReadReceiptInfoV2 *arg1 = (RcimReadReceiptInfoV2 *) 0 ;
+  uint32_t result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimReadReceiptInfoV2 **)&jarg1; 
+  result = (uint32_t) ((arg1)->total_count);
+  jresult = (jlong)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_new_1RcimReadReceiptInfoV2(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  RcimReadReceiptInfoV2 *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (RcimReadReceiptInfoV2 *)new RcimReadReceiptInfoV2();
+  *(RcimReadReceiptInfoV2 **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_delete_1RcimReadReceiptInfoV2(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  RcimReadReceiptInfoV2 *arg1 = (RcimReadReceiptInfoV2 *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(RcimReadReceiptInfoV2 **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimIosConfig_1thread_1id_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimIosConfig *arg1 = (RcimIosConfig *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimIosConfig **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->thread_id = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->thread_id, (const char *)arg2);
+    } else {
+      arg1->thread_id = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimIosConfig_1thread_1id_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimIosConfig *arg1 = (RcimIosConfig *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimIosConfig **)&jarg1; 
+  result = (char *) ((arg1)->thread_id);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimIosConfig_1category_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimIosConfig *arg1 = (RcimIosConfig *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimIosConfig **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->category = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->category, (const char *)arg2);
+    } else {
+      arg1->category = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimIosConfig_1category_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimIosConfig *arg1 = (RcimIosConfig *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimIosConfig **)&jarg1; 
+  result = (char *) ((arg1)->category);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimIosConfig_1apns_1collapse_1id_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimIosConfig *arg1 = (RcimIosConfig *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimIosConfig **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->apns_collapse_id = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->apns_collapse_id, (const char *)arg2);
+    } else {
+      arg1->apns_collapse_id = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimIosConfig_1apns_1collapse_1id_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimIosConfig *arg1 = (RcimIosConfig *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimIosConfig **)&jarg1; 
+  result = (char *) ((arg1)->apns_collapse_id);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimIosConfig_1rich_1media_1uri_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimIosConfig *arg1 = (RcimIosConfig *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimIosConfig **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->rich_media_uri = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->rich_media_uri, (const char *)arg2);
+    } else {
+      arg1->rich_media_uri = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimIosConfig_1rich_1media_1uri_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimIosConfig *arg1 = (RcimIosConfig *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimIosConfig **)&jarg1; 
+  result = (char *) ((arg1)->rich_media_uri);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimIosConfig_1interruption_1level_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimIosConfig *arg1 = (RcimIosConfig *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimIosConfig **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->interruption_level = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->interruption_level, (const char *)arg2);
+    } else {
+      arg1->interruption_level = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimIosConfig_1interruption_1level_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimIosConfig *arg1 = (RcimIosConfig *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimIosConfig **)&jarg1; 
+  result = (char *) ((arg1)->interruption_level);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_new_1RcimIosConfig(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  RcimIosConfig *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (RcimIosConfig *)new RcimIosConfig();
+  *(RcimIosConfig **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_delete_1RcimIosConfig(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  RcimIosConfig *arg1 = (RcimIosConfig *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(RcimIosConfig **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimAndroidConfig_1notification_1id_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimAndroidConfig **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->notification_id = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->notification_id, (const char *)arg2);
+    } else {
+      arg1->notification_id = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimAndroidConfig_1notification_1id_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimAndroidConfig **)&jarg1; 
+  result = (char *) ((arg1)->notification_id);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimAndroidConfig_1mi_1channel_1id_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimAndroidConfig **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->mi_channel_id = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->mi_channel_id, (const char *)arg2);
+    } else {
+      arg1->mi_channel_id = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimAndroidConfig_1mi_1channel_1id_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimAndroidConfig **)&jarg1; 
+  result = (char *) ((arg1)->mi_channel_id);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimAndroidConfig_1hw_1channel_1id_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimAndroidConfig **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->hw_channel_id = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->hw_channel_id, (const char *)arg2);
+    } else {
+      arg1->hw_channel_id = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimAndroidConfig_1hw_1channel_1id_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimAndroidConfig **)&jarg1; 
+  result = (char *) ((arg1)->hw_channel_id);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimAndroidConfig_1hw_1importance_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimAndroidConfig **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->hw_importance = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->hw_importance, (const char *)arg2);
+    } else {
+      arg1->hw_importance = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimAndroidConfig_1hw_1importance_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimAndroidConfig **)&jarg1; 
+  result = (char *) ((arg1)->hw_importance);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimAndroidConfig_1hw_1image_1url_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimAndroidConfig **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->hw_image_url = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->hw_image_url, (const char *)arg2);
+    } else {
+      arg1->hw_image_url = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimAndroidConfig_1hw_1image_1url_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimAndroidConfig **)&jarg1; 
+  result = (char *) ((arg1)->hw_image_url);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimAndroidConfig_1hw_1category_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimAndroidConfig **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->hw_category = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->hw_category, (const char *)arg2);
+    } else {
+      arg1->hw_category = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimAndroidConfig_1hw_1category_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimAndroidConfig **)&jarg1; 
+  result = (char *) ((arg1)->hw_category);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimAndroidConfig_1honor_1importance_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimAndroidConfig **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->honor_importance = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->honor_importance, (const char *)arg2);
+    } else {
+      arg1->honor_importance = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimAndroidConfig_1honor_1importance_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimAndroidConfig **)&jarg1; 
+  result = (char *) ((arg1)->honor_importance);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimAndroidConfig_1honor_1image_1url_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimAndroidConfig **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->honor_image_url = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->honor_image_url, (const char *)arg2);
+    } else {
+      arg1->honor_image_url = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimAndroidConfig_1honor_1image_1url_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimAndroidConfig **)&jarg1; 
+  result = (char *) ((arg1)->honor_image_url);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimAndroidConfig_1oppo_1channel_1id_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimAndroidConfig **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->oppo_channel_id = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->oppo_channel_id, (const char *)arg2);
+    } else {
+      arg1->oppo_channel_id = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimAndroidConfig_1oppo_1channel_1id_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimAndroidConfig **)&jarg1; 
+  result = (char *) ((arg1)->oppo_channel_id);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimAndroidConfig_1vivo_1category_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimAndroidConfig **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->vivo_category = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->vivo_category, (const char *)arg2);
+    } else {
+      arg1->vivo_category = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimAndroidConfig_1vivo_1category_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimAndroidConfig **)&jarg1; 
+  result = (char *) ((arg1)->vivo_category);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimAndroidConfig_1vivo_1type_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimAndroidConfig **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->vivo_type = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->vivo_type, (const char *)arg2);
+    } else {
+      arg1->vivo_type = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimAndroidConfig_1vivo_1type_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimAndroidConfig **)&jarg1; 
+  result = (char *) ((arg1)->vivo_type);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimAndroidConfig_1fcm_1channel_1id_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimAndroidConfig **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->fcm_channel_id = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->fcm_channel_id, (const char *)arg2);
+    } else {
+      arg1->fcm_channel_id = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimAndroidConfig_1fcm_1channel_1id_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimAndroidConfig **)&jarg1; 
+  result = (char *) ((arg1)->fcm_channel_id);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimAndroidConfig_1fcm_1collapse_1key_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimAndroidConfig **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->fcm_collapse_key = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->fcm_collapse_key, (const char *)arg2);
+    } else {
+      arg1->fcm_collapse_key = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimAndroidConfig_1fcm_1collapse_1key_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimAndroidConfig **)&jarg1; 
+  result = (char *) ((arg1)->fcm_collapse_key);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimAndroidConfig_1fcm_1image_1url_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimAndroidConfig **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->fcm_image_url = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->fcm_image_url, (const char *)arg2);
+    } else {
+      arg1->fcm_image_url = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimAndroidConfig_1fcm_1image_1url_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimAndroidConfig **)&jarg1; 
+  result = (char *) ((arg1)->fcm_image_url);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_new_1RcimAndroidConfig(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  RcimAndroidConfig *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (RcimAndroidConfig *)new RcimAndroidConfig();
+  *(RcimAndroidConfig **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_delete_1RcimAndroidConfig(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(RcimAndroidConfig **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimHarmonyConfig_1image_1url_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimHarmonyConfig *arg1 = (RcimHarmonyConfig *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimHarmonyConfig **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->image_url = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->image_url, (const char *)arg2);
+    } else {
+      arg1->image_url = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimHarmonyConfig_1image_1url_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimHarmonyConfig *arg1 = (RcimHarmonyConfig *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimHarmonyConfig **)&jarg1; 
+  result = (char *) ((arg1)->image_url);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimHarmonyConfig_1category_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimHarmonyConfig *arg1 = (RcimHarmonyConfig *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimHarmonyConfig **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->category = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->category, (const char *)arg2);
+    } else {
+      arg1->category = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimHarmonyConfig_1category_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimHarmonyConfig *arg1 = (RcimHarmonyConfig *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimHarmonyConfig **)&jarg1; 
+  result = (char *) ((arg1)->category);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_new_1RcimHarmonyConfig(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  RcimHarmonyConfig *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (RcimHarmonyConfig *)new RcimHarmonyConfig();
+  *(RcimHarmonyConfig **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_delete_1RcimHarmonyConfig(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  RcimHarmonyConfig *arg1 = (RcimHarmonyConfig *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(RcimHarmonyConfig **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimPushConfig_1disable_1push_1title_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+  RcimPushConfig *arg1 = (RcimPushConfig *) 0 ;
+  bool arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimPushConfig **)&jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->disable_push_title = arg2;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimPushConfig_1disable_1push_1title_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  RcimPushConfig *arg1 = (RcimPushConfig *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimPushConfig **)&jarg1; 
+  result = (bool) ((arg1)->disable_push_title);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimPushConfig_1push_1title_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimPushConfig *arg1 = (RcimPushConfig *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimPushConfig **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->push_title = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->push_title, (const char *)arg2);
+    } else {
+      arg1->push_title = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimPushConfig_1push_1title_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimPushConfig *arg1 = (RcimPushConfig *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimPushConfig **)&jarg1; 
+  result = (char *) ((arg1)->push_title);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimPushConfig_1push_1content_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimPushConfig *arg1 = (RcimPushConfig *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimPushConfig **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->push_content = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->push_content, (const char *)arg2);
+    } else {
+      arg1->push_content = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimPushConfig_1push_1content_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimPushConfig *arg1 = (RcimPushConfig *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimPushConfig **)&jarg1; 
+  result = (char *) ((arg1)->push_content);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimPushConfig_1push_1data_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimPushConfig *arg1 = (RcimPushConfig *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimPushConfig **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->push_data = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->push_data, (const char *)arg2);
+    } else {
+      arg1->push_data = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimPushConfig_1push_1data_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimPushConfig *arg1 = (RcimPushConfig *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimPushConfig **)&jarg1; 
+  result = (char *) ((arg1)->push_data);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimPushConfig_1force_1show_1detail_1content_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+  RcimPushConfig *arg1 = (RcimPushConfig *) 0 ;
+  bool arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimPushConfig **)&jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->force_show_detail_content = arg2;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimPushConfig_1force_1show_1detail_1content_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  RcimPushConfig *arg1 = (RcimPushConfig *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimPushConfig **)&jarg1; 
+  result = (bool) ((arg1)->force_show_detail_content);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimPushConfig_1ios_1config_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+  RcimPushConfig *arg1 = (RcimPushConfig *) 0 ;
+  RcimIosConfig *arg2 = (RcimIosConfig *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  arg1 = *(RcimPushConfig **)&jarg1; 
+  arg2 = *(RcimIosConfig **)&jarg2; 
+  if (arg1) (arg1)->ios_config = (RcimIosConfig const *)arg2;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimPushConfig_1ios_1config_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  RcimPushConfig *arg1 = (RcimPushConfig *) 0 ;
+  RcimIosConfig *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimPushConfig **)&jarg1; 
+  result = (RcimIosConfig *) ((arg1)->ios_config);
+  *(RcimIosConfig **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimPushConfig_1android_1config_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+  RcimPushConfig *arg1 = (RcimPushConfig *) 0 ;
+  RcimAndroidConfig *arg2 = (RcimAndroidConfig *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  arg1 = *(RcimPushConfig **)&jarg1; 
+  arg2 = *(RcimAndroidConfig **)&jarg2; 
+  if (arg1) (arg1)->android_config = (RcimAndroidConfig const *)arg2;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimPushConfig_1android_1config_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  RcimPushConfig *arg1 = (RcimPushConfig *) 0 ;
+  RcimAndroidConfig *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimPushConfig **)&jarg1; 
+  result = (RcimAndroidConfig *) ((arg1)->android_config);
+  *(RcimAndroidConfig **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimPushConfig_1harmony_1config_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+  RcimPushConfig *arg1 = (RcimPushConfig *) 0 ;
+  RcimHarmonyConfig *arg2 = (RcimHarmonyConfig *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  arg1 = *(RcimPushConfig **)&jarg1; 
+  arg2 = *(RcimHarmonyConfig **)&jarg2; 
+  if (arg1) (arg1)->harmony_config = (RcimHarmonyConfig const *)arg2;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimPushConfig_1harmony_1config_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  RcimPushConfig *arg1 = (RcimPushConfig *) 0 ;
+  RcimHarmonyConfig *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimPushConfig **)&jarg1; 
+  result = (RcimHarmonyConfig *) ((arg1)->harmony_config);
+  *(RcimHarmonyConfig **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_new_1RcimPushConfig(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  RcimPushConfig *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (RcimPushConfig *)new RcimPushConfig();
+  *(RcimPushConfig **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_delete_1RcimPushConfig(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  RcimPushConfig *arg1 = (RcimPushConfig *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(RcimPushConfig **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1conv_1type_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  RcimConversationType arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  arg2 = (RcimConversationType)jarg2; 
+  if (arg1) (arg1)->conv_type = arg2;
+}
+
+
+SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1conv_1type_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  RcimConversationType result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  result =  ((arg1)->conv_type);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1target_1id_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->target_id = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->target_id, (const char *)arg2);
+    } else {
+      arg1->target_id = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1target_1id_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  result = (char *) ((arg1)->target_id);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1channel_1id_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->channel_id = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->channel_id, (const char *)arg2);
+    } else {
+      arg1->channel_id = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1channel_1id_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  result = (char *) ((arg1)->channel_id);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1message_1id_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jobject jarg2) {
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  int64_t arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  {
+    jclass clazz;
+    jmethodID mid;
+    jbyteArray ba;
+    jbyte* bae;
+    jsize sz;
+    int i;
+    
+    if (!jarg2) {
+      SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "BigInteger null");
+      return ;
+    }
+    clazz = jenv->GetObjectClass(jarg2);
+    mid = jenv->GetMethodID(clazz, "toByteArray", "()[B");
+    ba = (jbyteArray)jenv->CallObjectMethod(jarg2, mid);
+    bae = jenv->GetByteArrayElements(ba, 0);
+    sz = jenv->GetArrayLength(ba);
+    arg2 = 0;
+    if (sz > 0) {
+      arg2 = (int64_t)(signed char)bae[0];
+      for(i=1; i<sz; i++) {
+        arg2 = (arg2 << 8) | (int64_t)(unsigned char)bae[i];
+      }
+    }
+    jenv->ReleaseByteArrayElements(ba, bae, 0);
+  }
+  if (arg1) (arg1)->message_id = arg2;
+}
+
+
+SWIGEXPORT jobject JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1message_1id_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jobject jresult = 0 ;
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  int64_t result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  result = (int64_t) ((arg1)->message_id);
+  {
+    jbyteArray ba = jenv->NewByteArray(9);
+    jbyte* bae = jenv->GetByteArrayElements(ba, 0);
+    jclass clazz = jenv->FindClass("java/math/BigInteger");
+    jmethodID mid = jenv->GetMethodID(clazz, "<init>", "([B)V");
+    jobject bigint;
+    int i;
+    
+    bae[0] = 0;
+    for(i=1; i<9; i++ ) {
+      bae[i] = (jbyte)(result>>8*(8-i));
+    }
+    
+    jenv->ReleaseByteArrayElements(ba, bae, 0);
+    bigint = jenv->NewObject(clazz, mid, ba);
+    jenv->DeleteLocalRef(ba);
+    jresult = bigint;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1direction_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  RcimMessageDirection arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  arg2 = (RcimMessageDirection)jarg2; 
+  if (arg1) (arg1)->direction = arg2;
+}
+
+
+SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1direction_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  RcimMessageDirection result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  result =  ((arg1)->direction);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1sender_1id_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->sender_id = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->sender_id, (const char *)arg2);
+    } else {
+      arg1->sender_id = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1sender_1id_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  result = (char *) ((arg1)->sender_id);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1received_1status_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  RcimReceivedStatus *arg2 = (RcimReceivedStatus *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  arg2 = *(RcimReceivedStatus **)&jarg2; 
+  if (arg1) (arg1)->received_status = (RcimReceivedStatus const *)arg2;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1received_1status_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  RcimReceivedStatus *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  result = (RcimReceivedStatus *) ((arg1)->received_status);
+  *(RcimReceivedStatus **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1sent_1status_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  RcimSentStatus arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  arg2 = (RcimSentStatus)jarg2; 
+  if (arg1) (arg1)->sent_status = arg2;
+}
+
+
+SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1sent_1status_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  RcimSentStatus result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  result =  ((arg1)->sent_status);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1received_1time_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jobject jarg2) {
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  int64_t arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  {
+    jclass clazz;
+    jmethodID mid;
+    jbyteArray ba;
+    jbyte* bae;
+    jsize sz;
+    int i;
+    
+    if (!jarg2) {
+      SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "BigInteger null");
+      return ;
+    }
+    clazz = jenv->GetObjectClass(jarg2);
+    mid = jenv->GetMethodID(clazz, "toByteArray", "()[B");
+    ba = (jbyteArray)jenv->CallObjectMethod(jarg2, mid);
+    bae = jenv->GetByteArrayElements(ba, 0);
+    sz = jenv->GetArrayLength(ba);
+    arg2 = 0;
+    if (sz > 0) {
+      arg2 = (int64_t)(signed char)bae[0];
+      for(i=1; i<sz; i++) {
+        arg2 = (arg2 << 8) | (int64_t)(unsigned char)bae[i];
+      }
+    }
+    jenv->ReleaseByteArrayElements(ba, bae, 0);
+  }
+  if (arg1) (arg1)->received_time = arg2;
+}
+
+
+SWIGEXPORT jobject JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1received_1time_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jobject jresult = 0 ;
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  int64_t result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  result = (int64_t) ((arg1)->received_time);
+  {
+    jbyteArray ba = jenv->NewByteArray(9);
+    jbyte* bae = jenv->GetByteArrayElements(ba, 0);
+    jclass clazz = jenv->FindClass("java/math/BigInteger");
+    jmethodID mid = jenv->GetMethodID(clazz, "<init>", "([B)V");
+    jobject bigint;
+    int i;
+    
+    bae[0] = 0;
+    for(i=1; i<9; i++ ) {
+      bae[i] = (jbyte)(result>>8*(8-i));
+    }
+    
+    jenv->ReleaseByteArrayElements(ba, bae, 0);
+    bigint = jenv->NewObject(clazz, mid, ba);
+    jenv->DeleteLocalRef(ba);
+    jresult = bigint;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1sent_1time_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jobject jarg2) {
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  int64_t arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  {
+    jclass clazz;
+    jmethodID mid;
+    jbyteArray ba;
+    jbyte* bae;
+    jsize sz;
+    int i;
+    
+    if (!jarg2) {
+      SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "BigInteger null");
+      return ;
+    }
+    clazz = jenv->GetObjectClass(jarg2);
+    mid = jenv->GetMethodID(clazz, "toByteArray", "()[B");
+    ba = (jbyteArray)jenv->CallObjectMethod(jarg2, mid);
+    bae = jenv->GetByteArrayElements(ba, 0);
+    sz = jenv->GetArrayLength(ba);
+    arg2 = 0;
+    if (sz > 0) {
+      arg2 = (int64_t)(signed char)bae[0];
+      for(i=1; i<sz; i++) {
+        arg2 = (arg2 << 8) | (int64_t)(unsigned char)bae[i];
+      }
+    }
+    jenv->ReleaseByteArrayElements(ba, bae, 0);
+  }
+  if (arg1) (arg1)->sent_time = arg2;
+}
+
+
+SWIGEXPORT jobject JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1sent_1time_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jobject jresult = 0 ;
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  int64_t result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  result = (int64_t) ((arg1)->sent_time);
+  {
+    jbyteArray ba = jenv->NewByteArray(9);
+    jbyte* bae = jenv->GetByteArrayElements(ba, 0);
+    jclass clazz = jenv->FindClass("java/math/BigInteger");
+    jmethodID mid = jenv->GetMethodID(clazz, "<init>", "([B)V");
+    jobject bigint;
+    int i;
+    
+    bae[0] = 0;
+    for(i=1; i<9; i++ ) {
+      bae[i] = (jbyte)(result>>8*(8-i));
+    }
+    
+    jenv->ReleaseByteArrayElements(ba, bae, 0);
+    bigint = jenv->NewObject(clazz, mid, ba);
+    jenv->DeleteLocalRef(ba);
+    jresult = bigint;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1object_1name_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->object_name = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->object_name, (const char *)arg2);
+    } else {
+      arg1->object_name = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1object_1name_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  result = (char *) ((arg1)->object_name);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1content_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->content = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->content, (const char *)arg2);
+    } else {
+      arg1->content = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1content_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  result = (char *) ((arg1)->content);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1searchable_1words_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->searchable_words = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->searchable_words, (const char *)arg2);
+    } else {
+      arg1->searchable_words = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1searchable_1words_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  result = (char *) ((arg1)->searchable_words);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1uid_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->uid = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->uid, (const char *)arg2);
+    } else {
+      arg1->uid = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1uid_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  result = (char *) ((arg1)->uid);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1extra_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->extra = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->extra, (const char *)arg2);
+    } else {
+      arg1->extra = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1extra_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  result = (char *) ((arg1)->extra);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1read_1receipt_1info_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  RcimReadReceiptInfo *arg2 = (RcimReadReceiptInfo *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  arg2 = *(RcimReadReceiptInfo **)&jarg2; 
+  if (arg1) (arg1)->read_receipt_info = (RcimReadReceiptInfo const *)arg2;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1read_1receipt_1info_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  RcimReadReceiptInfo *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  result = (RcimReadReceiptInfo *) ((arg1)->read_receipt_info);
+  *(RcimReadReceiptInfo **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1read_1receipt_1info_1v2_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  RcimReadReceiptInfoV2 *arg2 = (RcimReadReceiptInfoV2 *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  arg2 = *(RcimReadReceiptInfoV2 **)&jarg2; 
+  if (arg1) (arg1)->read_receipt_info_v2 = (RcimReadReceiptInfoV2 const *)arg2;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1read_1receipt_1info_1v2_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  RcimReadReceiptInfoV2 *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  result = (RcimReadReceiptInfoV2 *) ((arg1)->read_receipt_info_v2);
+  *(RcimReadReceiptInfoV2 **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1is_1notification_1disabled_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  bool arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->is_notification_disabled = arg2;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1is_1notification_1disabled_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  result = (bool) ((arg1)->is_notification_disabled);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1push_1config_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  RcimPushConfig *arg2 = (RcimPushConfig *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  arg2 = *(RcimPushConfig **)&jarg2; 
+  if (arg1) (arg1)->push_config = (RcimPushConfig const *)arg2;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1push_1config_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  RcimPushConfig *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  result = (RcimPushConfig *) ((arg1)->push_config);
+  *(RcimPushConfig **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1is_1offline_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  bool arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->is_offline = arg2;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1is_1offline_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  result = (bool) ((arg1)->is_offline);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1is_1ext_1supported_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  bool arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->is_ext_supported = arg2;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1is_1ext_1supported_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  result = (bool) ((arg1)->is_ext_supported);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1ext_1content_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  {
+    if (arg2) {
+      arg1->ext_content = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->ext_content, (const char *)arg2);
+    } else {
+      arg1->ext_content = 0;
+    }
+  }
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1ext_1content_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  result = (char *) ((arg1)->ext_content);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1is_1need_1receipt_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  bool arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->is_need_receipt = arg2;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1is_1need_1receipt_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  result = (bool) ((arg1)->is_need_receipt);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1has_1sent_1receipt_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  bool arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->has_sent_receipt = arg2;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_RcimMessageBox_1has_1sent_1receipt_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  result = (bool) ((arg1)->has_sent_receipt);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_new_1RcimMessageBox(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  RcimMessageBox *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (RcimMessageBox *)new RcimMessageBox();
+  *(RcimMessageBox **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_delete_1RcimMessageBox(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(RcimMessageBox **)&jarg1; 
+  delete arg1;
+}
+
+
 SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_create_1engine_1builder(JNIEnv *jenv, jclass jcls, jobject jarg1, jlong jarg2, jobject jarg2_) {
   jint jresult = 0 ;
   void *arg1 = (void *) 0 ;
@@ -1378,6 +4653,21 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_engine_1set_1conn
   arg1 = (long long)jarg1; 
   arg2 = jarg2; 
   engine_set_connection_status_listener(arg1,arg2);
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_engine_1send_1message(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2, jobject jarg2_, jobject jarg3) {
+  long long arg1 ;
+  RcimMessageBox *arg2 = (RcimMessageBox *) 0 ;
+  void *arg3 = (void *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg2_;
+  arg1 = (long long)jarg1; 
+  arg2 = *(RcimMessageBox **)&jarg2; 
+  arg3 = jarg3; 
+  engine_send_message(arg1,arg2,arg3);
 }
 
 

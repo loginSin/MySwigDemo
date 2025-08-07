@@ -2,6 +2,6 @@ package io.rong.imlib.base.callback;
 
 import io.rong.imlib.base.enums.EngineError;
 
-public interface IBaseCallback {
-    void onError(EngineError error);
+public interface IErrorDataCallback<T> {
+    void onError(EngineError error, T data);
 }

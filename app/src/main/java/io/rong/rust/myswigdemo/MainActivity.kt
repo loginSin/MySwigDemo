@@ -16,12 +16,15 @@ import io.rong.imlib.base.callback.IData1Callback
 import io.rong.imlib.base.enums.EngineError
 import io.rong.imlib.connect.enums.ConnectionStatus
 import io.rong.imlib.connect.listener.ConnectionStatusListener
+import io.rong.imlib.conversation.enums.ConversationType
+import io.rong.imlib.message.Message
+import io.rong.imlib.message.callback.ISendMessageCallback
 import io.rong.rust.myswigdemo.ui.theme.MySwigDemoTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        test()
+        connect()
         enableEdgeToEdge()
         setContent {
             MySwigDemoTheme {
@@ -35,7 +38,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    fun test() {
+    fun connect() {
         IMClient.getInstance().init(baseContext, "n19jmcy59f1q9")
 
         IMClient.getInstance().setConnectionStatusListener(object :
@@ -50,11 +53,37 @@ class MainActivity : ComponentActivity() {
         IMClient.getInstance().connect(token, 5, object : IData1Callback<String> {
             override fun onSuccess(value: String) {
                 println("qxb connect onSuccess " + value)
+                sendMessage()
             }
 
             override fun onError(error: EngineError) {
                 println("qxb connect onError " + error)
             }
+        })
+
+
+    }
+
+    fun sendMessage() {
+        var msg = Message()
+        msg.conversationType = ConversationType.PRIVATE
+        msg.targetId = "test_target_id"
+        msg.channelId = "test_channel_id"
+        msg.objectName = "RC:TxtMsg"
+        msg.contentJson = "{\"content\" : \"测试\"}"
+        IMClient.getInstance().sendMessage(msg, object : ISendMessageCallback<Message> {
+            override fun onError(error: EngineError?, data: Message?) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onAttached(message: Message?) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onSuccess(message: Message?) {
+                TODO("Not yet implemented")
+            }
+
         })
     }
 
