@@ -33,16 +33,16 @@ public class rc_adapter {
     return rc_adapterJNI.engine_builder_set_store_path(builderPtr, storePath);
   }
 
-  public static void engine_connect(long enginePtr, String token, int timeout, java.lang.Object callback) {
-    rc_adapterJNI.engine_connect(enginePtr, token, timeout, callback);
+  public static void engine_connect(long enginePtr, String token, int timeout, ConnectCallback callback) {
+    rc_adapterJNI.engine_connect(enginePtr, token, timeout, ConnectCallback.getCPtr(callback), callback);
   }
 
-  public static void engine_set_connection_status_listener(long enginePtr, java.lang.Object listener) {
-    rc_adapterJNI.engine_set_connection_status_listener(enginePtr, listener);
+  public static void engine_set_connection_status_listener(long enginePtr, NativeIntListener listener) {
+    rc_adapterJNI.engine_set_connection_status_listener(enginePtr, NativeIntListener.getCPtr(listener), listener);
   }
 
-  public static void engine_send_message(long enginePtr, RcimMessageBox msgBox, java.lang.Object sendMsgCallback) {
-    rc_adapterJNI.engine_send_message(enginePtr, RcimMessageBox.getCPtr(msgBox), msgBox, sendMsgCallback);
+  public static void engine_send_message(long enginePtr, RcimMessageBox msgBox, NativeSendMessageCallback sendMsgCallback) {
+    rc_adapterJNI.engine_send_message(enginePtr, RcimMessageBox.getCPtr(msgBox), msgBox, NativeSendMessageCallback.getCPtr(sendMsgCallback), sendMsgCallback);
   }
 
 }

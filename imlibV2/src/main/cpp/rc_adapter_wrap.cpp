@@ -9,6 +9,7 @@
 
 #define SWIG_VERSION 0x040301
 #define SWIGJAVA
+#define SWIG_DIRECTORS
 
 /* -----------------------------------------------------------------------------
  *  This section contains generic SWIG labels for method/variable
@@ -225,6 +226,568 @@ static void SWIGUNUSED SWIG_JavaThrowException(JNIEnv *jenv, SWIG_JavaExceptionC
 
 #define SWIG_contract_assert(nullreturn, expr, msg) do { if (!(expr)) {SWIG_JavaThrowException(jenv, SWIG_JavaIllegalArgumentException, msg); return nullreturn; } } while (0)
 
+/* -----------------------------------------------------------------------------
+ * director_common.swg
+ *
+ * This file contains support for director classes which is common between
+ * languages.
+ * ----------------------------------------------------------------------------- */
+
+/*
+  Use -DSWIG_DIRECTOR_STATIC if you prefer to avoid the use of the
+  'Swig' namespace. This could be useful for multi-modules projects.
+*/
+#ifdef SWIG_DIRECTOR_STATIC
+/* Force anonymous (static) namespace */
+#define Swig
+#endif
+/* -----------------------------------------------------------------------------
+ * director.swg
+ *
+ * This file contains support for director classes so that Java proxy
+ * methods can be called from C++.
+ * ----------------------------------------------------------------------------- */
+
+#if defined(DEBUG_DIRECTOR_OWNED) || defined(DEBUG_DIRECTOR_EXCEPTION) || defined(DEBUG_DIRECTOR_THREAD_NAME)
+#include <iostream>
+#endif
+
+#include <exception>
+
+#if defined(SWIG_JAVA_USE_THREAD_NAME)
+
+#if !defined(SWIG_JAVA_GET_THREAD_NAME)
+namespace Swig {
+  SWIGINTERN int GetThreadName(char *name, size_t len);
+}
+
+#if defined(__linux__)
+
+#include <sys/prctl.h>
+SWIGINTERN int Swig::GetThreadName(char *name, size_t len) {
+  (void)len;
+#if defined(PR_GET_NAME)
+  return prctl(PR_GET_NAME, (unsigned long)name, 0, 0, 0);
+#else
+  (void)name;
+  return 1;
+#endif
+}
+
+#elif defined(__unix__) || defined(__APPLE__)
+
+#include <pthread.h>
+SWIGINTERN int Swig::GetThreadName(char *name, size_t len) {
+  return pthread_getname_np(pthread_self(), name, len);
+}
+
+#else
+
+SWIGINTERN int Swig::GetThreadName(char *name, size_t len) {
+  (void)len;
+  (void)name;
+  return 1;
+}
+#endif
+
+#endif
+
+#endif
+
+#if defined(SWIG_JAVA_DETACH_ON_THREAD_END)
+#include <pthread.h>
+#endif
+
+namespace Swig {
+
+  /* Java object wrapper */
+  class JObjectWrapper {
+  public:
+    JObjectWrapper() : jthis_(SWIG_NULLPTR), weak_global_(true) {
+    }
+
+    ~JObjectWrapper() {
+      jthis_ = SWIG_NULLPTR;
+      weak_global_ = true;
+    }
+
+    bool set(JNIEnv *jenv, jobject jobj, bool mem_own, bool weak_global) {
+      if (!jthis_) {
+        weak_global_ = weak_global || !mem_own; // hold as weak global if explicitly requested or not owned
+        if (jobj)
+          jthis_ = weak_global_ ? jenv->NewWeakGlobalRef(jobj) : jenv->NewGlobalRef(jobj);
+#if defined(DEBUG_DIRECTOR_OWNED)
+        std::cout << "JObjectWrapper::set(" << jobj << ", " << (weak_global ? "weak_global" : "global_ref") << ") -> " << jthis_ << std::endl;
+#endif
+        return true;
+      } else {
+#if defined(DEBUG_DIRECTOR_OWNED)
+        std::cout << "JObjectWrapper::set(" << jobj << ", " << (weak_global ? "weak_global" : "global_ref") << ") -> already set" << std::endl;
+#endif
+        return false;
+      }
+    }
+
+    jobject get(JNIEnv *jenv) const {
+#if defined(DEBUG_DIRECTOR_OWNED)
+      std::cout << "JObjectWrapper::get(";
+      if (jthis_)
+        std::cout << jthis_;
+      else
+        std::cout << "null";
+      std::cout << ") -> return new local ref" << std::endl;
+#endif
+      return (jthis_ ? jenv->NewLocalRef(jthis_) : jthis_);
+    }
+
+    void release(JNIEnv *jenv) {
+#if defined(DEBUG_DIRECTOR_OWNED)
+      std::cout << "JObjectWrapper::release(" << jthis_ << "): " << (weak_global_ ? "weak global ref" : "global ref") << std::endl;
+#endif
+      if (jthis_) {
+        if (weak_global_) {
+          if (jenv->IsSameObject(jthis_, SWIG_NULLPTR) == JNI_FALSE)
+            jenv->DeleteWeakGlobalRef((jweak)jthis_);
+        } else
+          jenv->DeleteGlobalRef(jthis_);
+      }
+
+      jthis_ = SWIG_NULLPTR;
+      weak_global_ = true;
+    }
+
+    /* Only call peek if you know what you are doing wrt to weak/global references */
+    jobject peek() {
+      return jthis_;
+    }
+
+    /* Java proxy releases ownership of C++ object, C++ object is now
+       responsible for destruction (creates NewGlobalRef to pin Java proxy) */
+    void java_change_ownership(JNIEnv *jenv, jobject jself, bool take_or_release) {
+      if (take_or_release) {  /* Java takes ownership of C++ object's lifetime. */
+        if (!weak_global_) {
+          jenv->DeleteGlobalRef(jthis_);
+          jthis_ = jenv->NewWeakGlobalRef(jself);
+          weak_global_ = true;
+        }
+      } else {
+	/* Java releases ownership of C++ object's lifetime */
+        if (weak_global_) {
+          jenv->DeleteWeakGlobalRef((jweak)jthis_);
+          jthis_ = jenv->NewGlobalRef(jself);
+          weak_global_ = false;
+        }
+      }
+    }
+
+#if defined(SWIG_JAVA_DETACH_ON_THREAD_END)
+    static void detach(void *jvm) {
+      static_cast<JavaVM *>(jvm)->DetachCurrentThread();
+    }
+
+    static void make_detach_key() {
+      pthread_key_create(&detach_key_, detach);
+    }
+
+    /* thread-local key to register a destructor */
+    static pthread_key_t detach_key_;
+#endif
+
+  private:
+    /* pointer to Java object */
+    jobject jthis_;
+    /* Local or global reference flag */
+    bool weak_global_;
+  };
+
+#if defined(SWIG_JAVA_DETACH_ON_THREAD_END)
+  pthread_key_t JObjectWrapper::detach_key_;
+#endif
+
+  /* Local JNI reference deleter */
+  class LocalRefGuard {
+    JNIEnv *jenv_;
+    jobject jobj_;
+
+    // non-copyable
+    LocalRefGuard(const LocalRefGuard &);
+    LocalRefGuard &operator=(const LocalRefGuard &);
+  public:
+    LocalRefGuard(JNIEnv *jenv, jobject jobj): jenv_(jenv), jobj_(jobj) {}
+    ~LocalRefGuard() {
+      if (jobj_)
+        jenv_->DeleteLocalRef(jobj_);
+    }
+  };
+
+  /* director base class */
+  class Director {
+    /* pointer to Java virtual machine */
+    JavaVM *swig_jvm_;
+
+  protected:
+#if defined (_MSC_VER) && (_MSC_VER<1300)
+    class JNIEnvWrapper;
+    friend class JNIEnvWrapper;
+#endif
+    /* Utility class for managing the JNI environment */
+    class JNIEnvWrapper {
+      const Director *director_;
+      JNIEnv *jenv_;
+      int env_status;
+    public:
+      JNIEnvWrapper(const Director *director) : director_(director), jenv_(SWIG_NULLPTR), env_status(0) {
+#if defined(__ANDROID__)
+        JNIEnv **jenv = &jenv_;
+#else
+        void **jenv = (void **)&jenv_;
+#endif
+        env_status = director_->swig_jvm_->GetEnv((void **)&jenv_, JNI_VERSION_1_2);
+        JavaVMAttachArgs args;
+        args.version = JNI_VERSION_1_2;
+        args.group = SWIG_NULLPTR;
+        args.name = SWIG_NULLPTR;
+#if defined(SWIG_JAVA_USE_THREAD_NAME)
+        char thread_name[64];  // MAX_TASK_COMM_LEN=16 is hard-coded in the Linux kernel and MacOS has MAXTHREADNAMESIZE=64.
+        if (Swig::GetThreadName(thread_name, sizeof(thread_name)) == 0) {
+          args.name = thread_name;
+#if defined(DEBUG_DIRECTOR_THREAD_NAME)
+          std::cout << "JNIEnvWrapper: thread name: " << thread_name << std::endl;
+        } else {
+          std::cout << "JNIEnvWrapper: Couldn't set Java thread name" << std::endl;
+#endif
+        }
+#endif
+#if defined(SWIG_JAVA_ATTACH_CURRENT_THREAD_AS_DAEMON)
+        // Attach a daemon thread to the JVM. Useful when the JVM should not wait for
+        // the thread to exit upon shutdown. Only for jdk-1.4 and later.
+        director_->swig_jvm_->AttachCurrentThreadAsDaemon(jenv, &args);
+#else
+        director_->swig_jvm_->AttachCurrentThread(jenv, &args);
+#endif
+
+#if defined(SWIG_JAVA_DETACH_ON_THREAD_END)
+        // At least on Android 6, detaching after every call causes a memory leak.
+        // Instead, register a thread desructor and detach only when the thread ends.
+        // See https://developer.android.com/training/articles/perf-jni#threads
+        static pthread_once_t once = PTHREAD_ONCE_INIT;
+
+        pthread_once(&once, JObjectWrapper::make_detach_key);
+        pthread_setspecific(JObjectWrapper::detach_key_, director->swig_jvm_);
+#endif
+      }
+      ~JNIEnvWrapper() {
+#if !defined(SWIG_JAVA_DETACH_ON_THREAD_END) && !defined(SWIG_JAVA_NO_DETACH_CURRENT_THREAD)
+        // Some JVMs, eg jdk-1.4.2 and lower on Solaris have a bug and crash with the DetachCurrentThread call.
+        // However, without this call, the JVM hangs on exit when the thread was not created by the JVM and creates a memory leak.
+        if (env_status == JNI_EDETACHED)
+          director_->swig_jvm_->DetachCurrentThread();
+#endif
+      }
+      JNIEnv *getJNIEnv() const {
+        return jenv_;
+      }
+    };
+
+    struct SwigDirectorMethod {
+      const char *name;
+      const char *desc;
+      jmethodID methid;
+      SwigDirectorMethod(JNIEnv *jenv, jclass baseclass, const char *name, const char *desc) : name(name), desc(desc) {
+        methid = jenv->GetMethodID(baseclass, name, desc);
+      }
+    };
+
+    /* Java object wrapper */
+    JObjectWrapper swig_self_;
+
+    /* Disconnect director from Java object */
+    void swig_disconnect_director_self(const char *disconn_method) {
+      JNIEnvWrapper jnienv(this) ;
+      JNIEnv *jenv = jnienv.getJNIEnv() ;
+      jobject jobj = swig_self_.get(jenv);
+      LocalRefGuard ref_deleter(jenv, jobj);
+#if defined(DEBUG_DIRECTOR_OWNED)
+      std::cout << "Swig::Director::disconnect_director_self(" << jobj << ")" << std::endl;
+#endif
+      if (jobj && jenv->IsSameObject(jobj, SWIG_NULLPTR) == JNI_FALSE) {
+        jmethodID disconn_meth = jenv->GetMethodID(jenv->GetObjectClass(jobj), disconn_method, "()V");
+        if (disconn_meth) {
+#if defined(DEBUG_DIRECTOR_OWNED)
+          std::cout << "Swig::Director::disconnect_director_self upcall to " << disconn_method << std::endl;
+#endif
+          jenv->CallVoidMethod(jobj, disconn_meth);
+        }
+      }
+    }
+
+    jclass swig_new_global_ref(JNIEnv *jenv, const char *classname) {
+      jclass clz = jenv->FindClass(classname);
+      return clz ? (jclass)jenv->NewGlobalRef(clz) : SWIG_NULLPTR;
+    }
+
+  public:
+    Director(JNIEnv *jenv) : swig_jvm_((JavaVM *) SWIG_NULLPTR), swig_self_() {
+      /* Acquire the Java VM pointer */
+      jenv->GetJavaVM(&swig_jvm_);
+    }
+
+    virtual ~Director() {
+      JNIEnvWrapper jnienv(this) ;
+      JNIEnv *jenv = jnienv.getJNIEnv() ;
+      swig_self_.release(jenv);
+    }
+
+    bool swig_set_self(JNIEnv *jenv, jobject jself, bool mem_own, bool weak_global) {
+      return swig_self_.set(jenv, jself, mem_own, weak_global);
+    }
+
+    jobject swig_get_self(JNIEnv *jenv) const {
+      return swig_self_.get(jenv);
+    }
+
+    // Change C++ object's ownership, relative to Java
+    void swig_java_change_ownership(JNIEnv *jenv, jobject jself, bool take_or_release) {
+      swig_self_.java_change_ownership(jenv, jself, take_or_release);
+    }
+  };
+
+  // Zero initialized bool array
+  template<size_t N> class BoolArray {
+    bool array_[N];
+  public:
+    BoolArray() {
+      memset(array_, 0, sizeof(array_));
+    }
+    bool& operator[](size_t n) {
+      return array_[n];
+    }
+    bool operator[](size_t n) const {
+      return array_[n];
+    }
+  };
+
+  // Utility classes and functions for exception handling.
+
+  // Simple holder for a Java string during exception handling, providing access to a c-style string
+  class JavaString {
+  public:
+    JavaString(JNIEnv *jenv, jstring jstr) : jenv_(jenv), jstr_(jstr), cstr_(SWIG_NULLPTR) {
+      if (jenv_ && jstr_)
+	cstr_ = (const char *) jenv_->GetStringUTFChars(jstr_, SWIG_NULLPTR);
+    }
+
+    ~JavaString() {
+      if (jenv_ && jstr_ && cstr_)
+	jenv_->ReleaseStringUTFChars(jstr_, cstr_);
+    }
+
+    const char *c_str(const char *null_string = "null JavaString") const {
+      return cstr_ ? cstr_ : null_string;
+    }
+
+  private:
+    // non-copyable
+    JavaString(const JavaString &);
+    JavaString &operator=(const JavaString &);
+
+    JNIEnv *jenv_;
+    jstring jstr_;
+    const char *cstr_;
+  };
+
+  // Helper class to extract the exception message from a Java throwable
+  class JavaExceptionMessage {
+  public:
+    JavaExceptionMessage(JNIEnv *jenv, jthrowable throwable) : message_(jenv, exceptionMessageFromThrowable(jenv, throwable)) {
+    }
+
+    // Return a C string of the exception message in the jthrowable passed in the constructor
+    // If no message is available, null_string is return instead
+    const char *message(const char *null_string = "Could not get exception message in JavaExceptionMessage") const {
+      return message_.c_str(null_string);
+    }
+
+  private:
+    // non-copyable
+    JavaExceptionMessage(const JavaExceptionMessage &);
+    JavaExceptionMessage &operator=(const JavaExceptionMessage &);
+
+    // Get exception message by calling Java method Throwable.getMessage()
+    static jstring exceptionMessageFromThrowable(JNIEnv *jenv, jthrowable throwable) {
+      jstring jmsg = SWIG_NULLPTR;
+      if (jenv && throwable) {
+	jenv->ExceptionClear(); // Cannot invoke methods with any pending exceptions
+	jclass throwclz = jenv->GetObjectClass(throwable);
+	if (throwclz) {
+	  // All Throwable classes have a getMessage() method, so call it to extract the exception message
+	  jmethodID getMessageMethodID = jenv->GetMethodID(throwclz, "getMessage", "()Ljava/lang/String;");
+	  if (getMessageMethodID)
+	    jmsg = (jstring)jenv->CallObjectMethod(throwable, getMessageMethodID);
+	}
+	if (jmsg == SWIG_NULLPTR && jenv->ExceptionCheck())
+	  jenv->ExceptionClear();
+      }
+      return jmsg;
+    }
+
+    JavaString message_;
+  };
+
+  // C++ Exception class for handling Java exceptions thrown during a director method Java upcall
+  class DirectorException : public std::exception {
+  public:
+
+    // Construct exception from a Java throwable
+    DirectorException(JNIEnv *jenv, jthrowable throwable) : jenv_(jenv), throwable_(throwable), classname_(SWIG_NULLPTR), msg_(SWIG_NULLPTR) {
+
+      // Call Java method Object.getClass().getName() to obtain the throwable's class name (delimited by '/')
+      if (jenv && throwable) {
+	jenv->ExceptionClear(); // Cannot invoke methods with any pending exceptions
+	jclass throwclz = jenv->GetObjectClass(throwable);
+	if (throwclz) {
+	  jclass clzclz = jenv->GetObjectClass(throwclz);
+	  if (clzclz) {
+	    jmethodID getNameMethodID = jenv->GetMethodID(clzclz, "getName", "()Ljava/lang/String;");
+	    if (getNameMethodID) {
+	      jstring jstr_classname = (jstring)(jenv->CallObjectMethod(throwclz, getNameMethodID));
+              // Copy strings, since there is no guarantee that jenv will be active when handled
+              if (jstr_classname) {
+                JavaString jsclassname(jenv, jstr_classname);
+                const char *classname = jsclassname.c_str(SWIG_NULLPTR);
+                if (classname)
+                  classname_ = copypath(classname);
+              }
+	    }
+	  }
+	}
+      }
+
+      JavaExceptionMessage exceptionmsg(jenv, throwable);
+      msg_ = copystr(exceptionmsg.message(SWIG_NULLPTR));
+    }
+
+    // More general constructor for handling as a java.lang.RuntimeException
+    DirectorException(const char *msg) : jenv_(SWIG_NULLPTR), throwable_(SWIG_NULLPTR), classname_(SWIG_NULLPTR), msg_(msg ? copystr(msg) : SWIG_NULLPTR) {
+    }
+
+    ~DirectorException() throw() {
+      delete[] classname_;
+      delete[] msg_;
+    }
+
+    const char *what() const throw() {
+      return msg_ ? msg_ : "Unspecified DirectorException message";
+    }
+
+    // Reconstruct and raise/throw the Java Exception that caused the DirectorException
+    // Note that any error in the JNI exception handling results in a Java RuntimeException
+    void throwException(JNIEnv *jenv) const {
+      if (jenv) {
+        if (jenv == jenv_ && throwable_) {
+          // Throw original exception if not already pending
+          jthrowable throwable = jenv->ExceptionOccurred();
+          if (throwable && jenv->IsSameObject(throwable, throwable_) == JNI_FALSE) {
+            jenv->ExceptionClear();
+            throwable = SWIG_NULLPTR;
+          }
+          if (!throwable)
+            jenv->Throw(throwable_);
+        } else {
+          // Try and reconstruct original exception, but original stacktrace is not reconstructed
+          jenv->ExceptionClear();
+
+          jmethodID ctorMethodID = SWIG_NULLPTR;
+          jclass throwableclass = SWIG_NULLPTR;
+          if (classname_) {
+            throwableclass = jenv->FindClass(classname_);
+            if (throwableclass)
+              ctorMethodID = jenv->GetMethodID(throwableclass, "<init>", "(Ljava/lang/String;)V");
+          }
+
+          if (ctorMethodID) {
+            jenv->ThrowNew(throwableclass, what());
+          } else {
+            SWIG_JavaThrowException(jenv, SWIG_JavaRuntimeException, what());
+          }
+        }
+      }
+    }
+
+    // Deprecated - use throwException
+    void raiseJavaException(JNIEnv *jenv) const {
+      throwException(jenv);
+    }
+
+    // Create and throw the DirectorException
+    static void raise(JNIEnv *jenv, jthrowable throwable) {
+      throw DirectorException(jenv, throwable);
+    }
+
+  private:
+    static char *copypath(const char *srcmsg) {
+      char *target = copystr(srcmsg);
+      for (char *c=target; *c; ++c) {
+        if ('.' == *c)
+          *c = '/';
+      }
+      return target;
+    }
+
+    static char *copystr(const char *srcmsg) {
+      char *target = SWIG_NULLPTR;
+      if (srcmsg) {
+	size_t msglen = strlen(srcmsg) + 1;
+	target = new char[msglen];
+	strncpy(target, srcmsg, msglen);
+      }
+      return target;
+    }
+
+    JNIEnv *jenv_;
+    jthrowable throwable_;
+    const char *classname_;
+    const char *msg_;
+  };
+
+  // Helper method to determine if a Java throwable matches a particular Java class type
+  // Note side effect of clearing any pending exceptions
+  SWIGINTERN bool ExceptionMatches(JNIEnv *jenv, jthrowable throwable, const char *classname) {
+    bool matches = false;
+
+    if (throwable && jenv && classname) {
+      // Exceptions need to be cleared for correct behavior.
+      // The caller of ExceptionMatches should restore pending exceptions if desired -
+      // the caller already has the throwable.
+      jenv->ExceptionClear();
+
+      jclass clz = jenv->FindClass(classname);
+      if (clz) {
+	jclass classclz = jenv->GetObjectClass(clz);
+	jmethodID isInstanceMethodID = jenv->GetMethodID(classclz, "isInstance", "(Ljava/lang/Object;)Z");
+	if (isInstanceMethodID) {
+	  matches = jenv->CallBooleanMethod(clz, isInstanceMethodID, throwable) != 0;
+	}
+      }
+
+#if defined(DEBUG_DIRECTOR_EXCEPTION)
+      if (jenv->ExceptionCheck()) {
+        // Typically occurs when an invalid classname argument is passed resulting in a ClassNotFoundException
+        JavaExceptionMessage exc(jenv, jenv->ExceptionOccurred());
+        std::cout << "Error: ExceptionMatches: class '" << classname << "' : " << exc.message() << std::endl;
+      }
+#endif
+    }
+    return matches;
+  }
+}
+
+namespace Swig {
+  namespace {
+    jclass jclass_rc_adapterJNI = NULL;
+    jmethodID director_method_ids[4];
+  }
+}
 
 #ifdef __cplusplus
 #include <utility>
@@ -280,7 +843,215 @@ template <typename T> T SwigValueInit() {
 #include <string.h>
 
 
+#include "ConnectCallback.h"
+#include "NativeSendMessageCallback.h"
+#include "NativeIntListener.h"
 #include "rc_adapter.h"
+
+
+
+/* ---------------------------------------------------
+ * C++ director class methods
+ * --------------------------------------------------- */
+
+#include "rc_adapter_wrap.h"
+
+SwigDirector_ConnectCallback::SwigDirector_ConnectCallback(JNIEnv *jenv) : ConnectCallback(), Swig::Director(jenv) {
+}
+
+SwigDirector_ConnectCallback::~SwigDirector_ConnectCallback() {
+  swig_disconnect_director_self("swigDirectorDisconnect");
+}
+
+
+void SwigDirector_ConnectCallback::onConnect(int code,char const *user_id) {
+  JNIEnvWrapper swigjnienv(this) ;
+  JNIEnv * jenv = swigjnienv.getJNIEnv() ;
+  jobject swigjobj = (jobject) NULL ;
+  jint jcode  ;
+  jstring juser_id = 0 ;
+  
+  if (!swig_override[0]) {
+    SWIG_JavaThrowException(JNIEnvWrapper(this).getJNIEnv(), SWIG_JavaDirectorPureVirtual, "Attempted to invoke pure virtual method ConnectCallback::onConnect.");
+    return;
+  }
+  swigjobj = swig_get_self(jenv);
+  if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
+    jcode = (jint) code;
+    juser_id = 0;
+    if (user_id) {
+      juser_id = jenv->NewStringUTF((const char *)user_id);
+      if (!juser_id) return ;
+    }
+    Swig::LocalRefGuard user_id_refguard(jenv, juser_id);
+    jenv->CallStaticVoidMethod(Swig::jclass_rc_adapterJNI, Swig::director_method_ids[0], swigjobj, jcode, juser_id);
+    jthrowable swigerror = jenv->ExceptionOccurred();
+    if (swigerror) {
+      Swig::DirectorException::raise(jenv, swigerror);
+    }
+    
+  } else {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in ConnectCallback::onConnect ");
+  }
+  if (swigjobj) jenv->DeleteLocalRef(swigjobj);
+}
+
+void SwigDirector_ConnectCallback::swig_connect_director(JNIEnv *jenv, jobject jself, jclass jcls, bool swig_mem_own, bool weak_global) {
+  static jclass baseclass = swig_new_global_ref(jenv, "io/rong/imlib/swig/ConnectCallback");
+  if (!baseclass) return;
+  static SwigDirectorMethod methods[] = {
+    SwigDirectorMethod(jenv, baseclass, "onConnect", "(ILjava/lang/String;)V")
+  };
+  
+  if (swig_set_self(jenv, jself, swig_mem_own, weak_global)) {
+    bool derived = (jenv->IsSameObject(baseclass, jcls) ? false : true);
+    for (int i = 0; i < 1; ++i) {
+      swig_override[i] = false;
+      if (derived) {
+        jmethodID methid = jenv->GetMethodID(jcls, methods[i].name, methods[i].desc);
+        swig_override[i] = methods[i].methid && (methid != methods[i].methid);
+        jenv->ExceptionClear();
+      }
+    }
+  }
+}
+
+
+SwigDirector_NativeSendMessageCallback::SwigDirector_NativeSendMessageCallback(JNIEnv *jenv) : NativeSendMessageCallback(), Swig::Director(jenv) {
+}
+
+SwigDirector_NativeSendMessageCallback::~SwigDirector_NativeSendMessageCallback() {
+  swig_disconnect_director_self("swigDirectorDisconnect");
+}
+
+
+void SwigDirector_NativeSendMessageCallback::onSave(RcimMessageBox const *msg) {
+  JNIEnvWrapper swigjnienv(this) ;
+  JNIEnv * jenv = swigjnienv.getJNIEnv() ;
+  jobject swigjobj = (jobject) NULL ;
+  jlong jmsg = 0 ;
+  
+  if (!swig_override[0]) {
+    SWIG_JavaThrowException(JNIEnvWrapper(this).getJNIEnv(), SWIG_JavaDirectorPureVirtual, "Attempted to invoke pure virtual method NativeSendMessageCallback::onSave.");
+    return;
+  }
+  swigjobj = swig_get_self(jenv);
+  if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
+    *((RcimMessageBox **)&jmsg) = (RcimMessageBox *) msg; 
+    jenv->CallStaticVoidMethod(Swig::jclass_rc_adapterJNI, Swig::director_method_ids[1], swigjobj, jmsg);
+    jthrowable swigerror = jenv->ExceptionOccurred();
+    if (swigerror) {
+      Swig::DirectorException::raise(jenv, swigerror);
+    }
+    
+  } else {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in NativeSendMessageCallback::onSave ");
+  }
+  if (swigjobj) jenv->DeleteLocalRef(swigjobj);
+}
+
+void SwigDirector_NativeSendMessageCallback::onResult(int code,RcimMessageBox const *msg) {
+  JNIEnvWrapper swigjnienv(this) ;
+  JNIEnv * jenv = swigjnienv.getJNIEnv() ;
+  jobject swigjobj = (jobject) NULL ;
+  jint jcode  ;
+  jlong jmsg = 0 ;
+  
+  if (!swig_override[1]) {
+    SWIG_JavaThrowException(JNIEnvWrapper(this).getJNIEnv(), SWIG_JavaDirectorPureVirtual, "Attempted to invoke pure virtual method NativeSendMessageCallback::onResult.");
+    return;
+  }
+  swigjobj = swig_get_self(jenv);
+  if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
+    jcode = (jint) code;
+    *((RcimMessageBox **)&jmsg) = (RcimMessageBox *) msg; 
+    jenv->CallStaticVoidMethod(Swig::jclass_rc_adapterJNI, Swig::director_method_ids[2], swigjobj, jcode, jmsg);
+    jthrowable swigerror = jenv->ExceptionOccurred();
+    if (swigerror) {
+      Swig::DirectorException::raise(jenv, swigerror);
+    }
+    
+  } else {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in NativeSendMessageCallback::onResult ");
+  }
+  if (swigjobj) jenv->DeleteLocalRef(swigjobj);
+}
+
+void SwigDirector_NativeSendMessageCallback::swig_connect_director(JNIEnv *jenv, jobject jself, jclass jcls, bool swig_mem_own, bool weak_global) {
+  static jclass baseclass = swig_new_global_ref(jenv, "io/rong/imlib/swig/NativeSendMessageCallback");
+  if (!baseclass) return;
+  static SwigDirectorMethod methods[] = {
+    SwigDirectorMethod(jenv, baseclass, "onSave", "(Lio/rong/imlib/swig/RcimMessageBox;)V"),
+    SwigDirectorMethod(jenv, baseclass, "onResult", "(ILio/rong/imlib/swig/RcimMessageBox;)V")
+  };
+  
+  if (swig_set_self(jenv, jself, swig_mem_own, weak_global)) {
+    bool derived = (jenv->IsSameObject(baseclass, jcls) ? false : true);
+    for (int i = 0; i < 2; ++i) {
+      swig_override[i] = false;
+      if (derived) {
+        jmethodID methid = jenv->GetMethodID(jcls, methods[i].name, methods[i].desc);
+        swig_override[i] = methods[i].methid && (methid != methods[i].methid);
+        jenv->ExceptionClear();
+      }
+    }
+  }
+}
+
+
+SwigDirector_NativeIntListener::SwigDirector_NativeIntListener(JNIEnv *jenv) : NativeIntListener(), Swig::Director(jenv) {
+}
+
+SwigDirector_NativeIntListener::~SwigDirector_NativeIntListener() {
+  swig_disconnect_director_self("swigDirectorDisconnect");
+}
+
+
+void SwigDirector_NativeIntListener::onChanged(int value) {
+  JNIEnvWrapper swigjnienv(this) ;
+  JNIEnv * jenv = swigjnienv.getJNIEnv() ;
+  jobject swigjobj = (jobject) NULL ;
+  jint jvalue  ;
+  
+  if (!swig_override[0]) {
+    SWIG_JavaThrowException(JNIEnvWrapper(this).getJNIEnv(), SWIG_JavaDirectorPureVirtual, "Attempted to invoke pure virtual method NativeIntListener::onChanged.");
+    return;
+  }
+  swigjobj = swig_get_self(jenv);
+  if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
+    jvalue = (jint) value;
+    jenv->CallStaticVoidMethod(Swig::jclass_rc_adapterJNI, Swig::director_method_ids[3], swigjobj, jvalue);
+    jthrowable swigerror = jenv->ExceptionOccurred();
+    if (swigerror) {
+      Swig::DirectorException::raise(jenv, swigerror);
+    }
+    
+  } else {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in NativeIntListener::onChanged ");
+  }
+  if (swigjobj) jenv->DeleteLocalRef(swigjobj);
+}
+
+void SwigDirector_NativeIntListener::swig_connect_director(JNIEnv *jenv, jobject jself, jclass jcls, bool swig_mem_own, bool weak_global) {
+  static jclass baseclass = swig_new_global_ref(jenv, "io/rong/imlib/swig/NativeIntListener");
+  if (!baseclass) return;
+  static SwigDirectorMethod methods[] = {
+    SwigDirectorMethod(jenv, baseclass, "onChanged", "(I)V")
+  };
+  
+  if (swig_set_self(jenv, jself, swig_mem_own, weak_global)) {
+    bool derived = (jenv->IsSameObject(baseclass, jcls) ? false : true);
+    for (int i = 0; i < 1; ++i) {
+      swig_override[i] = false;
+      if (derived) {
+        jmethodID methid = jenv->GetMethodID(jcls, methods[i].name, methods[i].desc);
+        swig_override[i] = methods[i].methid && (methid != methods[i].methid);
+        jenv->ExceptionClear();
+      }
+    }
+  }
+}
+
 
 
 #ifdef __cplusplus
@@ -3500,6 +4271,189 @@ SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_engine_1builder_1
 }
 
 
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_new_1ConnectCallback(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  ConnectCallback *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (ConnectCallback *)new SwigDirector_ConnectCallback(jenv);
+  *(ConnectCallback **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_delete_1ConnectCallback(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  ConnectCallback *arg1 = (ConnectCallback *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(ConnectCallback **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_ConnectCallback_1onConnect(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jstring jarg3) {
+  ConnectCallback *arg1 = (ConnectCallback *) 0 ;
+  int arg2 ;
+  char *arg3 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ConnectCallback **)&jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = 0;
+  if (jarg3) {
+    arg3 = (char *)jenv->GetStringUTFChars(jarg3, 0);
+    if (!arg3) return ;
+  }
+  (arg1)->onConnect(arg2,(char const *)arg3);
+  if (arg3) jenv->ReleaseStringUTFChars(jarg3, (const char *)arg3);
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_ConnectCallback_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
+  ConnectCallback *obj = *((ConnectCallback **)&objarg);
+  (void)jcls;
+  SwigDirector_ConnectCallback *director = static_cast<SwigDirector_ConnectCallback *>(obj);
+  director->swig_connect_director(jenv, jself, jenv->GetObjectClass(jself), (jswig_mem_own == JNI_TRUE), (jweak_global == JNI_TRUE));
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_ConnectCallback_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
+  ConnectCallback *obj = *((ConnectCallback **)&objarg);
+  SwigDirector_ConnectCallback *director = dynamic_cast<SwigDirector_ConnectCallback *>(obj);
+  (void)jcls;
+  if (director) {
+    director->swig_java_change_ownership(jenv, jself, jtake_or_release ? true : false);
+  }
+}
+
+
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_new_1NativeSendMessageCallback(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  NativeSendMessageCallback *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (NativeSendMessageCallback *)new SwigDirector_NativeSendMessageCallback(jenv);
+  *(NativeSendMessageCallback **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_delete_1NativeSendMessageCallback(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  NativeSendMessageCallback *arg1 = (NativeSendMessageCallback *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(NativeSendMessageCallback **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_NativeSendMessageCallback_1onSave(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+  NativeSendMessageCallback *arg1 = (NativeSendMessageCallback *) 0 ;
+  RcimMessageBox *arg2 = (RcimMessageBox *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  arg1 = *(NativeSendMessageCallback **)&jarg1; 
+  arg2 = *(RcimMessageBox **)&jarg2; 
+  (arg1)->onSave((RcimMessageBox const *)arg2);
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_NativeSendMessageCallback_1onResult(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jlong jarg3, jobject jarg3_) {
+  NativeSendMessageCallback *arg1 = (NativeSendMessageCallback *) 0 ;
+  int arg2 ;
+  RcimMessageBox *arg3 = (RcimMessageBox *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg3_;
+  arg1 = *(NativeSendMessageCallback **)&jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = *(RcimMessageBox **)&jarg3; 
+  (arg1)->onResult(arg2,(RcimMessageBox const *)arg3);
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_NativeSendMessageCallback_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
+  NativeSendMessageCallback *obj = *((NativeSendMessageCallback **)&objarg);
+  (void)jcls;
+  SwigDirector_NativeSendMessageCallback *director = static_cast<SwigDirector_NativeSendMessageCallback *>(obj);
+  director->swig_connect_director(jenv, jself, jenv->GetObjectClass(jself), (jswig_mem_own == JNI_TRUE), (jweak_global == JNI_TRUE));
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_NativeSendMessageCallback_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
+  NativeSendMessageCallback *obj = *((NativeSendMessageCallback **)&objarg);
+  SwigDirector_NativeSendMessageCallback *director = dynamic_cast<SwigDirector_NativeSendMessageCallback *>(obj);
+  (void)jcls;
+  if (director) {
+    director->swig_java_change_ownership(jenv, jself, jtake_or_release ? true : false);
+  }
+}
+
+
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_new_1NativeIntListener(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  NativeIntListener *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (NativeIntListener *)new SwigDirector_NativeIntListener(jenv);
+  *(NativeIntListener **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_delete_1NativeIntListener(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  NativeIntListener *arg1 = (NativeIntListener *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(NativeIntListener **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_NativeIntListener_1onChanged(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  NativeIntListener *arg1 = (NativeIntListener *) 0 ;
+  int arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(NativeIntListener **)&jarg1; 
+  arg2 = (int)jarg2; 
+  (arg1)->onChanged(arg2);
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_NativeIntListener_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
+  NativeIntListener *obj = *((NativeIntListener **)&objarg);
+  (void)jcls;
+  SwigDirector_NativeIntListener *director = static_cast<SwigDirector_NativeIntListener *>(obj);
+  director->swig_connect_director(jenv, jself, jenv->GetObjectClass(jself), (jswig_mem_own == JNI_TRUE), (jweak_global == JNI_TRUE));
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_NativeIntListener_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
+  NativeIntListener *obj = *((NativeIntListener **)&objarg);
+  SwigDirector_NativeIntListener *director = dynamic_cast<SwigDirector_NativeIntListener *>(obj);
+  (void)jcls;
+  if (director) {
+    director->swig_java_change_ownership(jenv, jself, jtake_or_release ? true : false);
+  }
+}
+
+
 SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_rcim_1sdk_1version_1array_1new(JNIEnv *jenv, jclass jcls, jint jarg1) {
   jlong jresult = 0 ;
   int arg1 ;
@@ -3564,14 +4518,15 @@ SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_engine_1builder_1
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_engine_1connect(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jint jarg3, jobject jarg4) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_engine_1connect(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jint jarg3, jlong jarg4, jobject jarg4_) {
   int64_t arg1 ;
   char *arg2 = (char *) 0 ;
   int arg3 ;
-  void *arg4 = (void *) 0 ;
+  ConnectCallback *arg4 = (ConnectCallback *) 0 ;
   
   (void)jenv;
   (void)jcls;
+  (void)jarg4_;
   arg1 = (int64_t)jarg1; 
   arg2 = 0;
   if (jarg2) {
@@ -3579,36 +4534,67 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_engine_1connect(J
     if (!arg2) return ;
   }
   arg3 = (int)jarg3; 
-  arg4 = jarg4; 
+  arg4 = *(ConnectCallback **)&jarg4; 
   engine_connect(arg1,(char const *)arg2,arg3,arg4);
   if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_engine_1set_1connection_1status_1listener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_engine_1set_1connection_1status_1listener(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2, jobject jarg2_) {
   int64_t arg1 ;
-  void *arg2 = (void *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = (int64_t)jarg1; 
-  arg2 = jarg2; 
-  engine_set_connection_status_listener(arg1,arg2);
-}
-
-
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_engine_1send_1message(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2, jobject jarg2_, jobject jarg3) {
-  int64_t arg1 ;
-  RcimMessageBox *arg2 = (RcimMessageBox *) 0 ;
-  void *arg3 = (void *) 0 ;
+  NativeIntListener *arg2 = (NativeIntListener *) 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg2_;
   arg1 = (int64_t)jarg1; 
+  arg2 = *(NativeIntListener **)&jarg2; 
+  engine_set_connection_status_listener(arg1,arg2);
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_engine_1send_1message(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
+  int64_t arg1 ;
+  RcimMessageBox *arg2 = (RcimMessageBox *) 0 ;
+  NativeSendMessageCallback *arg3 = (NativeSendMessageCallback *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg2_;
+  (void)jarg3_;
+  arg1 = (int64_t)jarg1; 
   arg2 = *(RcimMessageBox **)&jarg2; 
-  arg3 = jarg3; 
+  arg3 = *(NativeSendMessageCallback **)&jarg3; 
   engine_send_message(arg1,arg2,arg3);
+}
+
+
+SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_swig_1module_1init(JNIEnv *jenv, jclass jcls) {
+  int i;
+  
+  static struct {
+    const char *method;
+    const char *signature;
+  } methods[4] = {
+    {
+      "SwigDirector_ConnectCallback_onConnect", "(Lio/rong/imlib/swig/ConnectCallback;ILjava/lang/String;)V" 
+    },
+    {
+      "SwigDirector_NativeSendMessageCallback_onSave", "(Lio/rong/imlib/swig/NativeSendMessageCallback;J)V" 
+    },
+    {
+      "SwigDirector_NativeSendMessageCallback_onResult", "(Lio/rong/imlib/swig/NativeSendMessageCallback;IJ)V" 
+    },
+    {
+      "SwigDirector_NativeIntListener_onChanged", "(Lio/rong/imlib/swig/NativeIntListener;I)V" 
+    }
+  };
+  Swig::jclass_rc_adapterJNI = (jclass) jenv->NewGlobalRef(jcls);
+  if (!Swig::jclass_rc_adapterJNI) return;
+  for (i = 0; i < (int) (sizeof(methods)/sizeof(methods[0])); ++i) {
+    Swig::director_method_ids[i] = jenv->GetStaticMethodID(jcls, methods[i].method, methods[i].signature);
+    if (!Swig::director_method_ids[i]) return;
+  }
 }
 
 

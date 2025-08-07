@@ -23,5 +23,4 @@
 ///// ----------------支持 int64_t - 结束 ----------------------------------
 
 
-// 为 Java EngineBuilderParam 对象添加类型映射
 %apply jobject { void* };

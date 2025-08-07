@@ -12,13 +12,13 @@ import io.rong.imlib.connect.enums.ConnectionStatus;
 import io.rong.imlib.connect.listener.ConnectionStatusListener;
 import io.rong.imlib.message.Message;
 import io.rong.imlib.message.callback.ISendMessageCallback;
+import io.rong.imlib.swig.ConnectCallback;
+import io.rong.imlib.swig.NativeIntListener;
+import io.rong.imlib.swig.NativeSendMessageCallback;
 import io.rong.imlib.swig.RcimEngineBuilderParam;
 import io.rong.imlib.swig.RcimMessageBox;
 import io.rong.imlib.swig.RcimSDKVersion;
 import io.rong.imlib.swig.rc_adapter;
-import io.rong.imlib.swig_helper.callback.NativeSendMessageCallback;
-import io.rong.imlib.swig_helper.callback.NativeStringCallback;
-import io.rong.imlib.swig_helper.listener.NativeIntListener;
 
 /**
  * @author rongcloud
@@ -98,9 +98,8 @@ public class IMClient {
     }
 
     public void connect(String token, int timeout, IData1Callback<String> callback) {
-        rc_adapter.engine_connect(this.enginePtr.get(), token, timeout, new NativeStringCallback() {
-            @Override
-            public void onComplete(int code, String value) {
+        rc_adapter.engine_connect(this.enginePtr.get(), token, timeout,new ConnectCallback() {
+            public void onConnect(int code, String value) {
                 if (callback == null) {
                     return;
                 }
@@ -115,16 +114,16 @@ public class IMClient {
 
     public void setConnectionStatusListener(ConnectionStatusListener listener) {
         rc_adapter.engine_set_connection_status_listener(this.enginePtr.get(), new NativeIntListener() {
-            @Override
-            public void onChanged(int status) {
+            public void onChanged(int value) {
                 if (listener != null) {
-                    listener.onConnectionStatusChanged(ConnectionStatus.codeOf(status));
+                    listener.onConnectionStatusChanged(ConnectionStatus.codeOf(value));
                 }
             }
         });
     }
 
     public void sendMessage(Message msg, ISendMessageCallback<Message> sendMessageCallback) {
+
         RcimMessageBox msgBox = new RcimMessageBox();
         msgBox.setConv_type(msg.getConversationType().getValue());
         msgBox.setTarget_id(msg.getTargetId());
@@ -134,23 +133,23 @@ public class IMClient {
         rc_adapter.engine_send_message(this.enginePtr.get(), msgBox, new NativeSendMessageCallback() {
 
             @Override
-            public void onAttached(Message message) {
+            public void onSave(RcimMessageBox msg) {
+                String content = msg.getContent();
                 if (sendMessageCallback != null) {
-                    sendMessageCallback.onAttached(message);
+//                    sendMessageCallback.onAttached(message);
                 }
             }
 
             @Override
-            public void onSuccess(Message message) {
-                if (sendMessageCallback != null) {
-                    sendMessageCallback.onSuccess(message);
+            public void onResult(int code, RcimMessageBox msg) {
+                String content = msg.getContent();
+                if (sendMessageCallback == null) {
+                    return;
                 }
-            }
+                if (EngineError.Success.getCode() == code) {
+//                    sendMessageCallback.onSuccess(message);
+                }else {
 
-            @Override
-            public void onError(EngineError error, Message data) {
-                if (sendMessageCallback != null) {
-                    sendMessageCallback.onError(error, data);
                 }
             }
         });
