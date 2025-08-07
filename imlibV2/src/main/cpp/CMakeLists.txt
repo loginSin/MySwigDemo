@@ -47,8 +47,6 @@ link_directories(
 file(GLOB SOURCES "*.cpp" "*/*.cpp" "*/*/*.cpp")
 add_library(${CMAKE_PROJECT_NAME} SHARED
         # List C/C++ source files with relative paths to this CMakeLists.txt.
-        jni_helper/jni_onload.cc
-        jni_helper/jvm.cc
         ${SOURCES}
 )
 

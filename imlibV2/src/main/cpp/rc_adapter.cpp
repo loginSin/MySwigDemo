@@ -5,11 +5,6 @@
 #include "rc_adapter.h"
 #include "libs/includes/rcim_client.h"
 #include <jni.h>
-#include "jni_helper/jvm.h"
-#include "util/Transformer.h"
-#include "util/Context.h"
-#include "jni_header/NativeStringCallback_jni.h"
-#include "jni_header/NativeIntListener_jni.h"
 
 int create_engine_builder(RcimEngineBuilderParam *param, int64_t *outBuilderPtr) {
     if (!param) {
