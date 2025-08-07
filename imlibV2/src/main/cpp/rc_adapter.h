@@ -11,7 +11,7 @@
 #include <functional>
 #include "libs/includes/rcim_client.h"
 
-int create_engine_builder(RcimEngineBuilderParam *param, std::vector<long long> &outBuilderPtrArray);
+int create_engine_builder(RcimEngineBuilderParam *param, long long *outBuilderPtr);
 
 long long rcim_sdk_version_array_new(int size);
 void rcim_sdk_version_array_insert(long long ptr, std::vector<long long> longVec);
@@ -19,7 +19,7 @@ void rcim_sdk_version_array_free(long long ptr);
 
 int engine_builder_set_store_path(long long builderPtr, std::string storePath);
 
-int engine_builder_build(long long builderPtr, std::vector<long long> &outEngineArray);
+int engine_builder_build(long long builderPtr, long long *outEnginePtr);
 
 void engine_connect(long long enginePtr, std::string token, int timeout, void *callback);
 

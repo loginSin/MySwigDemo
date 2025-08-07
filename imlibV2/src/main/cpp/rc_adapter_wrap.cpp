@@ -4556,24 +4556,69 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_delete_1RcimMessa
 }
 
 
-SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_create_1engine_1builder(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_create_1engine_1builder(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlongArray jarg2) {
   jint jresult = 0 ;
   RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
-  std::vector< long long > *arg2 = 0 ;
+  long long *arg2 = (long long *) 0 ;
+  long long temp2 ;
   int result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  (void)jarg2_;
   arg1 = *(RcimEngineBuilderParam **)&jarg1; 
-  arg2 = *(std::vector< long long > **)&jarg2;
-  if (!arg2) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "std::vector< long long > & is null");
-    return 0;
-  } 
-  result = (int)create_engine_builder(arg1,*arg2);
+  {
+    if (!jarg2) {
+      SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "array null");
+      return 0;
+    }
+    if (jenv->GetArrayLength(jarg2) == 0) {
+      SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, "Array must contain at least 1 element");
+      return 0;
+    }
+    temp2 = (long long)0;
+    arg2 = &temp2; 
+  }
+  result = (int)create_engine_builder(arg1,arg2);
   jresult = (jint)result; 
+  {
+    jlong jvalue = (jlong)temp2;
+    jenv->SetLongArrayRegion(jarg2, 0, 1, &jvalue);
+  }
+  
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_engine_1builder_1build(JNIEnv *jenv, jclass jcls, jlong jarg1, jlongArray jarg2) {
+  jint jresult = 0 ;
+  long long arg1 ;
+  long long *arg2 = (long long *) 0 ;
+  long long temp2 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = (long long)jarg1; 
+  {
+    if (!jarg2) {
+      SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "array null");
+      return 0;
+    }
+    if (jenv->GetArrayLength(jarg2) == 0) {
+      SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, "Array must contain at least 1 element");
+      return 0;
+    }
+    temp2 = (long long)0;
+    arg2 = &temp2; 
+  }
+  result = (int)engine_builder_build(arg1,arg2);
+  jresult = (jint)result; 
+  {
+    jlong jvalue = (jlong)temp2;
+    jenv->SetLongArrayRegion(jarg2, 0, 1, &jvalue);
+  }
+  
   return jresult;
 }
 
@@ -4639,27 +4684,6 @@ SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_engine_1builder_1
   (&arg2)->assign(arg2_pstr);
   jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
   result = (int)engine_builder_set_store_path(arg1,SWIG_STD_MOVE(arg2));
-  jresult = (jint)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_rc_1adapterJNI_engine_1builder_1build(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2, jobject jarg2_) {
-  jint jresult = 0 ;
-  long long arg1 ;
-  std::vector< long long > *arg2 = 0 ;
-  int result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg2_;
-  arg1 = (long long)jarg1; 
-  arg2 = *(std::vector< long long > **)&jarg2;
-  if (!arg2) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "std::vector< long long > & is null");
-    return 0;
-  } 
-  result = (int)engine_builder_build(arg1,*arg2);
   jresult = (jint)result; 
   return jresult;
 }

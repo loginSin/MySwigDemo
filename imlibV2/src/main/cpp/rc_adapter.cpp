@@ -11,8 +11,7 @@
 #include "jni_header/NativeStringCallback_jni.h"
 #include "jni_header/NativeIntListener_jni.h"
 
-int create_engine_builder(RcimEngineBuilderParam *param,
-                          std::vector<long long> &outBuilderPtrArray) {
+int create_engine_builder(RcimEngineBuilderParam *param, long long *outBuilderPtr) {
     if (!param) {
         return 0;
     }
@@ -21,8 +20,7 @@ int create_engine_builder(RcimEngineBuilderParam *param,
     RcimEngineBuilder *builder;
     RcimEngineError code = rcim_create_engine_builder(param, &builder);
     // 向输出参数添加数据
-    auto builderPtr = static_cast<long long>(reinterpret_cast<uintptr_t>(builder));
-    outBuilderPtrArray.push_back(builderPtr);
+    *outBuilderPtr = static_cast<long long>(reinterpret_cast<uintptr_t>(builder));
     return code;
 }
 
@@ -92,22 +90,20 @@ int engine_builder_set_store_path(long long builderPtr, std::string storePath) {
     return code;
 }
 
-int engine_builder_build(long long builderPtr, std::vector<long long> &outEngineArray) {
+int engine_builder_build(long long builderPtr, long long *outEnginePtr) {
     auto *builder = reinterpret_cast<RcimEngineBuilder *>(static_cast<uintptr_t>(builderPtr));
     RcimEngineSync *engine_ = nullptr;
     RcimEngineError code = rcim_engine_builder_build(builder, &engine_);
 
     // 向输出参数添加数据
-    auto enginePtr = static_cast<long long>(reinterpret_cast<uintptr_t>(engine_));
-    outEngineArray.push_back(enginePtr);
-
+    *outEnginePtr = static_cast<long long>(reinterpret_cast<uintptr_t>(engine_));
     return code;
 }
 
 void engine_connect_adapter(const void *context, enum RcimEngineError code, const char *user_id) {
     printf("qxb %s", user_id);
     rcim::callNativeStringCallback(context, code, user_id);
-//    releaseContextByCallback(context);
+    releaseContextByCallback(context);
 }
 
 void engine_connect(long long enginePtr, std::string token, int timeout, void *callback) {

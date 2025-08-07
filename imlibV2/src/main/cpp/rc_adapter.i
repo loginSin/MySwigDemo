@@ -10,5 +10,11 @@
 #include "rc_adapter.h"
 %}
 
+
+%include cpointer.i
+%include typemaps.i
+int create_engine_builder(RcimEngineBuilderParam *param, long long *OUTPUT);
+int engine_builder_build(long long builderPtr, long long *OUTPUT);
+
 // 包含头文件 - 必须在类型映射之后包含
 %include "rc_adapter.h"

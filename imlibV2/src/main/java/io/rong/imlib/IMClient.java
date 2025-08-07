@@ -79,27 +79,24 @@ public class IMClient {
         param.setSdk_version_vec(totalVer);
         param.setSdk_version_vec_len(sdkVersionSize);
 
+        long[] builderPtrArr = {0};
+        int code = rc_adapter.create_engine_builder(param, builderPtrArr);
+        long builderPtr = 0;
+        if (builderPtrArr.length > 0) {
+            builderPtr = builderPtrArr[0];
+        }
 
-        // 创建空的 VectorInt 作为输出参数
-        VectorLong builderPtrArray = new VectorLong();
-
-        int code = rc_adapter.create_engine_builder(param, builderPtrArray);
 
         rc_adapter.rcim_sdk_version_array_free(longArr);
-        long builderPtr = 0;
-        if (builderPtrArray.size() > 0) {
-            builderPtr = builderPtrArray.get(0);
-            Log.d(TAG, "init: " + builderPtrArray.get(0));
-        }
 
         String storePath = context.getFilesDir().getPath();
         code = rc_adapter.engine_builder_set_store_path(builderPtr, storePath);
 
-        VectorLong enginePtrArray = new VectorLong();
+        long[] enginePtrArray = {0};
         code = rc_adapter.engine_builder_build(builderPtr, enginePtrArray);
 
-        if (enginePtrArray.size() > 0) {
-            this.enginePtr.set(enginePtrArray.get(0));
+        if (enginePtrArray.length > 0) {
+            this.enginePtr.set(enginePtrArray[0]);
         }
     }
 
