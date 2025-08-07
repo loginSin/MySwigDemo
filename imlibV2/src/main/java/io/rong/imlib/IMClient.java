@@ -15,7 +15,6 @@ import io.rong.imlib.message.callback.ISendMessageCallback;
 import io.rong.imlib.swig.RcimEngineBuilderParam;
 import io.rong.imlib.swig.RcimMessageBox;
 import io.rong.imlib.swig.RcimSDKVersion;
-import io.rong.imlib.swig.VectorLong;
 import io.rong.imlib.swig.rc_adapter;
 import io.rong.imlib.swig_helper.callback.NativeSendMessageCallback;
 import io.rong.imlib.swig_helper.callback.NativeStringCallback;
@@ -70,10 +69,8 @@ public class IMClient {
 
         int sdkVersionSize = 2;
         long longArr = rc_adapter.rcim_sdk_version_array_new(sdkVersionSize);
-        VectorLong longVec = new VectorLong();
-        longVec.add(sdkVer1.getCPtr());
-        longVec.add(sdkVer2.getCPtr());
-        rc_adapter.rcim_sdk_version_array_insert(longArr,longVec);
+        long[] longPtr = {sdkVer1.getCPtr(), sdkVer2.getCPtr()};
+        rc_adapter.rcim_sdk_version_array_insert(longArr, longPtr, longPtr.length);
 
         RcimSDKVersion totalVer = RcimSDKVersion.fromPointer(longArr);
         param.setSdk_version_vec(totalVer);

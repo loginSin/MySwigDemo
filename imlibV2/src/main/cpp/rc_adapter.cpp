@@ -27,19 +27,20 @@ int create_engine_builder(RcimEngineBuilderParam *param, long long *outBuilderPt
 long long rcim_sdk_version_array_new(int size) {
     RcimSDKVersion *array = (RcimSDKVersion *) malloc(sizeof(RcimSDKVersion) * size);
     if (!array) return 0; // 内存分配失败
-    return (long long)(uintptr_t) array; // 转成 long long 类型安全返回
+    return (long long) (uintptr_t) array; // 转成 long long 类型安全返回
 }
 
-void rcim_sdk_version_array_insert(long long ptr, std::vector<long long> longVec) {
+void rcim_sdk_version_array_insert(long long ptr, long *ptrArr, int size) {
     if (ptr == 0) return;
     RcimSDKVersion *array = (RcimSDKVersion *) ptr;
-    for (size_t i = 0; i < longVec.size(); ++i) {
-        long ptr = longVec[i];
-        RcimSDKVersion *ver = (RcimSDKVersion *)ptr;
+    for (size_t i = 0; i < size; ++i) {
+        long ptr = ptrArr[i];
+        RcimSDKVersion *ver = (RcimSDKVersion *) ptr;
         array[i].name = ver->name;
         array[i].version = ver->version;
     }
 }
+
 
 void rcim_sdk_version_array_free(long long ptr) {
     if (ptr == 0) return;
@@ -47,10 +48,10 @@ void rcim_sdk_version_array_free(long long ptr) {
     free(array);
 }
 
-int engine_builder_set_store_path(long long builderPtr, std::string storePath) {
+int engine_builder_set_store_path(long long builderPtr, const char *storePath) {
     auto *builder = reinterpret_cast<RcimEngineBuilder *>(static_cast<uintptr_t>(builderPtr));
 
-    RcimEngineError code = rcim_engine_builder_set_store_path(builder, storePath.c_str());
+    RcimEngineError code = rcim_engine_builder_set_store_path(builder, storePath);
     if (RcimEngineError_Success != code) {
         return code;
     }
@@ -106,10 +107,10 @@ void engine_connect_adapter(const void *context, enum RcimEngineError code, cons
     releaseContextByCallback(context);
 }
 
-void engine_connect(long long enginePtr, std::string token, int timeout, void *callback) {
+void engine_connect(long long enginePtr, const char *token, int timeout, void *callback) {
     auto *engine = reinterpret_cast<RcimEngineSync *>(static_cast<uintptr_t>(enginePtr));
     void *context = genContextByCallback(engine, callback);
-    rcim_engine_connect(engine, token.c_str(), timeout, context, engine_connect_adapter);
+    rcim_engine_connect(engine, token, timeout, context, engine_connect_adapter);
 }
 
 void engine_set_connection_status_listener_adapter(const void *context,

@@ -10,9 +10,6 @@
 #include "rc_adapter.h"
 %}
 
-
-%include cpointer.i
-%include typemaps.i
 int create_engine_builder(RcimEngineBuilderParam *param, long long *OUTPUT);
 int engine_builder_build(long long builderPtr, long long *OUTPUT);
 
