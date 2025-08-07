@@ -12,7 +12,6 @@ import io.rong.imlib.connect.enums.ConnectionStatus;
 import io.rong.imlib.connect.listener.ConnectionStatusListener;
 import io.rong.imlib.message.Message;
 import io.rong.imlib.message.callback.ISendMessageCallback;
-import io.rong.imlib.swig.MapString;
 import io.rong.imlib.swig.RcimEngineBuilderParam;
 import io.rong.imlib.swig.RcimMessageBox;
 import io.rong.imlib.swig.RcimSDKVersion;
@@ -21,7 +20,6 @@ import io.rong.imlib.swig.rc_adapter;
 import io.rong.imlib.swig_helper.callback.NativeSendMessageCallback;
 import io.rong.imlib.swig_helper.callback.NativeStringCallback;
 import io.rong.imlib.swig_helper.listener.NativeIntListener;
-import io.rong.imlib.swig_helper.model.EngineBuilderParam;
 
 /**
  * @author rongcloud
