@@ -8,9 +8,7 @@
 #include <stdint.h>
 
 #include "libs/includes/rcim_client.h"
-#include "native_define/RcimNativeStringCallback.h"
-#include "native_define/RcimNativeIntListener.h"
-#include "native_define/RcimNativeSendMessageCallback.h"
+#include "RcimNativeFunctionDefine.h"
 
 // 不能使用 long 、 long long，所有需要用long 、long long、指针的地方统一用 int64_t
 // swig 会把 C 的 long 默认转成 int，64 位变 32 位，精度丢失
