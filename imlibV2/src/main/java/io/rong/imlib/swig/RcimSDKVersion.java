@@ -48,6 +48,9 @@ public class RcimSDKVersion {
     }
   }
 
+public synchronized void swigDelete() {
+    delete();
+}
 /** 静态工厂方法：从 C 指针构建 RcimMessageBox 对象 */
 public static RcimSDKVersion fromPointer(long cPtr) {
     return new RcimSDKVersion(cPtr, false);

@@ -84,9 +84,9 @@ public class IMClient {
         if (builderPtrArr.length > 0) {
             builderPtr = builderPtrArr[0];
         }
-        sdkVer1.delete();
-        sdkVer2.delete();
-        param.delete();
+        sdkVer1.swigDelete();
+        sdkVer2.swigDelete();
+        param.swigDelete();
 
         rc_adapter.rcim_sdk_version_array_free(longArr);
 
@@ -113,7 +113,7 @@ public class IMClient {
                 } else {
                     callback.onError(EngineError.codeOf(code));
                 }
-                deleteThis.delete();
+                deleteThis.swigDelete();
             }
         });
     }
@@ -165,7 +165,7 @@ public class IMClient {
                 } else {
 
                 }
-                deleteThis.delete();
+                deleteThis.swigDelete();
             }
         });
     }

@@ -48,6 +48,15 @@ public class RcimReadReceiptInfo {
     }
   }
 
+/**
+ * delete() 方法名太过于普通，所以新增 swigDelete()
+ * 使用该方法进行释放，不要使用 delete()
+ * 方便进行代码释放的检查
+ * */
+public synchronized void swigDelete() {
+    delete();
+}
+
   public void setIs_read_receipt_message(boolean value) {
     rc_adapterJNI.RcimReadReceiptInfo_is_read_receipt_message_set(swigCPtr, this, value);
   }

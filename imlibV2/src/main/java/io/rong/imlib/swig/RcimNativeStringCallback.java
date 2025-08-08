@@ -63,6 +63,15 @@ public class RcimNativeStringCallback {
     rc_adapterJNI.RcimNativeStringCallback_change_ownership(this, swigCPtr, true);
   }
 
+/**
+ * delete() 方法名太过于普通，所以新增 swigDelete()
+ * 使用该方法进行释放，不要使用 delete()
+ * 方便进行代码释放的检查
+ * */
+public synchronized void swigDelete() {
+    delete();
+}
+
   public RcimNativeStringCallback() {
     this(rc_adapterJNI.new_RcimNativeStringCallback(), true);
     rc_adapterJNI.RcimNativeStringCallback_director_connect(this, swigCPtr, true, true);
