@@ -23,3 +23,71 @@ bash swig.sh
 ```
 
 # 3. 正常运行 app
+
+# 4. 内存释放
+
+## 4.1. Java 层
+在 java 中所有出现 `new Rcim` 的地方应该都需要进行手动释放，释放调用 `swigDelete()` 方法
+
+最简单的规则是：java 遇到 `new Rcim` 就需要考虑调用 `swigDelete()`
+
+1. new RcimXXX 是一个普通的 model 类，需要在用完该类的时候进行释放
+
+```java
+public void init() {
+    // 出现 new RcimEngineBuilderParam
+    RcimEngineBuilderParam param = new RcimEngineBuilderParam();
+    param.setApp_key(appKey);
+
+    // 出现 new RcimSDKVersion
+    RcimSDKVersion sdkVer1 = new RcimSDKVersion();
+    sdkVer1.setName("imlib");
+
+    // 出现 new RcimSDKVersion
+    RcimSDKVersion sdkVer2 = new RcimSDKVersion();
+    sdkVer2.setName("imkit");
+    
+    int code = rc_adapter.create_engine_builder(param, builderPtrArr);
+
+    // 上述 new Rcim 使用完成之后，手动调用 swigDelete() 进行删除
+    sdkVer1.swigDelete();
+    sdkVer2.swigDelete();
+    param.swigDelete();
+}
+
+```
+2. new RcimXXXCallback 是一个 callback 类，需要在 Callback 用完的时候进行释放
+
+Callback 只能有限次数的调用，用完之后就得销毁，比如连接 callback ，发送消息 callback
+
+```java
+public void sendMessage(Message msg, ISendMessageCallback<Message> sendMessageCallback) {
+    // 出现 new RcimMessageBox
+    RcimMessageBox inputMsgBox = new RcimMessageBox();
+    inputMsgBox.setConv_type(msg.getConversationType().getValue());
+
+    // 出现 new RcimNativeSendMessageCallback
+    rc_adapter.engine_send_message(this.enginePtr.get(), inputMsgBox, new RcimNativeSendMessageCallback() {
+
+        @Override
+        public void onSave(RcimMessageBox msg) {
+            String content = msg.getContent();
+
+        }
+
+        @Override
+        public void onResult(RcimNativeSendMessageCallback deleteThis,int code, RcimMessageBox msg) {
+            String content = msg.getContent();
+            
+            // RcimNativeSendMessageCallback 使用完后，把上面提到的两个 new Rcim 给删除
+            // 这里的 deleteThis 和 new RcimNativeSendMessageCallback 是同一个对象
+            inputMsgBox.swigDelete();
+            deleteThis.swigDelete();
+        }
+    });
+}
+```
+
+3. new RcimXXXListener 是一个 listener 类，不能释放
+
+Listener 是监听，需要触发无数次，不能释放。所以需要被 Java 类持有，避免被释放，参考 conStatusListenerRef 的使用

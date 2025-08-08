@@ -138,13 +138,13 @@ public class IMClient {
 
     public void sendMessage(Message msg, ISendMessageCallback<Message> sendMessageCallback) {
 
-        RcimMessageBox msgBox = new RcimMessageBox();
-        msgBox.setConv_type(msg.getConversationType().getValue());
-        msgBox.setTarget_id(msg.getTargetId());
-        msgBox.setChannel_id(msg.getChannelId());
-        msgBox.setObject_name(msg.getObjectName());
-        msgBox.setContent(msg.getContentJson());
-        rc_adapter.engine_send_message(this.enginePtr.get(), msgBox, new RcimNativeSendMessageCallback() {
+        RcimMessageBox inputMsgBox = new RcimMessageBox();
+        inputMsgBox.setConv_type(msg.getConversationType().getValue());
+        inputMsgBox.setTarget_id(msg.getTargetId());
+        inputMsgBox.setChannel_id(msg.getChannelId());
+        inputMsgBox.setObject_name(msg.getObjectName());
+        inputMsgBox.setContent(msg.getContentJson());
+        rc_adapter.engine_send_message(this.enginePtr.get(), inputMsgBox, new RcimNativeSendMessageCallback() {
 
             @Override
             public void onSave(RcimMessageBox msg) {
@@ -165,6 +165,7 @@ public class IMClient {
                 } else {
 
                 }
+                inputMsgBox.swigDelete();
                 deleteThis.swigDelete();
             }
         });
