@@ -49,12 +49,31 @@ public class RcimReadReceiptUserInfo {
   }
 
 /**
- * delete() 方法名太过于普通，所以新增 swigDelete()
- * 使用该方法进行释放，不要使用 delete()
- * 方便进行代码释放的检查
- * */
+ * 该方法由配置生成<p>
+ * delete() 方法名太过于普通，所以新增 swigDelete()<p>
+ * 使用该方法进行释放，不要使用 delete()<p>
+ * 方便进行代码创建、释放的检查
+ */
 public synchronized void swigDelete() {
     delete();
+}
+
+/**
+ * 该方法由配置生成<p>
+ * WARNING： 原则上不能调用该方法，除非你明确知道你需要这个方法<p>
+ * 静态工厂方法：从 C 指针构建该对象
+ */
+public static RcimReadReceiptUserInfo fromPointer(long cPtr) {
+    return new RcimReadReceiptUserInfo(cPtr, false);
+}
+
+/**
+ * 该方法由配置生成<p>
+ * WARNING： 原则上不能调用该方法，除非你明确知道你需要这个方法<p>
+ * 获取原始指针
+ */
+public long getCPtr() {
+    return swigCPtr;
 }
 
   public void setSender_id(String value) {
