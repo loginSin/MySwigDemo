@@ -2,9 +2,9 @@ package io.rong.imlib;
 
 
 import android.content.Context;
-import android.util.Log;
 
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.atomic.AtomicReference;
 
 import io.rong.imlib.base.callback.IData1Callback;
 import io.rong.imlib.base.enums.EngineError;
@@ -27,6 +27,8 @@ import io.rong.imlib.swig.rc_adapter;
 public class IMClient {
     private static final String TAG = "IMClient";
     private final AtomicLong enginePtr = new AtomicLong();
+    // NativeXXXListener 需要在 java 层被持有，否则会被销毁造成野指针
+    private final AtomicReference<NativeIntListener> conStatusListenerRef = new AtomicReference<>();
 
     static {
         try {
@@ -98,7 +100,7 @@ public class IMClient {
     }
 
     public void connect(String token, int timeout, IData1Callback<String> callback) {
-        rc_adapter.engine_connect(this.enginePtr.get(), token, timeout,new NativeStringCallback() {
+        rc_adapter.engine_connect(this.enginePtr.get(), token, timeout, new NativeStringCallback() {
             @Override
             public void onResult(int code, String value) {
                 if (callback == null) {
@@ -114,14 +116,21 @@ public class IMClient {
     }
 
     public void setConnectionStatusListener(ConnectionStatusListener listener) {
-        rc_adapter.engine_set_connection_status_listener(this.enginePtr.get(), new NativeIntListener() {
+        NativeIntListener cachedNativeListener = this.conStatusListenerRef.get();
+        if (cachedNativeListener != null) {
+            return;
+        }
+        NativeIntListener nativeListener = new NativeIntListener() {
             @Override
             public void onChanged(int value) {
                 if (listener != null) {
-                    listener.onConnectionStatusChanged(ConnectionStatus.codeOf(value));
+                    ConnectionStatus status = ConnectionStatus.codeOf(value);
+                    listener.onConnectionStatusChanged(status);
                 }
             }
-        });
+        };
+        this.conStatusListenerRef.set(nativeListener);
+        rc_adapter.engine_set_connection_status_listener(this.enginePtr.get(), nativeListener);
     }
 
     public void sendMessage(Message msg, ISendMessageCallback<Message> sendMessageCallback) {
@@ -150,7 +159,7 @@ public class IMClient {
                 }
                 if (EngineError.Success.getCode() == code) {
 //                    sendMessageCallback.onSuccess(message);
-                }else {
+                } else {
 
                 }
             }

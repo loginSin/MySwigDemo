@@ -114,7 +114,7 @@ void engine_set_connection_status_listener_adapter(const void *context,
                                                    enum RcimConnectionStatus status) {
     NativeIntListener *listener = static_cast<NativeIntListener *>(const_cast<void *>(context));
     if (listener) {
-//        listener->onChanged(status);
+        listener->onChanged(status);
     }
 }
 
