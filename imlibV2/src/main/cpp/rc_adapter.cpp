@@ -97,35 +97,35 @@ int engine_builder_build(int64_t builderPtr, int64_t *outEnginePtr) {
 }
 
 void engine_connect_adapter(const void *context, enum RcimEngineError code, const char *user_id) {
-    NativeStringCallback *callback = static_cast<NativeStringCallback *>(const_cast<void *>(context));
+    RcimNativeStringCallback *callback = static_cast<RcimNativeStringCallback *>(const_cast<void *>(context));
     if (callback) {
-        callback->onResult(code, user_id);
+        callback->onResult(callback, code, user_id);
     } else {
 //        std::cerr << "Warning: Connect callback without valid context" << std::endl;
     }
 }
 
-void engine_connect(int64_t enginePtr, const char *token, int timeout, NativeStringCallback *callback) {
+void engine_connect(int64_t enginePtr, const char *token, int timeout, RcimNativeStringCallback *callback) {
     auto *engine = reinterpret_cast<RcimEngineSync *>(static_cast<uintptr_t>(enginePtr));
     rcim_engine_connect(engine, token, timeout, callback, engine_connect_adapter);
 }
 
 void engine_set_connection_status_listener_adapter(const void *context,
                                                    enum RcimConnectionStatus status) {
-    NativeIntListener *listener = static_cast<NativeIntListener *>(const_cast<void *>(context));
+    RcimNativeIntListener *listener = static_cast<RcimNativeIntListener *>(const_cast<void *>(context));
     if (listener) {
         listener->onChanged(status);
     }
 }
 
-void engine_set_connection_status_listener(int64_t enginePtr, NativeIntListener *listener) {
+void engine_set_connection_status_listener(int64_t enginePtr, RcimNativeIntListener *listener) {
     auto *engine = reinterpret_cast<RcimEngineSync *>(static_cast<uintptr_t>(enginePtr));
     rcim_engine_set_connection_status_listener(engine, listener,
                                                engine_set_connection_status_listener_adapter);
 }
 
 void engine_send_message_saved(const void *context, const struct RcimMessageBox *msg_box) {
-    NativeSendMessageCallback *callback = static_cast<NativeSendMessageCallback *>(const_cast<void *>(context));
+    RcimNativeSendMessageCallback *callback = static_cast<RcimNativeSendMessageCallback *>(const_cast<void *>(context));
     if (callback) {
         callback->onSave(msg_box);
     }
@@ -134,14 +134,14 @@ void engine_send_message_saved(const void *context, const struct RcimMessageBox 
 void engine_send_message_adapter(const void *context,
                                  enum RcimEngineError code,
                                  const struct RcimMessageBox *msg_box) {
-    NativeSendMessageCallback *callback = static_cast<NativeSendMessageCallback *>(const_cast<void *>(context));
+    RcimNativeSendMessageCallback *callback = static_cast<RcimNativeSendMessageCallback *>(const_cast<void *>(context));
     if (callback) {
-        callback->onResult(code, msg_box);
+        callback->onResult(callback, code, msg_box);
     }
 }
 
 void engine_send_message(int64_t enginePtr, RcimMessageBox *msgBox,
-                         NativeSendMessageCallback *sendMsgCallback) {
+                         RcimNativeSendMessageCallback *sendMsgCallback) {
     auto *engine = reinterpret_cast<RcimEngineSync *>(static_cast<uintptr_t>(enginePtr));
     rcim_engine_send_message(engine, msgBox, nullptr, sendMsgCallback, engine_send_message_adapter,
                              engine_send_message_saved);

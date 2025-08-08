@@ -9,13 +9,13 @@
 #ifndef SWIG_rc_adapter_WRAP_H_
 #define SWIG_rc_adapter_WRAP_H_
 
-class SwigDirector_NativeStringCallback : public NativeStringCallback, public Swig::Director {
+class SwigDirector_RcimNativeStringCallback : public RcimNativeStringCallback, public Swig::Director {
 
 public:
     void swig_connect_director(JNIEnv *jenv, jobject jself, jclass jcls, bool swig_mem_own, bool weak_global);
-    SwigDirector_NativeStringCallback(JNIEnv *jenv);
-    virtual ~SwigDirector_NativeStringCallback();
-    virtual void onResult(int code,char const *value);
+    SwigDirector_RcimNativeStringCallback(JNIEnv *jenv);
+    virtual ~SwigDirector_RcimNativeStringCallback();
+    virtual void onResult(RcimNativeStringCallback *deleteThis,int code,char const *value);
 public:
     bool swig_overrides(int n) {
       return (n < 1 ? swig_override[n] : false);
@@ -24,14 +24,14 @@ protected:
     Swig::BoolArray<1> swig_override;
 };
 
-class SwigDirector_NativeSendMessageCallback : public NativeSendMessageCallback, public Swig::Director {
+class SwigDirector_RcimNativeSendMessageCallback : public RcimNativeSendMessageCallback, public Swig::Director {
 
 public:
     void swig_connect_director(JNIEnv *jenv, jobject jself, jclass jcls, bool swig_mem_own, bool weak_global);
-    SwigDirector_NativeSendMessageCallback(JNIEnv *jenv);
-    virtual ~SwigDirector_NativeSendMessageCallback();
+    SwigDirector_RcimNativeSendMessageCallback(JNIEnv *jenv);
+    virtual ~SwigDirector_RcimNativeSendMessageCallback();
     virtual void onSave(RcimMessageBox const *msg);
-    virtual void onResult(int code,RcimMessageBox const *msg);
+    virtual void onResult(RcimNativeSendMessageCallback *deleteThis,int code,RcimMessageBox const *msg);
 public:
     bool swig_overrides(int n) {
       return (n < 2 ? swig_override[n] : false);
@@ -40,12 +40,12 @@ protected:
     Swig::BoolArray<2> swig_override;
 };
 
-class SwigDirector_NativeIntListener : public NativeIntListener, public Swig::Director {
+class SwigDirector_RcimNativeIntListener : public RcimNativeIntListener, public Swig::Director {
 
 public:
     void swig_connect_director(JNIEnv *jenv, jobject jself, jclass jcls, bool swig_mem_own, bool weak_global);
-    SwigDirector_NativeIntListener(JNIEnv *jenv);
-    virtual ~SwigDirector_NativeIntListener();
+    SwigDirector_RcimNativeIntListener(JNIEnv *jenv);
+    virtual ~SwigDirector_RcimNativeIntListener();
     virtual void onChanged(int value);
 public:
     bool swig_overrides(int n) {

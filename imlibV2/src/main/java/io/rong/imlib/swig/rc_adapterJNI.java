@@ -199,40 +199,40 @@ public class rc_adapterJNI {
   public final static native void delete_RcimMessageBox(long jarg1);
   public final static native int create_engine_builder(long jarg1, RcimEngineBuilderParam jarg1_, long[] jarg2);
   public final static native int engine_builder_build(long jarg1, long[] jarg2);
-  public final static native long new_NativeStringCallback();
-  public final static native void delete_NativeStringCallback(long jarg1);
-  public final static native void NativeStringCallback_onResult(long jarg1, NativeStringCallback jarg1_, int jarg2, String jarg3);
-  public final static native void NativeStringCallback_director_connect(NativeStringCallback obj, long cptr, boolean mem_own, boolean weak_global);
-  public final static native void NativeStringCallback_change_ownership(NativeStringCallback obj, long cptr, boolean take_or_release);
-  public final static native long new_NativeSendMessageCallback();
-  public final static native void delete_NativeSendMessageCallback(long jarg1);
-  public final static native void NativeSendMessageCallback_onSave(long jarg1, NativeSendMessageCallback jarg1_, long jarg2, RcimMessageBox jarg2_);
-  public final static native void NativeSendMessageCallback_onResult(long jarg1, NativeSendMessageCallback jarg1_, int jarg2, long jarg3, RcimMessageBox jarg3_);
-  public final static native void NativeSendMessageCallback_director_connect(NativeSendMessageCallback obj, long cptr, boolean mem_own, boolean weak_global);
-  public final static native void NativeSendMessageCallback_change_ownership(NativeSendMessageCallback obj, long cptr, boolean take_or_release);
-  public final static native long new_NativeIntListener();
-  public final static native void delete_NativeIntListener(long jarg1);
-  public final static native void NativeIntListener_onChanged(long jarg1, NativeIntListener jarg1_, int jarg2);
-  public final static native void NativeIntListener_director_connect(NativeIntListener obj, long cptr, boolean mem_own, boolean weak_global);
-  public final static native void NativeIntListener_change_ownership(NativeIntListener obj, long cptr, boolean take_or_release);
+  public final static native long new_RcimNativeStringCallback();
+  public final static native void delete_RcimNativeStringCallback(long jarg1);
+  public final static native void RcimNativeStringCallback_onResult(long jarg1, RcimNativeStringCallback jarg1_, long jarg2, RcimNativeStringCallback jarg2_, int jarg3, String jarg4);
+  public final static native void RcimNativeStringCallback_director_connect(RcimNativeStringCallback obj, long cptr, boolean mem_own, boolean weak_global);
+  public final static native void RcimNativeStringCallback_change_ownership(RcimNativeStringCallback obj, long cptr, boolean take_or_release);
+  public final static native long new_RcimNativeSendMessageCallback();
+  public final static native void delete_RcimNativeSendMessageCallback(long jarg1);
+  public final static native void RcimNativeSendMessageCallback_onSave(long jarg1, RcimNativeSendMessageCallback jarg1_, long jarg2, RcimMessageBox jarg2_);
+  public final static native void RcimNativeSendMessageCallback_onResult(long jarg1, RcimNativeSendMessageCallback jarg1_, long jarg2, RcimNativeSendMessageCallback jarg2_, int jarg3, long jarg4, RcimMessageBox jarg4_);
+  public final static native void RcimNativeSendMessageCallback_director_connect(RcimNativeSendMessageCallback obj, long cptr, boolean mem_own, boolean weak_global);
+  public final static native void RcimNativeSendMessageCallback_change_ownership(RcimNativeSendMessageCallback obj, long cptr, boolean take_or_release);
+  public final static native long new_RcimNativeIntListener();
+  public final static native void delete_RcimNativeIntListener(long jarg1);
+  public final static native void RcimNativeIntListener_onChanged(long jarg1, RcimNativeIntListener jarg1_, int jarg2);
+  public final static native void RcimNativeIntListener_director_connect(RcimNativeIntListener obj, long cptr, boolean mem_own, boolean weak_global);
+  public final static native void RcimNativeIntListener_change_ownership(RcimNativeIntListener obj, long cptr, boolean take_or_release);
   public final static native long rcim_sdk_version_array_new(int jarg1);
   public final static native void rcim_sdk_version_array_insert(long jarg1, long[] jarg2, int jarg3);
   public final static native void rcim_sdk_version_array_free(long jarg1);
   public final static native int engine_builder_set_store_path(long jarg1, String jarg2);
-  public final static native void engine_connect(long jarg1, String jarg2, int jarg3, long jarg4, NativeStringCallback jarg4_);
-  public final static native void engine_set_connection_status_listener(long jarg1, long jarg2, NativeIntListener jarg2_);
-  public final static native void engine_send_message(long jarg1, long jarg2, RcimMessageBox jarg2_, long jarg3, NativeSendMessageCallback jarg3_);
+  public final static native void engine_connect(long jarg1, String jarg2, int jarg3, long jarg4, RcimNativeStringCallback jarg4_);
+  public final static native void engine_set_connection_status_listener(long jarg1, long jarg2, RcimNativeIntListener jarg2_);
+  public final static native void engine_send_message(long jarg1, long jarg2, RcimMessageBox jarg2_, long jarg3, RcimNativeSendMessageCallback jarg3_);
 
-  public static void SwigDirector_NativeStringCallback_onResult(NativeStringCallback jself, int code, String value) {
-    jself.onResult(code, value);
+  public static void SwigDirector_RcimNativeStringCallback_onResult(RcimNativeStringCallback jself, long deleteThis, int code, String value) {
+    jself.onResult((deleteThis == 0) ? null : new RcimNativeStringCallback(deleteThis, false), code, value);
   }
-  public static void SwigDirector_NativeSendMessageCallback_onSave(NativeSendMessageCallback jself, long msg) {
+  public static void SwigDirector_RcimNativeSendMessageCallback_onSave(RcimNativeSendMessageCallback jself, long msg) {
     jself.onSave((msg == 0) ? null : new RcimMessageBox(msg, false));
   }
-  public static void SwigDirector_NativeSendMessageCallback_onResult(NativeSendMessageCallback jself, int code, long msg) {
-    jself.onResult(code, (msg == 0) ? null : new RcimMessageBox(msg, false));
+  public static void SwigDirector_RcimNativeSendMessageCallback_onResult(RcimNativeSendMessageCallback jself, long deleteThis, int code, long msg) {
+    jself.onResult((deleteThis == 0) ? null : new RcimNativeSendMessageCallback(deleteThis, false), code, (msg == 0) ? null : new RcimMessageBox(msg, false));
   }
-  public static void SwigDirector_NativeIntListener_onChanged(NativeIntListener jself, int value) {
+  public static void SwigDirector_RcimNativeIntListener_onChanged(RcimNativeIntListener jself, int value) {
     jself.onChanged(value);
   }
 

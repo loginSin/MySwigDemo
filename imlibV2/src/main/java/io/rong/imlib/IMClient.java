@@ -12,9 +12,9 @@ import io.rong.imlib.connect.enums.ConnectionStatus;
 import io.rong.imlib.connect.listener.ConnectionStatusListener;
 import io.rong.imlib.message.Message;
 import io.rong.imlib.message.callback.ISendMessageCallback;
-import io.rong.imlib.swig.NativeStringCallback;
-import io.rong.imlib.swig.NativeIntListener;
-import io.rong.imlib.swig.NativeSendMessageCallback;
+import io.rong.imlib.swig.RcimNativeStringCallback;
+import io.rong.imlib.swig.RcimNativeIntListener;
+import io.rong.imlib.swig.RcimNativeSendMessageCallback;
 import io.rong.imlib.swig.RcimEngineBuilderParam;
 import io.rong.imlib.swig.RcimMessageBox;
 import io.rong.imlib.swig.RcimSDKVersion;
@@ -28,7 +28,7 @@ public class IMClient {
     private static final String TAG = "IMClient";
     private final AtomicLong enginePtr = new AtomicLong();
     // NativeXXXListener 需要在 java 层被持有，否则会被销毁造成野指针
-    private final AtomicReference<NativeIntListener> conStatusListenerRef = new AtomicReference<>();
+    private final AtomicReference<RcimNativeIntListener> conStatusListenerRef = new AtomicReference<>();
 
     static {
         try {
@@ -84,7 +84,9 @@ public class IMClient {
         if (builderPtrArr.length > 0) {
             builderPtr = builderPtrArr[0];
         }
-
+        sdkVer1.delete();
+        sdkVer2.delete();
+        param.delete();
 
         rc_adapter.rcim_sdk_version_array_free(longArr);
 
@@ -100,9 +102,9 @@ public class IMClient {
     }
 
     public void connect(String token, int timeout, IData1Callback<String> callback) {
-        rc_adapter.engine_connect(this.enginePtr.get(), token, timeout, new NativeStringCallback() {
+        rc_adapter.engine_connect(this.enginePtr.get(), token, timeout, new RcimNativeStringCallback() {
             @Override
-            public void onResult(int code, String value) {
+            public void onResult(RcimNativeStringCallback deleteThis, int code, String value) {
                 if (callback == null) {
                     return;
                 }
@@ -111,16 +113,17 @@ public class IMClient {
                 } else {
                     callback.onError(EngineError.codeOf(code));
                 }
+                deleteThis.delete();
             }
         });
     }
 
     public void setConnectionStatusListener(ConnectionStatusListener listener) {
-        NativeIntListener cachedNativeListener = this.conStatusListenerRef.get();
+        RcimNativeIntListener cachedNativeListener = this.conStatusListenerRef.get();
         if (cachedNativeListener != null) {
             return;
         }
-        NativeIntListener nativeListener = new NativeIntListener() {
+        RcimNativeIntListener nativeListener = new RcimNativeIntListener() {
             @Override
             public void onChanged(int value) {
                 if (listener != null) {
@@ -141,7 +144,7 @@ public class IMClient {
         msgBox.setChannel_id(msg.getChannelId());
         msgBox.setObject_name(msg.getObjectName());
         msgBox.setContent(msg.getContentJson());
-        rc_adapter.engine_send_message(this.enginePtr.get(), msgBox, new NativeSendMessageCallback() {
+        rc_adapter.engine_send_message(this.enginePtr.get(), msgBox, new RcimNativeSendMessageCallback() {
 
             @Override
             public void onSave(RcimMessageBox msg) {
@@ -152,7 +155,7 @@ public class IMClient {
             }
 
             @Override
-            public void onResult(int code, RcimMessageBox msg) {
+            public void onResult(RcimNativeSendMessageCallback deleteThis,int code, RcimMessageBox msg) {
                 String content = msg.getContent();
                 if (sendMessageCallback == null) {
                     return;
@@ -162,6 +165,7 @@ public class IMClient {
                 } else {
 
                 }
+                deleteThis.delete();
             }
         });
     }

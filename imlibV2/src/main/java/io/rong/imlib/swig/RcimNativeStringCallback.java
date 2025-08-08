@@ -8,20 +8,20 @@
 
 package io.rong.imlib.swig;
 
-public class NativeStringCallback {
+public class RcimNativeStringCallback {
   private transient long swigCPtr;
   protected transient boolean swigCMemOwn;
 
-  protected NativeStringCallback(long cPtr, boolean cMemoryOwn) {
+  protected RcimNativeStringCallback(long cPtr, boolean cMemoryOwn) {
     swigCMemOwn = cMemoryOwn;
     swigCPtr = cPtr;
   }
 
-  protected static long getCPtr(NativeStringCallback obj) {
+  protected static long getCPtr(RcimNativeStringCallback obj) {
     return (obj == null) ? 0 : obj.swigCPtr;
   }
 
-  protected static long swigRelease(NativeStringCallback obj) {
+  protected static long swigRelease(RcimNativeStringCallback obj) {
     long ptr = 0;
     if (obj != null) {
       if (!obj.swigCMemOwn)
@@ -42,7 +42,7 @@ public class NativeStringCallback {
     if (swigCPtr != 0) {
       if (swigCMemOwn) {
         swigCMemOwn = false;
-        rc_adapterJNI.delete_NativeStringCallback(swigCPtr);
+        rc_adapterJNI.delete_RcimNativeStringCallback(swigCPtr);
       }
       swigCPtr = 0;
     }
@@ -55,21 +55,21 @@ public class NativeStringCallback {
 
   public void swigReleaseOwnership() {
     swigCMemOwn = false;
-    rc_adapterJNI.NativeStringCallback_change_ownership(this, swigCPtr, false);
+    rc_adapterJNI.RcimNativeStringCallback_change_ownership(this, swigCPtr, false);
   }
 
   public void swigTakeOwnership() {
     swigCMemOwn = true;
-    rc_adapterJNI.NativeStringCallback_change_ownership(this, swigCPtr, true);
+    rc_adapterJNI.RcimNativeStringCallback_change_ownership(this, swigCPtr, true);
   }
 
-  public NativeStringCallback() {
-    this(rc_adapterJNI.new_NativeStringCallback(), true);
-    rc_adapterJNI.NativeStringCallback_director_connect(this, swigCPtr, true, true);
+  public RcimNativeStringCallback() {
+    this(rc_adapterJNI.new_RcimNativeStringCallback(), true);
+    rc_adapterJNI.RcimNativeStringCallback_director_connect(this, swigCPtr, true, true);
   }
 
-  public void onResult(int code, String value) {
-    rc_adapterJNI.NativeStringCallback_onResult(swigCPtr, this, code, value);
+  public void onResult(RcimNativeStringCallback deleteThis, int code, String value) {
+    rc_adapterJNI.RcimNativeStringCallback_onResult(swigCPtr, this, RcimNativeStringCallback.getCPtr(deleteThis), deleteThis, code, value);
   }
 
 }

@@ -33,16 +33,16 @@ public class rc_adapter {
     return rc_adapterJNI.engine_builder_set_store_path(builderPtr, storePath);
   }
 
-  public static void engine_connect(long enginePtr, String token, int timeout, NativeStringCallback callback) {
-    rc_adapterJNI.engine_connect(enginePtr, token, timeout, NativeStringCallback.getCPtr(callback), callback);
+  public static void engine_connect(long enginePtr, String token, int timeout, RcimNativeStringCallback callback) {
+    rc_adapterJNI.engine_connect(enginePtr, token, timeout, RcimNativeStringCallback.getCPtr(callback), callback);
   }
 
-  public static void engine_set_connection_status_listener(long enginePtr, NativeIntListener listener) {
-    rc_adapterJNI.engine_set_connection_status_listener(enginePtr, NativeIntListener.getCPtr(listener), listener);
+  public static void engine_set_connection_status_listener(long enginePtr, RcimNativeIntListener listener) {
+    rc_adapterJNI.engine_set_connection_status_listener(enginePtr, RcimNativeIntListener.getCPtr(listener), listener);
   }
 
-  public static void engine_send_message(long enginePtr, RcimMessageBox msgBox, NativeSendMessageCallback sendMsgCallback) {
-    rc_adapterJNI.engine_send_message(enginePtr, RcimMessageBox.getCPtr(msgBox), msgBox, NativeSendMessageCallback.getCPtr(sendMsgCallback), sendMsgCallback);
+  public static void engine_send_message(long enginePtr, RcimMessageBox msgBox, RcimNativeSendMessageCallback sendMsgCallback) {
+    rc_adapterJNI.engine_send_message(enginePtr, RcimMessageBox.getCPtr(msgBox), msgBox, RcimNativeSendMessageCallback.getCPtr(sendMsgCallback), sendMsgCallback);
   }
 
 }

@@ -8,20 +8,20 @@
 
 package io.rong.imlib.swig;
 
-public class NativeSendMessageCallback {
+public class RcimNativeIntListener {
   private transient long swigCPtr;
   protected transient boolean swigCMemOwn;
 
-  protected NativeSendMessageCallback(long cPtr, boolean cMemoryOwn) {
+  protected RcimNativeIntListener(long cPtr, boolean cMemoryOwn) {
     swigCMemOwn = cMemoryOwn;
     swigCPtr = cPtr;
   }
 
-  protected static long getCPtr(NativeSendMessageCallback obj) {
+  protected static long getCPtr(RcimNativeIntListener obj) {
     return (obj == null) ? 0 : obj.swigCPtr;
   }
 
-  protected static long swigRelease(NativeSendMessageCallback obj) {
+  protected static long swigRelease(RcimNativeIntListener obj) {
     long ptr = 0;
     if (obj != null) {
       if (!obj.swigCMemOwn)
@@ -42,7 +42,7 @@ public class NativeSendMessageCallback {
     if (swigCPtr != 0) {
       if (swigCMemOwn) {
         swigCMemOwn = false;
-        rc_adapterJNI.delete_NativeSendMessageCallback(swigCPtr);
+        rc_adapterJNI.delete_RcimNativeIntListener(swigCPtr);
       }
       swigCPtr = 0;
     }
@@ -55,25 +55,21 @@ public class NativeSendMessageCallback {
 
   public void swigReleaseOwnership() {
     swigCMemOwn = false;
-    rc_adapterJNI.NativeSendMessageCallback_change_ownership(this, swigCPtr, false);
+    rc_adapterJNI.RcimNativeIntListener_change_ownership(this, swigCPtr, false);
   }
 
   public void swigTakeOwnership() {
     swigCMemOwn = true;
-    rc_adapterJNI.NativeSendMessageCallback_change_ownership(this, swigCPtr, true);
+    rc_adapterJNI.RcimNativeIntListener_change_ownership(this, swigCPtr, true);
   }
 
-  public NativeSendMessageCallback() {
-    this(rc_adapterJNI.new_NativeSendMessageCallback(), true);
-    rc_adapterJNI.NativeSendMessageCallback_director_connect(this, swigCPtr, true, true);
+  public RcimNativeIntListener() {
+    this(rc_adapterJNI.new_RcimNativeIntListener(), true);
+    rc_adapterJNI.RcimNativeIntListener_director_connect(this, swigCPtr, true, true);
   }
 
-  public void onSave(RcimMessageBox msg) {
-    rc_adapterJNI.NativeSendMessageCallback_onSave(swigCPtr, this, RcimMessageBox.getCPtr(msg), msg);
-  }
-
-  public void onResult(int code, RcimMessageBox msg) {
-    rc_adapterJNI.NativeSendMessageCallback_onResult(swigCPtr, this, code, RcimMessageBox.getCPtr(msg), msg);
+  public void onChanged(int value) {
+    rc_adapterJNI.RcimNativeIntListener_onChanged(swigCPtr, this, value);
   }
 
 }
