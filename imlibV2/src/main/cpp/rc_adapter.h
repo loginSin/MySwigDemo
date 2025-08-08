@@ -1,7 +1,3 @@
-//
-// Created by Qi on 2025/8/6.
-//
-
 #ifndef MYSWIGDEMO_RC_ADAPTER_H
 #define MYSWIGDEMO_RC_ADAPTER_H
 

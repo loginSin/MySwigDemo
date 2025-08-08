@@ -1,6 +1,3 @@
-//
-// Created by Qi on 2025/8/6.
-//
 
 #include "rc_adapter.h"
 #include "libs/includes/rcim_client.h"

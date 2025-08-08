@@ -1,6 +1,5 @@
 package io.rong.imlib;
 
-
 import android.content.Context;
 
 import java.util.concurrent.atomic.AtomicLong;
@@ -19,13 +18,9 @@ import io.rong.imlib.swig.RcimEngineBuilderParam;
 import io.rong.imlib.swig.RcimMessageBox;
 import io.rong.imlib.swig.RcimSDKVersion;
 import io.rong.imlib.swig.rc_adapter;
+import io.rong.imlib.utils.Transformer;
 
-/**
- * @author rongcloud
- * @date 2025/8/4
- */
 public class IMClient {
-    private static final String TAG = "IMClient";
     private final AtomicLong enginePtr = new AtomicLong();
     // NativeXXXListener 需要在 java 层被持有，否则会被销毁造成野指针
     private final AtomicReference<RcimNativeIntListener> conStatusListenerRef = new AtomicReference<>();
@@ -51,6 +46,7 @@ public class IMClient {
     }
 
     public void init(Context context, String appKey) {
+        resetData();
 
         RcimEngineBuilderParam param = new RcimEngineBuilderParam();
         param.setApp_key(appKey);
@@ -80,10 +76,7 @@ public class IMClient {
 
         long[] builderPtrArr = {0};
         int code = rc_adapter.create_engine_builder(param, builderPtrArr);
-        long builderPtr = 0;
-        if (builderPtrArr.length > 0) {
-            builderPtr = builderPtrArr[0];
-        }
+        long builderPtr = builderPtrArr[0];
         sdkVer1.swigDelete();
         sdkVer2.swigDelete();
         param.swigDelete();
@@ -96,9 +89,12 @@ public class IMClient {
         long[] enginePtrArray = {0};
         code = rc_adapter.engine_builder_build(builderPtr, enginePtrArray);
 
-        if (enginePtrArray.length > 0) {
-            this.enginePtr.set(enginePtrArray[0]);
-        }
+        this.enginePtr.set(enginePtrArray[0]);
+    }
+
+    private void resetData() {
+        this.enginePtr.set(0);
+        this.conStatusListenerRef.set(null);
     }
 
     public void connect(String token, int timeout, IData1Callback<String> callback) {
@@ -120,6 +116,7 @@ public class IMClient {
 
     public void setConnectionStatusListener(ConnectionStatusListener listener) {
         RcimNativeIntListener cachedNativeListener = this.conStatusListenerRef.get();
+        // 原生监听已存在说明已经设置过了，就不再设置
         if (cachedNativeListener != null) {
             return;
         }
@@ -139,32 +136,31 @@ public class IMClient {
     public void sendMessage(Message msg, ISendMessageCallback<Message> sendMessageCallback) {
 
         RcimMessageBox inputMsgBox = new RcimMessageBox();
-        inputMsgBox.setConv_type(msg.getConversationType().getValue());
-        inputMsgBox.setTarget_id(msg.getTargetId());
-        inputMsgBox.setChannel_id(msg.getChannelId());
-        inputMsgBox.setObject_name(msg.getObjectName());
-        inputMsgBox.setContent(msg.getContentJson());
+        Transformer.messageToNative(msg, inputMsgBox);
         rc_adapter.engine_send_message(this.enginePtr.get(), inputMsgBox, new RcimNativeSendMessageCallback() {
 
             @Override
-            public void onSave(RcimMessageBox msg) {
-                String content = msg.getContent();
+            public void onSave(RcimMessageBox nativeMsg) {
+                Message msg = new Message();
+                Transformer.messageFromNative(msg, nativeMsg);
                 if (sendMessageCallback != null) {
-//                    sendMessageCallback.onAttached(message);
+                    sendMessageCallback.onAttached(msg);
                 }
             }
 
             @Override
-            public void onResult(RcimNativeSendMessageCallback deleteThis,int code, RcimMessageBox msg) {
-                String content = msg.getContent();
+            public void onResult(RcimNativeSendMessageCallback deleteThis,int code, RcimMessageBox nativeMsg) {
+                Message msg = new Message();
+                Transformer.messageFromNative(msg, nativeMsg);
                 if (sendMessageCallback == null) {
                     return;
                 }
                 if (EngineError.Success.getCode() == code) {
-//                    sendMessageCallback.onSuccess(message);
+                    sendMessageCallback.onSuccess(msg);
                 } else {
-
+                    sendMessageCallback.onError(EngineError.codeOf(code), msg);
                 }
+
                 inputMsgBox.swigDelete();
                 deleteThis.swigDelete();
             }

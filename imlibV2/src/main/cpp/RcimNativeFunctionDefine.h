@@ -1,7 +1,3 @@
-//
-// Created by Qi on 2025/8/8.
-//
-
 #ifndef MYSWIGDEMO_RCIMNATIVEFUNCTIONDEFINE_H
 #define MYSWIGDEMO_RCIMNATIVEFUNCTIONDEFINE_H
 #include "libs/includes/rcim_client.h"
@@ -29,9 +25,9 @@ public:
 
     virtual ~RcimNativeSendMessageCallback() {}
 
-    virtual void onSave(const RcimMessageBox *msg) = 0;
+    virtual void onSave(const RcimMessageBox *nativeMsg) = 0;
 
-    virtual void onResult(RcimNativeSendMessageCallback *deleteThis, int code, const RcimMessageBox *msg) = 0;
+    virtual void onResult(RcimNativeSendMessageCallback *deleteThis, int code, const RcimMessageBox *nativeMsg) = 0;
 };
 
 /// ---------------------------------------------Listener--------------------------------------------------

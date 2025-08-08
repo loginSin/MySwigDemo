@@ -924,11 +924,11 @@ SwigDirector_RcimNativeSendMessageCallback::~SwigDirector_RcimNativeSendMessageC
 }
 
 
-void SwigDirector_RcimNativeSendMessageCallback::onSave(RcimMessageBox const *msg) {
+void SwigDirector_RcimNativeSendMessageCallback::onSave(RcimMessageBox const *nativeMsg) {
   JNIEnvWrapper swigjnienv(this) ;
   JNIEnv * jenv = swigjnienv.getJNIEnv() ;
   jobject swigjobj = (jobject) NULL ;
-  jlong jmsg = 0 ;
+  jlong jnativeMsg = 0 ;
   
   if (!swig_override[0]) {
     SWIG_JavaThrowException(JNIEnvWrapper(this).getJNIEnv(), SWIG_JavaDirectorPureVirtual, "Attempted to invoke pure virtual method RcimNativeSendMessageCallback::onSave.");
@@ -936,8 +936,8 @@ void SwigDirector_RcimNativeSendMessageCallback::onSave(RcimMessageBox const *ms
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    *((RcimMessageBox **)&jmsg) = (RcimMessageBox *) msg; 
-    jenv->CallStaticVoidMethod(Swig::jclass_rc_adapterJNI, Swig::director_method_ids[1], swigjobj, jmsg);
+    *((RcimMessageBox **)&jnativeMsg) = (RcimMessageBox *) nativeMsg; 
+    jenv->CallStaticVoidMethod(Swig::jclass_rc_adapterJNI, Swig::director_method_ids[1], swigjobj, jnativeMsg);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       Swig::DirectorException::raise(jenv, swigerror);
@@ -949,13 +949,13 @@ void SwigDirector_RcimNativeSendMessageCallback::onSave(RcimMessageBox const *ms
   if (swigjobj) jenv->DeleteLocalRef(swigjobj);
 }
 
-void SwigDirector_RcimNativeSendMessageCallback::onResult(RcimNativeSendMessageCallback *deleteThis,int code,RcimMessageBox const *msg) {
+void SwigDirector_RcimNativeSendMessageCallback::onResult(RcimNativeSendMessageCallback *deleteThis,int code,RcimMessageBox const *nativeMsg) {
   JNIEnvWrapper swigjnienv(this) ;
   JNIEnv * jenv = swigjnienv.getJNIEnv() ;
   jobject swigjobj = (jobject) NULL ;
   jlong jdeleteThis = 0 ;
   jint jcode  ;
-  jlong jmsg = 0 ;
+  jlong jnativeMsg = 0 ;
   
   if (!swig_override[1]) {
     SWIG_JavaThrowException(JNIEnvWrapper(this).getJNIEnv(), SWIG_JavaDirectorPureVirtual, "Attempted to invoke pure virtual method RcimNativeSendMessageCallback::onResult.");
@@ -965,8 +965,8 @@ void SwigDirector_RcimNativeSendMessageCallback::onResult(RcimNativeSendMessageC
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
     *((RcimNativeSendMessageCallback **)&jdeleteThis) = (RcimNativeSendMessageCallback *) deleteThis; 
     jcode = (jint) code;
-    *((RcimMessageBox **)&jmsg) = (RcimMessageBox *) msg; 
-    jenv->CallStaticVoidMethod(Swig::jclass_rc_adapterJNI, Swig::director_method_ids[2], swigjobj, jdeleteThis, jcode, jmsg);
+    *((RcimMessageBox **)&jnativeMsg) = (RcimMessageBox *) nativeMsg; 
+    jenv->CallStaticVoidMethod(Swig::jclass_rc_adapterJNI, Swig::director_method_ids[2], swigjobj, jdeleteThis, jcode, jnativeMsg);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       Swig::DirectorException::raise(jenv, swigerror);

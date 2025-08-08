@@ -73,15 +73,15 @@ class MainActivity : ComponentActivity() {
         msg.contentJson = "{\"content\" : \"测试\"}"
         IMClient.getInstance().sendMessage(msg, object : ISendMessageCallback<Message> {
             override fun onError(error: EngineError?, data: Message?) {
-                TODO("Not yet implemented")
+//                TODO("Not yet implemented")
             }
 
             override fun onAttached(message: Message?) {
-                TODO("Not yet implemented")
+//                TODO("Not yet implemented")
             }
 
             override fun onSuccess(message: Message?) {
-                TODO("Not yet implemented")
+//                TODO("Not yet implemented")
             }
 
         })

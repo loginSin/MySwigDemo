@@ -96,12 +96,12 @@ public long getCPtr() {
     rc_adapterJNI.RcimNativeSendMessageCallback_director_connect(this, swigCPtr, true, true);
   }
 
-  public void onSave(RcimMessageBox msg) {
-    rc_adapterJNI.RcimNativeSendMessageCallback_onSave(swigCPtr, this, RcimMessageBox.getCPtr(msg), msg);
+  public void onSave(RcimMessageBox nativeMsg) {
+    rc_adapterJNI.RcimNativeSendMessageCallback_onSave(swigCPtr, this, RcimMessageBox.getCPtr(nativeMsg), nativeMsg);
   }
 
-  public void onResult(RcimNativeSendMessageCallback deleteThis, int code, RcimMessageBox msg) {
-    rc_adapterJNI.RcimNativeSendMessageCallback_onResult(swigCPtr, this, RcimNativeSendMessageCallback.getCPtr(deleteThis), deleteThis, code, RcimMessageBox.getCPtr(msg), msg);
+  public void onResult(RcimNativeSendMessageCallback deleteThis, int code, RcimMessageBox nativeMsg) {
+    rc_adapterJNI.RcimNativeSendMessageCallback_onResult(swigCPtr, this, RcimNativeSendMessageCallback.getCPtr(deleteThis), deleteThis, code, RcimMessageBox.getCPtr(nativeMsg), nativeMsg);
   }
 
 }

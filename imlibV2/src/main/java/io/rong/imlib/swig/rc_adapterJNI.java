@@ -226,11 +226,11 @@ public class rc_adapterJNI {
   public static void SwigDirector_RcimNativeStringCallback_onResult(RcimNativeStringCallback jself, long deleteThis, int code, String value) {
     jself.onResult((deleteThis == 0) ? null : new RcimNativeStringCallback(deleteThis, false), code, value);
   }
-  public static void SwigDirector_RcimNativeSendMessageCallback_onSave(RcimNativeSendMessageCallback jself, long msg) {
-    jself.onSave((msg == 0) ? null : new RcimMessageBox(msg, false));
+  public static void SwigDirector_RcimNativeSendMessageCallback_onSave(RcimNativeSendMessageCallback jself, long nativeMsg) {
+    jself.onSave((nativeMsg == 0) ? null : new RcimMessageBox(nativeMsg, false));
   }
-  public static void SwigDirector_RcimNativeSendMessageCallback_onResult(RcimNativeSendMessageCallback jself, long deleteThis, int code, long msg) {
-    jself.onResult((deleteThis == 0) ? null : new RcimNativeSendMessageCallback(deleteThis, false), code, (msg == 0) ? null : new RcimMessageBox(msg, false));
+  public static void SwigDirector_RcimNativeSendMessageCallback_onResult(RcimNativeSendMessageCallback jself, long deleteThis, int code, long nativeMsg) {
+    jself.onResult((deleteThis == 0) ? null : new RcimNativeSendMessageCallback(deleteThis, false), code, (nativeMsg == 0) ? null : new RcimMessageBox(nativeMsg, false));
   }
   public static void SwigDirector_RcimNativeIntListener_onChanged(RcimNativeIntListener jself, int value) {
     jself.onChanged(value);

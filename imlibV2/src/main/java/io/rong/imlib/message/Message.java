@@ -2,16 +2,21 @@ package io.rong.imlib.message;
 
 import io.rong.imlib.conversation.enums.ConversationType;
 
-/**
- * @author rongcloud
- * @date 2025/8/6
- */
 public class Message {
+    long messageId = 0;
     ConversationType conversationType;
     String targetId;
     String channelId;
     String objectName;
     String contentJson;
+
+    public long getMessageId() {
+        return messageId;
+    }
+
+    public void setMessageId(long messageId) {
+        this.messageId = messageId;
+    }
 
     public ConversationType getConversationType() {
         return conversationType;
