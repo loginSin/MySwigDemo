@@ -66,28 +66,28 @@ public class IMClient {
         sdkVer2.setVersion("1.1.1");
 
         int sdkVersionSize = 2;
-        long longArr = rc_adapter.rcim_sdk_version_array_new(sdkVersionSize);
+        long longArr = rc_adapter.newSdkVersionArray(sdkVersionSize);
         long[] longPtr = {sdkVer1.getCPtr(), sdkVer2.getCPtr()};
-        rc_adapter.rcim_sdk_version_array_insert(longArr, longPtr, longPtr.length);
+        rc_adapter.insertSdkVersionArray(longArr, longPtr, longPtr.length);
 
         RcimSDKVersion totalVer = RcimSDKVersion.fromPointer(longArr);
         param.setSdk_version_vec(totalVer);
         param.setSdk_version_vec_len(sdkVersionSize);
 
         long[] builderPtrArr = {0};
-        int code = rc_adapter.create_engine_builder(param, builderPtrArr);
+        int code = rc_adapter.createEngineBuilder(param, builderPtrArr);
         long builderPtr = builderPtrArr[0];
         sdkVer1.swigDelete();
         sdkVer2.swigDelete();
         param.swigDelete();
 
-        rc_adapter.rcim_sdk_version_array_free(longArr);
+        rc_adapter.freeSdkVersionArray(longArr);
 
         String storePath = context.getFilesDir().getPath();
-        code = rc_adapter.engine_builder_set_store_path(builderPtr, storePath);
+        code = rc_adapter.engineBuilderSetStorePath(builderPtr, storePath);
 
         long[] enginePtrArray = {0};
-        code = rc_adapter.engine_builder_build(builderPtr, enginePtrArray);
+        code = rc_adapter.engineBuilderBuild(builderPtr, enginePtrArray);
 
         this.enginePtr.set(enginePtrArray[0]);
     }
@@ -98,7 +98,7 @@ public class IMClient {
     }
 
     public void connect(String token, int timeout, IData1Callback<String> callback) {
-        rc_adapter.engine_connect(this.enginePtr.get(), token, timeout, new RcimNativeStringCallback() {
+        rc_adapter.engineConnect(this.enginePtr.get(), token, timeout, new RcimNativeStringCallback() {
             @Override
             public void onResult(RcimNativeStringCallback deleteThis, int code, String value) {
                 if (callback == null) {
@@ -130,14 +130,14 @@ public class IMClient {
             }
         };
         this.conStatusListenerRef.set(nativeListener);
-        rc_adapter.engine_set_connection_status_listener(this.enginePtr.get(), nativeListener);
+        rc_adapter.engineSetConnectionStatusListener(this.enginePtr.get(), nativeListener);
     }
 
     public void sendMessage(Message msg, ISendMessageCallback<Message> sendMessageCallback) {
 
         RcimMessageBox inputMsgBox = new RcimMessageBox();
         Transformer.messageToNative(msg, inputMsgBox);
-        rc_adapter.engine_send_message(this.enginePtr.get(), inputMsgBox, new RcimNativeSendMessageCallback() {
+        rc_adapter.engineSendMessage(this.enginePtr.get(), inputMsgBox, new RcimNativeSendMessageCallback() {
 
             @Override
             public void onSave(RcimMessageBox nativeMsg) {
@@ -149,7 +149,7 @@ public class IMClient {
             }
 
             @Override
-            public void onResult(RcimNativeSendMessageCallback deleteThis,int code, RcimMessageBox nativeMsg) {
+            public void onResult(RcimNativeSendMessageCallback deleteThis, int code, RcimMessageBox nativeMsg) {
                 Message msg = new Message();
                 Transformer.messageFromNative(msg, nativeMsg);
                 if (sendMessageCallback == null) {

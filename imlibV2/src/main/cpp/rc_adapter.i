@@ -11,8 +11,8 @@
 %}
 
 
-int create_engine_builder(RcimEngineBuilderParam *param, int64_t *OUTPUT);
-int engine_builder_build(int64_t builderPtr, int64_t *OUTPUT);
+int createEngineBuilder(RcimEngineBuilderParam *param, int64_t *OUTPUT);
+int engineBuilderBuild(int64_t builderPtr, int64_t *OUTPUT);
 
 // 启用 director 功能，允许 Java 继承 C++ 类
 %feature("director") RcimNativeStringCallback;

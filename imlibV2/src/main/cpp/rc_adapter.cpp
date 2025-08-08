@@ -3,7 +3,7 @@
 #include "libs/includes/rcim_client.h"
 #include <jni.h>
 
-int create_engine_builder(RcimEngineBuilderParam *param, int64_t *outBuilderPtr) {
+int createEngineBuilder(RcimEngineBuilderParam *param, int64_t *outBuilderPtr) {
     if (!param) {
         return 0;
     }
@@ -16,13 +16,14 @@ int create_engine_builder(RcimEngineBuilderParam *param, int64_t *outBuilderPtr)
     return code;
 }
 
-int64_t rcim_sdk_version_array_new(int size) {
+int64_t newSdkVersionArray(int size) {
     RcimSDKVersion *array = (RcimSDKVersion *) malloc(sizeof(RcimSDKVersion) * size);
     if (!array) return 0; // 内存分配失败
-    return (int64_t)(uintptr_t) array; // 转成 int64_t 类型安全返回
+    // 转成 int64_t 类型安全返回
+    return (int64_t)(uintptr_t) array;
 }
 
-void rcim_sdk_version_array_insert(int64_t ptr, int64_t *ptrArr, int size) {
+void insertSdkVersionArray(int64_t ptr, int64_t *ptrArr, int size) {
     if (ptr == 0) return;
     RcimSDKVersion *array = (RcimSDKVersion *) ptr;
     for (size_t i = 0; i < size; ++i) {
@@ -34,13 +35,13 @@ void rcim_sdk_version_array_insert(int64_t ptr, int64_t *ptrArr, int size) {
 }
 
 
-void rcim_sdk_version_array_free(int64_t ptr) {
+void freeSdkVersionArray(int64_t ptr) {
     if (ptr == 0) return;
     RcimSDKVersion *array = (RcimSDKVersion *) (intptr_t) ptr;
     free(array);
 }
 
-int engine_builder_set_store_path(int64_t builderPtr, const char *storePath) {
+int engineBuilderSetStorePath(int64_t builderPtr, const char *storePath) {
     auto *builder = reinterpret_cast<RcimEngineBuilder *>(static_cast<uintptr_t>(builderPtr));
 
     RcimEngineError code = rcim_engine_builder_set_store_path(builder, storePath);
@@ -83,7 +84,7 @@ int engine_builder_set_store_path(int64_t builderPtr, const char *storePath) {
     return code;
 }
 
-int engine_builder_build(int64_t builderPtr, int64_t *outEnginePtr) {
+int engineBuilderBuild(int64_t builderPtr, int64_t *outEnginePtr) {
     auto *builder = reinterpret_cast<RcimEngineBuilder *>(static_cast<uintptr_t>(builderPtr));
     RcimEngineSync *engine_ = nullptr;
     RcimEngineError code = rcim_engine_builder_build(builder, &engine_);
@@ -93,53 +94,52 @@ int engine_builder_build(int64_t builderPtr, int64_t *outEnginePtr) {
     return code;
 }
 
-void engine_connect_adapter(const void *context, enum RcimEngineError code, const char *user_id) {
+void engineConnectAdapter(const void *context, enum RcimEngineError code, const char *user_id) {
     RcimNativeStringCallback *callback = static_cast<RcimNativeStringCallback *>(const_cast<void *>(context));
     if (callback) {
         callback->onResult(callback, code, user_id);
-    } else {
-//        std::cerr << "Warning: Connect callback without valid context" << std::endl;
     }
 }
 
-void engine_connect(int64_t enginePtr, const char *token, int timeout, RcimNativeStringCallback *callback) {
+void engineConnect(int64_t enginePtr, const char *token, int timeout,
+                   RcimNativeStringCallback *callback) {
     auto *engine = reinterpret_cast<RcimEngineSync *>(static_cast<uintptr_t>(enginePtr));
-    rcim_engine_connect(engine, token, timeout, callback, engine_connect_adapter);
+    rcim_engine_connect(engine, token, timeout, callback, engineConnectAdapter);
 }
 
-void engine_set_connection_status_listener_adapter(const void *context,
-                                                   enum RcimConnectionStatus status) {
+void engineSetConnectionStatusListenerAdapter(const void *context,
+                                              enum RcimConnectionStatus status) {
     RcimNativeIntListener *listener = static_cast<RcimNativeIntListener *>(const_cast<void *>(context));
     if (listener) {
         listener->onChanged(status);
     }
 }
 
-void engine_set_connection_status_listener(int64_t enginePtr, RcimNativeIntListener *listener) {
+void engineSetConnectionStatusListener(int64_t enginePtr, RcimNativeIntListener *listener) {
     auto *engine = reinterpret_cast<RcimEngineSync *>(static_cast<uintptr_t>(enginePtr));
     rcim_engine_set_connection_status_listener(engine, listener,
-                                               engine_set_connection_status_listener_adapter);
+                                               engineSetConnectionStatusListenerAdapter);
 }
 
-void engine_send_message_saved(const void *context, const struct RcimMessageBox *msg_box) {
+void engineSendMessageSaved(const void *context, const struct RcimMessageBox *msg_box) {
     RcimNativeSendMessageCallback *callback = static_cast<RcimNativeSendMessageCallback *>(const_cast<void *>(context));
     if (callback) {
         callback->onSave(msg_box);
     }
 }
 
-void engine_send_message_adapter(const void *context,
-                                 enum RcimEngineError code,
-                                 const struct RcimMessageBox *msg_box) {
+void engineSendMessageAdapter(const void *context,
+                              enum RcimEngineError code,
+                              const struct RcimMessageBox *msg_box) {
     RcimNativeSendMessageCallback *callback = static_cast<RcimNativeSendMessageCallback *>(const_cast<void *>(context));
     if (callback) {
         callback->onResult(callback, code, msg_box);
     }
 }
 
-void engine_send_message(int64_t enginePtr, RcimMessageBox *msgBox,
-                         RcimNativeSendMessageCallback *sendMsgCallback) {
+void engineSendMessage(int64_t enginePtr, RcimMessageBox *msgBox,
+                       RcimNativeSendMessageCallback *sendMsgCallback) {
     auto *engine = reinterpret_cast<RcimEngineSync *>(static_cast<uintptr_t>(enginePtr));
-    rcim_engine_send_message(engine, msgBox, nullptr, sendMsgCallback, engine_send_message_adapter,
-                             engine_send_message_saved);
+    rcim_engine_send_message(engine, msgBox, nullptr, sendMsgCallback, engineSendMessageAdapter,
+                             engineSendMessageSaved);
 }

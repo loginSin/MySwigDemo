@@ -47,7 +47,7 @@ public void init() {
     RcimSDKVersion sdkVer2 = new RcimSDKVersion();
     sdkVer2.setName("imkit");
     
-    int code = rc_adapter.create_engine_builder(param, builderPtrArr);
+    int code = rc_adapter.createEngineBuilder(param, builderPtrArr);
 
     // 上述 new Rcim 使用完成之后，手动调用 swigDelete() 进行删除
     sdkVer1.swigDelete();
@@ -67,7 +67,7 @@ public void sendMessage(Message msg, ISendMessageCallback<Message> sendMessageCa
     inputMsgBox.setConv_type(msg.getConversationType().getValue());
 
     // 出现 new RcimNativeSendMessageCallback
-    rc_adapter.engine_send_message(this.enginePtr.get(), inputMsgBox, new RcimNativeSendMessageCallback() {
+    rc_adapter.engineSendMessage(this.enginePtr.get(), inputMsgBox, new RcimNativeSendMessageCallback() {
 
         @Override
         public void onSave(RcimMessageBox msg) {

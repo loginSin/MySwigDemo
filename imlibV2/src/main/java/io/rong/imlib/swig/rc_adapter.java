@@ -9,40 +9,40 @@
 package io.rong.imlib.swig;
 
 public class rc_adapter {
-  public static int create_engine_builder(RcimEngineBuilderParam param, long[] OUTPUT) {
-    return rc_adapterJNI.create_engine_builder(RcimEngineBuilderParam.getCPtr(param), param, OUTPUT);
+  public static int createEngineBuilder(RcimEngineBuilderParam param, long[] OUTPUT) {
+    return rc_adapterJNI.createEngineBuilder(RcimEngineBuilderParam.getCPtr(param), param, OUTPUT);
   }
 
-  public static int engine_builder_build(long builderPtr, long[] OUTPUT) {
-    return rc_adapterJNI.engine_builder_build(builderPtr, OUTPUT);
+  public static int engineBuilderBuild(long builderPtr, long[] OUTPUT) {
+    return rc_adapterJNI.engineBuilderBuild(builderPtr, OUTPUT);
   }
 
-  public static long rcim_sdk_version_array_new(int size) {
-    return rc_adapterJNI.rcim_sdk_version_array_new(size);
+  public static long newSdkVersionArray(int size) {
+    return rc_adapterJNI.newSdkVersionArray(size);
   }
 
-  public static void rcim_sdk_version_array_insert(long ptr, long[] ptrArr, int size) {
-    rc_adapterJNI.rcim_sdk_version_array_insert(ptr, ptrArr, size);
+  public static void insertSdkVersionArray(long ptr, long[] ptrArr, int size) {
+    rc_adapterJNI.insertSdkVersionArray(ptr, ptrArr, size);
   }
 
-  public static void rcim_sdk_version_array_free(long ptr) {
-    rc_adapterJNI.rcim_sdk_version_array_free(ptr);
+  public static void freeSdkVersionArray(long ptr) {
+    rc_adapterJNI.freeSdkVersionArray(ptr);
   }
 
-  public static int engine_builder_set_store_path(long builderPtr, String storePath) {
-    return rc_adapterJNI.engine_builder_set_store_path(builderPtr, storePath);
+  public static int engineBuilderSetStorePath(long builderPtr, String storePath) {
+    return rc_adapterJNI.engineBuilderSetStorePath(builderPtr, storePath);
   }
 
-  public static void engine_connect(long enginePtr, String token, int timeout, RcimNativeStringCallback callback) {
-    rc_adapterJNI.engine_connect(enginePtr, token, timeout, RcimNativeStringCallback.getCPtr(callback), callback);
+  public static void engineConnect(long enginePtr, String token, int timeout, RcimNativeStringCallback callback) {
+    rc_adapterJNI.engineConnect(enginePtr, token, timeout, RcimNativeStringCallback.getCPtr(callback), callback);
   }
 
-  public static void engine_set_connection_status_listener(long enginePtr, RcimNativeIntListener listener) {
-    rc_adapterJNI.engine_set_connection_status_listener(enginePtr, RcimNativeIntListener.getCPtr(listener), listener);
+  public static void engineSetConnectionStatusListener(long enginePtr, RcimNativeIntListener listener) {
+    rc_adapterJNI.engineSetConnectionStatusListener(enginePtr, RcimNativeIntListener.getCPtr(listener), listener);
   }
 
-  public static void engine_send_message(long enginePtr, RcimMessageBox msgBox, RcimNativeSendMessageCallback sendMsgCallback) {
-    rc_adapterJNI.engine_send_message(enginePtr, RcimMessageBox.getCPtr(msgBox), msgBox, RcimNativeSendMessageCallback.getCPtr(sendMsgCallback), sendMsgCallback);
+  public static void engineSendMessage(long enginePtr, RcimMessageBox msgBox, RcimNativeSendMessageCallback sendMsgCallback) {
+    rc_adapterJNI.engineSendMessage(enginePtr, RcimMessageBox.getCPtr(msgBox), msgBox, RcimNativeSendMessageCallback.getCPtr(sendMsgCallback), sendMsgCallback);
   }
 
 }
