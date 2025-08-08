@@ -48,11 +48,6 @@ public class RcimMessageBox {
     }
   }
 
-/** 静态工厂方法：从 C 指针构建 RcimMessageBox 对象 */
-public static RcimMessageBox fromPointer(long cPtr) {
-    return new RcimMessageBox(cPtr, false);
-}
-
   public void setConv_type(int value) {
     rc_adapterJNI.RcimMessageBox_conv_type_set(swigCPtr, this, value);
   }

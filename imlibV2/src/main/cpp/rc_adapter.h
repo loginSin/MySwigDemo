@@ -4,6 +4,7 @@
 
 #ifndef MYSWIGDEMO_RC_ADAPTER_H
 #define MYSWIGDEMO_RC_ADAPTER_H
+
 #include <stdint.h>
 
 #include "libs/includes/rcim_client.h"
@@ -31,6 +32,7 @@ void engine_connect(int64_t enginePtr, const char *token, int timeout, NativeStr
 
 void engine_set_connection_status_listener(int64_t enginePtr, NativeIntListener *listener);
 
-void engine_send_message(int64_t enginePtr, RcimMessageBox *msgBox, NativeSendMessageCallback *sendMsgCallback);
+void engine_send_message(int64_t enginePtr, RcimMessageBox *msgBox,
+                         NativeSendMessageCallback *sendMsgCallback);
 
 #endif //MYSWIGDEMO_RC_ADAPTER_H

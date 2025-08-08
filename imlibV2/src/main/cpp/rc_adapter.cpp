@@ -22,8 +22,7 @@ int create_engine_builder(RcimEngineBuilderParam *param, int64_t *outBuilderPtr)
 int64_t rcim_sdk_version_array_new(int size) {
     RcimSDKVersion *array = (RcimSDKVersion *) malloc(sizeof(RcimSDKVersion) * size);
     if (!array) return 0; // 内存分配失败
-    return (int64_t)(uintptr_t)
-    array; // 转成 int64_t 类型安全返回
+    return (int64_t)(uintptr_t) array; // 转成 int64_t 类型安全返回
 }
 
 void rcim_sdk_version_array_insert(int64_t ptr, int64_t *ptrArr, int size) {

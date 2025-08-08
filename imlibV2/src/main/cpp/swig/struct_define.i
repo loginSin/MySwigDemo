@@ -5,13 +5,6 @@
 %apply int { RcimSentStatus };
 %apply int { RcimPlatform };
 
-%typemap(javacode) RcimMessageBox %{
-/** 静态工厂方法：从 C 指针构建 RcimMessageBox 对象 */
-public static RcimMessageBox fromPointer(long cPtr) {
-    return new RcimMessageBox(cPtr, false);
-}
-%}
-
 %typemap(javacode) RcimSDKVersion %{
 /** 静态工厂方法：从 C 指针构建 RcimMessageBox 对象 */
 public static RcimSDKVersion fromPointer(long cPtr) {
@@ -23,5 +16,4 @@ public long getCPtr() {
     return swigCPtr;
 }
 %}
-
 %include "extracted_struct_define.h"
