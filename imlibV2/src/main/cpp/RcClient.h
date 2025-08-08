@@ -1,5 +1,5 @@
-#ifndef MYSWIGDEMO_RC_ADAPTER_H
-#define MYSWIGDEMO_RC_ADAPTER_H
+#ifndef MYSWIGDEMO_RCCLIENT_H
+#define MYSWIGDEMO_RCCLIENT_H
 
 #include <stdint.h>
 
@@ -30,4 +30,4 @@ void engineSetConnectionStatusListener(int64_t enginePtr, RcimNativeIntListener 
 void engineSendMessage(int64_t enginePtr, RcimMessageBox *msgBox,
                        RcimNativeSendMessageCallback *sendMsgCallback);
 
-#endif //MYSWIGDEMO_RC_ADAPTER_H
+#endif //MYSWIGDEMO_RCCLIENT_H

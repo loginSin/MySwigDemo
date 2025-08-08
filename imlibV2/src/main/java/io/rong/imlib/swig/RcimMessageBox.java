@@ -42,7 +42,7 @@ public class RcimMessageBox {
     if (swigCPtr != 0) {
       if (swigCMemOwn) {
         swigCMemOwn = false;
-        rc_adapterJNI.delete_RcimMessageBox(swigCPtr);
+        RcClientJNI.delete_RcimMessageBox(swigCPtr);
       }
       swigCPtr = 0;
     }
@@ -77,203 +77,203 @@ public long getCPtr() {
 }
 
   public void setConv_type(int value) {
-    rc_adapterJNI.RcimMessageBox_conv_type_set(swigCPtr, this, value);
+    RcClientJNI.RcimMessageBox_conv_type_set(swigCPtr, this, value);
   }
 
   public int getConv_type() {
-    return rc_adapterJNI.RcimMessageBox_conv_type_get(swigCPtr, this);
+    return RcClientJNI.RcimMessageBox_conv_type_get(swigCPtr, this);
   }
 
   public void setTarget_id(String value) {
-    rc_adapterJNI.RcimMessageBox_target_id_set(swigCPtr, this, value);
+    RcClientJNI.RcimMessageBox_target_id_set(swigCPtr, this, value);
   }
 
   public String getTarget_id() {
-    return rc_adapterJNI.RcimMessageBox_target_id_get(swigCPtr, this);
+    return RcClientJNI.RcimMessageBox_target_id_get(swigCPtr, this);
   }
 
   public void setChannel_id(String value) {
-    rc_adapterJNI.RcimMessageBox_channel_id_set(swigCPtr, this, value);
+    RcClientJNI.RcimMessageBox_channel_id_set(swigCPtr, this, value);
   }
 
   public String getChannel_id() {
-    return rc_adapterJNI.RcimMessageBox_channel_id_get(swigCPtr, this);
+    return RcClientJNI.RcimMessageBox_channel_id_get(swigCPtr, this);
   }
 
   public void setMessage_id(long value) {
-    rc_adapterJNI.RcimMessageBox_message_id_set(swigCPtr, this, value);
+    RcClientJNI.RcimMessageBox_message_id_set(swigCPtr, this, value);
   }
 
   public long getMessage_id() {
-    return rc_adapterJNI.RcimMessageBox_message_id_get(swigCPtr, this);
+    return RcClientJNI.RcimMessageBox_message_id_get(swigCPtr, this);
   }
 
   public void setDirection(int value) {
-    rc_adapterJNI.RcimMessageBox_direction_set(swigCPtr, this, value);
+    RcClientJNI.RcimMessageBox_direction_set(swigCPtr, this, value);
   }
 
   public int getDirection() {
-    return rc_adapterJNI.RcimMessageBox_direction_get(swigCPtr, this);
+    return RcClientJNI.RcimMessageBox_direction_get(swigCPtr, this);
   }
 
   public void setSender_id(String value) {
-    rc_adapterJNI.RcimMessageBox_sender_id_set(swigCPtr, this, value);
+    RcClientJNI.RcimMessageBox_sender_id_set(swigCPtr, this, value);
   }
 
   public String getSender_id() {
-    return rc_adapterJNI.RcimMessageBox_sender_id_get(swigCPtr, this);
+    return RcClientJNI.RcimMessageBox_sender_id_get(swigCPtr, this);
   }
 
   public void setReceived_status(RcimReceivedStatus value) {
-    rc_adapterJNI.RcimMessageBox_received_status_set(swigCPtr, this, RcimReceivedStatus.getCPtr(value), value);
+    RcClientJNI.RcimMessageBox_received_status_set(swigCPtr, this, RcimReceivedStatus.getCPtr(value), value);
   }
 
   public RcimReceivedStatus getReceived_status() {
-    long cPtr = rc_adapterJNI.RcimMessageBox_received_status_get(swigCPtr, this);
+    long cPtr = RcClientJNI.RcimMessageBox_received_status_get(swigCPtr, this);
     return (cPtr == 0) ? null : new RcimReceivedStatus(cPtr, false);
   }
 
   public void setSent_status(int value) {
-    rc_adapterJNI.RcimMessageBox_sent_status_set(swigCPtr, this, value);
+    RcClientJNI.RcimMessageBox_sent_status_set(swigCPtr, this, value);
   }
 
   public int getSent_status() {
-    return rc_adapterJNI.RcimMessageBox_sent_status_get(swigCPtr, this);
+    return RcClientJNI.RcimMessageBox_sent_status_get(swigCPtr, this);
   }
 
   public void setReceived_time(long value) {
-    rc_adapterJNI.RcimMessageBox_received_time_set(swigCPtr, this, value);
+    RcClientJNI.RcimMessageBox_received_time_set(swigCPtr, this, value);
   }
 
   public long getReceived_time() {
-    return rc_adapterJNI.RcimMessageBox_received_time_get(swigCPtr, this);
+    return RcClientJNI.RcimMessageBox_received_time_get(swigCPtr, this);
   }
 
   public void setSent_time(long value) {
-    rc_adapterJNI.RcimMessageBox_sent_time_set(swigCPtr, this, value);
+    RcClientJNI.RcimMessageBox_sent_time_set(swigCPtr, this, value);
   }
 
   public long getSent_time() {
-    return rc_adapterJNI.RcimMessageBox_sent_time_get(swigCPtr, this);
+    return RcClientJNI.RcimMessageBox_sent_time_get(swigCPtr, this);
   }
 
   public void setObject_name(String value) {
-    rc_adapterJNI.RcimMessageBox_object_name_set(swigCPtr, this, value);
+    RcClientJNI.RcimMessageBox_object_name_set(swigCPtr, this, value);
   }
 
   public String getObject_name() {
-    return rc_adapterJNI.RcimMessageBox_object_name_get(swigCPtr, this);
+    return RcClientJNI.RcimMessageBox_object_name_get(swigCPtr, this);
   }
 
   public void setContent(String value) {
-    rc_adapterJNI.RcimMessageBox_content_set(swigCPtr, this, value);
+    RcClientJNI.RcimMessageBox_content_set(swigCPtr, this, value);
   }
 
   public String getContent() {
-    return rc_adapterJNI.RcimMessageBox_content_get(swigCPtr, this);
+    return RcClientJNI.RcimMessageBox_content_get(swigCPtr, this);
   }
 
   public void setSearchable_words(String value) {
-    rc_adapterJNI.RcimMessageBox_searchable_words_set(swigCPtr, this, value);
+    RcClientJNI.RcimMessageBox_searchable_words_set(swigCPtr, this, value);
   }
 
   public String getSearchable_words() {
-    return rc_adapterJNI.RcimMessageBox_searchable_words_get(swigCPtr, this);
+    return RcClientJNI.RcimMessageBox_searchable_words_get(swigCPtr, this);
   }
 
   public void setUid(String value) {
-    rc_adapterJNI.RcimMessageBox_uid_set(swigCPtr, this, value);
+    RcClientJNI.RcimMessageBox_uid_set(swigCPtr, this, value);
   }
 
   public String getUid() {
-    return rc_adapterJNI.RcimMessageBox_uid_get(swigCPtr, this);
+    return RcClientJNI.RcimMessageBox_uid_get(swigCPtr, this);
   }
 
   public void setExtra(String value) {
-    rc_adapterJNI.RcimMessageBox_extra_set(swigCPtr, this, value);
+    RcClientJNI.RcimMessageBox_extra_set(swigCPtr, this, value);
   }
 
   public String getExtra() {
-    return rc_adapterJNI.RcimMessageBox_extra_get(swigCPtr, this);
+    return RcClientJNI.RcimMessageBox_extra_get(swigCPtr, this);
   }
 
   public void setRead_receipt_info(RcimReadReceiptInfo value) {
-    rc_adapterJNI.RcimMessageBox_read_receipt_info_set(swigCPtr, this, RcimReadReceiptInfo.getCPtr(value), value);
+    RcClientJNI.RcimMessageBox_read_receipt_info_set(swigCPtr, this, RcimReadReceiptInfo.getCPtr(value), value);
   }
 
   public RcimReadReceiptInfo getRead_receipt_info() {
-    long cPtr = rc_adapterJNI.RcimMessageBox_read_receipt_info_get(swigCPtr, this);
+    long cPtr = RcClientJNI.RcimMessageBox_read_receipt_info_get(swigCPtr, this);
     return (cPtr == 0) ? null : new RcimReadReceiptInfo(cPtr, false);
   }
 
   public void setRead_receipt_info_v2(RcimReadReceiptInfoV2 value) {
-    rc_adapterJNI.RcimMessageBox_read_receipt_info_v2_set(swigCPtr, this, RcimReadReceiptInfoV2.getCPtr(value), value);
+    RcClientJNI.RcimMessageBox_read_receipt_info_v2_set(swigCPtr, this, RcimReadReceiptInfoV2.getCPtr(value), value);
   }
 
   public RcimReadReceiptInfoV2 getRead_receipt_info_v2() {
-    long cPtr = rc_adapterJNI.RcimMessageBox_read_receipt_info_v2_get(swigCPtr, this);
+    long cPtr = RcClientJNI.RcimMessageBox_read_receipt_info_v2_get(swigCPtr, this);
     return (cPtr == 0) ? null : new RcimReadReceiptInfoV2(cPtr, false);
   }
 
   public void setIs_notification_disabled(boolean value) {
-    rc_adapterJNI.RcimMessageBox_is_notification_disabled_set(swigCPtr, this, value);
+    RcClientJNI.RcimMessageBox_is_notification_disabled_set(swigCPtr, this, value);
   }
 
   public boolean getIs_notification_disabled() {
-    return rc_adapterJNI.RcimMessageBox_is_notification_disabled_get(swigCPtr, this);
+    return RcClientJNI.RcimMessageBox_is_notification_disabled_get(swigCPtr, this);
   }
 
   public void setPush_config(RcimPushConfig value) {
-    rc_adapterJNI.RcimMessageBox_push_config_set(swigCPtr, this, RcimPushConfig.getCPtr(value), value);
+    RcClientJNI.RcimMessageBox_push_config_set(swigCPtr, this, RcimPushConfig.getCPtr(value), value);
   }
 
   public RcimPushConfig getPush_config() {
-    long cPtr = rc_adapterJNI.RcimMessageBox_push_config_get(swigCPtr, this);
+    long cPtr = RcClientJNI.RcimMessageBox_push_config_get(swigCPtr, this);
     return (cPtr == 0) ? null : new RcimPushConfig(cPtr, false);
   }
 
   public void setIs_offline(boolean value) {
-    rc_adapterJNI.RcimMessageBox_is_offline_set(swigCPtr, this, value);
+    RcClientJNI.RcimMessageBox_is_offline_set(swigCPtr, this, value);
   }
 
   public boolean getIs_offline() {
-    return rc_adapterJNI.RcimMessageBox_is_offline_get(swigCPtr, this);
+    return RcClientJNI.RcimMessageBox_is_offline_get(swigCPtr, this);
   }
 
   public void setIs_ext_supported(boolean value) {
-    rc_adapterJNI.RcimMessageBox_is_ext_supported_set(swigCPtr, this, value);
+    RcClientJNI.RcimMessageBox_is_ext_supported_set(swigCPtr, this, value);
   }
 
   public boolean getIs_ext_supported() {
-    return rc_adapterJNI.RcimMessageBox_is_ext_supported_get(swigCPtr, this);
+    return RcClientJNI.RcimMessageBox_is_ext_supported_get(swigCPtr, this);
   }
 
   public void setExt_content(String value) {
-    rc_adapterJNI.RcimMessageBox_ext_content_set(swigCPtr, this, value);
+    RcClientJNI.RcimMessageBox_ext_content_set(swigCPtr, this, value);
   }
 
   public String getExt_content() {
-    return rc_adapterJNI.RcimMessageBox_ext_content_get(swigCPtr, this);
+    return RcClientJNI.RcimMessageBox_ext_content_get(swigCPtr, this);
   }
 
   public void setIs_need_receipt(boolean value) {
-    rc_adapterJNI.RcimMessageBox_is_need_receipt_set(swigCPtr, this, value);
+    RcClientJNI.RcimMessageBox_is_need_receipt_set(swigCPtr, this, value);
   }
 
   public boolean getIs_need_receipt() {
-    return rc_adapterJNI.RcimMessageBox_is_need_receipt_get(swigCPtr, this);
+    return RcClientJNI.RcimMessageBox_is_need_receipt_get(swigCPtr, this);
   }
 
   public void setHas_sent_receipt(boolean value) {
-    rc_adapterJNI.RcimMessageBox_has_sent_receipt_set(swigCPtr, this, value);
+    RcClientJNI.RcimMessageBox_has_sent_receipt_set(swigCPtr, this, value);
   }
 
   public boolean getHas_sent_receipt() {
-    return rc_adapterJNI.RcimMessageBox_has_sent_receipt_get(swigCPtr, this);
+    return RcClientJNI.RcimMessageBox_has_sent_receipt_get(swigCPtr, this);
   }
 
   public RcimMessageBox() {
-    this(rc_adapterJNI.new_RcimMessageBox(), true);
+    this(RcClientJNI.new_RcimMessageBox(), true);
   }
 
 }

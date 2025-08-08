@@ -42,7 +42,7 @@ public class RcimEngineBuilderParam {
     if (swigCPtr != 0) {
       if (swigCMemOwn) {
         swigCMemOwn = false;
-        rc_adapterJNI.delete_RcimEngineBuilderParam(swigCPtr);
+        RcClientJNI.delete_RcimEngineBuilderParam(swigCPtr);
       }
       swigCPtr = 0;
     }
@@ -77,96 +77,96 @@ public long getCPtr() {
 }
 
   public void setApp_key(String value) {
-    rc_adapterJNI.RcimEngineBuilderParam_app_key_set(swigCPtr, this, value);
+    RcClientJNI.RcimEngineBuilderParam_app_key_set(swigCPtr, this, value);
   }
 
   public String getApp_key() {
-    return rc_adapterJNI.RcimEngineBuilderParam_app_key_get(swigCPtr, this);
+    return RcClientJNI.RcimEngineBuilderParam_app_key_get(swigCPtr, this);
   }
 
   public void setPlatform(int value) {
-    rc_adapterJNI.RcimEngineBuilderParam_platform_set(swigCPtr, this, value);
+    RcClientJNI.RcimEngineBuilderParam_platform_set(swigCPtr, this, value);
   }
 
   public int getPlatform() {
-    return rc_adapterJNI.RcimEngineBuilderParam_platform_get(swigCPtr, this);
+    return RcClientJNI.RcimEngineBuilderParam_platform_get(swigCPtr, this);
   }
 
   public void setDevice_id(String value) {
-    rc_adapterJNI.RcimEngineBuilderParam_device_id_set(swigCPtr, this, value);
+    RcClientJNI.RcimEngineBuilderParam_device_id_set(swigCPtr, this, value);
   }
 
   public String getDevice_id() {
-    return rc_adapterJNI.RcimEngineBuilderParam_device_id_get(swigCPtr, this);
+    return RcClientJNI.RcimEngineBuilderParam_device_id_get(swigCPtr, this);
   }
 
   public void setPackage_name(String value) {
-    rc_adapterJNI.RcimEngineBuilderParam_package_name_set(swigCPtr, this, value);
+    RcClientJNI.RcimEngineBuilderParam_package_name_set(swigCPtr, this, value);
   }
 
   public String getPackage_name() {
-    return rc_adapterJNI.RcimEngineBuilderParam_package_name_get(swigCPtr, this);
+    return RcClientJNI.RcimEngineBuilderParam_package_name_get(swigCPtr, this);
   }
 
   public void setImlib_version(String value) {
-    rc_adapterJNI.RcimEngineBuilderParam_imlib_version_set(swigCPtr, this, value);
+    RcClientJNI.RcimEngineBuilderParam_imlib_version_set(swigCPtr, this, value);
   }
 
   public String getImlib_version() {
-    return rc_adapterJNI.RcimEngineBuilderParam_imlib_version_get(swigCPtr, this);
+    return RcClientJNI.RcimEngineBuilderParam_imlib_version_get(swigCPtr, this);
   }
 
   public void setDevice_model(String value) {
-    rc_adapterJNI.RcimEngineBuilderParam_device_model_set(swigCPtr, this, value);
+    RcClientJNI.RcimEngineBuilderParam_device_model_set(swigCPtr, this, value);
   }
 
   public String getDevice_model() {
-    return rc_adapterJNI.RcimEngineBuilderParam_device_model_get(swigCPtr, this);
+    return RcClientJNI.RcimEngineBuilderParam_device_model_get(swigCPtr, this);
   }
 
   public void setDevice_manufacturer(String value) {
-    rc_adapterJNI.RcimEngineBuilderParam_device_manufacturer_set(swigCPtr, this, value);
+    RcClientJNI.RcimEngineBuilderParam_device_manufacturer_set(swigCPtr, this, value);
   }
 
   public String getDevice_manufacturer() {
-    return rc_adapterJNI.RcimEngineBuilderParam_device_manufacturer_get(swigCPtr, this);
+    return RcClientJNI.RcimEngineBuilderParam_device_manufacturer_get(swigCPtr, this);
   }
 
   public void setOs_version(String value) {
-    rc_adapterJNI.RcimEngineBuilderParam_os_version_set(swigCPtr, this, value);
+    RcClientJNI.RcimEngineBuilderParam_os_version_set(swigCPtr, this, value);
   }
 
   public String getOs_version() {
-    return rc_adapterJNI.RcimEngineBuilderParam_os_version_get(swigCPtr, this);
+    return RcClientJNI.RcimEngineBuilderParam_os_version_get(swigCPtr, this);
   }
 
   public void setSdk_version_vec(RcimSDKVersion value) {
-    rc_adapterJNI.RcimEngineBuilderParam_sdk_version_vec_set(swigCPtr, this, RcimSDKVersion.getCPtr(value), value);
+    RcClientJNI.RcimEngineBuilderParam_sdk_version_vec_set(swigCPtr, this, RcimSDKVersion.getCPtr(value), value);
   }
 
   public RcimSDKVersion getSdk_version_vec() {
-    long cPtr = rc_adapterJNI.RcimEngineBuilderParam_sdk_version_vec_get(swigCPtr, this);
+    long cPtr = RcClientJNI.RcimEngineBuilderParam_sdk_version_vec_get(swigCPtr, this);
     return (cPtr == 0) ? null : new RcimSDKVersion(cPtr, false);
   }
 
   public void setSdk_version_vec_len(int value) {
-    rc_adapterJNI.RcimEngineBuilderParam_sdk_version_vec_len_set(swigCPtr, this, value);
+    RcClientJNI.RcimEngineBuilderParam_sdk_version_vec_len_set(swigCPtr, this, value);
   }
 
   public int getSdk_version_vec_len() {
-    return rc_adapterJNI.RcimEngineBuilderParam_sdk_version_vec_len_get(swigCPtr, this);
+    return RcClientJNI.RcimEngineBuilderParam_sdk_version_vec_len_get(swigCPtr, this);
   }
 
   public void setApp_version(String value) {
-    rc_adapterJNI.RcimEngineBuilderParam_app_version_set(swigCPtr, this, value);
+    RcClientJNI.RcimEngineBuilderParam_app_version_set(swigCPtr, this, value);
   }
 
   public String getApp_version() {
-    return rc_adapterJNI.RcimEngineBuilderParam_app_version_get(swigCPtr, this);
+    return RcClientJNI.RcimEngineBuilderParam_app_version_get(swigCPtr, this);
   }
 
   public RcimEngineBuilderParam() {
-    this(rc_adapterJNI.new_RcimEngineBuilderParam(), true);
+    this(RcClientJNI.new_RcimEngineBuilderParam(), true);
   }
 
 }

@@ -42,7 +42,7 @@ public class RcimReceivedStatus {
     if (swigCPtr != 0) {
       if (swigCMemOwn) {
         swigCMemOwn = false;
-        rc_adapterJNI.delete_RcimReceivedStatus(swigCPtr);
+        RcClientJNI.delete_RcimReceivedStatus(swigCPtr);
       }
       swigCPtr = 0;
     }
@@ -77,47 +77,47 @@ public long getCPtr() {
 }
 
   public void setIs_read(boolean value) {
-    rc_adapterJNI.RcimReceivedStatus_is_read_set(swigCPtr, this, value);
+    RcClientJNI.RcimReceivedStatus_is_read_set(swigCPtr, this, value);
   }
 
   public boolean getIs_read() {
-    return rc_adapterJNI.RcimReceivedStatus_is_read_get(swigCPtr, this);
+    return RcClientJNI.RcimReceivedStatus_is_read_get(swigCPtr, this);
   }
 
   public void setIs_listened(boolean value) {
-    rc_adapterJNI.RcimReceivedStatus_is_listened_set(swigCPtr, this, value);
+    RcClientJNI.RcimReceivedStatus_is_listened_set(swigCPtr, this, value);
   }
 
   public boolean getIs_listened() {
-    return rc_adapterJNI.RcimReceivedStatus_is_listened_get(swigCPtr, this);
+    return RcClientJNI.RcimReceivedStatus_is_listened_get(swigCPtr, this);
   }
 
   public void setIs_download(boolean value) {
-    rc_adapterJNI.RcimReceivedStatus_is_download_set(swigCPtr, this, value);
+    RcClientJNI.RcimReceivedStatus_is_download_set(swigCPtr, this, value);
   }
 
   public boolean getIs_download() {
-    return rc_adapterJNI.RcimReceivedStatus_is_download_get(swigCPtr, this);
+    return RcClientJNI.RcimReceivedStatus_is_download_get(swigCPtr, this);
   }
 
   public void setIs_retrieved(boolean value) {
-    rc_adapterJNI.RcimReceivedStatus_is_retrieved_set(swigCPtr, this, value);
+    RcClientJNI.RcimReceivedStatus_is_retrieved_set(swigCPtr, this, value);
   }
 
   public boolean getIs_retrieved() {
-    return rc_adapterJNI.RcimReceivedStatus_is_retrieved_get(swigCPtr, this);
+    return RcClientJNI.RcimReceivedStatus_is_retrieved_get(swigCPtr, this);
   }
 
   public void setIs_multiple_received(boolean value) {
-    rc_adapterJNI.RcimReceivedStatus_is_multiple_received_set(swigCPtr, this, value);
+    RcClientJNI.RcimReceivedStatus_is_multiple_received_set(swigCPtr, this, value);
   }
 
   public boolean getIs_multiple_received() {
-    return rc_adapterJNI.RcimReceivedStatus_is_multiple_received_get(swigCPtr, this);
+    return RcClientJNI.RcimReceivedStatus_is_multiple_received_get(swigCPtr, this);
   }
 
   public RcimReceivedStatus() {
-    this(rc_adapterJNI.new_RcimReceivedStatus(), true);
+    this(RcClientJNI.new_RcimReceivedStatus(), true);
   }
 
 }

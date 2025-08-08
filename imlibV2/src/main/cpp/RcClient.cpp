@@ -1,5 +1,5 @@
 
-#include "rc_adapter.h"
+#include "RcClient.h"
 #include "libs/includes/rcim_client.h"
 #include <jni.h>
 

@@ -42,7 +42,7 @@ public class RcimAndroidConfig {
     if (swigCPtr != 0) {
       if (swigCMemOwn) {
         swigCMemOwn = false;
-        rc_adapterJNI.delete_RcimAndroidConfig(swigCPtr);
+        RcClientJNI.delete_RcimAndroidConfig(swigCPtr);
       }
       swigCPtr = 0;
     }
@@ -77,119 +77,119 @@ public long getCPtr() {
 }
 
   public void setNotification_id(String value) {
-    rc_adapterJNI.RcimAndroidConfig_notification_id_set(swigCPtr, this, value);
+    RcClientJNI.RcimAndroidConfig_notification_id_set(swigCPtr, this, value);
   }
 
   public String getNotification_id() {
-    return rc_adapterJNI.RcimAndroidConfig_notification_id_get(swigCPtr, this);
+    return RcClientJNI.RcimAndroidConfig_notification_id_get(swigCPtr, this);
   }
 
   public void setMi_channel_id(String value) {
-    rc_adapterJNI.RcimAndroidConfig_mi_channel_id_set(swigCPtr, this, value);
+    RcClientJNI.RcimAndroidConfig_mi_channel_id_set(swigCPtr, this, value);
   }
 
   public String getMi_channel_id() {
-    return rc_adapterJNI.RcimAndroidConfig_mi_channel_id_get(swigCPtr, this);
+    return RcClientJNI.RcimAndroidConfig_mi_channel_id_get(swigCPtr, this);
   }
 
   public void setHw_channel_id(String value) {
-    rc_adapterJNI.RcimAndroidConfig_hw_channel_id_set(swigCPtr, this, value);
+    RcClientJNI.RcimAndroidConfig_hw_channel_id_set(swigCPtr, this, value);
   }
 
   public String getHw_channel_id() {
-    return rc_adapterJNI.RcimAndroidConfig_hw_channel_id_get(swigCPtr, this);
+    return RcClientJNI.RcimAndroidConfig_hw_channel_id_get(swigCPtr, this);
   }
 
   public void setHw_importance(String value) {
-    rc_adapterJNI.RcimAndroidConfig_hw_importance_set(swigCPtr, this, value);
+    RcClientJNI.RcimAndroidConfig_hw_importance_set(swigCPtr, this, value);
   }
 
   public String getHw_importance() {
-    return rc_adapterJNI.RcimAndroidConfig_hw_importance_get(swigCPtr, this);
+    return RcClientJNI.RcimAndroidConfig_hw_importance_get(swigCPtr, this);
   }
 
   public void setHw_image_url(String value) {
-    rc_adapterJNI.RcimAndroidConfig_hw_image_url_set(swigCPtr, this, value);
+    RcClientJNI.RcimAndroidConfig_hw_image_url_set(swigCPtr, this, value);
   }
 
   public String getHw_image_url() {
-    return rc_adapterJNI.RcimAndroidConfig_hw_image_url_get(swigCPtr, this);
+    return RcClientJNI.RcimAndroidConfig_hw_image_url_get(swigCPtr, this);
   }
 
   public void setHw_category(String value) {
-    rc_adapterJNI.RcimAndroidConfig_hw_category_set(swigCPtr, this, value);
+    RcClientJNI.RcimAndroidConfig_hw_category_set(swigCPtr, this, value);
   }
 
   public String getHw_category() {
-    return rc_adapterJNI.RcimAndroidConfig_hw_category_get(swigCPtr, this);
+    return RcClientJNI.RcimAndroidConfig_hw_category_get(swigCPtr, this);
   }
 
   public void setHonor_importance(String value) {
-    rc_adapterJNI.RcimAndroidConfig_honor_importance_set(swigCPtr, this, value);
+    RcClientJNI.RcimAndroidConfig_honor_importance_set(swigCPtr, this, value);
   }
 
   public String getHonor_importance() {
-    return rc_adapterJNI.RcimAndroidConfig_honor_importance_get(swigCPtr, this);
+    return RcClientJNI.RcimAndroidConfig_honor_importance_get(swigCPtr, this);
   }
 
   public void setHonor_image_url(String value) {
-    rc_adapterJNI.RcimAndroidConfig_honor_image_url_set(swigCPtr, this, value);
+    RcClientJNI.RcimAndroidConfig_honor_image_url_set(swigCPtr, this, value);
   }
 
   public String getHonor_image_url() {
-    return rc_adapterJNI.RcimAndroidConfig_honor_image_url_get(swigCPtr, this);
+    return RcClientJNI.RcimAndroidConfig_honor_image_url_get(swigCPtr, this);
   }
 
   public void setOppo_channel_id(String value) {
-    rc_adapterJNI.RcimAndroidConfig_oppo_channel_id_set(swigCPtr, this, value);
+    RcClientJNI.RcimAndroidConfig_oppo_channel_id_set(swigCPtr, this, value);
   }
 
   public String getOppo_channel_id() {
-    return rc_adapterJNI.RcimAndroidConfig_oppo_channel_id_get(swigCPtr, this);
+    return RcClientJNI.RcimAndroidConfig_oppo_channel_id_get(swigCPtr, this);
   }
 
   public void setVivo_category(String value) {
-    rc_adapterJNI.RcimAndroidConfig_vivo_category_set(swigCPtr, this, value);
+    RcClientJNI.RcimAndroidConfig_vivo_category_set(swigCPtr, this, value);
   }
 
   public String getVivo_category() {
-    return rc_adapterJNI.RcimAndroidConfig_vivo_category_get(swigCPtr, this);
+    return RcClientJNI.RcimAndroidConfig_vivo_category_get(swigCPtr, this);
   }
 
   public void setVivo_type(String value) {
-    rc_adapterJNI.RcimAndroidConfig_vivo_type_set(swigCPtr, this, value);
+    RcClientJNI.RcimAndroidConfig_vivo_type_set(swigCPtr, this, value);
   }
 
   public String getVivo_type() {
-    return rc_adapterJNI.RcimAndroidConfig_vivo_type_get(swigCPtr, this);
+    return RcClientJNI.RcimAndroidConfig_vivo_type_get(swigCPtr, this);
   }
 
   public void setFcm_channel_id(String value) {
-    rc_adapterJNI.RcimAndroidConfig_fcm_channel_id_set(swigCPtr, this, value);
+    RcClientJNI.RcimAndroidConfig_fcm_channel_id_set(swigCPtr, this, value);
   }
 
   public String getFcm_channel_id() {
-    return rc_adapterJNI.RcimAndroidConfig_fcm_channel_id_get(swigCPtr, this);
+    return RcClientJNI.RcimAndroidConfig_fcm_channel_id_get(swigCPtr, this);
   }
 
   public void setFcm_collapse_key(String value) {
-    rc_adapterJNI.RcimAndroidConfig_fcm_collapse_key_set(swigCPtr, this, value);
+    RcClientJNI.RcimAndroidConfig_fcm_collapse_key_set(swigCPtr, this, value);
   }
 
   public String getFcm_collapse_key() {
-    return rc_adapterJNI.RcimAndroidConfig_fcm_collapse_key_get(swigCPtr, this);
+    return RcClientJNI.RcimAndroidConfig_fcm_collapse_key_get(swigCPtr, this);
   }
 
   public void setFcm_image_url(String value) {
-    rc_adapterJNI.RcimAndroidConfig_fcm_image_url_set(swigCPtr, this, value);
+    RcClientJNI.RcimAndroidConfig_fcm_image_url_set(swigCPtr, this, value);
   }
 
   public String getFcm_image_url() {
-    return rc_adapterJNI.RcimAndroidConfig_fcm_image_url_get(swigCPtr, this);
+    return RcClientJNI.RcimAndroidConfig_fcm_image_url_get(swigCPtr, this);
   }
 
   public RcimAndroidConfig() {
-    this(rc_adapterJNI.new_RcimAndroidConfig(), true);
+    this(RcClientJNI.new_RcimAndroidConfig(), true);
   }
 
 }

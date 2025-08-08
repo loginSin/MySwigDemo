@@ -42,7 +42,7 @@ public class RcimHarmonyConfig {
     if (swigCPtr != 0) {
       if (swigCMemOwn) {
         swigCMemOwn = false;
-        rc_adapterJNI.delete_RcimHarmonyConfig(swigCPtr);
+        RcClientJNI.delete_RcimHarmonyConfig(swigCPtr);
       }
       swigCPtr = 0;
     }
@@ -77,23 +77,23 @@ public long getCPtr() {
 }
 
   public void setImage_url(String value) {
-    rc_adapterJNI.RcimHarmonyConfig_image_url_set(swigCPtr, this, value);
+    RcClientJNI.RcimHarmonyConfig_image_url_set(swigCPtr, this, value);
   }
 
   public String getImage_url() {
-    return rc_adapterJNI.RcimHarmonyConfig_image_url_get(swigCPtr, this);
+    return RcClientJNI.RcimHarmonyConfig_image_url_get(swigCPtr, this);
   }
 
   public void setCategory(String value) {
-    rc_adapterJNI.RcimHarmonyConfig_category_set(swigCPtr, this, value);
+    RcClientJNI.RcimHarmonyConfig_category_set(swigCPtr, this, value);
   }
 
   public String getCategory() {
-    return rc_adapterJNI.RcimHarmonyConfig_category_get(swigCPtr, this);
+    return RcClientJNI.RcimHarmonyConfig_category_get(swigCPtr, this);
   }
 
   public RcimHarmonyConfig() {
-    this(rc_adapterJNI.new_RcimHarmonyConfig(), true);
+    this(RcClientJNI.new_RcimHarmonyConfig(), true);
   }
 
 }

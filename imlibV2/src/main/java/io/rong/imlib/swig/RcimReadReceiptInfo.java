@@ -42,7 +42,7 @@ public class RcimReadReceiptInfo {
     if (swigCPtr != 0) {
       if (swigCMemOwn) {
         swigCMemOwn = false;
-        rc_adapterJNI.delete_RcimReadReceiptInfo(swigCPtr);
+        RcClientJNI.delete_RcimReadReceiptInfo(swigCPtr);
       }
       swigCPtr = 0;
     }
@@ -77,40 +77,40 @@ public long getCPtr() {
 }
 
   public void setIs_read_receipt_message(boolean value) {
-    rc_adapterJNI.RcimReadReceiptInfo_is_read_receipt_message_set(swigCPtr, this, value);
+    RcClientJNI.RcimReadReceiptInfo_is_read_receipt_message_set(swigCPtr, this, value);
   }
 
   public boolean getIs_read_receipt_message() {
-    return rc_adapterJNI.RcimReadReceiptInfo_is_read_receipt_message_get(swigCPtr, this);
+    return RcClientJNI.RcimReadReceiptInfo_is_read_receipt_message_get(swigCPtr, this);
   }
 
   public void setHas_respond(boolean value) {
-    rc_adapterJNI.RcimReadReceiptInfo_has_respond_set(swigCPtr, this, value);
+    RcClientJNI.RcimReadReceiptInfo_has_respond_set(swigCPtr, this, value);
   }
 
   public boolean getHas_respond() {
-    return rc_adapterJNI.RcimReadReceiptInfo_has_respond_get(swigCPtr, this);
+    return RcClientJNI.RcimReadReceiptInfo_has_respond_get(swigCPtr, this);
   }
 
   public void setRespond_user_vec(RcimReadReceiptUserInfo value) {
-    rc_adapterJNI.RcimReadReceiptInfo_respond_user_vec_set(swigCPtr, this, RcimReadReceiptUserInfo.getCPtr(value), value);
+    RcClientJNI.RcimReadReceiptInfo_respond_user_vec_set(swigCPtr, this, RcimReadReceiptUserInfo.getCPtr(value), value);
   }
 
   public RcimReadReceiptUserInfo getRespond_user_vec() {
-    long cPtr = rc_adapterJNI.RcimReadReceiptInfo_respond_user_vec_get(swigCPtr, this);
+    long cPtr = RcClientJNI.RcimReadReceiptInfo_respond_user_vec_get(swigCPtr, this);
     return (cPtr == 0) ? null : new RcimReadReceiptUserInfo(cPtr, false);
   }
 
   public void setRespond_user_vec_len(int value) {
-    rc_adapterJNI.RcimReadReceiptInfo_respond_user_vec_len_set(swigCPtr, this, value);
+    RcClientJNI.RcimReadReceiptInfo_respond_user_vec_len_set(swigCPtr, this, value);
   }
 
   public int getRespond_user_vec_len() {
-    return rc_adapterJNI.RcimReadReceiptInfo_respond_user_vec_len_get(swigCPtr, this);
+    return RcClientJNI.RcimReadReceiptInfo_respond_user_vec_len_get(swigCPtr, this);
   }
 
   public RcimReadReceiptInfo() {
-    this(rc_adapterJNI.new_RcimReadReceiptInfo(), true);
+    this(RcClientJNI.new_RcimReadReceiptInfo(), true);
   }
 
 }

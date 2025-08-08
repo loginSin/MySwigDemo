@@ -8,41 +8,41 @@
 
 package io.rong.imlib.swig;
 
-public class rc_adapter {
+public class RcClient {
   public static int createEngineBuilder(RcimEngineBuilderParam param, long[] OUTPUT) {
-    return rc_adapterJNI.createEngineBuilder(RcimEngineBuilderParam.getCPtr(param), param, OUTPUT);
+    return RcClientJNI.createEngineBuilder(RcimEngineBuilderParam.getCPtr(param), param, OUTPUT);
   }
 
   public static int engineBuilderBuild(long builderPtr, long[] OUTPUT) {
-    return rc_adapterJNI.engineBuilderBuild(builderPtr, OUTPUT);
+    return RcClientJNI.engineBuilderBuild(builderPtr, OUTPUT);
   }
 
   public static long newSdkVersionArray(int size) {
-    return rc_adapterJNI.newSdkVersionArray(size);
+    return RcClientJNI.newSdkVersionArray(size);
   }
 
   public static void insertSdkVersionArray(long ptr, long[] ptrArr, int size) {
-    rc_adapterJNI.insertSdkVersionArray(ptr, ptrArr, size);
+    RcClientJNI.insertSdkVersionArray(ptr, ptrArr, size);
   }
 
   public static void freeSdkVersionArray(long ptr) {
-    rc_adapterJNI.freeSdkVersionArray(ptr);
+    RcClientJNI.freeSdkVersionArray(ptr);
   }
 
   public static int engineBuilderSetStorePath(long builderPtr, String storePath) {
-    return rc_adapterJNI.engineBuilderSetStorePath(builderPtr, storePath);
+    return RcClientJNI.engineBuilderSetStorePath(builderPtr, storePath);
   }
 
   public static void engineConnect(long enginePtr, String token, int timeout, RcimNativeStringCallback callback) {
-    rc_adapterJNI.engineConnect(enginePtr, token, timeout, RcimNativeStringCallback.getCPtr(callback), callback);
+    RcClientJNI.engineConnect(enginePtr, token, timeout, RcimNativeStringCallback.getCPtr(callback), callback);
   }
 
   public static void engineSetConnectionStatusListener(long enginePtr, RcimNativeIntListener listener) {
-    rc_adapterJNI.engineSetConnectionStatusListener(enginePtr, RcimNativeIntListener.getCPtr(listener), listener);
+    RcClientJNI.engineSetConnectionStatusListener(enginePtr, RcimNativeIntListener.getCPtr(listener), listener);
   }
 
   public static void engineSendMessage(long enginePtr, RcimMessageBox msgBox, RcimNativeSendMessageCallback sendMsgCallback) {
-    rc_adapterJNI.engineSendMessage(enginePtr, RcimMessageBox.getCPtr(msgBox), msgBox, RcimNativeSendMessageCallback.getCPtr(sendMsgCallback), sendMsgCallback);
+    RcClientJNI.engineSendMessage(enginePtr, RcimMessageBox.getCPtr(msgBox), msgBox, RcimNativeSendMessageCallback.getCPtr(sendMsgCallback), sendMsgCallback);
   }
 
 }

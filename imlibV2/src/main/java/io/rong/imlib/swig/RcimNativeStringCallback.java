@@ -42,7 +42,7 @@ public class RcimNativeStringCallback {
     if (swigCPtr != 0) {
       if (swigCMemOwn) {
         swigCMemOwn = false;
-        rc_adapterJNI.delete_RcimNativeStringCallback(swigCPtr);
+        RcClientJNI.delete_RcimNativeStringCallback(swigCPtr);
       }
       swigCPtr = 0;
     }
@@ -55,12 +55,12 @@ public class RcimNativeStringCallback {
 
   public void swigReleaseOwnership() {
     swigCMemOwn = false;
-    rc_adapterJNI.RcimNativeStringCallback_change_ownership(this, swigCPtr, false);
+    RcClientJNI.RcimNativeStringCallback_change_ownership(this, swigCPtr, false);
   }
 
   public void swigTakeOwnership() {
     swigCMemOwn = true;
-    rc_adapterJNI.RcimNativeStringCallback_change_ownership(this, swigCPtr, true);
+    RcClientJNI.RcimNativeStringCallback_change_ownership(this, swigCPtr, true);
   }
 
 /**
@@ -92,12 +92,12 @@ public long getCPtr() {
 }
 
   public RcimNativeStringCallback() {
-    this(rc_adapterJNI.new_RcimNativeStringCallback(), true);
-    rc_adapterJNI.RcimNativeStringCallback_director_connect(this, swigCPtr, true, true);
+    this(RcClientJNI.new_RcimNativeStringCallback(), true);
+    RcClientJNI.RcimNativeStringCallback_director_connect(this, swigCPtr, true, true);
   }
 
   public void onResult(RcimNativeStringCallback deleteThis, int code, String value) {
-    rc_adapterJNI.RcimNativeStringCallback_onResult(swigCPtr, this, RcimNativeStringCallback.getCPtr(deleteThis), deleteThis, code, value);
+    RcClientJNI.RcimNativeStringCallback_onResult(swigCPtr, this, RcimNativeStringCallback.getCPtr(deleteThis), deleteThis, code, value);
   }
 
 }

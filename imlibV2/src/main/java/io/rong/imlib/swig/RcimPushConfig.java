@@ -42,7 +42,7 @@ public class RcimPushConfig {
     if (swigCPtr != 0) {
       if (swigCMemOwn) {
         swigCMemOwn = false;
-        rc_adapterJNI.delete_RcimPushConfig(swigCPtr);
+        RcClientJNI.delete_RcimPushConfig(swigCPtr);
       }
       swigCPtr = 0;
     }
@@ -77,74 +77,74 @@ public long getCPtr() {
 }
 
   public void setDisable_push_title(boolean value) {
-    rc_adapterJNI.RcimPushConfig_disable_push_title_set(swigCPtr, this, value);
+    RcClientJNI.RcimPushConfig_disable_push_title_set(swigCPtr, this, value);
   }
 
   public boolean getDisable_push_title() {
-    return rc_adapterJNI.RcimPushConfig_disable_push_title_get(swigCPtr, this);
+    return RcClientJNI.RcimPushConfig_disable_push_title_get(swigCPtr, this);
   }
 
   public void setPush_title(String value) {
-    rc_adapterJNI.RcimPushConfig_push_title_set(swigCPtr, this, value);
+    RcClientJNI.RcimPushConfig_push_title_set(swigCPtr, this, value);
   }
 
   public String getPush_title() {
-    return rc_adapterJNI.RcimPushConfig_push_title_get(swigCPtr, this);
+    return RcClientJNI.RcimPushConfig_push_title_get(swigCPtr, this);
   }
 
   public void setPush_content(String value) {
-    rc_adapterJNI.RcimPushConfig_push_content_set(swigCPtr, this, value);
+    RcClientJNI.RcimPushConfig_push_content_set(swigCPtr, this, value);
   }
 
   public String getPush_content() {
-    return rc_adapterJNI.RcimPushConfig_push_content_get(swigCPtr, this);
+    return RcClientJNI.RcimPushConfig_push_content_get(swigCPtr, this);
   }
 
   public void setPush_data(String value) {
-    rc_adapterJNI.RcimPushConfig_push_data_set(swigCPtr, this, value);
+    RcClientJNI.RcimPushConfig_push_data_set(swigCPtr, this, value);
   }
 
   public String getPush_data() {
-    return rc_adapterJNI.RcimPushConfig_push_data_get(swigCPtr, this);
+    return RcClientJNI.RcimPushConfig_push_data_get(swigCPtr, this);
   }
 
   public void setForce_show_detail_content(boolean value) {
-    rc_adapterJNI.RcimPushConfig_force_show_detail_content_set(swigCPtr, this, value);
+    RcClientJNI.RcimPushConfig_force_show_detail_content_set(swigCPtr, this, value);
   }
 
   public boolean getForce_show_detail_content() {
-    return rc_adapterJNI.RcimPushConfig_force_show_detail_content_get(swigCPtr, this);
+    return RcClientJNI.RcimPushConfig_force_show_detail_content_get(swigCPtr, this);
   }
 
   public void setIos_config(RcimIosConfig value) {
-    rc_adapterJNI.RcimPushConfig_ios_config_set(swigCPtr, this, RcimIosConfig.getCPtr(value), value);
+    RcClientJNI.RcimPushConfig_ios_config_set(swigCPtr, this, RcimIosConfig.getCPtr(value), value);
   }
 
   public RcimIosConfig getIos_config() {
-    long cPtr = rc_adapterJNI.RcimPushConfig_ios_config_get(swigCPtr, this);
+    long cPtr = RcClientJNI.RcimPushConfig_ios_config_get(swigCPtr, this);
     return (cPtr == 0) ? null : new RcimIosConfig(cPtr, false);
   }
 
   public void setAndroid_config(RcimAndroidConfig value) {
-    rc_adapterJNI.RcimPushConfig_android_config_set(swigCPtr, this, RcimAndroidConfig.getCPtr(value), value);
+    RcClientJNI.RcimPushConfig_android_config_set(swigCPtr, this, RcimAndroidConfig.getCPtr(value), value);
   }
 
   public RcimAndroidConfig getAndroid_config() {
-    long cPtr = rc_adapterJNI.RcimPushConfig_android_config_get(swigCPtr, this);
+    long cPtr = RcClientJNI.RcimPushConfig_android_config_get(swigCPtr, this);
     return (cPtr == 0) ? null : new RcimAndroidConfig(cPtr, false);
   }
 
   public void setHarmony_config(RcimHarmonyConfig value) {
-    rc_adapterJNI.RcimPushConfig_harmony_config_set(swigCPtr, this, RcimHarmonyConfig.getCPtr(value), value);
+    RcClientJNI.RcimPushConfig_harmony_config_set(swigCPtr, this, RcimHarmonyConfig.getCPtr(value), value);
   }
 
   public RcimHarmonyConfig getHarmony_config() {
-    long cPtr = rc_adapterJNI.RcimPushConfig_harmony_config_get(swigCPtr, this);
+    long cPtr = RcClientJNI.RcimPushConfig_harmony_config_get(swigCPtr, this);
     return (cPtr == 0) ? null : new RcimHarmonyConfig(cPtr, false);
   }
 
   public RcimPushConfig() {
-    this(rc_adapterJNI.new_RcimPushConfig(), true);
+    this(RcClientJNI.new_RcimPushConfig(), true);
   }
 
 }

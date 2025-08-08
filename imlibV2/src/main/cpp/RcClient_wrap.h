@@ -6,8 +6,8 @@
  * the SWIG interface file instead.
  * ----------------------------------------------------------------------------- */
 
-#ifndef SWIG_rc_adapter_WRAP_H_
-#define SWIG_rc_adapter_WRAP_H_
+#ifndef SWIG_RcClient_WRAP_H_
+#define SWIG_RcClient_WRAP_H_
 
 class SwigDirector_RcimNativeStringCallback : public RcimNativeStringCallback, public Swig::Director {
 

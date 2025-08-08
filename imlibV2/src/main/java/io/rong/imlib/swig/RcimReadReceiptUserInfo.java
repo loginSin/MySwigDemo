@@ -42,7 +42,7 @@ public class RcimReadReceiptUserInfo {
     if (swigCPtr != 0) {
       if (swigCMemOwn) {
         swigCMemOwn = false;
-        rc_adapterJNI.delete_RcimReadReceiptUserInfo(swigCPtr);
+        RcClientJNI.delete_RcimReadReceiptUserInfo(swigCPtr);
       }
       swigCPtr = 0;
     }
@@ -77,31 +77,31 @@ public long getCPtr() {
 }
 
   public void setSender_id(String value) {
-    rc_adapterJNI.RcimReadReceiptUserInfo_sender_id_set(swigCPtr, this, value);
+    RcClientJNI.RcimReadReceiptUserInfo_sender_id_set(swigCPtr, this, value);
   }
 
   public String getSender_id() {
-    return rc_adapterJNI.RcimReadReceiptUserInfo_sender_id_get(swigCPtr, this);
+    return RcClientJNI.RcimReadReceiptUserInfo_sender_id_get(swigCPtr, this);
   }
 
   public void setTimestamp(java.math.BigInteger value) {
-    rc_adapterJNI.RcimReadReceiptUserInfo_timestamp_set(swigCPtr, this, value);
+    RcClientJNI.RcimReadReceiptUserInfo_timestamp_set(swigCPtr, this, value);
   }
 
   public java.math.BigInteger getTimestamp() {
-    return rc_adapterJNI.RcimReadReceiptUserInfo_timestamp_get(swigCPtr, this);
+    return RcClientJNI.RcimReadReceiptUserInfo_timestamp_get(swigCPtr, this);
   }
 
   public void setMentioned(boolean value) {
-    rc_adapterJNI.RcimReadReceiptUserInfo_mentioned_set(swigCPtr, this, value);
+    RcClientJNI.RcimReadReceiptUserInfo_mentioned_set(swigCPtr, this, value);
   }
 
   public boolean getMentioned() {
-    return rc_adapterJNI.RcimReadReceiptUserInfo_mentioned_get(swigCPtr, this);
+    return RcClientJNI.RcimReadReceiptUserInfo_mentioned_get(swigCPtr, this);
   }
 
   public RcimReadReceiptUserInfo() {
-    this(rc_adapterJNI.new_RcimReadReceiptUserInfo(), true);
+    this(RcClientJNI.new_RcimReadReceiptUserInfo(), true);
   }
 
 }

@@ -42,7 +42,7 @@ public class RcimNativeSendMessageCallback {
     if (swigCPtr != 0) {
       if (swigCMemOwn) {
         swigCMemOwn = false;
-        rc_adapterJNI.delete_RcimNativeSendMessageCallback(swigCPtr);
+        RcClientJNI.delete_RcimNativeSendMessageCallback(swigCPtr);
       }
       swigCPtr = 0;
     }
@@ -55,12 +55,12 @@ public class RcimNativeSendMessageCallback {
 
   public void swigReleaseOwnership() {
     swigCMemOwn = false;
-    rc_adapterJNI.RcimNativeSendMessageCallback_change_ownership(this, swigCPtr, false);
+    RcClientJNI.RcimNativeSendMessageCallback_change_ownership(this, swigCPtr, false);
   }
 
   public void swigTakeOwnership() {
     swigCMemOwn = true;
-    rc_adapterJNI.RcimNativeSendMessageCallback_change_ownership(this, swigCPtr, true);
+    RcClientJNI.RcimNativeSendMessageCallback_change_ownership(this, swigCPtr, true);
   }
 
 /**
@@ -92,16 +92,16 @@ public long getCPtr() {
 }
 
   public RcimNativeSendMessageCallback() {
-    this(rc_adapterJNI.new_RcimNativeSendMessageCallback(), true);
-    rc_adapterJNI.RcimNativeSendMessageCallback_director_connect(this, swigCPtr, true, true);
+    this(RcClientJNI.new_RcimNativeSendMessageCallback(), true);
+    RcClientJNI.RcimNativeSendMessageCallback_director_connect(this, swigCPtr, true, true);
   }
 
   public void onSave(RcimMessageBox nativeMsg) {
-    rc_adapterJNI.RcimNativeSendMessageCallback_onSave(swigCPtr, this, RcimMessageBox.getCPtr(nativeMsg), nativeMsg);
+    RcClientJNI.RcimNativeSendMessageCallback_onSave(swigCPtr, this, RcimMessageBox.getCPtr(nativeMsg), nativeMsg);
   }
 
   public void onResult(RcimNativeSendMessageCallback deleteThis, int code, RcimMessageBox nativeMsg) {
-    rc_adapterJNI.RcimNativeSendMessageCallback_onResult(swigCPtr, this, RcimNativeSendMessageCallback.getCPtr(deleteThis), deleteThis, code, RcimMessageBox.getCPtr(nativeMsg), nativeMsg);
+    RcClientJNI.RcimNativeSendMessageCallback_onResult(swigCPtr, this, RcimNativeSendMessageCallback.getCPtr(deleteThis), deleteThis, code, RcimMessageBox.getCPtr(nativeMsg), nativeMsg);
   }
 
 }

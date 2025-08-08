@@ -42,7 +42,7 @@ public class RcimIosConfig {
     if (swigCPtr != 0) {
       if (swigCMemOwn) {
         swigCMemOwn = false;
-        rc_adapterJNI.delete_RcimIosConfig(swigCPtr);
+        RcClientJNI.delete_RcimIosConfig(swigCPtr);
       }
       swigCPtr = 0;
     }
@@ -77,47 +77,47 @@ public long getCPtr() {
 }
 
   public void setThread_id(String value) {
-    rc_adapterJNI.RcimIosConfig_thread_id_set(swigCPtr, this, value);
+    RcClientJNI.RcimIosConfig_thread_id_set(swigCPtr, this, value);
   }
 
   public String getThread_id() {
-    return rc_adapterJNI.RcimIosConfig_thread_id_get(swigCPtr, this);
+    return RcClientJNI.RcimIosConfig_thread_id_get(swigCPtr, this);
   }
 
   public void setCategory(String value) {
-    rc_adapterJNI.RcimIosConfig_category_set(swigCPtr, this, value);
+    RcClientJNI.RcimIosConfig_category_set(swigCPtr, this, value);
   }
 
   public String getCategory() {
-    return rc_adapterJNI.RcimIosConfig_category_get(swigCPtr, this);
+    return RcClientJNI.RcimIosConfig_category_get(swigCPtr, this);
   }
 
   public void setApns_collapse_id(String value) {
-    rc_adapterJNI.RcimIosConfig_apns_collapse_id_set(swigCPtr, this, value);
+    RcClientJNI.RcimIosConfig_apns_collapse_id_set(swigCPtr, this, value);
   }
 
   public String getApns_collapse_id() {
-    return rc_adapterJNI.RcimIosConfig_apns_collapse_id_get(swigCPtr, this);
+    return RcClientJNI.RcimIosConfig_apns_collapse_id_get(swigCPtr, this);
   }
 
   public void setRich_media_uri(String value) {
-    rc_adapterJNI.RcimIosConfig_rich_media_uri_set(swigCPtr, this, value);
+    RcClientJNI.RcimIosConfig_rich_media_uri_set(swigCPtr, this, value);
   }
 
   public String getRich_media_uri() {
-    return rc_adapterJNI.RcimIosConfig_rich_media_uri_get(swigCPtr, this);
+    return RcClientJNI.RcimIosConfig_rich_media_uri_get(swigCPtr, this);
   }
 
   public void setInterruption_level(String value) {
-    rc_adapterJNI.RcimIosConfig_interruption_level_set(swigCPtr, this, value);
+    RcClientJNI.RcimIosConfig_interruption_level_set(swigCPtr, this, value);
   }
 
   public String getInterruption_level() {
-    return rc_adapterJNI.RcimIosConfig_interruption_level_get(swigCPtr, this);
+    return RcClientJNI.RcimIosConfig_interruption_level_get(swigCPtr, this);
   }
 
   public RcimIosConfig() {
-    this(rc_adapterJNI.new_RcimIosConfig(), true);
+    this(RcClientJNI.new_RcimIosConfig(), true);
   }
 
 }

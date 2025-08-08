@@ -42,7 +42,7 @@ public class RcimNativeIntListener {
     if (swigCPtr != 0) {
       if (swigCMemOwn) {
         swigCMemOwn = false;
-        rc_adapterJNI.delete_RcimNativeIntListener(swigCPtr);
+        RcClientJNI.delete_RcimNativeIntListener(swigCPtr);
       }
       swigCPtr = 0;
     }
@@ -55,12 +55,12 @@ public class RcimNativeIntListener {
 
   public void swigReleaseOwnership() {
     swigCMemOwn = false;
-    rc_adapterJNI.RcimNativeIntListener_change_ownership(this, swigCPtr, false);
+    RcClientJNI.RcimNativeIntListener_change_ownership(this, swigCPtr, false);
   }
 
   public void swigTakeOwnership() {
     swigCMemOwn = true;
-    rc_adapterJNI.RcimNativeIntListener_change_ownership(this, swigCPtr, true);
+    RcClientJNI.RcimNativeIntListener_change_ownership(this, swigCPtr, true);
   }
 
 /**
@@ -92,12 +92,12 @@ public long getCPtr() {
 }
 
   public RcimNativeIntListener() {
-    this(rc_adapterJNI.new_RcimNativeIntListener(), true);
-    rc_adapterJNI.RcimNativeIntListener_director_connect(this, swigCPtr, true, true);
+    this(RcClientJNI.new_RcimNativeIntListener(), true);
+    RcClientJNI.RcimNativeIntListener_director_connect(this, swigCPtr, true, true);
   }
 
   public void onChanged(int value) {
-    rc_adapterJNI.RcimNativeIntListener_onChanged(swigCPtr, this, value);
+    RcClientJNI.RcimNativeIntListener_onChanged(swigCPtr, this, value);
   }
 
 }

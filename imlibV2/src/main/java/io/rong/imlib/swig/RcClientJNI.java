@@ -8,7 +8,7 @@
 
 package io.rong.imlib.swig;
 
-public class rc_adapterJNI {
+public class RcClientJNI {
   public final static native void RcimSDKVersion_name_set(long jarg1, RcimSDKVersion jarg1_, String jarg2);
   public final static native String RcimSDKVersion_name_get(long jarg1, RcimSDKVersion jarg1_);
   public final static native void RcimSDKVersion_version_set(long jarg1, RcimSDKVersion jarg1_, String jarg2);

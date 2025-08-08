@@ -42,7 +42,7 @@ public class RcimSDKVersion {
     if (swigCPtr != 0) {
       if (swigCMemOwn) {
         swigCMemOwn = false;
-        rc_adapterJNI.delete_RcimSDKVersion(swigCPtr);
+        RcClientJNI.delete_RcimSDKVersion(swigCPtr);
       }
       swigCPtr = 0;
     }
@@ -77,23 +77,23 @@ public long getCPtr() {
 }
 
   public void setName(String value) {
-    rc_adapterJNI.RcimSDKVersion_name_set(swigCPtr, this, value);
+    RcClientJNI.RcimSDKVersion_name_set(swigCPtr, this, value);
   }
 
   public String getName() {
-    return rc_adapterJNI.RcimSDKVersion_name_get(swigCPtr, this);
+    return RcClientJNI.RcimSDKVersion_name_get(swigCPtr, this);
   }
 
   public void setVersion(String value) {
-    rc_adapterJNI.RcimSDKVersion_version_set(swigCPtr, this, value);
+    RcClientJNI.RcimSDKVersion_version_set(swigCPtr, this, value);
   }
 
   public String getVersion() {
-    return rc_adapterJNI.RcimSDKVersion_version_get(swigCPtr, this);
+    return RcClientJNI.RcimSDKVersion_version_get(swigCPtr, this);
   }
 
   public RcimSDKVersion() {
-    this(rc_adapterJNI.new_RcimSDKVersion(), true);
+    this(RcClientJNI.new_RcimSDKVersion(), true);
   }
 
 }
