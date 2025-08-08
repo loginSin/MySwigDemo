@@ -3,6 +3,8 @@
 #include "libs/includes/rcim_client.h"
 #include <jni.h>
 
+namespace rcim {
+
 int createEngineBuilder(RcimEngineBuilderParam *param, int64_t *outBuilderPtr) {
     if (!param) {
         return 0;
@@ -143,3 +145,5 @@ void engineSendMessage(int64_t enginePtr, RcimMessageBox *msgBox,
     rcim_engine_send_message(engine, msgBox, nullptr, sendMsgCallback, engineSendMessageAdapter,
                              engineSendMessageSaved);
 }
+
+} // namespace rcim

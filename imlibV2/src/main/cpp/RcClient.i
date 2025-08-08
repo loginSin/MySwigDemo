@@ -10,9 +10,10 @@
 #include "RcClient.h"
 %}
 
-
+namespace rcim {
 int createEngineBuilder(RcimEngineBuilderParam *param, int64_t *OUTPUT);
 int engineBuilderBuild(int64_t builderPtr, int64_t *OUTPUT);
+}
 
 // 启用 director 功能，允许 Java 继承 C++ 类
 %feature("director") RcimNativeStringCallback;

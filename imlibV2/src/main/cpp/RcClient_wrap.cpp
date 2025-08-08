@@ -853,7 +853,7 @@ template <typename T> T SwigValueInit() {
 
 #include "RcClient_wrap.h"
 
-SwigDirector_RcimNativeStringCallback::SwigDirector_RcimNativeStringCallback(JNIEnv *jenv) : RcimNativeStringCallback(), Swig::Director(jenv) {
+SwigDirector_RcimNativeStringCallback::SwigDirector_RcimNativeStringCallback(JNIEnv *jenv) : rcim::RcimNativeStringCallback(), Swig::Director(jenv) {
 }
 
 SwigDirector_RcimNativeStringCallback::~SwigDirector_RcimNativeStringCallback() {
@@ -861,7 +861,7 @@ SwigDirector_RcimNativeStringCallback::~SwigDirector_RcimNativeStringCallback() 
 }
 
 
-void SwigDirector_RcimNativeStringCallback::onResult(RcimNativeStringCallback *deleteThis,int code,char const *value) {
+void SwigDirector_RcimNativeStringCallback::onResult(rcim::RcimNativeStringCallback *deleteThis,int code,char const *value) {
   JNIEnvWrapper swigjnienv(this) ;
   JNIEnv * jenv = swigjnienv.getJNIEnv() ;
   jobject swigjobj = (jobject) NULL ;
@@ -870,12 +870,12 @@ void SwigDirector_RcimNativeStringCallback::onResult(RcimNativeStringCallback *d
   jstring jvalue = 0 ;
   
   if (!swig_override[0]) {
-    SWIG_JavaThrowException(JNIEnvWrapper(this).getJNIEnv(), SWIG_JavaDirectorPureVirtual, "Attempted to invoke pure virtual method RcimNativeStringCallback::onResult.");
+    SWIG_JavaThrowException(JNIEnvWrapper(this).getJNIEnv(), SWIG_JavaDirectorPureVirtual, "Attempted to invoke pure virtual method rcim::RcimNativeStringCallback::onResult.");
     return;
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    *((RcimNativeStringCallback **)&jdeleteThis) = (RcimNativeStringCallback *) deleteThis; 
+    *((rcim::RcimNativeStringCallback **)&jdeleteThis) = (rcim::RcimNativeStringCallback *) deleteThis; 
     jcode = (jint) code;
     jvalue = 0;
     if (value) {
@@ -890,7 +890,7 @@ void SwigDirector_RcimNativeStringCallback::onResult(RcimNativeStringCallback *d
     }
     
   } else {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in RcimNativeStringCallback::onResult ");
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in rcim::RcimNativeStringCallback::onResult ");
   }
   if (swigjobj) jenv->DeleteLocalRef(swigjobj);
 }
@@ -916,7 +916,7 @@ void SwigDirector_RcimNativeStringCallback::swig_connect_director(JNIEnv *jenv, 
 }
 
 
-SwigDirector_RcimNativeSendMessageCallback::SwigDirector_RcimNativeSendMessageCallback(JNIEnv *jenv) : RcimNativeSendMessageCallback(), Swig::Director(jenv) {
+SwigDirector_RcimNativeSendMessageCallback::SwigDirector_RcimNativeSendMessageCallback(JNIEnv *jenv) : rcim::RcimNativeSendMessageCallback(), Swig::Director(jenv) {
 }
 
 SwigDirector_RcimNativeSendMessageCallback::~SwigDirector_RcimNativeSendMessageCallback() {
@@ -931,7 +931,7 @@ void SwigDirector_RcimNativeSendMessageCallback::onSave(RcimMessageBox const *na
   jlong jnativeMsg = 0 ;
   
   if (!swig_override[0]) {
-    SWIG_JavaThrowException(JNIEnvWrapper(this).getJNIEnv(), SWIG_JavaDirectorPureVirtual, "Attempted to invoke pure virtual method RcimNativeSendMessageCallback::onSave.");
+    SWIG_JavaThrowException(JNIEnvWrapper(this).getJNIEnv(), SWIG_JavaDirectorPureVirtual, "Attempted to invoke pure virtual method rcim::RcimNativeSendMessageCallback::onSave.");
     return;
   }
   swigjobj = swig_get_self(jenv);
@@ -944,12 +944,12 @@ void SwigDirector_RcimNativeSendMessageCallback::onSave(RcimMessageBox const *na
     }
     
   } else {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in RcimNativeSendMessageCallback::onSave ");
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in rcim::RcimNativeSendMessageCallback::onSave ");
   }
   if (swigjobj) jenv->DeleteLocalRef(swigjobj);
 }
 
-void SwigDirector_RcimNativeSendMessageCallback::onResult(RcimNativeSendMessageCallback *deleteThis,int code,RcimMessageBox const *nativeMsg) {
+void SwigDirector_RcimNativeSendMessageCallback::onResult(rcim::RcimNativeSendMessageCallback *deleteThis,int code,RcimMessageBox const *nativeMsg) {
   JNIEnvWrapper swigjnienv(this) ;
   JNIEnv * jenv = swigjnienv.getJNIEnv() ;
   jobject swigjobj = (jobject) NULL ;
@@ -958,12 +958,12 @@ void SwigDirector_RcimNativeSendMessageCallback::onResult(RcimNativeSendMessageC
   jlong jnativeMsg = 0 ;
   
   if (!swig_override[1]) {
-    SWIG_JavaThrowException(JNIEnvWrapper(this).getJNIEnv(), SWIG_JavaDirectorPureVirtual, "Attempted to invoke pure virtual method RcimNativeSendMessageCallback::onResult.");
+    SWIG_JavaThrowException(JNIEnvWrapper(this).getJNIEnv(), SWIG_JavaDirectorPureVirtual, "Attempted to invoke pure virtual method rcim::RcimNativeSendMessageCallback::onResult.");
     return;
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    *((RcimNativeSendMessageCallback **)&jdeleteThis) = (RcimNativeSendMessageCallback *) deleteThis; 
+    *((rcim::RcimNativeSendMessageCallback **)&jdeleteThis) = (rcim::RcimNativeSendMessageCallback *) deleteThis; 
     jcode = (jint) code;
     *((RcimMessageBox **)&jnativeMsg) = (RcimMessageBox *) nativeMsg; 
     jenv->CallStaticVoidMethod(Swig::jclass_RcClientJNI, Swig::director_method_ids[2], swigjobj, jdeleteThis, jcode, jnativeMsg);
@@ -973,7 +973,7 @@ void SwigDirector_RcimNativeSendMessageCallback::onResult(RcimNativeSendMessageC
     }
     
   } else {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in RcimNativeSendMessageCallback::onResult ");
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in rcim::RcimNativeSendMessageCallback::onResult ");
   }
   if (swigjobj) jenv->DeleteLocalRef(swigjobj);
 }
@@ -1000,7 +1000,7 @@ void SwigDirector_RcimNativeSendMessageCallback::swig_connect_director(JNIEnv *j
 }
 
 
-SwigDirector_RcimNativeIntListener::SwigDirector_RcimNativeIntListener(JNIEnv *jenv) : RcimNativeIntListener(), Swig::Director(jenv) {
+SwigDirector_RcimNativeIntListener::SwigDirector_RcimNativeIntListener(JNIEnv *jenv) : rcim::RcimNativeIntListener(), Swig::Director(jenv) {
 }
 
 SwigDirector_RcimNativeIntListener::~SwigDirector_RcimNativeIntListener() {
@@ -1015,7 +1015,7 @@ void SwigDirector_RcimNativeIntListener::onChanged(int value) {
   jint jvalue  ;
   
   if (!swig_override[0]) {
-    SWIG_JavaThrowException(JNIEnvWrapper(this).getJNIEnv(), SWIG_JavaDirectorPureVirtual, "Attempted to invoke pure virtual method RcimNativeIntListener::onChanged.");
+    SWIG_JavaThrowException(JNIEnvWrapper(this).getJNIEnv(), SWIG_JavaDirectorPureVirtual, "Attempted to invoke pure virtual method rcim::RcimNativeIntListener::onChanged.");
     return;
   }
   swigjobj = swig_get_self(jenv);
@@ -1028,7 +1028,7 @@ void SwigDirector_RcimNativeIntListener::onChanged(int value) {
     }
     
   } else {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in RcimNativeIntListener::onChanged ");
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in rcim::RcimNativeIntListener::onChanged ");
   }
   if (swigjobj) jenv->DeleteLocalRef(swigjobj);
 }
@@ -4228,7 +4228,7 @@ SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_RcClientJNI_createEngineBuilder(
     temp2 = (int64_t)0;
     arg2 = &temp2; 
   }
-  result = (int)createEngineBuilder(arg1,arg2);
+  result = (int)rcim::createEngineBuilder(arg1,arg2);
   jresult = (jint)result; 
   {
     jlong jvalue = (jlong)temp2;
@@ -4261,7 +4261,7 @@ SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_RcClientJNI_engineBuilderBuild(J
     temp2 = (int64_t)0;
     arg2 = &temp2; 
   }
-  result = (int)engineBuilderBuild(arg1,arg2);
+  result = (int)rcim::engineBuilderBuild(arg1,arg2);
   jresult = (jint)result; 
   {
     jlong jvalue = (jlong)temp2;
@@ -4274,29 +4274,29 @@ SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_RcClientJNI_engineBuilderBuild(J
 
 SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_new_1RcimNativeStringCallback(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
-  RcimNativeStringCallback *result = 0 ;
+  rcim::RcimNativeStringCallback *result = 0 ;
   
   (void)jenv;
   (void)jcls;
-  result = (RcimNativeStringCallback *)new SwigDirector_RcimNativeStringCallback(jenv);
-  *(RcimNativeStringCallback **)&jresult = result; 
+  result = (rcim::RcimNativeStringCallback *)new SwigDirector_RcimNativeStringCallback(jenv);
+  *(rcim::RcimNativeStringCallback **)&jresult = result; 
   return jresult;
 }
 
 
 SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_delete_1RcimNativeStringCallback(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  RcimNativeStringCallback *arg1 = (RcimNativeStringCallback *) 0 ;
+  rcim::RcimNativeStringCallback *arg1 = (rcim::RcimNativeStringCallback *) 0 ;
   
   (void)jenv;
   (void)jcls;
-  arg1 = *(RcimNativeStringCallback **)&jarg1; 
+  arg1 = *(rcim::RcimNativeStringCallback **)&jarg1; 
   delete arg1;
 }
 
 
 SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimNativeStringCallback_1onResult(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3, jstring jarg4) {
-  RcimNativeStringCallback *arg1 = (RcimNativeStringCallback *) 0 ;
-  RcimNativeStringCallback *arg2 = (RcimNativeStringCallback *) 0 ;
+  rcim::RcimNativeStringCallback *arg1 = (rcim::RcimNativeStringCallback *) 0 ;
+  rcim::RcimNativeStringCallback *arg2 = (rcim::RcimNativeStringCallback *) 0 ;
   int arg3 ;
   char *arg4 = (char *) 0 ;
   
@@ -4304,8 +4304,8 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimNativeStringCall
   (void)jcls;
   (void)jarg1_;
   (void)jarg2_;
-  arg1 = *(RcimNativeStringCallback **)&jarg1; 
-  arg2 = *(RcimNativeStringCallback **)&jarg2; 
+  arg1 = *(rcim::RcimNativeStringCallback **)&jarg1; 
+  arg2 = *(rcim::RcimNativeStringCallback **)&jarg2; 
   arg3 = (int)jarg3; 
   arg4 = 0;
   if (jarg4) {
@@ -4318,7 +4318,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimNativeStringCall
 
 
 SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimNativeStringCallback_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
-  RcimNativeStringCallback *obj = *((RcimNativeStringCallback **)&objarg);
+  rcim::RcimNativeStringCallback *obj = *((rcim::RcimNativeStringCallback **)&objarg);
   (void)jcls;
   SwigDirector_RcimNativeStringCallback *director = static_cast<SwigDirector_RcimNativeStringCallback *>(obj);
   director->swig_connect_director(jenv, jself, jenv->GetObjectClass(jself), (jswig_mem_own == JNI_TRUE), (jweak_global == JNI_TRUE));
@@ -4326,7 +4326,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimNativeStringCall
 
 
 SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimNativeStringCallback_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
-  RcimNativeStringCallback *obj = *((RcimNativeStringCallback **)&objarg);
+  rcim::RcimNativeStringCallback *obj = *((rcim::RcimNativeStringCallback **)&objarg);
   SwigDirector_RcimNativeStringCallback *director = dynamic_cast<SwigDirector_RcimNativeStringCallback *>(obj);
   (void)jcls;
   if (director) {
@@ -4337,43 +4337,43 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimNativeStringCall
 
 SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_new_1RcimNativeSendMessageCallback(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
-  RcimNativeSendMessageCallback *result = 0 ;
+  rcim::RcimNativeSendMessageCallback *result = 0 ;
   
   (void)jenv;
   (void)jcls;
-  result = (RcimNativeSendMessageCallback *)new SwigDirector_RcimNativeSendMessageCallback(jenv);
-  *(RcimNativeSendMessageCallback **)&jresult = result; 
+  result = (rcim::RcimNativeSendMessageCallback *)new SwigDirector_RcimNativeSendMessageCallback(jenv);
+  *(rcim::RcimNativeSendMessageCallback **)&jresult = result; 
   return jresult;
 }
 
 
 SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_delete_1RcimNativeSendMessageCallback(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  RcimNativeSendMessageCallback *arg1 = (RcimNativeSendMessageCallback *) 0 ;
+  rcim::RcimNativeSendMessageCallback *arg1 = (rcim::RcimNativeSendMessageCallback *) 0 ;
   
   (void)jenv;
   (void)jcls;
-  arg1 = *(RcimNativeSendMessageCallback **)&jarg1; 
+  arg1 = *(rcim::RcimNativeSendMessageCallback **)&jarg1; 
   delete arg1;
 }
 
 
 SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimNativeSendMessageCallback_1onSave(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
-  RcimNativeSendMessageCallback *arg1 = (RcimNativeSendMessageCallback *) 0 ;
+  rcim::RcimNativeSendMessageCallback *arg1 = (rcim::RcimNativeSendMessageCallback *) 0 ;
   RcimMessageBox *arg2 = (RcimMessageBox *) 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   (void)jarg2_;
-  arg1 = *(RcimNativeSendMessageCallback **)&jarg1; 
+  arg1 = *(rcim::RcimNativeSendMessageCallback **)&jarg1; 
   arg2 = *(RcimMessageBox **)&jarg2; 
   (arg1)->onSave((RcimMessageBox const *)arg2);
 }
 
 
 SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimNativeSendMessageCallback_1onResult(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3, jlong jarg4, jobject jarg4_) {
-  RcimNativeSendMessageCallback *arg1 = (RcimNativeSendMessageCallback *) 0 ;
-  RcimNativeSendMessageCallback *arg2 = (RcimNativeSendMessageCallback *) 0 ;
+  rcim::RcimNativeSendMessageCallback *arg1 = (rcim::RcimNativeSendMessageCallback *) 0 ;
+  rcim::RcimNativeSendMessageCallback *arg2 = (rcim::RcimNativeSendMessageCallback *) 0 ;
   int arg3 ;
   RcimMessageBox *arg4 = (RcimMessageBox *) 0 ;
   
@@ -4382,8 +4382,8 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimNativeSendMessag
   (void)jarg1_;
   (void)jarg2_;
   (void)jarg4_;
-  arg1 = *(RcimNativeSendMessageCallback **)&jarg1; 
-  arg2 = *(RcimNativeSendMessageCallback **)&jarg2; 
+  arg1 = *(rcim::RcimNativeSendMessageCallback **)&jarg1; 
+  arg2 = *(rcim::RcimNativeSendMessageCallback **)&jarg2; 
   arg3 = (int)jarg3; 
   arg4 = *(RcimMessageBox **)&jarg4; 
   (arg1)->onResult(arg2,arg3,(RcimMessageBox const *)arg4);
@@ -4391,7 +4391,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimNativeSendMessag
 
 
 SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimNativeSendMessageCallback_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
-  RcimNativeSendMessageCallback *obj = *((RcimNativeSendMessageCallback **)&objarg);
+  rcim::RcimNativeSendMessageCallback *obj = *((rcim::RcimNativeSendMessageCallback **)&objarg);
   (void)jcls;
   SwigDirector_RcimNativeSendMessageCallback *director = static_cast<SwigDirector_RcimNativeSendMessageCallback *>(obj);
   director->swig_connect_director(jenv, jself, jenv->GetObjectClass(jself), (jswig_mem_own == JNI_TRUE), (jweak_global == JNI_TRUE));
@@ -4399,7 +4399,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimNativeSendMessag
 
 
 SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimNativeSendMessageCallback_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
-  RcimNativeSendMessageCallback *obj = *((RcimNativeSendMessageCallback **)&objarg);
+  rcim::RcimNativeSendMessageCallback *obj = *((rcim::RcimNativeSendMessageCallback **)&objarg);
   SwigDirector_RcimNativeSendMessageCallback *director = dynamic_cast<SwigDirector_RcimNativeSendMessageCallback *>(obj);
   (void)jcls;
   if (director) {
@@ -4410,41 +4410,41 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimNativeSendMessag
 
 SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_new_1RcimNativeIntListener(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
-  RcimNativeIntListener *result = 0 ;
+  rcim::RcimNativeIntListener *result = 0 ;
   
   (void)jenv;
   (void)jcls;
-  result = (RcimNativeIntListener *)new SwigDirector_RcimNativeIntListener(jenv);
-  *(RcimNativeIntListener **)&jresult = result; 
+  result = (rcim::RcimNativeIntListener *)new SwigDirector_RcimNativeIntListener(jenv);
+  *(rcim::RcimNativeIntListener **)&jresult = result; 
   return jresult;
 }
 
 
 SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_delete_1RcimNativeIntListener(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  RcimNativeIntListener *arg1 = (RcimNativeIntListener *) 0 ;
+  rcim::RcimNativeIntListener *arg1 = (rcim::RcimNativeIntListener *) 0 ;
   
   (void)jenv;
   (void)jcls;
-  arg1 = *(RcimNativeIntListener **)&jarg1; 
+  arg1 = *(rcim::RcimNativeIntListener **)&jarg1; 
   delete arg1;
 }
 
 
 SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimNativeIntListener_1onChanged(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
-  RcimNativeIntListener *arg1 = (RcimNativeIntListener *) 0 ;
+  rcim::RcimNativeIntListener *arg1 = (rcim::RcimNativeIntListener *) 0 ;
   int arg2 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(RcimNativeIntListener **)&jarg1; 
+  arg1 = *(rcim::RcimNativeIntListener **)&jarg1; 
   arg2 = (int)jarg2; 
   (arg1)->onChanged(arg2);
 }
 
 
 SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimNativeIntListener_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
-  RcimNativeIntListener *obj = *((RcimNativeIntListener **)&objarg);
+  rcim::RcimNativeIntListener *obj = *((rcim::RcimNativeIntListener **)&objarg);
   (void)jcls;
   SwigDirector_RcimNativeIntListener *director = static_cast<SwigDirector_RcimNativeIntListener *>(obj);
   director->swig_connect_director(jenv, jself, jenv->GetObjectClass(jself), (jswig_mem_own == JNI_TRUE), (jweak_global == JNI_TRUE));
@@ -4452,7 +4452,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimNativeIntListene
 
 
 SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimNativeIntListener_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
-  RcimNativeIntListener *obj = *((RcimNativeIntListener **)&objarg);
+  rcim::RcimNativeIntListener *obj = *((rcim::RcimNativeIntListener **)&objarg);
   SwigDirector_RcimNativeIntListener *director = dynamic_cast<SwigDirector_RcimNativeIntListener *>(obj);
   (void)jcls;
   if (director) {
@@ -4469,7 +4469,7 @@ SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_newSdkVersionArray(
   (void)jenv;
   (void)jcls;
   arg1 = (int)jarg1; 
-  result = (int64_t)newSdkVersionArray(arg1);
+  result = (int64_t)rcim::newSdkVersionArray(arg1);
   jresult = (jlong)result; 
   return jresult;
 }
@@ -4487,7 +4487,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_insertSdkVersionArra
     arg2 = jenv->GetLongArrayElements(jarg2, 0);
   }
   arg3 = (int)jarg3; 
-  insertSdkVersionArray(arg1,arg2,arg3);
+  rcim::insertSdkVersionArray(arg1,arg2,arg3);
   {
     jenv->ReleaseLongArrayElements(jarg2, arg2, 0);
   }
@@ -4500,7 +4500,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_freeSdkVersionArray(
   (void)jenv;
   (void)jcls;
   arg1 = (int64_t)jarg1; 
-  freeSdkVersionArray(arg1);
+  rcim::freeSdkVersionArray(arg1);
 }
 
 
@@ -4518,7 +4518,7 @@ SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_RcClientJNI_engineBuilderSetStor
     arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
     if (!arg2) return 0;
   }
-  result = (int)engineBuilderSetStorePath(arg1,(char const *)arg2);
+  result = (int)rcim::engineBuilderSetStorePath(arg1,(char const *)arg2);
   jresult = (jint)result; 
   if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
   return jresult;
@@ -4529,7 +4529,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_engineConnect(JNIEnv
   int64_t arg1 ;
   char *arg2 = (char *) 0 ;
   int arg3 ;
-  RcimNativeStringCallback *arg4 = (RcimNativeStringCallback *) 0 ;
+  rcim::RcimNativeStringCallback *arg4 = (rcim::RcimNativeStringCallback *) 0 ;
   
   (void)jenv;
   (void)jcls;
@@ -4541,29 +4541,29 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_engineConnect(JNIEnv
     if (!arg2) return ;
   }
   arg3 = (int)jarg3; 
-  arg4 = *(RcimNativeStringCallback **)&jarg4; 
-  engineConnect(arg1,(char const *)arg2,arg3,arg4);
+  arg4 = *(rcim::RcimNativeStringCallback **)&jarg4; 
+  rcim::engineConnect(arg1,(char const *)arg2,arg3,arg4);
   if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
 }
 
 
 SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_engineSetConnectionStatusListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2, jobject jarg2_) {
   int64_t arg1 ;
-  RcimNativeIntListener *arg2 = (RcimNativeIntListener *) 0 ;
+  rcim::RcimNativeIntListener *arg2 = (rcim::RcimNativeIntListener *) 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg2_;
   arg1 = (int64_t)jarg1; 
-  arg2 = *(RcimNativeIntListener **)&jarg2; 
-  engineSetConnectionStatusListener(arg1,arg2);
+  arg2 = *(rcim::RcimNativeIntListener **)&jarg2; 
+  rcim::engineSetConnectionStatusListener(arg1,arg2);
 }
 
 
 SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_engineSendMessage(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
   int64_t arg1 ;
   RcimMessageBox *arg2 = (RcimMessageBox *) 0 ;
-  RcimNativeSendMessageCallback *arg3 = (RcimNativeSendMessageCallback *) 0 ;
+  rcim::RcimNativeSendMessageCallback *arg3 = (rcim::RcimNativeSendMessageCallback *) 0 ;
   
   (void)jenv;
   (void)jcls;
@@ -4571,8 +4571,8 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_engineSendMessage(JN
   (void)jarg3_;
   arg1 = (int64_t)jarg1; 
   arg2 = *(RcimMessageBox **)&jarg2; 
-  arg3 = *(RcimNativeSendMessageCallback **)&jarg3; 
-  engineSendMessage(arg1,arg2,arg3);
+  arg3 = *(rcim::RcimNativeSendMessageCallback **)&jarg3; 
+  rcim::engineSendMessage(arg1,arg2,arg3);
 }
 
 

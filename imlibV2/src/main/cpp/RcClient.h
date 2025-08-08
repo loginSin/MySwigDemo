@@ -10,6 +10,8 @@
 // swig 会把 C 的 long 默认转成 int，64 位变 32 位，精度丢失
 // swig 默认不支持 long long 类型
 
+namespace rcim {
+
 int createEngineBuilder(RcimEngineBuilderParam *param, int64_t *outBuilderPtr);
 
 int64_t newSdkVersionArray(int size);
@@ -29,5 +31,5 @@ void engineSetConnectionStatusListener(int64_t enginePtr, RcimNativeIntListener 
 
 void engineSendMessage(int64_t enginePtr, RcimMessageBox *msgBox,
                        RcimNativeSendMessageCallback *sendMsgCallback);
-
+} // namespace rcim
 #endif //MYSWIGDEMO_RCCLIENT_H
