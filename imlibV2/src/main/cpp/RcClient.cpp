@@ -187,6 +187,12 @@ namespace rcim {
 //// ---------------------------------------连接----------------------------------------------------
     void engineConnect(int64_t enginePtr, const char *token, int timeout,
                        RcimNativeStringCallback *callback) {
+        if (enginePtr == 0) {
+            if (callback) {
+                callback->onResult(callback, RcimEngineError_InvalidArgumentEngineSync, nullptr);
+            }
+            return;
+        }
         auto *engine = reinterpret_cast<RcimEngineSync *>(static_cast<uintptr_t>(enginePtr));
         rcim_engine_connect(engine, token, timeout, callback, engineConnectAdapter);
     }
@@ -200,6 +206,9 @@ namespace rcim {
     }
 
     void engineSetConnectionStatusListener(int64_t enginePtr, RcimNativeIntListener *listener) {
+        if (enginePtr == 0) {
+            return;
+        }
         auto *engine = reinterpret_cast<RcimEngineSync *>(static_cast<uintptr_t>(enginePtr));
         rcim_engine_set_connection_status_listener(engine, listener,
                                                    engineSetConnectionStatusListenerAdapter);

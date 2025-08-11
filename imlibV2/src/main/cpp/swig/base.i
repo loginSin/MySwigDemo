@@ -4,9 +4,7 @@
 
 ///// ----------------支持 int64_t - 开始 ----------------------------------
 //// 将 int64_t *ptrArr 映射为 Java 的 long[] 数组
-%apply long[] { int64_t *ptrArr };
-
-// 或者使用更明确的类型映射
+// 使用更明确的类型映射
 %typemap(in) int64_t *ptrArr {
         $1 = JCALL2(GetLongArrayElements, jenv, $input, 0);
 }
