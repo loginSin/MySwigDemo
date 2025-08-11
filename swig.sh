@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-rm -rf imlibV2/src/main/java/io/rong/imlib/swig/*
+rm -rf imlibV2/src/main/java/io/rong/imlib/internal/swig/*
 
 python c-extract-structs.py
 
