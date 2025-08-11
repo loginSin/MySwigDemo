@@ -81,4 +81,8 @@ public class RcClient {
     RcClientJNI.engineSendMessage(enginePtr, RcimMessageBox.getCPtr(msgBox), msgBox, RcimNativeSendMessageCallback.getCPtr(sendMsgCallback), sendMsgCallback);
   }
 
+  public static int engineSetMessageReceivedListener(long enginePtr, RcimNativeMessageReceivedListener listener) {
+    return RcClientJNI.engineSetMessageReceivedListener(enginePtr, RcimNativeMessageReceivedListener.getCPtr(listener), listener);
+  }
+
 }

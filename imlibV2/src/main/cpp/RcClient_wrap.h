@@ -55,5 +55,20 @@ protected:
     Swig::BoolArray<1> swig_override;
 };
 
+class SwigDirector_RcimNativeMessageReceivedListener : public rcim::RcimNativeMessageReceivedListener, public Swig::Director {
+
+public:
+    void swig_connect_director(JNIEnv *jenv, jobject jself, jclass jcls, bool swig_mem_own, bool weak_global);
+    SwigDirector_RcimNativeMessageReceivedListener(JNIEnv *jenv);
+    virtual ~SwigDirector_RcimNativeMessageReceivedListener();
+    virtual void onChanged(RcimMessageBox const *nativeMsgBox,RcimReceivedInfo const *nativeInfo);
+public:
+    bool swig_overrides(int n) {
+      return (n < 1 ? swig_override[n] : false);
+    }
+protected:
+    Swig::BoolArray<1> swig_override;
+};
+
 
 #endif

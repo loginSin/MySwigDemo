@@ -52,5 +52,8 @@ namespace rcim {
 //// ---------------------------------------发送消息----------------------------------------------------
     void engineSendMessage(int64_t enginePtr, RcimMessageBox *msgBox,
                            RcimNativeSendMessageCallback *sendMsgCallback);
+
+    int engineSetMessageReceivedListener(int64_t enginePtr,
+                                         RcimNativeMessageReceivedListener *listener);
 } // namespace rcim
 #endif //MYSWIGDEMO_RCCLIENT_H

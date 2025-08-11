@@ -197,6 +197,14 @@ public class RcClientJNI {
   public final static native boolean RcimMessageBox_has_sent_receipt_get(long jarg1, RcimMessageBox jarg1_);
   public final static native long new_RcimMessageBox();
   public final static native void delete_RcimMessageBox(long jarg1);
+  public final static native void RcimReceivedInfo_left_set(long jarg1, RcimReceivedInfo jarg1_, int jarg2);
+  public final static native int RcimReceivedInfo_left_get(long jarg1, RcimReceivedInfo jarg1_);
+  public final static native void RcimReceivedInfo_has_package_set(long jarg1, RcimReceivedInfo jarg1_, boolean jarg2);
+  public final static native boolean RcimReceivedInfo_has_package_get(long jarg1, RcimReceivedInfo jarg1_);
+  public final static native void RcimReceivedInfo_is_offline_set(long jarg1, RcimReceivedInfo jarg1_, boolean jarg2);
+  public final static native boolean RcimReceivedInfo_is_offline_get(long jarg1, RcimReceivedInfo jarg1_);
+  public final static native long new_RcimReceivedInfo();
+  public final static native void delete_RcimReceivedInfo(long jarg1);
   public final static native long new_RcimStringVector__SWIG_0();
   public final static native long new_RcimStringVector__SWIG_1(long jarg1, RcimStringVector jarg1_);
   public final static native boolean RcimStringVector_isEmpty(long jarg1, RcimStringVector jarg1_);
@@ -230,6 +238,11 @@ public class RcClientJNI {
   public final static native void RcimNativeIntListener_onChanged(long jarg1, RcimNativeIntListener jarg1_, int jarg2);
   public final static native void RcimNativeIntListener_director_connect(RcimNativeIntListener obj, long cptr, boolean mem_own, boolean weak_global);
   public final static native void RcimNativeIntListener_change_ownership(RcimNativeIntListener obj, long cptr, boolean take_or_release);
+  public final static native long new_RcimNativeMessageReceivedListener();
+  public final static native void delete_RcimNativeMessageReceivedListener(long jarg1);
+  public final static native void RcimNativeMessageReceivedListener_onChanged(long jarg1, RcimNativeMessageReceivedListener jarg1_, long jarg2, RcimMessageBox jarg2_, long jarg3, RcimReceivedInfo jarg3_);
+  public final static native void RcimNativeMessageReceivedListener_director_connect(RcimNativeMessageReceivedListener obj, long cptr, boolean mem_own, boolean weak_global);
+  public final static native void RcimNativeMessageReceivedListener_change_ownership(RcimNativeMessageReceivedListener obj, long cptr, boolean take_or_release);
   public final static native long newSdkVersionArray(int jarg1);
   public final static native void insertSdkVersionArray(long jarg1, long[] jarg2, int jarg3);
   public final static native void freeSdkVersionArray(long jarg1);
@@ -246,6 +259,7 @@ public class RcClientJNI {
   public final static native void engineConnect(long jarg1, String jarg2, int jarg3, long jarg4, RcimNativeStringCallback jarg4_);
   public final static native void engineSetConnectionStatusListener(long jarg1, long jarg2, RcimNativeIntListener jarg2_);
   public final static native void engineSendMessage(long jarg1, long jarg2, RcimMessageBox jarg2_, long jarg3, RcimNativeSendMessageCallback jarg3_);
+  public final static native int engineSetMessageReceivedListener(long jarg1, long jarg2, RcimNativeMessageReceivedListener jarg2_);
 
   public static void SwigDirector_RcimNativeStringCallback_onResult(RcimNativeStringCallback jself, long deleteThis, int code, String value) {
     jself.onResult((deleteThis == 0) ? null : new RcimNativeStringCallback(deleteThis, false), code, value);
@@ -258,6 +272,9 @@ public class RcClientJNI {
   }
   public static void SwigDirector_RcimNativeIntListener_onChanged(RcimNativeIntListener jself, int value) {
     jself.onChanged(value);
+  }
+  public static void SwigDirector_RcimNativeMessageReceivedListener_onChanged(RcimNativeMessageReceivedListener jself, long nativeMsgBox, long nativeInfo) {
+    jself.onChanged((nativeMsgBox == 0) ? null : new RcimMessageBox(nativeMsgBox, false), (nativeInfo == 0) ? null : new RcimReceivedInfo(nativeInfo, false));
   }
 
   private final static native void swig_module_init();

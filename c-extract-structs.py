@@ -4,7 +4,9 @@ def get_white_list():
     """
     返回允许提取的 struct 名称白名单列表
     """
-    list = ["RcimMessageBox" , "RcimPushConfig", "RcimAndroidConfig", "RcimHarmonyConfig", "RcimIosConfig", "RcimReadReceiptInfo", "RcimReadReceiptInfoV2", "RcimReadReceiptUserInfo", "RcimReceivedStatus", "RcimEngineBuilderParam", "RcimSDKVersion"]
+    list = ["RcimMessageBox" , "RcimPushConfig", "RcimAndroidConfig", "RcimHarmonyConfig",
+        "RcimIosConfig", "RcimReadReceiptInfo", "RcimReadReceiptInfoV2", "RcimReadReceiptUserInfo",
+        "RcimReceivedStatus", "RcimEngineBuilderParam", "RcimSDKVersion", "RcimReceivedInfo"]
     return list  # 你可以往这里添加更多结构体名称
 
 def extract_structs(header_content):

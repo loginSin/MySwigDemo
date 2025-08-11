@@ -224,9 +224,35 @@ namespace rcim {
 //// ---------------------------------------发送消息----------------------------------------------------
     void engineSendMessage(int64_t enginePtr, RcimMessageBox *msgBox,
                            RcimNativeSendMessageCallback *sendMsgCallback) {
+        if (enginePtr == 0) {
+            if (sendMsgCallback) {
+                sendMsgCallback->onResult(sendMsgCallback,
+                                          RcimEngineError_InvalidArgumentEngineSync, msgBox);
+            }
+            return;
+        }
         auto *engine = reinterpret_cast<RcimEngineSync *>(static_cast<uintptr_t>(enginePtr));
         rcim_engine_send_message(engine, msgBox, nullptr, sendMsgCallback, engineSendMessageAdapter,
                                  engineSendMessageSaved);
+    }
+
+    void engineSetMessageReceivedListenerAdapter(const void *context,
+                                                 const struct RcimMessageBox *msg_box,
+                                                 const struct RcimReceivedInfo *info) {
+        auto *listener = static_cast<RcimNativeMessageReceivedListener *>(const_cast<void *>(context));
+        if (listener) {
+            listener->onChanged(msg_box, info);
+        }
+    }
+
+    int engineSetMessageReceivedListener(int64_t enginePtr,
+                                         RcimNativeMessageReceivedListener *listener) {
+        if (enginePtr == 0) {
+            return RcimEngineError_InvalidArgumentEngineSync;
+        }
+        auto *engine = reinterpret_cast<RcimEngineSync *>(static_cast<uintptr_t>(enginePtr));
+        return rcim_engine_set_message_received_listener(engine, listener,
+                                                         engineSetMessageReceivedListenerAdapter);
     }
 
 } // namespace rcim

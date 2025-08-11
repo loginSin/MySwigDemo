@@ -417,3 +417,9 @@ typedef struct RcimMessageBox {
     bool has_sent_receipt;
 } RcimMessageBox;
 
+typedef struct RcimReceivedInfo {
+    int32_t left;
+    bool has_package;
+    bool is_offline;
+} RcimReceivedInfo;
+

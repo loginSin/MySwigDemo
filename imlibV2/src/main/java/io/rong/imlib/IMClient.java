@@ -4,11 +4,14 @@ import android.content.Context;
 
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.concurrent.atomic.AtomicReferenceArray;
 
 import io.rong.imlib.base.callback.IData1Callback;
 import io.rong.imlib.base.enums.EngineError;
 import io.rong.imlib.connect.enums.ConnectionStatus;
 import io.rong.imlib.connect.listener.ConnectionStatusListener;
+import io.rong.imlib.internal.swig.RcimNativeMessageReceivedListener;
+import io.rong.imlib.internal.swig.RcimReceivedInfo;
 import io.rong.imlib.internal.swig.RcimStringVector;
 import io.rong.imlib.message.Message;
 import io.rong.imlib.message.callback.ISendMessageCallback;
@@ -20,11 +23,14 @@ import io.rong.imlib.internal.swig.RcimEngineBuilderParam;
 import io.rong.imlib.internal.swig.RcimMessageBox;
 import io.rong.imlib.internal.swig.RcimSDKVersion;
 import io.rong.imlib.internal.utils.Transformer;
+import io.rong.imlib.message.listener.MessageReceivedListener;
+import io.rong.imlib.message.model.ReceivedInfo;
 
 public class IMClient {
     private final AtomicLong enginePtr = new AtomicLong();
     // NativeXXXListener 需要在 java 层被持有，否则会被销毁造成野指针
     private final AtomicReference<RcimNativeIntListener> conStatusListenerRef = new AtomicReference<>();
+    private final AtomicReference<RcimNativeMessageReceivedListener> msgReceivedListenerRef = new AtomicReference<>();
 
     static {
         try {
@@ -157,8 +163,7 @@ public class IMClient {
 
             @Override
             public void onSave(RcimMessageBox nativeMsg) {
-                Message msg = new Message();
-                Transformer.messageFromNative(msg, nativeMsg);
+                Message msg = Transformer.messageFromNative(nativeMsg);
                 if (sendMessageCallback != null) {
                     sendMessageCallback.onAttached(msg);
                 }
@@ -166,8 +171,7 @@ public class IMClient {
 
             @Override
             public void onResult(RcimNativeSendMessageCallback deleteThis, int code, RcimMessageBox nativeMsg) {
-                Message msg = new Message();
-                Transformer.messageFromNative(msg, nativeMsg);
+                Message msg = Transformer.messageFromNative(nativeMsg);
                 if (sendMessageCallback == null) {
                     return;
                 }
@@ -181,5 +185,26 @@ public class IMClient {
                 deleteThis.swigDelete();
             }
         });
+    }
+
+    public void setMessageReceivedListener(MessageReceivedListener listener) {
+        RcimNativeMessageReceivedListener cachedMsgRevListener = this.msgReceivedListenerRef.get();
+        // 原生监听已存在说明已经设置过了，就不再设置
+        if (cachedMsgRevListener != null) {
+            return;
+        }
+
+        RcimNativeMessageReceivedListener nativeListener = new RcimNativeMessageReceivedListener() {
+            @Override
+            public void onChanged(RcimMessageBox nativeMsgBox, RcimReceivedInfo nativeInfo) {
+                if (listener != null) {
+                    Message msg = Transformer.messageFromNative(nativeMsgBox);
+                    ReceivedInfo info = Transformer.receivedInfoFromNative(nativeInfo);
+                    listener.onReceived(msg, info);
+                }
+            }
+        };
+        this.msgReceivedListenerRef.set(nativeListener);
+        RcClient.engineSetMessageReceivedListener(this.enginePtr.get(), nativeListener);
     }
 }

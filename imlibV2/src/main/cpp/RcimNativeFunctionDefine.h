@@ -11,12 +11,13 @@ namespace rcim {
     */
     class RcimNativeStringCallback {
     public:
-        RcimNativeStringCallback() {};
+        RcimNativeStringCallback() = default;
 
-        virtual ~RcimNativeStringCallback() {}
+        virtual ~RcimNativeStringCallback() = default;
 
         // callback 使用完成了，把当前 callback 指针传给 Java 层，让 Java 释放
-        virtual void onResult(RcimNativeStringCallback *deleteThis, int code, const char *value) = 0;
+        virtual void
+        onResult(RcimNativeStringCallback *deleteThis, int code, const char *value) = 0;
     };
 
     /**
@@ -24,9 +25,9 @@ namespace rcim {
     */
     class RcimNativeSendMessageCallback {
     public:
-        RcimNativeSendMessageCallback() {};
+        RcimNativeSendMessageCallback() = default;
 
-        virtual ~RcimNativeSendMessageCallback() {}
+        virtual ~RcimNativeSendMessageCallback() = default;
 
         virtual void onSave(const RcimMessageBox *nativeMsg) = 0;
 
@@ -44,11 +45,20 @@ namespace rcim {
     */
     class RcimNativeIntListener {
     public:
-        RcimNativeIntListener() {};
+        RcimNativeIntListener() = default;
 
-        virtual ~RcimNativeIntListener() {}
+        virtual ~RcimNativeIntListener() = default;
 
         virtual void onChanged(int value) = 0;
+    };
+
+    class RcimNativeMessageReceivedListener {
+    public:
+        RcimNativeMessageReceivedListener() = default;
+
+        virtual ~RcimNativeMessageReceivedListener() = default;
+
+        virtual void onChanged(const struct RcimMessageBox *nativeMsgBox, const struct RcimReceivedInfo *nativeInfo) = 0;
     };
 
 } // namespace rcim

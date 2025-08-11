@@ -19,11 +19,14 @@ import io.rong.imlib.connect.listener.ConnectionStatusListener
 import io.rong.imlib.conversation.enums.ConversationType
 import io.rong.imlib.message.Message
 import io.rong.imlib.message.callback.ISendMessageCallback
+import io.rong.imlib.message.listener.MessageReceivedListener
+import io.rong.imlib.message.model.ReceivedInfo
 import io.rong.rust.myswigdemo.ui.theme.MySwigDemoTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        init()
         connect()
         enableEdgeToEdge()
         setContent {
@@ -38,9 +41,20 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    fun connect() {
+    fun init() {
         IMClient.getInstance().init(baseContext, "n19jmcy59f1q9")
+        setListener()
+    }
 
+    fun setListener() {
+        IMClient.getInstance().setMessageReceivedListener(object : MessageReceivedListener {
+            override fun onReceived(msg: Message?, info: ReceivedInfo?) {
+                println("qxb setMessageReceivedListener onReceived ")
+            }
+        });
+    }
+
+    fun connect() {
         IMClient.getInstance().setConnectionStatusListener(object :
             ConnectionStatusListener {
             override fun onConnectionStatusChanged(status: ConnectionStatus?) {
@@ -60,7 +74,6 @@ class MainActivity : ComponentActivity() {
                 println("qxb connect onError " + error)
             }
         })
-
 
     }
 
