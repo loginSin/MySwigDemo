@@ -6,7 +6,7 @@
  * the SWIG interface file instead.
  * ----------------------------------------------------------------------------- */
 
-package io.rong.imlib.swig;
+package io.rong.imlib.internal.swig;
 
 public class RcimReadReceiptInfoV2 {
   private transient long swigCPtr;

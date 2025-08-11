@@ -11,14 +11,14 @@ import io.rong.imlib.connect.enums.ConnectionStatus;
 import io.rong.imlib.connect.listener.ConnectionStatusListener;
 import io.rong.imlib.message.Message;
 import io.rong.imlib.message.callback.ISendMessageCallback;
-import io.rong.imlib.swig.RcClient;
-import io.rong.imlib.swig.RcimNativeStringCallback;
-import io.rong.imlib.swig.RcimNativeIntListener;
-import io.rong.imlib.swig.RcimNativeSendMessageCallback;
-import io.rong.imlib.swig.RcimEngineBuilderParam;
-import io.rong.imlib.swig.RcimMessageBox;
-import io.rong.imlib.swig.RcimSDKVersion;
-import io.rong.imlib.utils.Transformer;
+import io.rong.imlib.internal.swig.RcClient;
+import io.rong.imlib.internal.swig.RcimNativeStringCallback;
+import io.rong.imlib.internal.swig.RcimNativeIntListener;
+import io.rong.imlib.internal.swig.RcimNativeSendMessageCallback;
+import io.rong.imlib.internal.swig.RcimEngineBuilderParam;
+import io.rong.imlib.internal.swig.RcimMessageBox;
+import io.rong.imlib.internal.swig.RcimSDKVersion;
+import io.rong.imlib.internal.utils.Transformer;
 
 public class IMClient {
     private final AtomicLong enginePtr = new AtomicLong();

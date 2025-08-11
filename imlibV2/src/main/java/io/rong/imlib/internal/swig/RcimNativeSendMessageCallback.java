@@ -6,22 +6,22 @@
  * the SWIG interface file instead.
  * ----------------------------------------------------------------------------- */
 
-package io.rong.imlib.swig;
+package io.rong.imlib.internal.swig;
 
-public class RcimNativeStringCallback {
+public class RcimNativeSendMessageCallback {
   private transient long swigCPtr;
   protected transient boolean swigCMemOwn;
 
-  protected RcimNativeStringCallback(long cPtr, boolean cMemoryOwn) {
+  protected RcimNativeSendMessageCallback(long cPtr, boolean cMemoryOwn) {
     swigCMemOwn = cMemoryOwn;
     swigCPtr = cPtr;
   }
 
-  protected static long getCPtr(RcimNativeStringCallback obj) {
+  protected static long getCPtr(RcimNativeSendMessageCallback obj) {
     return (obj == null) ? 0 : obj.swigCPtr;
   }
 
-  protected static long swigRelease(RcimNativeStringCallback obj) {
+  protected static long swigRelease(RcimNativeSendMessageCallback obj) {
     long ptr = 0;
     if (obj != null) {
       if (!obj.swigCMemOwn)
@@ -42,7 +42,7 @@ public class RcimNativeStringCallback {
     if (swigCPtr != 0) {
       if (swigCMemOwn) {
         swigCMemOwn = false;
-        RcClientJNI.delete_RcimNativeStringCallback(swigCPtr);
+        RcClientJNI.delete_RcimNativeSendMessageCallback(swigCPtr);
       }
       swigCPtr = 0;
     }
@@ -55,12 +55,12 @@ public class RcimNativeStringCallback {
 
   public void swigReleaseOwnership() {
     swigCMemOwn = false;
-    RcClientJNI.RcimNativeStringCallback_change_ownership(this, swigCPtr, false);
+    RcClientJNI.RcimNativeSendMessageCallback_change_ownership(this, swigCPtr, false);
   }
 
   public void swigTakeOwnership() {
     swigCMemOwn = true;
-    RcClientJNI.RcimNativeStringCallback_change_ownership(this, swigCPtr, true);
+    RcClientJNI.RcimNativeSendMessageCallback_change_ownership(this, swigCPtr, true);
   }
 
 /**
@@ -78,8 +78,8 @@ public synchronized void swigDelete() {
  * WARNING： 原则上不能调用该方法，除非你明确知道你需要这个方法<p>
  * 静态工厂方法：从 C 指针构建该对象
  */
-public static RcimNativeStringCallback fromPointer(long cPtr) {
-    return new RcimNativeStringCallback(cPtr, false);
+public static RcimNativeSendMessageCallback fromPointer(long cPtr) {
+    return new RcimNativeSendMessageCallback(cPtr, false);
 }
 
 /**
@@ -91,13 +91,17 @@ public long getCPtr() {
     return swigCPtr;
 }
 
-  public RcimNativeStringCallback() {
-    this(RcClientJNI.new_RcimNativeStringCallback(), true);
-    RcClientJNI.RcimNativeStringCallback_director_connect(this, swigCPtr, true, true);
+  public RcimNativeSendMessageCallback() {
+    this(RcClientJNI.new_RcimNativeSendMessageCallback(), true);
+    RcClientJNI.RcimNativeSendMessageCallback_director_connect(this, swigCPtr, true, true);
   }
 
-  public void onResult(RcimNativeStringCallback deleteThis, int code, String value) {
-    RcClientJNI.RcimNativeStringCallback_onResult(swigCPtr, this, RcimNativeStringCallback.getCPtr(deleteThis), deleteThis, code, value);
+  public void onSave(RcimMessageBox nativeMsg) {
+    RcClientJNI.RcimNativeSendMessageCallback_onSave(swigCPtr, this, RcimMessageBox.getCPtr(nativeMsg), nativeMsg);
+  }
+
+  public void onResult(RcimNativeSendMessageCallback deleteThis, int code, RcimMessageBox nativeMsg) {
+    RcClientJNI.RcimNativeSendMessageCallback_onResult(swigCPtr, this, RcimNativeSendMessageCallback.getCPtr(deleteThis), deleteThis, code, RcimMessageBox.getCPtr(nativeMsg), nativeMsg);
   }
 
 }

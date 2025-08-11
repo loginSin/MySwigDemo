@@ -6,22 +6,22 @@
  * the SWIG interface file instead.
  * ----------------------------------------------------------------------------- */
 
-package io.rong.imlib.swig;
+package io.rong.imlib.internal.swig;
 
-public class RcimHarmonyConfig {
+public class RcimIosConfig {
   private transient long swigCPtr;
   protected transient boolean swigCMemOwn;
 
-  protected RcimHarmonyConfig(long cPtr, boolean cMemoryOwn) {
+  protected RcimIosConfig(long cPtr, boolean cMemoryOwn) {
     swigCMemOwn = cMemoryOwn;
     swigCPtr = cPtr;
   }
 
-  protected static long getCPtr(RcimHarmonyConfig obj) {
+  protected static long getCPtr(RcimIosConfig obj) {
     return (obj == null) ? 0 : obj.swigCPtr;
   }
 
-  protected static long swigRelease(RcimHarmonyConfig obj) {
+  protected static long swigRelease(RcimIosConfig obj) {
     long ptr = 0;
     if (obj != null) {
       if (!obj.swigCMemOwn)
@@ -42,7 +42,7 @@ public class RcimHarmonyConfig {
     if (swigCPtr != 0) {
       if (swigCMemOwn) {
         swigCMemOwn = false;
-        RcClientJNI.delete_RcimHarmonyConfig(swigCPtr);
+        RcClientJNI.delete_RcimIosConfig(swigCPtr);
       }
       swigCPtr = 0;
     }
@@ -63,8 +63,8 @@ public synchronized void swigDelete() {
  * WARNING： 原则上不能调用该方法，除非你明确知道你需要这个方法<p>
  * 静态工厂方法：从 C 指针构建该对象
  */
-public static RcimHarmonyConfig fromPointer(long cPtr) {
-    return new RcimHarmonyConfig(cPtr, false);
+public static RcimIosConfig fromPointer(long cPtr) {
+    return new RcimIosConfig(cPtr, false);
 }
 
 /**
@@ -76,24 +76,48 @@ public long getCPtr() {
     return swigCPtr;
 }
 
-  public void setImage_url(String value) {
-    RcClientJNI.RcimHarmonyConfig_image_url_set(swigCPtr, this, value);
+  public void setThread_id(String value) {
+    RcClientJNI.RcimIosConfig_thread_id_set(swigCPtr, this, value);
   }
 
-  public String getImage_url() {
-    return RcClientJNI.RcimHarmonyConfig_image_url_get(swigCPtr, this);
+  public String getThread_id() {
+    return RcClientJNI.RcimIosConfig_thread_id_get(swigCPtr, this);
   }
 
   public void setCategory(String value) {
-    RcClientJNI.RcimHarmonyConfig_category_set(swigCPtr, this, value);
+    RcClientJNI.RcimIosConfig_category_set(swigCPtr, this, value);
   }
 
   public String getCategory() {
-    return RcClientJNI.RcimHarmonyConfig_category_get(swigCPtr, this);
+    return RcClientJNI.RcimIosConfig_category_get(swigCPtr, this);
   }
 
-  public RcimHarmonyConfig() {
-    this(RcClientJNI.new_RcimHarmonyConfig(), true);
+  public void setApns_collapse_id(String value) {
+    RcClientJNI.RcimIosConfig_apns_collapse_id_set(swigCPtr, this, value);
+  }
+
+  public String getApns_collapse_id() {
+    return RcClientJNI.RcimIosConfig_apns_collapse_id_get(swigCPtr, this);
+  }
+
+  public void setRich_media_uri(String value) {
+    RcClientJNI.RcimIosConfig_rich_media_uri_set(swigCPtr, this, value);
+  }
+
+  public String getRich_media_uri() {
+    return RcClientJNI.RcimIosConfig_rich_media_uri_get(swigCPtr, this);
+  }
+
+  public void setInterruption_level(String value) {
+    RcClientJNI.RcimIosConfig_interruption_level_set(swigCPtr, this, value);
+  }
+
+  public String getInterruption_level() {
+    return RcClientJNI.RcimIosConfig_interruption_level_get(swigCPtr, this);
+  }
+
+  public RcimIosConfig() {
+    this(RcClientJNI.new_RcimIosConfig(), true);
   }
 
 }

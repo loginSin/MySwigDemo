@@ -6,22 +6,22 @@
  * the SWIG interface file instead.
  * ----------------------------------------------------------------------------- */
 
-package io.rong.imlib.swig;
+package io.rong.imlib.internal.swig;
 
-public class RcimSDKVersion {
+public class RcimHarmonyConfig {
   private transient long swigCPtr;
   protected transient boolean swigCMemOwn;
 
-  protected RcimSDKVersion(long cPtr, boolean cMemoryOwn) {
+  protected RcimHarmonyConfig(long cPtr, boolean cMemoryOwn) {
     swigCMemOwn = cMemoryOwn;
     swigCPtr = cPtr;
   }
 
-  protected static long getCPtr(RcimSDKVersion obj) {
+  protected static long getCPtr(RcimHarmonyConfig obj) {
     return (obj == null) ? 0 : obj.swigCPtr;
   }
 
-  protected static long swigRelease(RcimSDKVersion obj) {
+  protected static long swigRelease(RcimHarmonyConfig obj) {
     long ptr = 0;
     if (obj != null) {
       if (!obj.swigCMemOwn)
@@ -42,7 +42,7 @@ public class RcimSDKVersion {
     if (swigCPtr != 0) {
       if (swigCMemOwn) {
         swigCMemOwn = false;
-        RcClientJNI.delete_RcimSDKVersion(swigCPtr);
+        RcClientJNI.delete_RcimHarmonyConfig(swigCPtr);
       }
       swigCPtr = 0;
     }
@@ -63,8 +63,8 @@ public synchronized void swigDelete() {
  * WARNING： 原则上不能调用该方法，除非你明确知道你需要这个方法<p>
  * 静态工厂方法：从 C 指针构建该对象
  */
-public static RcimSDKVersion fromPointer(long cPtr) {
-    return new RcimSDKVersion(cPtr, false);
+public static RcimHarmonyConfig fromPointer(long cPtr) {
+    return new RcimHarmonyConfig(cPtr, false);
 }
 
 /**
@@ -76,24 +76,24 @@ public long getCPtr() {
     return swigCPtr;
 }
 
-  public void setName(String value) {
-    RcClientJNI.RcimSDKVersion_name_set(swigCPtr, this, value);
+  public void setImage_url(String value) {
+    RcClientJNI.RcimHarmonyConfig_image_url_set(swigCPtr, this, value);
   }
 
-  public String getName() {
-    return RcClientJNI.RcimSDKVersion_name_get(swigCPtr, this);
+  public String getImage_url() {
+    return RcClientJNI.RcimHarmonyConfig_image_url_get(swigCPtr, this);
   }
 
-  public void setVersion(String value) {
-    RcClientJNI.RcimSDKVersion_version_set(swigCPtr, this, value);
+  public void setCategory(String value) {
+    RcClientJNI.RcimHarmonyConfig_category_set(swigCPtr, this, value);
   }
 
-  public String getVersion() {
-    return RcClientJNI.RcimSDKVersion_version_get(swigCPtr, this);
+  public String getCategory() {
+    return RcClientJNI.RcimHarmonyConfig_category_get(swigCPtr, this);
   }
 
-  public RcimSDKVersion() {
-    this(RcClientJNI.new_RcimSDKVersion(), true);
+  public RcimHarmonyConfig() {
+    this(RcClientJNI.new_RcimHarmonyConfig(), true);
   }
 
 }

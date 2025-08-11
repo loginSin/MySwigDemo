@@ -6,22 +6,22 @@
  * the SWIG interface file instead.
  * ----------------------------------------------------------------------------- */
 
-package io.rong.imlib.swig;
+package io.rong.imlib.internal.swig;
 
-public class RcimReceivedStatus {
+public class RcimSDKVersion {
   private transient long swigCPtr;
   protected transient boolean swigCMemOwn;
 
-  protected RcimReceivedStatus(long cPtr, boolean cMemoryOwn) {
+  protected RcimSDKVersion(long cPtr, boolean cMemoryOwn) {
     swigCMemOwn = cMemoryOwn;
     swigCPtr = cPtr;
   }
 
-  protected static long getCPtr(RcimReceivedStatus obj) {
+  protected static long getCPtr(RcimSDKVersion obj) {
     return (obj == null) ? 0 : obj.swigCPtr;
   }
 
-  protected static long swigRelease(RcimReceivedStatus obj) {
+  protected static long swigRelease(RcimSDKVersion obj) {
     long ptr = 0;
     if (obj != null) {
       if (!obj.swigCMemOwn)
@@ -42,7 +42,7 @@ public class RcimReceivedStatus {
     if (swigCPtr != 0) {
       if (swigCMemOwn) {
         swigCMemOwn = false;
-        RcClientJNI.delete_RcimReceivedStatus(swigCPtr);
+        RcClientJNI.delete_RcimSDKVersion(swigCPtr);
       }
       swigCPtr = 0;
     }
@@ -63,8 +63,8 @@ public synchronized void swigDelete() {
  * WARNING： 原则上不能调用该方法，除非你明确知道你需要这个方法<p>
  * 静态工厂方法：从 C 指针构建该对象
  */
-public static RcimReceivedStatus fromPointer(long cPtr) {
-    return new RcimReceivedStatus(cPtr, false);
+public static RcimSDKVersion fromPointer(long cPtr) {
+    return new RcimSDKVersion(cPtr, false);
 }
 
 /**
@@ -76,48 +76,24 @@ public long getCPtr() {
     return swigCPtr;
 }
 
-  public void setIs_read(boolean value) {
-    RcClientJNI.RcimReceivedStatus_is_read_set(swigCPtr, this, value);
+  public void setName(String value) {
+    RcClientJNI.RcimSDKVersion_name_set(swigCPtr, this, value);
   }
 
-  public boolean getIs_read() {
-    return RcClientJNI.RcimReceivedStatus_is_read_get(swigCPtr, this);
+  public String getName() {
+    return RcClientJNI.RcimSDKVersion_name_get(swigCPtr, this);
   }
 
-  public void setIs_listened(boolean value) {
-    RcClientJNI.RcimReceivedStatus_is_listened_set(swigCPtr, this, value);
+  public void setVersion(String value) {
+    RcClientJNI.RcimSDKVersion_version_set(swigCPtr, this, value);
   }
 
-  public boolean getIs_listened() {
-    return RcClientJNI.RcimReceivedStatus_is_listened_get(swigCPtr, this);
+  public String getVersion() {
+    return RcClientJNI.RcimSDKVersion_version_get(swigCPtr, this);
   }
 
-  public void setIs_download(boolean value) {
-    RcClientJNI.RcimReceivedStatus_is_download_set(swigCPtr, this, value);
-  }
-
-  public boolean getIs_download() {
-    return RcClientJNI.RcimReceivedStatus_is_download_get(swigCPtr, this);
-  }
-
-  public void setIs_retrieved(boolean value) {
-    RcClientJNI.RcimReceivedStatus_is_retrieved_set(swigCPtr, this, value);
-  }
-
-  public boolean getIs_retrieved() {
-    return RcClientJNI.RcimReceivedStatus_is_retrieved_get(swigCPtr, this);
-  }
-
-  public void setIs_multiple_received(boolean value) {
-    RcClientJNI.RcimReceivedStatus_is_multiple_received_set(swigCPtr, this, value);
-  }
-
-  public boolean getIs_multiple_received() {
-    return RcClientJNI.RcimReceivedStatus_is_multiple_received_get(swigCPtr, this);
-  }
-
-  public RcimReceivedStatus() {
-    this(RcClientJNI.new_RcimReceivedStatus(), true);
+  public RcimSDKVersion() {
+    this(RcClientJNI.new_RcimSDKVersion(), true);
   }
 
 }

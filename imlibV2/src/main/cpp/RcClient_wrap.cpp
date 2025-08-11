@@ -896,10 +896,10 @@ void SwigDirector_RcimNativeStringCallback::onResult(rcim::RcimNativeStringCallb
 }
 
 void SwigDirector_RcimNativeStringCallback::swig_connect_director(JNIEnv *jenv, jobject jself, jclass jcls, bool swig_mem_own, bool weak_global) {
-  static jclass baseclass = swig_new_global_ref(jenv, "io/rong/imlib/swig/RcimNativeStringCallback");
+  static jclass baseclass = swig_new_global_ref(jenv, "io/rong/imlib/internal/swig/RcimNativeStringCallback");
   if (!baseclass) return;
   static SwigDirectorMethod methods[] = {
-    SwigDirectorMethod(jenv, baseclass, "onResult", "(Lio/rong/imlib/swig/RcimNativeStringCallback;ILjava/lang/String;)V")
+    SwigDirectorMethod(jenv, baseclass, "onResult", "(Lio/rong/imlib/internal/swig/RcimNativeStringCallback;ILjava/lang/String;)V")
   };
   
   if (swig_set_self(jenv, jself, swig_mem_own, weak_global)) {
@@ -979,11 +979,11 @@ void SwigDirector_RcimNativeSendMessageCallback::onResult(rcim::RcimNativeSendMe
 }
 
 void SwigDirector_RcimNativeSendMessageCallback::swig_connect_director(JNIEnv *jenv, jobject jself, jclass jcls, bool swig_mem_own, bool weak_global) {
-  static jclass baseclass = swig_new_global_ref(jenv, "io/rong/imlib/swig/RcimNativeSendMessageCallback");
+  static jclass baseclass = swig_new_global_ref(jenv, "io/rong/imlib/internal/swig/RcimNativeSendMessageCallback");
   if (!baseclass) return;
   static SwigDirectorMethod methods[] = {
-    SwigDirectorMethod(jenv, baseclass, "onSave", "(Lio/rong/imlib/swig/RcimMessageBox;)V"),
-    SwigDirectorMethod(jenv, baseclass, "onResult", "(Lio/rong/imlib/swig/RcimNativeSendMessageCallback;ILio/rong/imlib/swig/RcimMessageBox;)V")
+    SwigDirectorMethod(jenv, baseclass, "onSave", "(Lio/rong/imlib/internal/swig/RcimMessageBox;)V"),
+    SwigDirectorMethod(jenv, baseclass, "onResult", "(Lio/rong/imlib/internal/swig/RcimNativeSendMessageCallback;ILio/rong/imlib/internal/swig/RcimMessageBox;)V")
   };
   
   if (swig_set_self(jenv, jself, swig_mem_own, weak_global)) {
@@ -1034,7 +1034,7 @@ void SwigDirector_RcimNativeIntListener::onChanged(int value) {
 }
 
 void SwigDirector_RcimNativeIntListener::swig_connect_director(JNIEnv *jenv, jobject jself, jclass jcls, bool swig_mem_own, bool weak_global) {
-  static jclass baseclass = swig_new_global_ref(jenv, "io/rong/imlib/swig/RcimNativeIntListener");
+  static jclass baseclass = swig_new_global_ref(jenv, "io/rong/imlib/internal/swig/RcimNativeIntListener");
   if (!baseclass) return;
   static SwigDirectorMethod methods[] = {
     SwigDirectorMethod(jenv, baseclass, "onChanged", "(I)V")
@@ -1059,7 +1059,7 @@ void SwigDirector_RcimNativeIntListener::swig_connect_director(JNIEnv *jenv, job
 extern "C" {
 #endif
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimSDKVersion_1name_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimSDKVersion_1name_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimSDKVersion *arg1 = (RcimSDKVersion *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -1084,7 +1084,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimSDKVersion_1name
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimSDKVersion_1name_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimSDKVersion_1name_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimSDKVersion *arg1 = (RcimSDKVersion *) 0 ;
   char *result = 0 ;
@@ -1099,7 +1099,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimSDKVersion_1n
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimSDKVersion_1version_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimSDKVersion_1version_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimSDKVersion *arg1 = (RcimSDKVersion *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -1124,7 +1124,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimSDKVersion_1vers
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimSDKVersion_1version_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimSDKVersion_1version_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimSDKVersion *arg1 = (RcimSDKVersion *) 0 ;
   char *result = 0 ;
@@ -1139,7 +1139,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimSDKVersion_1v
 }
 
 
-SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_new_1RcimSDKVersion(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_new_1RcimSDKVersion(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   RcimSDKVersion *result = 0 ;
   
@@ -1151,7 +1151,7 @@ SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_new_1RcimSDKVersion
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_delete_1RcimSDKVersion(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_delete_1RcimSDKVersion(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   RcimSDKVersion *arg1 = (RcimSDKVersion *) 0 ;
   
   (void)jenv;
@@ -1161,7 +1161,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_delete_1RcimSDKVersi
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilderParam_1app_1key_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimEngineBuilderParam_1app_1key_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -1186,7 +1186,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilderPar
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilderParam_1app_1key_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimEngineBuilderParam_1app_1key_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
   char *result = 0 ;
@@ -1201,7 +1201,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilder
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilderParam_1platform_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimEngineBuilderParam_1platform_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
   RcimPlatform arg2 ;
   
@@ -1214,7 +1214,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilderPar
 }
 
 
-SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilderParam_1platform_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimEngineBuilderParam_1platform_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
   RcimPlatform result;
@@ -1229,7 +1229,7 @@ SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilderPar
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilderParam_1device_1id_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimEngineBuilderParam_1device_1id_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -1254,7 +1254,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilderPar
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilderParam_1device_1id_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimEngineBuilderParam_1device_1id_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
   char *result = 0 ;
@@ -1269,7 +1269,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilder
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilderParam_1package_1name_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimEngineBuilderParam_1package_1name_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -1294,7 +1294,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilderPar
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilderParam_1package_1name_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimEngineBuilderParam_1package_1name_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
   char *result = 0 ;
@@ -1309,7 +1309,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilder
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilderParam_1imlib_1version_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimEngineBuilderParam_1imlib_1version_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -1334,7 +1334,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilderPar
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilderParam_1imlib_1version_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimEngineBuilderParam_1imlib_1version_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
   char *result = 0 ;
@@ -1349,7 +1349,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilder
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilderParam_1device_1model_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimEngineBuilderParam_1device_1model_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -1374,7 +1374,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilderPar
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilderParam_1device_1model_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimEngineBuilderParam_1device_1model_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
   char *result = 0 ;
@@ -1389,7 +1389,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilder
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilderParam_1device_1manufacturer_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimEngineBuilderParam_1device_1manufacturer_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -1414,7 +1414,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilderPar
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilderParam_1device_1manufacturer_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimEngineBuilderParam_1device_1manufacturer_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
   char *result = 0 ;
@@ -1429,7 +1429,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilder
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilderParam_1os_1version_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimEngineBuilderParam_1os_1version_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -1454,7 +1454,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilderPar
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilderParam_1os_1version_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimEngineBuilderParam_1os_1version_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
   char *result = 0 ;
@@ -1469,7 +1469,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilder
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilderParam_1sdk_1version_1vec_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimEngineBuilderParam_1sdk_1version_1vec_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
   RcimSDKVersion *arg2 = (RcimSDKVersion *) 0 ;
   
@@ -1483,7 +1483,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilderPar
 }
 
 
-SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilderParam_1sdk_1version_1vec_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimEngineBuilderParam_1sdk_1version_1vec_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
   RcimSDKVersion *result = 0 ;
@@ -1498,7 +1498,7 @@ SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilderPa
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilderParam_1sdk_1version_1vec_1len_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimEngineBuilderParam_1sdk_1version_1vec_1len_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
   int32_t arg2 ;
   
@@ -1511,7 +1511,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilderPar
 }
 
 
-SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilderParam_1sdk_1version_1vec_1len_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimEngineBuilderParam_1sdk_1version_1vec_1len_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
   int32_t result;
@@ -1526,7 +1526,7 @@ SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilderPar
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilderParam_1app_1version_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimEngineBuilderParam_1app_1version_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -1551,7 +1551,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilderPar
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilderParam_1app_1version_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimEngineBuilderParam_1app_1version_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
   char *result = 0 ;
@@ -1566,7 +1566,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimEngineBuilder
 }
 
 
-SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_new_1RcimEngineBuilderParam(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_new_1RcimEngineBuilderParam(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   RcimEngineBuilderParam *result = 0 ;
   
@@ -1578,7 +1578,7 @@ SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_new_1RcimEngineBuil
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_delete_1RcimEngineBuilderParam(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_delete_1RcimEngineBuilderParam(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
   
   (void)jenv;
@@ -1588,7 +1588,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_delete_1RcimEngineBu
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReceivedStatus_1is_1read_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimReceivedStatus_1is_1read_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
   RcimReceivedStatus *arg1 = (RcimReceivedStatus *) 0 ;
   bool arg2 ;
   
@@ -1601,7 +1601,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReceivedStatus_1
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReceivedStatus_1is_1read_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimReceivedStatus_1is_1read_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   RcimReceivedStatus *arg1 = (RcimReceivedStatus *) 0 ;
   bool result;
@@ -1616,7 +1616,7 @@ SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReceivedStat
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReceivedStatus_1is_1listened_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimReceivedStatus_1is_1listened_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
   RcimReceivedStatus *arg1 = (RcimReceivedStatus *) 0 ;
   bool arg2 ;
   
@@ -1629,7 +1629,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReceivedStatus_1
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReceivedStatus_1is_1listened_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimReceivedStatus_1is_1listened_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   RcimReceivedStatus *arg1 = (RcimReceivedStatus *) 0 ;
   bool result;
@@ -1644,7 +1644,7 @@ SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReceivedStat
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReceivedStatus_1is_1download_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimReceivedStatus_1is_1download_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
   RcimReceivedStatus *arg1 = (RcimReceivedStatus *) 0 ;
   bool arg2 ;
   
@@ -1657,7 +1657,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReceivedStatus_1
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReceivedStatus_1is_1download_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimReceivedStatus_1is_1download_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   RcimReceivedStatus *arg1 = (RcimReceivedStatus *) 0 ;
   bool result;
@@ -1672,7 +1672,7 @@ SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReceivedStat
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReceivedStatus_1is_1retrieved_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimReceivedStatus_1is_1retrieved_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
   RcimReceivedStatus *arg1 = (RcimReceivedStatus *) 0 ;
   bool arg2 ;
   
@@ -1685,7 +1685,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReceivedStatus_1
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReceivedStatus_1is_1retrieved_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimReceivedStatus_1is_1retrieved_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   RcimReceivedStatus *arg1 = (RcimReceivedStatus *) 0 ;
   bool result;
@@ -1700,7 +1700,7 @@ SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReceivedStat
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReceivedStatus_1is_1multiple_1received_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimReceivedStatus_1is_1multiple_1received_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
   RcimReceivedStatus *arg1 = (RcimReceivedStatus *) 0 ;
   bool arg2 ;
   
@@ -1713,7 +1713,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReceivedStatus_1
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReceivedStatus_1is_1multiple_1received_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimReceivedStatus_1is_1multiple_1received_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   RcimReceivedStatus *arg1 = (RcimReceivedStatus *) 0 ;
   bool result;
@@ -1728,7 +1728,7 @@ SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReceivedStat
 }
 
 
-SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_new_1RcimReceivedStatus(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_new_1RcimReceivedStatus(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   RcimReceivedStatus *result = 0 ;
   
@@ -1740,7 +1740,7 @@ SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_new_1RcimReceivedSt
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_delete_1RcimReceivedStatus(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_delete_1RcimReceivedStatus(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   RcimReceivedStatus *arg1 = (RcimReceivedStatus *) 0 ;
   
   (void)jenv;
@@ -1750,7 +1750,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_delete_1RcimReceived
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptUserInfo_1sender_1id_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimReadReceiptUserInfo_1sender_1id_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimReadReceiptUserInfo *arg1 = (RcimReadReceiptUserInfo *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -1775,7 +1775,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptUserI
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptUserInfo_1sender_1id_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimReadReceiptUserInfo_1sender_1id_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimReadReceiptUserInfo *arg1 = (RcimReadReceiptUserInfo *) 0 ;
   char *result = 0 ;
@@ -1790,7 +1790,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptUs
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptUserInfo_1timestamp_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jobject jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimReadReceiptUserInfo_1timestamp_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jobject jarg2) {
   RcimReadReceiptUserInfo *arg1 = (RcimReadReceiptUserInfo *) 0 ;
   uint64_t arg2 ;
   
@@ -1828,7 +1828,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptUserI
 }
 
 
-SWIGEXPORT jobject JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptUserInfo_1timestamp_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jobject JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimReadReceiptUserInfo_1timestamp_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jobject jresult = 0 ;
   RcimReadReceiptUserInfo *arg1 = (RcimReadReceiptUserInfo *) 0 ;
   uint64_t result;
@@ -1860,7 +1860,7 @@ SWIGEXPORT jobject JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptUs
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptUserInfo_1mentioned_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimReadReceiptUserInfo_1mentioned_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
   RcimReadReceiptUserInfo *arg1 = (RcimReadReceiptUserInfo *) 0 ;
   bool arg2 ;
   
@@ -1873,7 +1873,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptUserI
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptUserInfo_1mentioned_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimReadReceiptUserInfo_1mentioned_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   RcimReadReceiptUserInfo *arg1 = (RcimReadReceiptUserInfo *) 0 ;
   bool result;
@@ -1888,7 +1888,7 @@ SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptU
 }
 
 
-SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_new_1RcimReadReceiptUserInfo(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_new_1RcimReadReceiptUserInfo(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   RcimReadReceiptUserInfo *result = 0 ;
   
@@ -1900,7 +1900,7 @@ SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_new_1RcimReadReceip
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_delete_1RcimReadReceiptUserInfo(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_delete_1RcimReadReceiptUserInfo(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   RcimReadReceiptUserInfo *arg1 = (RcimReadReceiptUserInfo *) 0 ;
   
   (void)jenv;
@@ -1910,7 +1910,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_delete_1RcimReadRece
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptInfo_1is_1read_1receipt_1message_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimReadReceiptInfo_1is_1read_1receipt_1message_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
   RcimReadReceiptInfo *arg1 = (RcimReadReceiptInfo *) 0 ;
   bool arg2 ;
   
@@ -1923,7 +1923,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptInfo_
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptInfo_1is_1read_1receipt_1message_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimReadReceiptInfo_1is_1read_1receipt_1message_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   RcimReadReceiptInfo *arg1 = (RcimReadReceiptInfo *) 0 ;
   bool result;
@@ -1938,7 +1938,7 @@ SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptI
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptInfo_1has_1respond_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimReadReceiptInfo_1has_1respond_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
   RcimReadReceiptInfo *arg1 = (RcimReadReceiptInfo *) 0 ;
   bool arg2 ;
   
@@ -1951,7 +1951,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptInfo_
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptInfo_1has_1respond_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimReadReceiptInfo_1has_1respond_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   RcimReadReceiptInfo *arg1 = (RcimReadReceiptInfo *) 0 ;
   bool result;
@@ -1966,7 +1966,7 @@ SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptI
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptInfo_1respond_1user_1vec_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimReadReceiptInfo_1respond_1user_1vec_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   RcimReadReceiptInfo *arg1 = (RcimReadReceiptInfo *) 0 ;
   RcimReadReceiptUserInfo *arg2 = (RcimReadReceiptUserInfo *) 0 ;
   
@@ -1980,7 +1980,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptInfo_
 }
 
 
-SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptInfo_1respond_1user_1vec_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimReadReceiptInfo_1respond_1user_1vec_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   RcimReadReceiptInfo *arg1 = (RcimReadReceiptInfo *) 0 ;
   RcimReadReceiptUserInfo *result = 0 ;
@@ -1995,7 +1995,7 @@ SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptInfo
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptInfo_1respond_1user_1vec_1len_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimReadReceiptInfo_1respond_1user_1vec_1len_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   RcimReadReceiptInfo *arg1 = (RcimReadReceiptInfo *) 0 ;
   int32_t arg2 ;
   
@@ -2008,7 +2008,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptInfo_
 }
 
 
-SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptInfo_1respond_1user_1vec_1len_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimReadReceiptInfo_1respond_1user_1vec_1len_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   RcimReadReceiptInfo *arg1 = (RcimReadReceiptInfo *) 0 ;
   int32_t result;
@@ -2023,7 +2023,7 @@ SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptInfo_
 }
 
 
-SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_new_1RcimReadReceiptInfo(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_new_1RcimReadReceiptInfo(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   RcimReadReceiptInfo *result = 0 ;
   
@@ -2035,7 +2035,7 @@ SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_new_1RcimReadReceip
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_delete_1RcimReadReceiptInfo(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_delete_1RcimReadReceiptInfo(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   RcimReadReceiptInfo *arg1 = (RcimReadReceiptInfo *) 0 ;
   
   (void)jenv;
@@ -2045,7 +2045,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_delete_1RcimReadRece
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptInfoV2_1has_1respond_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimReadReceiptInfoV2_1has_1respond_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
   RcimReadReceiptInfoV2 *arg1 = (RcimReadReceiptInfoV2 *) 0 ;
   bool arg2 ;
   
@@ -2058,7 +2058,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptInfoV
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptInfoV2_1has_1respond_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimReadReceiptInfoV2_1has_1respond_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   RcimReadReceiptInfoV2 *arg1 = (RcimReadReceiptInfoV2 *) 0 ;
   bool result;
@@ -2073,7 +2073,7 @@ SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptI
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptInfoV2_1respond_1user_1vec_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimReadReceiptInfoV2_1respond_1user_1vec_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   RcimReadReceiptInfoV2 *arg1 = (RcimReadReceiptInfoV2 *) 0 ;
   RcimReadReceiptUserInfo *arg2 = (RcimReadReceiptUserInfo *) 0 ;
   
@@ -2087,7 +2087,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptInfoV
 }
 
 
-SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptInfoV2_1respond_1user_1vec_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimReadReceiptInfoV2_1respond_1user_1vec_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   RcimReadReceiptInfoV2 *arg1 = (RcimReadReceiptInfoV2 *) 0 ;
   RcimReadReceiptUserInfo *result = 0 ;
@@ -2102,7 +2102,7 @@ SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptInfo
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptInfoV2_1respond_1user_1vec_1len_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimReadReceiptInfoV2_1respond_1user_1vec_1len_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   RcimReadReceiptInfoV2 *arg1 = (RcimReadReceiptInfoV2 *) 0 ;
   int32_t arg2 ;
   
@@ -2115,7 +2115,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptInfoV
 }
 
 
-SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptInfoV2_1respond_1user_1vec_1len_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimReadReceiptInfoV2_1respond_1user_1vec_1len_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   RcimReadReceiptInfoV2 *arg1 = (RcimReadReceiptInfoV2 *) 0 ;
   int32_t result;
@@ -2130,7 +2130,7 @@ SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptInfoV
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptInfoV2_1read_1count_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimReadReceiptInfoV2_1read_1count_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   RcimReadReceiptInfoV2 *arg1 = (RcimReadReceiptInfoV2 *) 0 ;
   uint32_t arg2 ;
   
@@ -2143,7 +2143,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptInfoV
 }
 
 
-SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptInfoV2_1read_1count_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimReadReceiptInfoV2_1read_1count_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   RcimReadReceiptInfoV2 *arg1 = (RcimReadReceiptInfoV2 *) 0 ;
   uint32_t result;
@@ -2158,7 +2158,7 @@ SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptInfo
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptInfoV2_1total_1count_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimReadReceiptInfoV2_1total_1count_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   RcimReadReceiptInfoV2 *arg1 = (RcimReadReceiptInfoV2 *) 0 ;
   uint32_t arg2 ;
   
@@ -2171,7 +2171,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptInfoV
 }
 
 
-SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptInfoV2_1total_1count_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimReadReceiptInfoV2_1total_1count_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   RcimReadReceiptInfoV2 *arg1 = (RcimReadReceiptInfoV2 *) 0 ;
   uint32_t result;
@@ -2186,7 +2186,7 @@ SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimReadReceiptInfo
 }
 
 
-SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_new_1RcimReadReceiptInfoV2(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_new_1RcimReadReceiptInfoV2(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   RcimReadReceiptInfoV2 *result = 0 ;
   
@@ -2198,7 +2198,7 @@ SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_new_1RcimReadReceip
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_delete_1RcimReadReceiptInfoV2(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_delete_1RcimReadReceiptInfoV2(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   RcimReadReceiptInfoV2 *arg1 = (RcimReadReceiptInfoV2 *) 0 ;
   
   (void)jenv;
@@ -2208,7 +2208,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_delete_1RcimReadRece
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimIosConfig_1thread_1id_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimIosConfig_1thread_1id_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimIosConfig *arg1 = (RcimIosConfig *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -2233,7 +2233,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimIosConfig_1threa
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimIosConfig_1thread_1id_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimIosConfig_1thread_1id_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimIosConfig *arg1 = (RcimIosConfig *) 0 ;
   char *result = 0 ;
@@ -2248,7 +2248,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimIosConfig_1th
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimIosConfig_1category_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimIosConfig_1category_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimIosConfig *arg1 = (RcimIosConfig *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -2273,7 +2273,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimIosConfig_1categ
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimIosConfig_1category_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimIosConfig_1category_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimIosConfig *arg1 = (RcimIosConfig *) 0 ;
   char *result = 0 ;
@@ -2288,7 +2288,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimIosConfig_1ca
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimIosConfig_1apns_1collapse_1id_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimIosConfig_1apns_1collapse_1id_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimIosConfig *arg1 = (RcimIosConfig *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -2313,7 +2313,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimIosConfig_1apns_
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimIosConfig_1apns_1collapse_1id_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimIosConfig_1apns_1collapse_1id_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimIosConfig *arg1 = (RcimIosConfig *) 0 ;
   char *result = 0 ;
@@ -2328,7 +2328,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimIosConfig_1ap
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimIosConfig_1rich_1media_1uri_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimIosConfig_1rich_1media_1uri_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimIosConfig *arg1 = (RcimIosConfig *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -2353,7 +2353,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimIosConfig_1rich_
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimIosConfig_1rich_1media_1uri_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimIosConfig_1rich_1media_1uri_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimIosConfig *arg1 = (RcimIosConfig *) 0 ;
   char *result = 0 ;
@@ -2368,7 +2368,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimIosConfig_1ri
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimIosConfig_1interruption_1level_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimIosConfig_1interruption_1level_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimIosConfig *arg1 = (RcimIosConfig *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -2393,7 +2393,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimIosConfig_1inter
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimIosConfig_1interruption_1level_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimIosConfig_1interruption_1level_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimIosConfig *arg1 = (RcimIosConfig *) 0 ;
   char *result = 0 ;
@@ -2408,7 +2408,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimIosConfig_1in
 }
 
 
-SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_new_1RcimIosConfig(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_new_1RcimIosConfig(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   RcimIosConfig *result = 0 ;
   
@@ -2420,7 +2420,7 @@ SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_new_1RcimIosConfig(
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_delete_1RcimIosConfig(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_delete_1RcimIosConfig(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   RcimIosConfig *arg1 = (RcimIosConfig *) 0 ;
   
   (void)jenv;
@@ -2430,7 +2430,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_delete_1RcimIosConfi
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig_1notification_1id_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimAndroidConfig_1notification_1id_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -2455,7 +2455,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig_1n
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig_1notification_1id_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimAndroidConfig_1notification_1id_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
   char *result = 0 ;
@@ -2470,7 +2470,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig_1mi_1channel_1id_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimAndroidConfig_1mi_1channel_1id_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -2495,7 +2495,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig_1m
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig_1mi_1channel_1id_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimAndroidConfig_1mi_1channel_1id_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
   char *result = 0 ;
@@ -2510,7 +2510,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig_1hw_1channel_1id_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimAndroidConfig_1hw_1channel_1id_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -2535,7 +2535,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig_1h
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig_1hw_1channel_1id_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimAndroidConfig_1hw_1channel_1id_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
   char *result = 0 ;
@@ -2550,7 +2550,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig_1hw_1importance_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimAndroidConfig_1hw_1importance_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -2575,7 +2575,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig_1h
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig_1hw_1importance_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimAndroidConfig_1hw_1importance_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
   char *result = 0 ;
@@ -2590,7 +2590,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig_1hw_1image_1url_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimAndroidConfig_1hw_1image_1url_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -2615,7 +2615,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig_1h
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig_1hw_1image_1url_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimAndroidConfig_1hw_1image_1url_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
   char *result = 0 ;
@@ -2630,7 +2630,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig_1hw_1category_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimAndroidConfig_1hw_1category_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -2655,7 +2655,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig_1h
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig_1hw_1category_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimAndroidConfig_1hw_1category_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
   char *result = 0 ;
@@ -2670,7 +2670,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig_1honor_1importance_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimAndroidConfig_1honor_1importance_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -2695,7 +2695,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig_1h
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig_1honor_1importance_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimAndroidConfig_1honor_1importance_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
   char *result = 0 ;
@@ -2710,7 +2710,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig_1honor_1image_1url_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimAndroidConfig_1honor_1image_1url_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -2735,7 +2735,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig_1h
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig_1honor_1image_1url_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimAndroidConfig_1honor_1image_1url_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
   char *result = 0 ;
@@ -2750,7 +2750,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig_1oppo_1channel_1id_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimAndroidConfig_1oppo_1channel_1id_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -2775,7 +2775,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig_1o
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig_1oppo_1channel_1id_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimAndroidConfig_1oppo_1channel_1id_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
   char *result = 0 ;
@@ -2790,7 +2790,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig_1vivo_1category_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimAndroidConfig_1vivo_1category_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -2815,7 +2815,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig_1v
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig_1vivo_1category_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimAndroidConfig_1vivo_1category_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
   char *result = 0 ;
@@ -2830,7 +2830,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig_1vivo_1type_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimAndroidConfig_1vivo_1type_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -2855,7 +2855,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig_1v
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig_1vivo_1type_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimAndroidConfig_1vivo_1type_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
   char *result = 0 ;
@@ -2870,7 +2870,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig_1fcm_1channel_1id_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimAndroidConfig_1fcm_1channel_1id_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -2895,7 +2895,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig_1f
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig_1fcm_1channel_1id_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimAndroidConfig_1fcm_1channel_1id_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
   char *result = 0 ;
@@ -2910,7 +2910,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig_1fcm_1collapse_1key_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimAndroidConfig_1fcm_1collapse_1key_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -2935,7 +2935,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig_1f
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig_1fcm_1collapse_1key_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimAndroidConfig_1fcm_1collapse_1key_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
   char *result = 0 ;
@@ -2950,7 +2950,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig_1fcm_1image_1url_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimAndroidConfig_1fcm_1image_1url_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -2975,7 +2975,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig_1f
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig_1fcm_1image_1url_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimAndroidConfig_1fcm_1image_1url_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
   char *result = 0 ;
@@ -2990,7 +2990,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimAndroidConfig
 }
 
 
-SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_new_1RcimAndroidConfig(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_new_1RcimAndroidConfig(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   RcimAndroidConfig *result = 0 ;
   
@@ -3002,7 +3002,7 @@ SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_new_1RcimAndroidCon
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_delete_1RcimAndroidConfig(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_delete_1RcimAndroidConfig(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   RcimAndroidConfig *arg1 = (RcimAndroidConfig *) 0 ;
   
   (void)jenv;
@@ -3012,7 +3012,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_delete_1RcimAndroidC
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimHarmonyConfig_1image_1url_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimHarmonyConfig_1image_1url_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimHarmonyConfig *arg1 = (RcimHarmonyConfig *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -3037,7 +3037,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimHarmonyConfig_1i
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimHarmonyConfig_1image_1url_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimHarmonyConfig_1image_1url_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimHarmonyConfig *arg1 = (RcimHarmonyConfig *) 0 ;
   char *result = 0 ;
@@ -3052,7 +3052,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimHarmonyConfig
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimHarmonyConfig_1category_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimHarmonyConfig_1category_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimHarmonyConfig *arg1 = (RcimHarmonyConfig *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -3077,7 +3077,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimHarmonyConfig_1c
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimHarmonyConfig_1category_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimHarmonyConfig_1category_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimHarmonyConfig *arg1 = (RcimHarmonyConfig *) 0 ;
   char *result = 0 ;
@@ -3092,7 +3092,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimHarmonyConfig
 }
 
 
-SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_new_1RcimHarmonyConfig(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_new_1RcimHarmonyConfig(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   RcimHarmonyConfig *result = 0 ;
   
@@ -3104,7 +3104,7 @@ SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_new_1RcimHarmonyCon
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_delete_1RcimHarmonyConfig(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_delete_1RcimHarmonyConfig(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   RcimHarmonyConfig *arg1 = (RcimHarmonyConfig *) 0 ;
   
   (void)jenv;
@@ -3114,7 +3114,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_delete_1RcimHarmonyC
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimPushConfig_1disable_1push_1title_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimPushConfig_1disable_1push_1title_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
   RcimPushConfig *arg1 = (RcimPushConfig *) 0 ;
   bool arg2 ;
   
@@ -3127,7 +3127,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimPushConfig_1disa
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimPushConfig_1disable_1push_1title_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimPushConfig_1disable_1push_1title_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   RcimPushConfig *arg1 = (RcimPushConfig *) 0 ;
   bool result;
@@ -3142,7 +3142,7 @@ SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimPushConfig_1
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimPushConfig_1push_1title_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimPushConfig_1push_1title_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimPushConfig *arg1 = (RcimPushConfig *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -3167,7 +3167,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimPushConfig_1push
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimPushConfig_1push_1title_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimPushConfig_1push_1title_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimPushConfig *arg1 = (RcimPushConfig *) 0 ;
   char *result = 0 ;
@@ -3182,7 +3182,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimPushConfig_1p
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimPushConfig_1push_1content_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimPushConfig_1push_1content_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimPushConfig *arg1 = (RcimPushConfig *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -3207,7 +3207,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimPushConfig_1push
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimPushConfig_1push_1content_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimPushConfig_1push_1content_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimPushConfig *arg1 = (RcimPushConfig *) 0 ;
   char *result = 0 ;
@@ -3222,7 +3222,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimPushConfig_1p
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimPushConfig_1push_1data_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimPushConfig_1push_1data_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimPushConfig *arg1 = (RcimPushConfig *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -3247,7 +3247,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimPushConfig_1push
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimPushConfig_1push_1data_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimPushConfig_1push_1data_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimPushConfig *arg1 = (RcimPushConfig *) 0 ;
   char *result = 0 ;
@@ -3262,7 +3262,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimPushConfig_1p
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimPushConfig_1force_1show_1detail_1content_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimPushConfig_1force_1show_1detail_1content_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
   RcimPushConfig *arg1 = (RcimPushConfig *) 0 ;
   bool arg2 ;
   
@@ -3275,7 +3275,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimPushConfig_1forc
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimPushConfig_1force_1show_1detail_1content_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimPushConfig_1force_1show_1detail_1content_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   RcimPushConfig *arg1 = (RcimPushConfig *) 0 ;
   bool result;
@@ -3290,7 +3290,7 @@ SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimPushConfig_1
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimPushConfig_1ios_1config_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimPushConfig_1ios_1config_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   RcimPushConfig *arg1 = (RcimPushConfig *) 0 ;
   RcimIosConfig *arg2 = (RcimIosConfig *) 0 ;
   
@@ -3304,7 +3304,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimPushConfig_1ios_
 }
 
 
-SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimPushConfig_1ios_1config_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimPushConfig_1ios_1config_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   RcimPushConfig *arg1 = (RcimPushConfig *) 0 ;
   RcimIosConfig *result = 0 ;
@@ -3319,7 +3319,7 @@ SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimPushConfig_1ios
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimPushConfig_1android_1config_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimPushConfig_1android_1config_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   RcimPushConfig *arg1 = (RcimPushConfig *) 0 ;
   RcimAndroidConfig *arg2 = (RcimAndroidConfig *) 0 ;
   
@@ -3333,7 +3333,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimPushConfig_1andr
 }
 
 
-SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimPushConfig_1android_1config_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimPushConfig_1android_1config_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   RcimPushConfig *arg1 = (RcimPushConfig *) 0 ;
   RcimAndroidConfig *result = 0 ;
@@ -3348,7 +3348,7 @@ SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimPushConfig_1and
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimPushConfig_1harmony_1config_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimPushConfig_1harmony_1config_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   RcimPushConfig *arg1 = (RcimPushConfig *) 0 ;
   RcimHarmonyConfig *arg2 = (RcimHarmonyConfig *) 0 ;
   
@@ -3362,7 +3362,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimPushConfig_1harm
 }
 
 
-SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimPushConfig_1harmony_1config_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimPushConfig_1harmony_1config_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   RcimPushConfig *arg1 = (RcimPushConfig *) 0 ;
   RcimHarmonyConfig *result = 0 ;
@@ -3377,7 +3377,7 @@ SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimPushConfig_1har
 }
 
 
-SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_new_1RcimPushConfig(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_new_1RcimPushConfig(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   RcimPushConfig *result = 0 ;
   
@@ -3389,7 +3389,7 @@ SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_new_1RcimPushConfig
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_delete_1RcimPushConfig(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_delete_1RcimPushConfig(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   RcimPushConfig *arg1 = (RcimPushConfig *) 0 ;
   
   (void)jenv;
@@ -3399,7 +3399,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_delete_1RcimPushConf
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1conv_1type_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1conv_1type_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   RcimConversationType arg2 ;
   
@@ -3412,7 +3412,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1conv
 }
 
 
-SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1conv_1type_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1conv_1type_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   RcimConversationType result;
@@ -3427,7 +3427,7 @@ SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1conv
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1target_1id_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1target_1id_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -3452,7 +3452,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1targ
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1target_1id_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1target_1id_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   char *result = 0 ;
@@ -3467,7 +3467,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1t
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1channel_1id_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1channel_1id_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -3492,7 +3492,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1chan
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1channel_1id_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1channel_1id_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   char *result = 0 ;
@@ -3507,7 +3507,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1c
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1message_1id_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1message_1id_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   int64_t arg2 ;
   
@@ -3520,7 +3520,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1mess
 }
 
 
-SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1message_1id_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1message_1id_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   int64_t result;
@@ -3535,7 +3535,7 @@ SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1mes
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1direction_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1direction_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   RcimMessageDirection arg2 ;
   
@@ -3548,7 +3548,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1dire
 }
 
 
-SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1direction_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1direction_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   RcimMessageDirection result;
@@ -3563,7 +3563,7 @@ SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1dire
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1sender_1id_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1sender_1id_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -3588,7 +3588,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1send
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1sender_1id_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1sender_1id_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   char *result = 0 ;
@@ -3603,7 +3603,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1s
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1received_1status_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1received_1status_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   RcimReceivedStatus *arg2 = (RcimReceivedStatus *) 0 ;
   
@@ -3617,7 +3617,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1rece
 }
 
 
-SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1received_1status_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1received_1status_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   RcimReceivedStatus *result = 0 ;
@@ -3632,7 +3632,7 @@ SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1rec
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1sent_1status_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1sent_1status_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   RcimSentStatus arg2 ;
   
@@ -3645,7 +3645,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1sent
 }
 
 
-SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1sent_1status_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1sent_1status_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   RcimSentStatus result;
@@ -3660,7 +3660,7 @@ SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1sent
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1received_1time_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1received_1time_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   int64_t arg2 ;
   
@@ -3673,7 +3673,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1rece
 }
 
 
-SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1received_1time_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1received_1time_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   int64_t result;
@@ -3688,7 +3688,7 @@ SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1rec
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1sent_1time_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1sent_1time_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   int64_t arg2 ;
   
@@ -3701,7 +3701,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1sent
 }
 
 
-SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1sent_1time_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1sent_1time_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   int64_t result;
@@ -3716,7 +3716,7 @@ SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1sen
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1object_1name_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1object_1name_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -3741,7 +3741,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1obje
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1object_1name_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1object_1name_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   char *result = 0 ;
@@ -3756,7 +3756,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1o
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1content_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1content_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -3781,7 +3781,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1cont
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1content_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1content_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   char *result = 0 ;
@@ -3796,7 +3796,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1c
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1searchable_1words_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1searchable_1words_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -3821,7 +3821,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1sear
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1searchable_1words_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1searchable_1words_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   char *result = 0 ;
@@ -3836,7 +3836,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1s
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1uid_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1uid_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -3861,7 +3861,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1uid_
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1uid_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1uid_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   char *result = 0 ;
@@ -3876,7 +3876,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1u
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1extra_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1extra_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -3901,7 +3901,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1extr
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1extra_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1extra_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   char *result = 0 ;
@@ -3916,7 +3916,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1e
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1read_1receipt_1info_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1read_1receipt_1info_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   RcimReadReceiptInfo *arg2 = (RcimReadReceiptInfo *) 0 ;
   
@@ -3930,7 +3930,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1read
 }
 
 
-SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1read_1receipt_1info_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1read_1receipt_1info_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   RcimReadReceiptInfo *result = 0 ;
@@ -3945,7 +3945,7 @@ SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1rea
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1read_1receipt_1info_1v2_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1read_1receipt_1info_1v2_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   RcimReadReceiptInfoV2 *arg2 = (RcimReadReceiptInfoV2 *) 0 ;
   
@@ -3959,7 +3959,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1read
 }
 
 
-SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1read_1receipt_1info_1v2_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1read_1receipt_1info_1v2_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   RcimReadReceiptInfoV2 *result = 0 ;
@@ -3974,7 +3974,7 @@ SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1rea
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1is_1notification_1disabled_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1is_1notification_1disabled_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   bool arg2 ;
   
@@ -3987,7 +3987,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1is_1
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1is_1notification_1disabled_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1is_1notification_1disabled_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   bool result;
@@ -4002,7 +4002,7 @@ SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1push_1config_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1push_1config_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   RcimPushConfig *arg2 = (RcimPushConfig *) 0 ;
   
@@ -4016,7 +4016,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1push
 }
 
 
-SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1push_1config_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1push_1config_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   RcimPushConfig *result = 0 ;
@@ -4031,7 +4031,7 @@ SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1pus
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1is_1offline_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1is_1offline_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   bool arg2 ;
   
@@ -4044,7 +4044,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1is_1
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1is_1offline_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1is_1offline_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   bool result;
@@ -4059,7 +4059,7 @@ SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1is_1ext_1supported_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1is_1ext_1supported_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   bool arg2 ;
   
@@ -4072,7 +4072,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1is_1
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1is_1ext_1supported_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1is_1ext_1supported_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   bool result;
@@ -4087,7 +4087,7 @@ SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1ext_1content_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1ext_1content_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -4112,7 +4112,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1ext_
 }
 
 
-SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1ext_1content_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1ext_1content_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   char *result = 0 ;
@@ -4127,7 +4127,7 @@ SWIGEXPORT jstring JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1e
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1is_1need_1receipt_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1is_1need_1receipt_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   bool arg2 ;
   
@@ -4140,7 +4140,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1is_1
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1is_1need_1receipt_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1is_1need_1receipt_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   bool result;
@@ -4155,7 +4155,7 @@ SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1has_1sent_1receipt_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1has_1sent_1receipt_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   bool arg2 ;
   
@@ -4168,7 +4168,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1has_
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1has_1sent_1receipt_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimMessageBox_1has_1sent_1receipt_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   bool result;
@@ -4183,7 +4183,7 @@ SWIGEXPORT jboolean JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimMessageBox_1
 }
 
 
-SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_new_1RcimMessageBox(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_new_1RcimMessageBox(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   RcimMessageBox *result = 0 ;
   
@@ -4195,7 +4195,7 @@ SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_new_1RcimMessageBox
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_delete_1RcimMessageBox(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_delete_1RcimMessageBox(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   RcimMessageBox *arg1 = (RcimMessageBox *) 0 ;
   
   (void)jenv;
@@ -4205,7 +4205,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_delete_1RcimMessageB
 }
 
 
-SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_RcClientJNI_createEngineBuilder(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlongArray jarg2) {
+SWIGEXPORT jint JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_createEngineBuilder(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlongArray jarg2) {
   jint jresult = 0 ;
   RcimEngineBuilderParam *arg1 = (RcimEngineBuilderParam *) 0 ;
   int64_t *arg2 = (int64_t *) 0 ;
@@ -4239,7 +4239,7 @@ SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_RcClientJNI_createEngineBuilder(
 }
 
 
-SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_RcClientJNI_engineBuilderBuild(JNIEnv *jenv, jclass jcls, jlong jarg1, jlongArray jarg2) {
+SWIGEXPORT jint JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_engineBuilderBuild(JNIEnv *jenv, jclass jcls, jlong jarg1, jlongArray jarg2) {
   jint jresult = 0 ;
   int64_t arg1 ;
   int64_t *arg2 = (int64_t *) 0 ;
@@ -4272,7 +4272,7 @@ SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_RcClientJNI_engineBuilderBuild(J
 }
 
 
-SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_new_1RcimNativeStringCallback(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_new_1RcimNativeStringCallback(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   rcim::RcimNativeStringCallback *result = 0 ;
   
@@ -4284,7 +4284,7 @@ SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_new_1RcimNativeStri
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_delete_1RcimNativeStringCallback(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_delete_1RcimNativeStringCallback(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   rcim::RcimNativeStringCallback *arg1 = (rcim::RcimNativeStringCallback *) 0 ;
   
   (void)jenv;
@@ -4294,7 +4294,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_delete_1RcimNativeSt
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimNativeStringCallback_1onResult(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3, jstring jarg4) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimNativeStringCallback_1onResult(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3, jstring jarg4) {
   rcim::RcimNativeStringCallback *arg1 = (rcim::RcimNativeStringCallback *) 0 ;
   rcim::RcimNativeStringCallback *arg2 = (rcim::RcimNativeStringCallback *) 0 ;
   int arg3 ;
@@ -4317,7 +4317,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimNativeStringCall
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimNativeStringCallback_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimNativeStringCallback_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
   rcim::RcimNativeStringCallback *obj = *((rcim::RcimNativeStringCallback **)&objarg);
   (void)jcls;
   SwigDirector_RcimNativeStringCallback *director = static_cast<SwigDirector_RcimNativeStringCallback *>(obj);
@@ -4325,7 +4325,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimNativeStringCall
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimNativeStringCallback_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimNativeStringCallback_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
   rcim::RcimNativeStringCallback *obj = *((rcim::RcimNativeStringCallback **)&objarg);
   SwigDirector_RcimNativeStringCallback *director = dynamic_cast<SwigDirector_RcimNativeStringCallback *>(obj);
   (void)jcls;
@@ -4335,7 +4335,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimNativeStringCall
 }
 
 
-SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_new_1RcimNativeSendMessageCallback(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_new_1RcimNativeSendMessageCallback(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   rcim::RcimNativeSendMessageCallback *result = 0 ;
   
@@ -4347,7 +4347,7 @@ SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_new_1RcimNativeSend
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_delete_1RcimNativeSendMessageCallback(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_delete_1RcimNativeSendMessageCallback(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   rcim::RcimNativeSendMessageCallback *arg1 = (rcim::RcimNativeSendMessageCallback *) 0 ;
   
   (void)jenv;
@@ -4357,7 +4357,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_delete_1RcimNativeSe
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimNativeSendMessageCallback_1onSave(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimNativeSendMessageCallback_1onSave(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   rcim::RcimNativeSendMessageCallback *arg1 = (rcim::RcimNativeSendMessageCallback *) 0 ;
   RcimMessageBox *arg2 = (RcimMessageBox *) 0 ;
   
@@ -4371,7 +4371,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimNativeSendMessag
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimNativeSendMessageCallback_1onResult(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3, jlong jarg4, jobject jarg4_) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimNativeSendMessageCallback_1onResult(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3, jlong jarg4, jobject jarg4_) {
   rcim::RcimNativeSendMessageCallback *arg1 = (rcim::RcimNativeSendMessageCallback *) 0 ;
   rcim::RcimNativeSendMessageCallback *arg2 = (rcim::RcimNativeSendMessageCallback *) 0 ;
   int arg3 ;
@@ -4390,7 +4390,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimNativeSendMessag
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimNativeSendMessageCallback_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimNativeSendMessageCallback_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
   rcim::RcimNativeSendMessageCallback *obj = *((rcim::RcimNativeSendMessageCallback **)&objarg);
   (void)jcls;
   SwigDirector_RcimNativeSendMessageCallback *director = static_cast<SwigDirector_RcimNativeSendMessageCallback *>(obj);
@@ -4398,7 +4398,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimNativeSendMessag
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimNativeSendMessageCallback_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimNativeSendMessageCallback_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
   rcim::RcimNativeSendMessageCallback *obj = *((rcim::RcimNativeSendMessageCallback **)&objarg);
   SwigDirector_RcimNativeSendMessageCallback *director = dynamic_cast<SwigDirector_RcimNativeSendMessageCallback *>(obj);
   (void)jcls;
@@ -4408,7 +4408,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimNativeSendMessag
 }
 
 
-SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_new_1RcimNativeIntListener(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_new_1RcimNativeIntListener(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   rcim::RcimNativeIntListener *result = 0 ;
   
@@ -4420,7 +4420,7 @@ SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_new_1RcimNativeIntL
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_delete_1RcimNativeIntListener(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_delete_1RcimNativeIntListener(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   rcim::RcimNativeIntListener *arg1 = (rcim::RcimNativeIntListener *) 0 ;
   
   (void)jenv;
@@ -4430,7 +4430,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_delete_1RcimNativeIn
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimNativeIntListener_1onChanged(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimNativeIntListener_1onChanged(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   rcim::RcimNativeIntListener *arg1 = (rcim::RcimNativeIntListener *) 0 ;
   int arg2 ;
   
@@ -4443,7 +4443,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimNativeIntListene
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimNativeIntListener_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimNativeIntListener_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
   rcim::RcimNativeIntListener *obj = *((rcim::RcimNativeIntListener **)&objarg);
   (void)jcls;
   SwigDirector_RcimNativeIntListener *director = static_cast<SwigDirector_RcimNativeIntListener *>(obj);
@@ -4451,7 +4451,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimNativeIntListene
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimNativeIntListener_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_RcimNativeIntListener_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
   rcim::RcimNativeIntListener *obj = *((rcim::RcimNativeIntListener **)&objarg);
   SwigDirector_RcimNativeIntListener *director = dynamic_cast<SwigDirector_RcimNativeIntListener *>(obj);
   (void)jcls;
@@ -4461,7 +4461,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_RcimNativeIntListene
 }
 
 
-SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_newSdkVersionArray(JNIEnv *jenv, jclass jcls, jint jarg1) {
+SWIGEXPORT jlong JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_newSdkVersionArray(JNIEnv *jenv, jclass jcls, jint jarg1) {
   jlong jresult = 0 ;
   int arg1 ;
   int64_t result;
@@ -4475,7 +4475,7 @@ SWIGEXPORT jlong JNICALL Java_io_rong_imlib_swig_RcClientJNI_newSdkVersionArray(
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_insertSdkVersionArray(JNIEnv *jenv, jclass jcls, jlong jarg1, jlongArray jarg2, jint jarg3) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_insertSdkVersionArray(JNIEnv *jenv, jclass jcls, jlong jarg1, jlongArray jarg2, jint jarg3) {
   int64_t arg1 ;
   int64_t *arg2 = (int64_t *) 0 ;
   int arg3 ;
@@ -4494,7 +4494,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_insertSdkVersionArra
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_freeSdkVersionArray(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_freeSdkVersionArray(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   int64_t arg1 ;
   
   (void)jenv;
@@ -4504,7 +4504,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_freeSdkVersionArray(
 }
 
 
-SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_RcClientJNI_engineBuilderSetStorePath(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2) {
+SWIGEXPORT jint JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_engineBuilderSetStorePath(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2) {
   jint jresult = 0 ;
   int64_t arg1 ;
   char *arg2 = (char *) 0 ;
@@ -4525,7 +4525,7 @@ SWIGEXPORT jint JNICALL Java_io_rong_imlib_swig_RcClientJNI_engineBuilderSetStor
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_engineConnect(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jint jarg3, jlong jarg4, jobject jarg4_) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_engineConnect(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jint jarg3, jlong jarg4, jobject jarg4_) {
   int64_t arg1 ;
   char *arg2 = (char *) 0 ;
   int arg3 ;
@@ -4547,7 +4547,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_engineConnect(JNIEnv
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_engineSetConnectionStatusListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_engineSetConnectionStatusListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2, jobject jarg2_) {
   int64_t arg1 ;
   rcim::RcimNativeIntListener *arg2 = (rcim::RcimNativeIntListener *) 0 ;
   
@@ -4560,7 +4560,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_engineSetConnectionS
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_engineSendMessage(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_engineSendMessage(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
   int64_t arg1 ;
   RcimMessageBox *arg2 = (RcimMessageBox *) 0 ;
   rcim::RcimNativeSendMessageCallback *arg3 = (rcim::RcimNativeSendMessageCallback *) 0 ;
@@ -4576,7 +4576,7 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_engineSendMessage(JN
 }
 
 
-SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_swig_1module_1init(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT void JNICALL Java_io_rong_imlib_internal_swig_RcClientJNI_swig_1module_1init(JNIEnv *jenv, jclass jcls) {
   int i;
   
   static struct {
@@ -4584,16 +4584,16 @@ SWIGEXPORT void JNICALL Java_io_rong_imlib_swig_RcClientJNI_swig_1module_1init(J
     const char *signature;
   } methods[4] = {
     {
-      "SwigDirector_RcimNativeStringCallback_onResult", "(Lio/rong/imlib/swig/RcimNativeStringCallback;JILjava/lang/String;)V" 
+      "SwigDirector_RcimNativeStringCallback_onResult", "(Lio/rong/imlib/internal/swig/RcimNativeStringCallback;JILjava/lang/String;)V" 
     },
     {
-      "SwigDirector_RcimNativeSendMessageCallback_onSave", "(Lio/rong/imlib/swig/RcimNativeSendMessageCallback;J)V" 
+      "SwigDirector_RcimNativeSendMessageCallback_onSave", "(Lio/rong/imlib/internal/swig/RcimNativeSendMessageCallback;J)V" 
     },
     {
-      "SwigDirector_RcimNativeSendMessageCallback_onResult", "(Lio/rong/imlib/swig/RcimNativeSendMessageCallback;JIJ)V" 
+      "SwigDirector_RcimNativeSendMessageCallback_onResult", "(Lio/rong/imlib/internal/swig/RcimNativeSendMessageCallback;JIJ)V" 
     },
     {
-      "SwigDirector_RcimNativeIntListener_onChanged", "(Lio/rong/imlib/swig/RcimNativeIntListener;I)V" 
+      "SwigDirector_RcimNativeIntListener_onChanged", "(Lio/rong/imlib/internal/swig/RcimNativeIntListener;I)V" 
     }
   };
   Swig::jclass_RcClientJNI = (jclass) jenv->NewGlobalRef(jcls);

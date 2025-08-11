@@ -1,4 +1,4 @@
-package io.rong.imlib.utils;
+package io.rong.imlib.internal.utils;
 
 
 import androidx.annotation.NonNull;
@@ -6,7 +6,7 @@ import androidx.annotation.Nullable;
 
 import io.rong.imlib.conversation.enums.ConversationType;
 import io.rong.imlib.message.Message;
-import io.rong.imlib.swig.RcimMessageBox;
+import io.rong.imlib.internal.swig.RcimMessageBox;
 
 public class Transformer {
     private Transformer() {

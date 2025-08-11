@@ -6,22 +6,22 @@
  * the SWIG interface file instead.
  * ----------------------------------------------------------------------------- */
 
-package io.rong.imlib.swig;
+package io.rong.imlib.internal.swig;
 
-public class RcimNativeIntListener {
+public class RcimReadReceiptUserInfo {
   private transient long swigCPtr;
   protected transient boolean swigCMemOwn;
 
-  protected RcimNativeIntListener(long cPtr, boolean cMemoryOwn) {
+  protected RcimReadReceiptUserInfo(long cPtr, boolean cMemoryOwn) {
     swigCMemOwn = cMemoryOwn;
     swigCPtr = cPtr;
   }
 
-  protected static long getCPtr(RcimNativeIntListener obj) {
+  protected static long getCPtr(RcimReadReceiptUserInfo obj) {
     return (obj == null) ? 0 : obj.swigCPtr;
   }
 
-  protected static long swigRelease(RcimNativeIntListener obj) {
+  protected static long swigRelease(RcimReadReceiptUserInfo obj) {
     long ptr = 0;
     if (obj != null) {
       if (!obj.swigCMemOwn)
@@ -42,25 +42,10 @@ public class RcimNativeIntListener {
     if (swigCPtr != 0) {
       if (swigCMemOwn) {
         swigCMemOwn = false;
-        RcClientJNI.delete_RcimNativeIntListener(swigCPtr);
+        RcClientJNI.delete_RcimReadReceiptUserInfo(swigCPtr);
       }
       swigCPtr = 0;
     }
-  }
-
-  protected void swigDirectorDisconnect() {
-    swigCMemOwn = false;
-    delete();
-  }
-
-  public void swigReleaseOwnership() {
-    swigCMemOwn = false;
-    RcClientJNI.RcimNativeIntListener_change_ownership(this, swigCPtr, false);
-  }
-
-  public void swigTakeOwnership() {
-    swigCMemOwn = true;
-    RcClientJNI.RcimNativeIntListener_change_ownership(this, swigCPtr, true);
   }
 
 /**
@@ -78,8 +63,8 @@ public synchronized void swigDelete() {
  * WARNING： 原则上不能调用该方法，除非你明确知道你需要这个方法<p>
  * 静态工厂方法：从 C 指针构建该对象
  */
-public static RcimNativeIntListener fromPointer(long cPtr) {
-    return new RcimNativeIntListener(cPtr, false);
+public static RcimReadReceiptUserInfo fromPointer(long cPtr) {
+    return new RcimReadReceiptUserInfo(cPtr, false);
 }
 
 /**
@@ -91,13 +76,32 @@ public long getCPtr() {
     return swigCPtr;
 }
 
-  public RcimNativeIntListener() {
-    this(RcClientJNI.new_RcimNativeIntListener(), true);
-    RcClientJNI.RcimNativeIntListener_director_connect(this, swigCPtr, true, true);
+  public void setSender_id(String value) {
+    RcClientJNI.RcimReadReceiptUserInfo_sender_id_set(swigCPtr, this, value);
   }
 
-  public void onChanged(int value) {
-    RcClientJNI.RcimNativeIntListener_onChanged(swigCPtr, this, value);
+  public String getSender_id() {
+    return RcClientJNI.RcimReadReceiptUserInfo_sender_id_get(swigCPtr, this);
+  }
+
+  public void setTimestamp(java.math.BigInteger value) {
+    RcClientJNI.RcimReadReceiptUserInfo_timestamp_set(swigCPtr, this, value);
+  }
+
+  public java.math.BigInteger getTimestamp() {
+    return RcClientJNI.RcimReadReceiptUserInfo_timestamp_get(swigCPtr, this);
+  }
+
+  public void setMentioned(boolean value) {
+    RcClientJNI.RcimReadReceiptUserInfo_mentioned_set(swigCPtr, this, value);
+  }
+
+  public boolean getMentioned() {
+    return RcClientJNI.RcimReadReceiptUserInfo_mentioned_get(swigCPtr, this);
+  }
+
+  public RcimReadReceiptUserInfo() {
+    this(RcClientJNI.new_RcimReadReceiptUserInfo(), true);
   }
 
 }

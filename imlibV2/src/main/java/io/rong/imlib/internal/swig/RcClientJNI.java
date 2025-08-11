@@ -6,7 +6,7 @@
  * the SWIG interface file instead.
  * ----------------------------------------------------------------------------- */
 
-package io.rong.imlib.swig;
+package io.rong.imlib.internal.swig;
 
 public class RcClientJNI {
   public final static native void RcimSDKVersion_name_set(long jarg1, RcimSDKVersion jarg1_, String jarg2);

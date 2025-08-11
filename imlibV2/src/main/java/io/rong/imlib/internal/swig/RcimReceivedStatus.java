@@ -6,22 +6,22 @@
  * the SWIG interface file instead.
  * ----------------------------------------------------------------------------- */
 
-package io.rong.imlib.swig;
+package io.rong.imlib.internal.swig;
 
-public class RcimReadReceiptInfo {
+public class RcimReceivedStatus {
   private transient long swigCPtr;
   protected transient boolean swigCMemOwn;
 
-  protected RcimReadReceiptInfo(long cPtr, boolean cMemoryOwn) {
+  protected RcimReceivedStatus(long cPtr, boolean cMemoryOwn) {
     swigCMemOwn = cMemoryOwn;
     swigCPtr = cPtr;
   }
 
-  protected static long getCPtr(RcimReadReceiptInfo obj) {
+  protected static long getCPtr(RcimReceivedStatus obj) {
     return (obj == null) ? 0 : obj.swigCPtr;
   }
 
-  protected static long swigRelease(RcimReadReceiptInfo obj) {
+  protected static long swigRelease(RcimReceivedStatus obj) {
     long ptr = 0;
     if (obj != null) {
       if (!obj.swigCMemOwn)
@@ -42,7 +42,7 @@ public class RcimReadReceiptInfo {
     if (swigCPtr != 0) {
       if (swigCMemOwn) {
         swigCMemOwn = false;
-        RcClientJNI.delete_RcimReadReceiptInfo(swigCPtr);
+        RcClientJNI.delete_RcimReceivedStatus(swigCPtr);
       }
       swigCPtr = 0;
     }
@@ -63,8 +63,8 @@ public synchronized void swigDelete() {
  * WARNING： 原则上不能调用该方法，除非你明确知道你需要这个方法<p>
  * 静态工厂方法：从 C 指针构建该对象
  */
-public static RcimReadReceiptInfo fromPointer(long cPtr) {
-    return new RcimReadReceiptInfo(cPtr, false);
+public static RcimReceivedStatus fromPointer(long cPtr) {
+    return new RcimReceivedStatus(cPtr, false);
 }
 
 /**
@@ -76,41 +76,48 @@ public long getCPtr() {
     return swigCPtr;
 }
 
-  public void setIs_read_receipt_message(boolean value) {
-    RcClientJNI.RcimReadReceiptInfo_is_read_receipt_message_set(swigCPtr, this, value);
+  public void setIs_read(boolean value) {
+    RcClientJNI.RcimReceivedStatus_is_read_set(swigCPtr, this, value);
   }
 
-  public boolean getIs_read_receipt_message() {
-    return RcClientJNI.RcimReadReceiptInfo_is_read_receipt_message_get(swigCPtr, this);
+  public boolean getIs_read() {
+    return RcClientJNI.RcimReceivedStatus_is_read_get(swigCPtr, this);
   }
 
-  public void setHas_respond(boolean value) {
-    RcClientJNI.RcimReadReceiptInfo_has_respond_set(swigCPtr, this, value);
+  public void setIs_listened(boolean value) {
+    RcClientJNI.RcimReceivedStatus_is_listened_set(swigCPtr, this, value);
   }
 
-  public boolean getHas_respond() {
-    return RcClientJNI.RcimReadReceiptInfo_has_respond_get(swigCPtr, this);
+  public boolean getIs_listened() {
+    return RcClientJNI.RcimReceivedStatus_is_listened_get(swigCPtr, this);
   }
 
-  public void setRespond_user_vec(RcimReadReceiptUserInfo value) {
-    RcClientJNI.RcimReadReceiptInfo_respond_user_vec_set(swigCPtr, this, RcimReadReceiptUserInfo.getCPtr(value), value);
+  public void setIs_download(boolean value) {
+    RcClientJNI.RcimReceivedStatus_is_download_set(swigCPtr, this, value);
   }
 
-  public RcimReadReceiptUserInfo getRespond_user_vec() {
-    long cPtr = RcClientJNI.RcimReadReceiptInfo_respond_user_vec_get(swigCPtr, this);
-    return (cPtr == 0) ? null : new RcimReadReceiptUserInfo(cPtr, false);
+  public boolean getIs_download() {
+    return RcClientJNI.RcimReceivedStatus_is_download_get(swigCPtr, this);
   }
 
-  public void setRespond_user_vec_len(int value) {
-    RcClientJNI.RcimReadReceiptInfo_respond_user_vec_len_set(swigCPtr, this, value);
+  public void setIs_retrieved(boolean value) {
+    RcClientJNI.RcimReceivedStatus_is_retrieved_set(swigCPtr, this, value);
   }
 
-  public int getRespond_user_vec_len() {
-    return RcClientJNI.RcimReadReceiptInfo_respond_user_vec_len_get(swigCPtr, this);
+  public boolean getIs_retrieved() {
+    return RcClientJNI.RcimReceivedStatus_is_retrieved_get(swigCPtr, this);
   }
 
-  public RcimReadReceiptInfo() {
-    this(RcClientJNI.new_RcimReadReceiptInfo(), true);
+  public void setIs_multiple_received(boolean value) {
+    RcClientJNI.RcimReceivedStatus_is_multiple_received_set(swigCPtr, this, value);
+  }
+
+  public boolean getIs_multiple_received() {
+    return RcClientJNI.RcimReceivedStatus_is_multiple_received_get(swigCPtr, this);
+  }
+
+  public RcimReceivedStatus() {
+    this(RcClientJNI.new_RcimReceivedStatus(), true);
   }
 
 }
