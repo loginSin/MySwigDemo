@@ -6,8 +6,8 @@
 namespace rcim {
 
 int createEngineBuilder(RcimEngineBuilderParam *param, int64_t *outBuilderPtr) {
-    if (!param) {
-        return 0;
+    if (param == nullptr) {
+        return RcimEngineError_InvalidArgumentEngineBuilderParam;
     }
     param->platform = RcimPlatform_Android;
 
@@ -44,46 +44,127 @@ void freeSdkVersionArray(int64_t ptr) {
 }
 
 int engineBuilderSetStorePath(int64_t builderPtr, const char *storePath) {
+    if (builderPtr == 0) {
+        return RcimEngineError_InvalidArgumentEngineBuilder;
+    }
+
+    auto *builder = reinterpret_cast<RcimEngineBuilder *>(static_cast<uintptr_t>(builderPtr));
+    return rcim_engine_builder_set_store_path(builder, storePath);
+}
+
+int engineBuilderSetAreaCode(int64_t builderPtr, int areaCode) {
+    if (builderPtr == 0) {
+        return RcimEngineError_InvalidArgumentEngineBuilder;
+    }
+
+    auto *builder = reinterpret_cast<RcimEngineBuilder *>(static_cast<uintptr_t>(builderPtr));
+    RcimAreaCode code = RcimAreaCode_Bj;
+    if (RcimAreaCode_Sg == areaCode) {
+        code = RcimAreaCode_Sg;
+    } else if (RcimAreaCode_Na == areaCode) {
+        code = RcimAreaCode_Na;
+    } else if (RcimAreaCode_SgB == areaCode) {
+        code = RcimAreaCode_SgB;
+    } else if (RcimAreaCode_Sa == areaCode) {
+        code = RcimAreaCode_Sa;
+    }
+    return rcim_engine_builder_set_area_code(builder, code);
+}
+
+int engineBuilderSetNaviServer(int64_t builderPtr, std::vector<std::string> naviVec) {
+    if (builderPtr == 0) {
+        return RcimEngineError_InvalidArgumentEngineBuilder;
+    }
+
     auto *builder = reinterpret_cast<RcimEngineBuilder *>(static_cast<uintptr_t>(builderPtr));
 
-    RcimEngineError code = rcim_engine_builder_set_store_path(builder, storePath);
-    if (RcimEngineError_Success != code) {
-        return code;
+    if (naviVec.empty()) {
+        return rcim_engine_builder_set_navi_server(builder, nullptr, 0);
+    } else {
+        int32_t size = naviVec.size();
+        char** arr = new char*[size];
+        for (size_t i = 0; i < size; ++i) {
+            arr[i] = new char[naviVec[i].size() + 1];
+            std::strcpy(arr[i], naviVec[i].c_str());
+        }
+        rcim_engine_builder_set_navi_server(builder, arr , size);
+
+        for (size_t i = 0; i < size; ++i) {
+            delete[] arr[i];
+        }
+        delete[] arr;
+        return rcim_engine_builder_set_navi_server(builder, arr, size);
     }
-    code = rcim_engine_builder_set_area_code(builder, RcimAreaCode_Bj);
-    if (RcimEngineError_Success != code) {
-        return code;
+}
+
+int engineBuilderSetStatisticServer(int64_t builderPtr, const char *statisticServer) {
+    if (builderPtr == 0) {
+        return RcimEngineError_InvalidArgumentEngineBuilder;
     }
-    code = rcim_engine_builder_set_navi_server(builder, nullptr, 0);
-    if (RcimEngineError_Success != code) {
-        return code;
+
+    auto *builder = reinterpret_cast<RcimEngineBuilder *>(static_cast<uintptr_t>(builderPtr));
+    return rcim_engine_builder_set_statistic_server(builder, nullptr);
+}
+
+int engineBuilderSetCloudType(int64_t builderPtr, int cloudType) {
+    if (builderPtr == 0) {
+        return RcimEngineError_InvalidArgumentEngineBuilder;
     }
-    code = rcim_engine_builder_set_statistic_server(builder, nullptr);
-    if (RcimEngineError_Success != code) {
-        return code;
+
+    auto *builder = reinterpret_cast<RcimEngineBuilder *>(static_cast<uintptr_t>(builderPtr));
+
+    RcimCloudType c_cloudType = RcimCloudType_PublicCloud;
+    if (106 == cloudType) {
+        c_cloudType = RcimCloudType_PrivateCloud;
+    } else if ( 104 == cloudType) {
+        c_cloudType = RcimCloudType_PrivateCloud104;
     }
-    code = rcim_engine_builder_set_cloud_type(builder, RcimCloudType_PrivateCloud);
-    if (RcimEngineError_Success != code) {
-        return code;
+    return rcim_engine_builder_set_cloud_type(builder, c_cloudType);
+}
+
+int engineBuilderSetDbEncrypted(int64_t builderPtr, bool encrypted) {
+    if (builderPtr == 0) {
+        return RcimEngineError_InvalidArgumentEngineBuilder;
     }
-    code = rcim_engine_builder_set_db_encrypted(builder, false);
-    if (RcimEngineError_Success != code) {
-        return code;
+
+    auto *builder = reinterpret_cast<RcimEngineBuilder *>(static_cast<uintptr_t>(builderPtr));
+    return rcim_engine_builder_set_db_encrypted(builder, encrypted);
+}
+
+int engineBuilderSetEnableGroupCall(int64_t builderPtr, bool enable) {
+    if (builderPtr == 0) {
+        return RcimEngineError_InvalidArgumentEngineBuilder;
     }
-    code = rcim_engine_builder_set_enable_group_call(builder, false);
-    if (RcimEngineError_Success != code) {
-        return code;
+
+    auto *builder = reinterpret_cast<RcimEngineBuilder *>(static_cast<uintptr_t>(builderPtr));
+    return rcim_engine_builder_set_enable_group_call(builder, enable);
+}
+
+int engineBuilderSetEnableReconnectKick(int64_t builderPtr, bool enable) {
+    if (builderPtr == 0) {
+        return RcimEngineError_InvalidArgumentEngineBuilder;
     }
-    code = rcim_engine_builder_set_enable_reconnect_kick(builder, false);
-    if (RcimEngineError_Success != code) {
-        return code;
+
+    auto *builder = reinterpret_cast<RcimEngineBuilder *>(static_cast<uintptr_t>(builderPtr));
+    return rcim_engine_builder_set_enable_reconnect_kick(builder, enable);
+}
+
+int engineBuilderSetFilePath(int64_t builderPtr, const char *filePath) {
+    if (builderPtr == 0) {
+        return RcimEngineError_InvalidArgumentEngineBuilder;
     }
-    code = rcim_engine_builder_set_file_path(builder, nullptr);
-    if (RcimEngineError_Success != code) {
-        return code;
+
+    auto *builder = reinterpret_cast<RcimEngineBuilder *>(static_cast<uintptr_t>(builderPtr));
+    return rcim_engine_builder_set_file_path(builder, filePath);
+}
+
+int engineBuilderSetNetworkEnv(int64_t builderPtr, const char *networkEnv) {
+    if (builderPtr == 0) {
+        return RcimEngineError_InvalidArgumentEngineBuilder;
     }
-    code = rcim_engine_builder_set_network_env(builder, nullptr);
-    return code;
+
+    auto *builder = reinterpret_cast<RcimEngineBuilder *>(static_cast<uintptr_t>(builderPtr));
+    return rcim_engine_builder_set_network_env(builder, networkEnv);
 }
 
 int engineBuilderBuild(int64_t builderPtr, int64_t *outEnginePtr) {

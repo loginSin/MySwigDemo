@@ -33,6 +33,42 @@ public class RcClient {
     return RcClientJNI.engineBuilderSetStorePath(builderPtr, storePath);
   }
 
+  public static int engineBuilderSetAreaCode(long builderPtr, int areaCode) {
+    return RcClientJNI.engineBuilderSetAreaCode(builderPtr, areaCode);
+  }
+
+  public static int engineBuilderSetNaviServer(long builderPtr, RcimStringVector naviVec) {
+    return RcClientJNI.engineBuilderSetNaviServer(builderPtr, RcimStringVector.getCPtr(naviVec), naviVec);
+  }
+
+  public static int engineBuilderSetStatisticServer(long builderPtr, String StatisticServer) {
+    return RcClientJNI.engineBuilderSetStatisticServer(builderPtr, StatisticServer);
+  }
+
+  public static int engineBuilderSetCloudType(long builderPtr, int cloudType) {
+    return RcClientJNI.engineBuilderSetCloudType(builderPtr, cloudType);
+  }
+
+  public static int engineBuilderSetDbEncrypted(long builderPtr, boolean encrypted) {
+    return RcClientJNI.engineBuilderSetDbEncrypted(builderPtr, encrypted);
+  }
+
+  public static int engineBuilderSetEnableGroupCall(long builderPtr, boolean enable) {
+    return RcClientJNI.engineBuilderSetEnableGroupCall(builderPtr, enable);
+  }
+
+  public static int engineBuilderSetEnableReconnectKick(long builderPtr, boolean enable) {
+    return RcClientJNI.engineBuilderSetEnableReconnectKick(builderPtr, enable);
+  }
+
+  public static int engineBuilderSetFilePath(long builderPtr, String filePath) {
+    return RcClientJNI.engineBuilderSetFilePath(builderPtr, filePath);
+  }
+
+  public static int engineBuilderSetNetworkEnv(long builderPtr, String networkEnv) {
+    return RcClientJNI.engineBuilderSetNetworkEnv(builderPtr, networkEnv);
+  }
+
   public static void engineConnect(long enginePtr, String token, int timeout, RcimNativeStringCallback callback) {
     RcClientJNI.engineConnect(enginePtr, token, timeout, RcimNativeStringCallback.getCPtr(callback), callback);
   }

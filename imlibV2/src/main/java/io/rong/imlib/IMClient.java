@@ -9,6 +9,7 @@ import io.rong.imlib.base.callback.IData1Callback;
 import io.rong.imlib.base.enums.EngineError;
 import io.rong.imlib.connect.enums.ConnectionStatus;
 import io.rong.imlib.connect.listener.ConnectionStatusListener;
+import io.rong.imlib.internal.swig.RcimStringVector;
 import io.rong.imlib.message.Message;
 import io.rong.imlib.message.callback.ISendMessageCallback;
 import io.rong.imlib.internal.swig.RcClient;
@@ -45,7 +46,11 @@ public class IMClient {
         return SingletonHolder.sInstance;
     }
 
-    public void init(Context context, String appKey) {
+    public void init(
+            Context context,
+            String appKey
+    ) {
+
         resetData();
 
         RcimEngineBuilderParam param = new RcimEngineBuilderParam();
@@ -85,6 +90,17 @@ public class IMClient {
 
         String storePath = context.getFilesDir().getPath();
         code = RcClient.engineBuilderSetStorePath(builderPtr, storePath);
+        code = RcClient.engineBuilderSetAreaCode(builderPtr, 1);
+        RcimStringVector stringVector = new RcimStringVector();
+        code = RcClient.engineBuilderSetNaviServer(builderPtr, stringVector);
+        stringVector.swigDelete();
+        code = RcClient.engineBuilderSetStatisticServer(builderPtr, "");
+        code = RcClient.engineBuilderSetCloudType(builderPtr, 108);
+        code = RcClient.engineBuilderSetDbEncrypted(builderPtr, false);
+        code = RcClient.engineBuilderSetEnableGroupCall(builderPtr, false);
+        code = RcClient.engineBuilderSetEnableReconnectKick(builderPtr, false);
+        code = RcClient.engineBuilderSetFilePath(builderPtr, "RongCloud");
+        code = RcClient.engineBuilderSetNetworkEnv(builderPtr, "");
 
         long[] enginePtrArray = {0};
         code = RcClient.engineBuilderBuild(builderPtr, enginePtrArray);

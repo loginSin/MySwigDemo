@@ -8,7 +8,17 @@
 
 %{
 #include "RcClient.h"
+#include <vector>
+#include <string>
 %}
+
+%include <std_string.i>
+%include <std_vector.i>
+
+// 显式告诉 SWIG 你需要支持 std::vector<std::string>
+namespace std {
+        %template(RcimStringVector) vector<string>;
+}
 
 namespace rcim {
 int createEngineBuilder(RcimEngineBuilderParam *param, int64_t *OUTPUT);
