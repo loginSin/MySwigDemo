@@ -103,7 +103,7 @@ namespace rcim {
         }
 
         auto *builder = reinterpret_cast<RcimEngineBuilder *>(static_cast<uintptr_t>(builderPtr));
-        return rcim_engine_builder_set_statistic_server(builder, nullptr);
+        return rcim_engine_builder_set_statistic_server(builder, statisticServer);
     }
 
     int engineBuilderSetCloudType(int64_t builderPtr, int cloudType) {
