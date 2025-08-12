@@ -177,6 +177,8 @@ namespace rcim {
         return code;
     }
 
+//// ---------------------------------------连接----------------------------------------------------
+
     void engineConnectAdapter(const void *context, enum RcimEngineError code, const char *user_id) {
         auto *callback = static_cast<RcimNativeStringCallback *>(const_cast<void *>(context));
         if (callback) {
@@ -184,7 +186,6 @@ namespace rcim {
         }
     }
 
-//// ---------------------------------------连接----------------------------------------------------
     void engineConnect(int64_t enginePtr, const char *token, int timeout,
                        RcimNativeStringCallback *callback) {
         if (enginePtr == 0) {
@@ -214,6 +215,8 @@ namespace rcim {
                                                    engineSetConnectionStatusListenerAdapter);
     }
 
+//// ---------------------------------------发送消息----------------------------------------------------
+
     void engineSendMessageSaved(const void *context, const struct RcimMessageBox *msg_box) {
         auto *callback = static_cast<RcimNativeSendMessageCallback *>(const_cast<void *>(context));
         if (callback) {
@@ -230,7 +233,6 @@ namespace rcim {
         }
     }
 
-//// ---------------------------------------发送消息----------------------------------------------------
     void engineSendMessage(int64_t enginePtr, RcimMessageBox *msgBox,
                            RcimNativeSendMessageCallback *sendMsgCallback) {
         if (enginePtr == 0) {
