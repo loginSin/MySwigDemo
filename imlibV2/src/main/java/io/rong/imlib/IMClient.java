@@ -152,7 +152,7 @@ public class IMClient {
     }
 
     public void sendMessage(Message msg, ISendMessageCallback<Message> sendMessageCallback) {
-
+        // 1. 创建 NativeCallback
         RcimMessageBox inputMsgBox = new RcimMessageBox();
         Transformer.messageToNative(msg, inputMsgBox);
         RcimNativeSendMessageCallback nativeCallback = new RcimNativeSendMessageCallback() {
@@ -176,6 +176,7 @@ public class IMClient {
                     sendMessageCallback.onError(EngineError.codeOf(code), msg);
                 }
 
+                // 4. NativeCallback 使用完成之后，从 Java 层移除并且释放该 NativeCallback
                 inputMsgBox.swigDelete();
                 if (deleteThis != null) {
                     CallbackHolder.removeNativeCallback(deleteThis.getCPtr());
@@ -183,7 +184,9 @@ public class IMClient {
                 }
             }
         };
+        // 2. Java 层保存 NativeCallback
         CallbackHolder.saveNativeCallback(nativeCallback.getCPtr(), nativeCallback);
+        // 3. 将 NativeCallback 传给 jni
         RcClient.engineSendMessage(this.enginePtr.get(), inputMsgBox, nativeCallback);
     }
 
