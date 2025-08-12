@@ -4,7 +4,6 @@ import android.content.Context;
 
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.concurrent.atomic.AtomicReferenceArray;
 
 import io.rong.imlib.base.callback.IData1Callback;
 import io.rong.imlib.base.enums.EngineError;
@@ -13,6 +12,7 @@ import io.rong.imlib.connect.listener.ConnectionStatusListener;
 import io.rong.imlib.internal.swig.RcimNativeMessageReceivedListener;
 import io.rong.imlib.internal.swig.RcimReceivedInfo;
 import io.rong.imlib.internal.swig.RcimStringVector;
+import io.rong.imlib.internal.utils.CallbackHolder;
 import io.rong.imlib.message.Message;
 import io.rong.imlib.message.callback.ISendMessageCallback;
 import io.rong.imlib.internal.swig.RcClient;
@@ -120,7 +120,8 @@ public class IMClient {
     }
 
     public void connect(String token, int timeout, IData1Callback<String> callback) {
-        RcClient.engineConnect(this.enginePtr.get(), token, timeout, new RcimNativeStringCallback() {
+        // 1. 创建 NativeCallback
+        RcimNativeStringCallback nativeCallback = new RcimNativeStringCallback() {
             @Override
             public void onResult(RcimNativeStringCallback deleteThis, int code, String value) {
                 if (callback == null) {
@@ -131,9 +132,18 @@ public class IMClient {
                 } else {
                     callback.onError(EngineError.codeOf(code));
                 }
-                deleteThis.swigDelete();
+                // 4. NativeCallback 使用完成之后，从 Java 层移除并且释放该 NativeCallback
+                if (deleteThis != null) {
+                    CallbackHolder.removeCallback(deleteThis.getCPtr());
+                    deleteThis.swigDelete();
+                }
             }
-        });
+        };
+
+        // 2. Java 层保存 NativeCallback
+        CallbackHolder.saveCallback(nativeCallback.getCPtr(), nativeCallback);
+        // 3. 将 NativeCallback 传给 jni
+        RcClient.engineConnect(this.enginePtr.get(), token, timeout, nativeCallback);
     }
 
     public void setConnectionStatusListener(ConnectionStatusListener listener) {
@@ -159,8 +169,7 @@ public class IMClient {
 
         RcimMessageBox inputMsgBox = new RcimMessageBox();
         Transformer.messageToNative(msg, inputMsgBox);
-        RcClient.engineSendMessage(this.enginePtr.get(), inputMsgBox, new RcimNativeSendMessageCallback() {
-
+        RcimNativeSendMessageCallback nativeCallback = new RcimNativeSendMessageCallback() {
             @Override
             public void onSave(RcimMessageBox nativeMsg) {
                 Message msg = Transformer.messageFromNative(nativeMsg);
@@ -182,9 +191,14 @@ public class IMClient {
                 }
 
                 inputMsgBox.swigDelete();
-                deleteThis.swigDelete();
+                if (deleteThis != null) {
+                    CallbackHolder.removeCallback(deleteThis.getCPtr());
+                    deleteThis.swigDelete();
+                }
             }
-        });
+        };
+        CallbackHolder.saveCallback(nativeCallback.getCPtr(), nativeCallback);
+        RcClient.engineSendMessage(this.enginePtr.get(), inputMsgBox, nativeCallback);
     }
 
     public void setMessageReceivedListener(MessageReceivedListener listener) {

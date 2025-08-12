@@ -61,32 +61,35 @@ public void init() {
 Callback 只能有限次数的调用，用完之后就得销毁，比如连接 callback ，发送消息 callback
 
 ```java
-public void sendMessage(Message msg, ISendMessageCallback<Message> sendMessageCallback) {
-    // 出现 new RcimMessageBox
-    RcimMessageBox inputMsgBox = new RcimMessageBox();
-    inputMsgBox.setConv_type(msg.getConversationType().getValue());
-
-    // 出现 new RcimNativeSendMessageCallback
-    rc_adapter.engineSendMessage(this.enginePtr.get(), inputMsgBox, new RcimNativeSendMessageCallback() {
-
+    public void connect(String token, int timeout, IData1Callback<String> callback) {
+    // 1. 创建 NativeCallback
+    RcimNativeStringCallback nativeCallback = new RcimNativeStringCallback() {
         @Override
-        public void onSave(RcimMessageBox msg) {
-            String content = msg.getContent();
-
-        }
-
-        @Override
-        public void onResult(RcimNativeSendMessageCallback deleteThis,int code, RcimMessageBox msg) {
-            String content = msg.getContent();
-            
-            // RcimNativeSendMessageCallback 使用完后，把上面提到的两个 new Rcim 给删除
-            // 这里的 deleteThis 和 new RcimNativeSendMessageCallback 是同一个对象
-            inputMsgBox.swigDelete();
+        public void onResult(RcimNativeStringCallback deleteThis, int code, String value) {
+            if (callback == null) {
+                return;
+            }
+            if (EngineError.Success.getCode() == code) {
+                callback.onSuccess(value);
+            } else {
+                callback.onError(EngineError.codeOf(code));
+            }
+            // 4. NativeCallback 使用完成之后，从 Java 层移除并且释放该 NativeCallback
+            CallbackHolder.removeCallback(deleteThis.getCPtr());
             deleteThis.swigDelete();
         }
-    });
+    };
+
+    // 2. Java 层保存 NativeCallback
+    CallbackHolder.saveCallback(nativeCallback.getCPtr(), nativeCallback);
+    // 3. 将 NativeCallback 传给 jni
+    RcClient.engineConnect(this.enginePtr.get(), token, timeout, nativeCallback);
 }
 ```
+
+> 为什么不能在 C++ 层通过 jobject pObj = env->NewGlobalRef(j_callback); 来持久存储？
+
+见 CallbackHolder.java 的注释
 
 3. new RcimXXXListener 是一个 listener 类，不能释放
 
