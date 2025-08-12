@@ -13,6 +13,7 @@ import io.rong.imlib.internal.swig.RcimNativeMessageReceivedListener;
 import io.rong.imlib.internal.swig.RcimReceivedInfo;
 import io.rong.imlib.internal.swig.RcimStringVector;
 import io.rong.imlib.internal.utils.CallbackHolder;
+import io.rong.imlib.internal.utils.ListenerHolder;
 import io.rong.imlib.message.Message;
 import io.rong.imlib.message.callback.ISendMessageCallback;
 import io.rong.imlib.internal.swig.RcClient;
@@ -28,9 +29,6 @@ import io.rong.imlib.message.model.ReceivedInfo;
 
 public class IMClient {
     private final AtomicLong enginePtr = new AtomicLong();
-    // NativeXXXListener 需要在 java 层被持有，否则会被销毁造成野指针
-    private final AtomicReference<RcimNativeIntListener> conStatusListenerRef = new AtomicReference<>();
-    private final AtomicReference<RcimNativeMessageReceivedListener> msgReceivedListenerRef = new AtomicReference<>();
 
     static {
         try {
@@ -116,7 +114,8 @@ public class IMClient {
 
     private void resetData() {
         this.enginePtr.set(0);
-        this.conStatusListenerRef.set(null);
+        ListenerHolder.clearAllNativeListener();
+        CallbackHolder.clearAllNativeCallback();
     }
 
     public void connect(String token, int timeout, IData1Callback<String> callback) {
@@ -134,20 +133,20 @@ public class IMClient {
                 }
                 // 4. NativeCallback 使用完成之后，从 Java 层移除并且释放该 NativeCallback
                 if (deleteThis != null) {
-                    CallbackHolder.removeCallback(deleteThis.getCPtr());
+                    CallbackHolder.removeNativeCallback(deleteThis.getCPtr());
                     deleteThis.swigDelete();
                 }
             }
         };
 
         // 2. Java 层保存 NativeCallback
-        CallbackHolder.saveCallback(nativeCallback.getCPtr(), nativeCallback);
+        CallbackHolder.saveNativeCallback(nativeCallback.getCPtr(), nativeCallback);
         // 3. 将 NativeCallback 传给 jni
         RcClient.engineConnect(this.enginePtr.get(), token, timeout, nativeCallback);
     }
 
     public void setConnectionStatusListener(ConnectionStatusListener listener) {
-        RcimNativeIntListener cachedNativeListener = this.conStatusListenerRef.get();
+        RcimNativeIntListener cachedNativeListener = ListenerHolder.getNativeConnectListener();
         // 原生监听已存在说明已经设置过了，就不再设置
         if (cachedNativeListener != null) {
             return;
@@ -161,7 +160,7 @@ public class IMClient {
                 }
             }
         };
-        this.conStatusListenerRef.set(nativeListener);
+        ListenerHolder.saveNativeConnectListener(nativeListener);
         RcClient.engineSetConnectionStatusListener(this.enginePtr.get(), nativeListener);
     }
 
@@ -192,17 +191,17 @@ public class IMClient {
 
                 inputMsgBox.swigDelete();
                 if (deleteThis != null) {
-                    CallbackHolder.removeCallback(deleteThis.getCPtr());
+                    CallbackHolder.removeNativeCallback(deleteThis.getCPtr());
                     deleteThis.swigDelete();
                 }
             }
         };
-        CallbackHolder.saveCallback(nativeCallback.getCPtr(), nativeCallback);
+        CallbackHolder.saveNativeCallback(nativeCallback.getCPtr(), nativeCallback);
         RcClient.engineSendMessage(this.enginePtr.get(), inputMsgBox, nativeCallback);
     }
 
     public void setMessageReceivedListener(MessageReceivedListener listener) {
-        RcimNativeMessageReceivedListener cachedMsgRevListener = this.msgReceivedListenerRef.get();
+        RcimNativeMessageReceivedListener cachedMsgRevListener = ListenerHolder.getNativeMessageReceivedListener();
         // 原生监听已存在说明已经设置过了，就不再设置
         if (cachedMsgRevListener != null) {
             return;
@@ -218,7 +217,7 @@ public class IMClient {
                 }
             }
         };
-        this.msgReceivedListenerRef.set(nativeListener);
+        ListenerHolder.saveNativeMessageReceivedListener(nativeListener);
         RcClient.engineSetMessageReceivedListener(this.enginePtr.get(), nativeListener);
     }
 }

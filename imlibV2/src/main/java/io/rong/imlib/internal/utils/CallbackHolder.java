@@ -66,8 +66,11 @@ import java.util.concurrent.ConcurrentHashMap;
  *
  * 崩溃的原因是 env->NewGlobalRef 需要一个 Java 的对象，但 RcimNativeStringCallback *callback 是 C++ 的对象
  * </pre>
+ *
+ * @version todo
  */
 public class CallbackHolder {
+    // 使用 ConcurrentHashMap 是考虑线程安全，因为不确定 save & remove 方法是否在同一个线程
     private static final Map<Long, Object> cachedCallbacks = new ConcurrentHashMap<>();
 
     private CallbackHolder() {
@@ -76,20 +79,30 @@ public class CallbackHolder {
 
     /**
      * 保存 callback
-     * @param ptr 指针
-     * @param callback callback
+     *
+     * @param ptr            callback 的指针
+     * @param nativeCallback callback
      */
-    public static void saveCallback(long ptr, @Nullable Object callback) {
-        if (callback != null) {
-            cachedCallbacks.put(ptr, callback);
+    public static void saveNativeCallback(long ptr, @Nullable Object nativeCallback) {
+        if (nativeCallback != null) {
+            cachedCallbacks.put(ptr, nativeCallback);
         }
     }
 
     /**
      * 移除 callback
-     * @param ptr 指针
+     * 只能在初始化、重新初始化的地方调用该方法
+     *
+     * @param ptr callback 的指针
      */
-    public static void removeCallback(long ptr) {
+    public static void removeNativeCallback(long ptr) {
         cachedCallbacks.remove(ptr);
+    }
+
+    /**
+     * 清空所有的缓存的 NativeCallback
+     */
+    public static void clearAllNativeCallback() {
+        cachedCallbacks.clear();
     }
 }
