@@ -38,9 +38,11 @@ public class ListenerHolder {
     /// ------------------------------------------注册所有的原生监听----------------------------------------------
     // <editor-fold desc="注册所有的原生监听">
     public void registerAllNativeListeners(long enginePtr) {
+        // 1. 创建原生监听
         RcimNativeIntListener nativeConnectListener = new RcimNativeIntListener() {
             @Override
             public void onChanged(int value) {
+                // 4. 原生监听方法触发后调用 Java 监听方法
                 for (ConnectionStatusListener listener : ListenerHolder.connectionStatusListenerList) {
                     ConnectionStatus status = ConnectionStatus.codeOf(value);
                     if (listener != null) {
@@ -49,14 +51,17 @@ public class ListenerHolder {
                 }
             }
         };
-
+        // 2. 把原生监听设置给 jni
         RcClient.engineSetConnectionStatusListener(enginePtr, nativeConnectListener);
+        // 3. 把原生监听保存在 Java 层，避免提前释放
         this.nativeConStatusListenerRef.set(nativeConnectListener);
 
 
+        // 1. 创建原生监听
         RcimNativeMessageReceivedListener nativeMessageReceiveListener = new RcimNativeMessageReceivedListener() {
             @Override
             public void onChanged(RcimMessageBox nativeMsgBox, RcimReceivedInfo nativeInfo) {
+                // 4. 原生监听方法触发后调用 Java 监听方法
                 for (MessageReceivedListener listener : ListenerHolder.messageReceivedListenerList) {
                     Message msg = Transformer.messageFromNative(nativeMsgBox);
                     ReceivedInfo info = Transformer.receivedInfoFromNative(nativeInfo);
@@ -67,7 +72,9 @@ public class ListenerHolder {
                 }
             }
         };
+        // 2. 把原生监听设置给 jni
         RcClient.engineSetMessageReceivedListener(enginePtr, nativeMessageReceiveListener);
+        // 3. 把原生监听保存在 Java 层，避免提前释放
         this.nativeMsgReceivedListenerRef.set(nativeMessageReceiveListener);
 
 
