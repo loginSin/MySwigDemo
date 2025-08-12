@@ -29,6 +29,7 @@ import io.rong.imlib.message.model.ReceivedInfo;
 
 public class IMClient {
     private final AtomicLong enginePtr = new AtomicLong();
+    private final ListenerHolder listenerHolder = new ListenerHolder();
 
     static {
         try {
@@ -110,11 +111,12 @@ public class IMClient {
         code = RcClient.engineBuilderBuild(builderPtr, enginePtrArray);
 
         this.enginePtr.set(enginePtrArray[0]);
+        this.listenerHolder.registerAllNativeListeners(this.enginePtr.get());
     }
 
     private void resetData() {
         this.enginePtr.set(0);
-        ListenerHolder.clearAllNativeListener();
+        this.listenerHolder.clearAllNativeListener();
         CallbackHolder.clearAllNativeCallback();
     }
 
@@ -146,22 +148,7 @@ public class IMClient {
     }
 
     public void setConnectionStatusListener(ConnectionStatusListener listener) {
-        RcimNativeIntListener cachedNativeListener = ListenerHolder.getNativeConnectListener();
-        // 原生监听已存在说明已经设置过了，就不再设置
-        if (cachedNativeListener != null) {
-            return;
-        }
-        RcimNativeIntListener nativeListener = new RcimNativeIntListener() {
-            @Override
-            public void onChanged(int value) {
-                if (listener != null) {
-                    ConnectionStatus status = ConnectionStatus.codeOf(value);
-                    listener.onConnectionStatusChanged(status);
-                }
-            }
-        };
-        ListenerHolder.saveNativeConnectListener(nativeListener);
-        RcClient.engineSetConnectionStatusListener(this.enginePtr.get(), nativeListener);
+        this.listenerHolder.addConnectListener(listener);
     }
 
     public void sendMessage(Message msg, ISendMessageCallback<Message> sendMessageCallback) {
@@ -201,23 +188,6 @@ public class IMClient {
     }
 
     public void setMessageReceivedListener(MessageReceivedListener listener) {
-        RcimNativeMessageReceivedListener cachedMsgRevListener = ListenerHolder.getNativeMessageReceivedListener();
-        // 原生监听已存在说明已经设置过了，就不再设置
-        if (cachedMsgRevListener != null) {
-            return;
-        }
-
-        RcimNativeMessageReceivedListener nativeListener = new RcimNativeMessageReceivedListener() {
-            @Override
-            public void onChanged(RcimMessageBox nativeMsgBox, RcimReceivedInfo nativeInfo) {
-                if (listener != null) {
-                    Message msg = Transformer.messageFromNative(nativeMsgBox);
-                    ReceivedInfo info = Transformer.receivedInfoFromNative(nativeInfo);
-                    listener.onReceived(msg, info);
-                }
-            }
-        };
-        ListenerHolder.saveNativeMessageReceivedListener(nativeListener);
-        RcClient.engineSetMessageReceivedListener(this.enginePtr.get(), nativeListener);
+        this.listenerHolder.addMessageReceivedListener(listener);
     }
 }

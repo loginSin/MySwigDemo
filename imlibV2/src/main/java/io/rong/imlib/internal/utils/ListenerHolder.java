@@ -2,10 +2,19 @@ package io.rong.imlib.internal.utils;
 
 import androidx.annotation.Nullable;
 
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicReference;
 
+import io.rong.imlib.connect.enums.ConnectionStatus;
+import io.rong.imlib.connect.listener.ConnectionStatusListener;
+import io.rong.imlib.internal.swig.RcClient;
+import io.rong.imlib.internal.swig.RcimMessageBox;
 import io.rong.imlib.internal.swig.RcimNativeIntListener;
 import io.rong.imlib.internal.swig.RcimNativeMessageReceivedListener;
+import io.rong.imlib.internal.swig.RcimReceivedInfo;
+import io.rong.imlib.message.Message;
+import io.rong.imlib.message.listener.MessageReceivedListener;
+import io.rong.imlib.message.model.ReceivedInfo;
 
 /**
  * Java 层持有 NativeListener 避免提前释放
@@ -15,72 +24,130 @@ import io.rong.imlib.internal.swig.RcimNativeMessageReceivedListener;
  * @version todo
  */
 public class ListenerHolder {
-    private static final AtomicReference<RcimNativeIntListener> conStatusListenerRef = new AtomicReference<>();
-    private static final AtomicReference<RcimNativeMessageReceivedListener> msgReceivedListenerRef = new AtomicReference<>();
+    // 所有变量使用 final 避免出现 null
+    private final AtomicReference<RcimNativeIntListener> nativeConStatusListenerRef = new AtomicReference<>();
+    private static final CopyOnWriteArrayList<ConnectionStatusListener> connectionStatusListenerList = new CopyOnWriteArrayList<>();
+
+    private final AtomicReference<RcimNativeMessageReceivedListener> nativeMsgReceivedListenerRef = new AtomicReference<>();
+    private static final CopyOnWriteArrayList<MessageReceivedListener> messageReceivedListenerList = new CopyOnWriteArrayList<>();
+
+    public ListenerHolder() {
+        // do nothing
+    }
+
+    /// ------------------------------------------注册所有的原生监听----------------------------------------------
+    // <editor-fold desc="注册所有的原生监听">
+    public void registerAllNativeListeners(long enginePtr) {
+        RcimNativeIntListener nativeConnectListener = new RcimNativeIntListener() {
+            @Override
+            public void onChanged(int value) {
+                for (ConnectionStatusListener listener : ListenerHolder.connectionStatusListenerList) {
+                    ConnectionStatus status = ConnectionStatus.codeOf(value);
+                    if (listener != null) {
+                        listener.onConnectionStatusChanged(status);
+                    }
+                }
+            }
+        };
+
+        RcClient.engineSetConnectionStatusListener(enginePtr, nativeConnectListener);
+        this.nativeConStatusListenerRef.set(nativeConnectListener);
 
 
-    private ListenerHolder() {
+        RcimNativeMessageReceivedListener nativeMessageReceiveListener = new RcimNativeMessageReceivedListener() {
+            @Override
+            public void onChanged(RcimMessageBox nativeMsgBox, RcimReceivedInfo nativeInfo) {
+                for (MessageReceivedListener listener : ListenerHolder.messageReceivedListenerList) {
+                    Message msg = Transformer.messageFromNative(nativeMsgBox);
+                    ReceivedInfo info = Transformer.receivedInfoFromNative(nativeInfo);
+                    if (listener != null) {
+                        listener.onReceived(msg, info);
+                    }
+
+                }
+            }
+        };
+        RcClient.engineSetMessageReceivedListener(enginePtr, nativeMessageReceiveListener);
+        this.nativeMsgReceivedListenerRef.set(nativeMessageReceiveListener);
+
 
     }
 
+    // </editor-fold>
+
     /// ------------------------------------------清空所有的缓存监听----------------------------------------------
     // <editor-fold desc="清空所有的缓存监听">
+
     /**
      * 清空所有的原生监听
      * 只能在初始化、重新初始化的地方调用该方法
      */
-    public static void clearAllNativeListener() {
-        conStatusListenerRef.set(null);
-        msgReceivedListenerRef.set(null);
+    public void clearAllNativeListener() {
+        nativeConStatusListenerRef.set(null);
+        nativeMsgReceivedListenerRef.set(null);
     }
     // </editor-fold>
 
 
     /// ------------------------------------------连接----------------------------------------------
     // <editor-fold desc="连接">
+
     /**
-     * 保存原生连接监听
+     * 增加连接监听
      *
-     * @param nativeListener 原生连接监听
+     * @param listener 连接监听
      */
-    public static void saveNativeConnectListener(@Nullable RcimNativeIntListener nativeListener) {
-        if (nativeListener != null) {
-            conStatusListenerRef.set(nativeListener);
+    public void addConnectListener(@Nullable ConnectionStatusListener listener) {
+        if (listener == null) {
+            return;
         }
+        if (ListenerHolder.connectionStatusListenerList.contains(listener)) {
+            return;
+        }
+        ListenerHolder.connectionStatusListenerList.add(listener);
     }
 
     /**
-     * 获取原生连接监听
+     * 移除连接监听
      *
-     * @return 原生连接监听，可能为 null
+     * @param listener 连接监听
      */
-    @Nullable
-    public static RcimNativeIntListener getNativeConnectListener() {
-        return conStatusListenerRef.get();
+    public void removeConnectListener(@Nullable ConnectionStatusListener listener) {
+        if (listener == null) {
+            return;
+        }
+        ListenerHolder.connectionStatusListenerList.remove(listener);
     }
     // </editor-fold>
 
     /// ------------------------------------------消息----------------------------------------------
     // <editor-fold desc="消息">
+
     /**
-     * 保存原生收消息监听
+     * 增加消息接收监听
      *
-     * @param nativeListener 原生收消息监听
+     * @param listener 消息接收监听
      */
-    public static void saveNativeMessageReceivedListener(@Nullable RcimNativeMessageReceivedListener nativeListener) {
-        if (nativeListener != null) {
-            msgReceivedListenerRef.set(nativeListener);
+    public void addMessageReceivedListener(@Nullable MessageReceivedListener listener) {
+        if (listener == null) {
+            return;
         }
+        if (ListenerHolder.messageReceivedListenerList.contains(listener)) {
+            return;
+        }
+        ListenerHolder.messageReceivedListenerList.add(listener);
     }
 
     /**
-     * 获取原生收消息监听
+     * 移除消息接收监听
      *
-     * @return 原生收消息监听，可能为 null
+     * @param listener 消息接收监听
      */
-    @Nullable
-    public static RcimNativeMessageReceivedListener getNativeMessageReceivedListener() {
-        return msgReceivedListenerRef.get();
+    public void removeMessageReceivedListener(@Nullable MessageReceivedListener listener) {
+        if (listener == null) {
+            return;
+        }
+        ListenerHolder.messageReceivedListenerList.remove(listener);
     }
     // </editor-fold>
 }
