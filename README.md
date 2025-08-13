@@ -26,6 +26,36 @@ bash swig.sh
 
 # 4. 内存释放
 
+## 4.0. 内存释放的逻辑
+
+```text
+SWIG 生成的 Java 类中有 finalize() 和 delete() 方法，常见于用 SWIG 包装的 C/C++ 原生资源管理。
+
+这两个方法的作用 
+    finalize() 是 Java 的垃圾回收机制在对象被回收时调用的回调方法。SWIG 生成的 finalize() 通常会调用 delete() 来释放底层 C++ 对象的内存，防止内存泄漏。
+    delete() 是显式释放底层 C++ 对象资源的方法。调用后，该 Java 对象对应的 C++ 对象会被立即销毁。
+
+调用建议
+    推荐手动调用 delete() 释放资源
+        尽量避免依赖 finalize()。Java 的垃圾回收器调用 finalize() 的时机不可控，且 finalize() 会拖延资源释放。
+        手动调用 delete() 可以及时释放 C++ 对象，避免 native 内存泄漏。
+    调用 delete() 后不要再使用该对象
+        delete() 释放后，Java 对象虽然存在，但其底层指针已无效，再访问可能导致异常或崩溃。
+
+如果不能手动管理，依赖 finalize() 作为兜底
+    但这通常只适合测试或简单程序，生产环境推荐显式管理。
+
+避免重复调用 delete()
+    SWIG 生成的类通常有 swigCMemOwn 字段标记是否拥有 C++ 对象所有权，delete() 会检查该标志避免重复释放。
+
+总结
+推荐：程序中用完 native 对象后，尽快调用 delete() 释放。
+
+finalize() 仅作为最后的安全网，不能依赖它保证及时释放。
+
+delete() 方法名称太过普通，所以生成了 swigDelete() 方法
+```
+
 ## 4.1. Java 层
 在 java 中所有出现 `new Rcim` 的地方应该都需要进行手动释放，释放调用 `swigDelete()` 方法
 
